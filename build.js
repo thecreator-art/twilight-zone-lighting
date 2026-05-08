@@ -743,6 +743,18 @@ function renderServiceHub(service) {
   const heroImg = pickPhotos(photoCat, service.slug, 1)[0];
   const svcName = service.h1.split(' Installation')[0].split(' in ')[0];
   const fresno = cities.find(c => c.slug === 'fresno');
+  // Tier C: exact-match alt phrasings per service slug for low-competition keyword capture.
+  const altPhrasesMap = {
+    'permanent-outdoor-lights': ['outdoor lights permanent', 'permanent out door lights', 'permanent exterior house lighting', 'permanent led outdoor lighting systems', 'permanent led outdoor lighting', 'festive lights', 'best christmas lights for roofline'],
+    'permanent-christmas-lights': ['christmas light installers', 'christmas lighting company', 'permanent xmas lights', 'christmas light decorations', 'christmas light display', 'christmas lights and decorations', 'christmas lights with remote', 'gemstone christmas lights', 'best christmas lights for roofline'],
+    'security-lighting': ['residential security lighting', 'motion security lighting', 'outdoor home security lighting', 'outdoor security lighting for homes'],
+    'pathway-landscape-lighting': ['landscape lighting company', 'landscape lighting contractors', 'outdoor lighting contractors', 'outdoor lighting service near me', 'high quality landscape lights', 'landscape lighting service'],
+    'halloween-lights': ['halloween light installation', 'permanent halloween lights', 'halloween spotlight'],
+    'accent-lighting': ['architectural lighting design firms', 'architectural lighting company'],
+    'game-day-lighting': ['team color lights', 'sports color outdoor lights'],
+    'year-round-lighting': ['holiday living lights', 'easter lights decorations', 'festive lights', 'holiday lighting']
+  };
+  const altPhrases = altPhrasesMap[service.slug] || [];
   const html = head({ title, desc, canonical, kw: service.primaryKw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
@@ -751,6 +763,7 @@ function renderServiceHub(service) {
     trustBar() +
     `<section class="container intro-block">
       ${sectionHead({ eyebrow: 'About this service', h2: `${svcName} —`, em: `what it is, who it's for.`, intro: service.intro })}
+      ${altPhrases.length ? `<p class="muted">Also searched as: ${altPhrases.map(esc).join(', ')}.</p>` : ''}
     </section>` +
     installPhotoGrid({ category: photoCat, seed: service.slug, kicker: 'Recent work', h2: `${svcName},`, em: 'as installed.' }) +
     `<section class="container use-cases">
@@ -813,6 +826,7 @@ function renderCityHub(city) {
     `<section class="container intro-block">
       ${sectionHead({ eyebrow: `Why ${city.name}`, h2: `${city.name} homeowners`, em: 'choose us.', intro: city.intro })}
       <p>Population ${city.population.toLocaleString()}. Drive time from our Fresno shop: ${city.driveTime} minutes. We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}.</p>
+      <p class="muted">Also searched as: ${city.name} permanent outdoor lights, outdoor lights permanent ${city.name}, permanent out door lights ${city.name}, permanent exterior house lighting ${city.name}, ${city.name} christmas lighting company.</p>
     </section>` +
     installPhotoGrid({ category: 'residential', seed: city.slug, kicker: `${city.name} work`, h2: `Real ${city.name}`, em: 'installs.', intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
     `<section class="solutions container">
@@ -1244,6 +1258,9 @@ neighborhoodPages.forEach(p => pages.push(p));
 // 11. Gallery / use-case pages
 const galleryPages = buildGalleries();
 galleryPages.forEach(p => pages.push(p));
+
+// 11b. Tier B exact-match brand pages (Low-comp Google Keyword Planner targets)
+buildBrandPages().forEach(p => pages.push(p));
 
 // 12. Blog index + 60 posts
 if (posts.length) {
@@ -1696,6 +1713,195 @@ function buildNeighborhoods() {
 }
 
 // ---------- GALLERIES / USE-CASE PAGES ----------
+// ---------- TIER B: Exact-match brand pages ----------
+// Each page targets a specific Low-competition keyword from Google Keyword Planner
+// data. Original commentary on publicly-known competitor brands, with honest
+// comparison + lead-capture CTA.
+function buildBrandPages() {
+  const out = [];
+  const fresno = cities.find(c => c.slug === 'fresno');
+  const heroImgFor = (seed) => pickPhotos('residential', seed, 1)[0];
+
+  const brandPages = [
+    {
+      slug: 'oelo-lights',
+      h1: 'Oelo Lights: Honest Brand Guide for Fresno Homeowners',
+      title: 'Oelo Lights | Brand Guide & Twilight Zone Comparison',
+      desc: 'Oelo Lights is one of the longer-running permanent outdoor lighting brands. Here is what the system is, what it costs, and how it compares to a Jellyfish install from Twilight Zone in Fresno.',
+      kw: 'oelo lights',
+      kicker: 'Brand guide',
+      lead: 'Oelo has been in permanent outdoor lighting longer than most brands you have heard of. Here is the honest breakdown.',
+      bodyParas: [
+        'Oelo Lights manufactures permanent outdoor lighting tracks that mount under the eaves of a home. The system uses individually-addressable RGB LEDs, an aluminum channel, and an app-based controller. The brand has roots in the early 2010s, which means a longer real-world track record than newer entrants — but also older hardware generations on some installs.',
+        'For Fresno County homeowners weighing Oelo against newer options, the practical questions are pixel density, app polish, install crew quality, and warranty terms. Oelo is a legitimate professional system. Whether it is the right system for your home depends mostly on which authorized installer you can actually book locally.',
+        'We are an authorized Jellyfish dealer, not Oelo. So this is not a sales page — it is a fair-comparison page for homeowners trying to choose. The short version: both systems work. The Jellyfish RGBIC-RD chip we install has a slightly finer pixel pitch and a more polished current-generation app. Oelo has a longer install track record. Locally, the answer is whoever can show up faster and back it with a real warranty.'
+      ],
+      faqs: [
+        { q: 'Does Twilight Zone install Oelo?', a: 'No. We are the authorized Jellyfish dealer for the Fresno area. We can install Jellyfish RGBIC-RD systems with the same warranty backing.' },
+        { q: 'Is Oelo better than Jellyfish?', a: 'Oelo is older and more proven over time. Jellyfish has finer pixel density and a more refined app. For most homeowners the difference is marginal — installer quality and local response time matter more than the brand badge.' },
+        { q: 'How much does Oelo cost vs our installs?', a: 'Pricing is roughly comparable: $2,800 to $7,500 for typical residential installs. Our published pricing starts at $950 for a Starter and tops out around $7,500 for Estate.' }
+      ]
+    },
+    {
+      slug: 'gemstone-permanent-lights',
+      h1: 'Gemstone Permanent Lights: What They Are & How They Compare',
+      title: 'Gemstone Permanent Lights | Honest Comparison',
+      desc: 'Gemstone Permanent Lights explained — what the system is, what it costs, and how it compares to professionally-installed Jellyfish RGBIC-RD lighting from Twilight Zone in Fresno County.',
+      kw: 'gemstone permanent lights',
+      kicker: 'Brand guide',
+      lead: 'Gemstone has visible track. Jellyfish hides it. Both work — the difference shows in daylight.',
+      bodyParas: [
+        'Gemstone Permanent Lights is a Canadian-rooted permanent outdoor lighting brand with strong dealer presence in the Mountain West and parts of the Central Valley. The system uses individually-controlled RGBIC LEDs in a track that runs under the eave or along architectural trim.',
+        'Where Gemstone visually differs: the track profile sits slightly more visible during the day than the Jellyfish RGBIC-RD aluminum channel we install, which color-matches your trim and tucks tighter under the soffit. Whether that matters is a curb-appeal question — both systems essentially disappear from forty feet away, but inspection from the driveway tells a different story.',
+        'On the technology side, Gemstone is a current-generation system with a competent app and 100+ presets. Jellyfish RGBIC-RD has slightly finer pixel pitch (better gradients), 200+ presets, and integrates with Control4 and Nice Elan. For homeowners with a smart home, that integration is the deciding factor.',
+        'Honest summary: if Gemstone has a great local installer near you, it is a real option. In Fresno, we install Jellyfish, full lifetime track warranty, 5-year LED, 60-day money-back. Pick whichever you can hold accountable in year four.'
+      ],
+      faqs: [
+        { q: 'Is Gemstone better than Jellyfish?', a: 'Different trade-offs. Gemstone has a longer track record. Jellyfish has finer pixel density and broader smart-home integration. Locally, installer quality decides which is better for your house.' },
+        { q: 'Can you install Gemstone?', a: 'No. We are an authorized Jellyfish dealer. We can install Jellyfish RGBIC-RD with full warranty.' }
+      ]
+    },
+    {
+      slug: 'minleon-permanent-lighting',
+      h1: 'Minleon Permanent Lighting: What You Are Getting',
+      title: 'Minleon Permanent Lighting | Brand Explained',
+      desc: 'Minleon makes high-end pixel lighting controllers and LED strings used by professional Christmas-light pros. Here is what Minleon permanent lighting actually is, who installs it, and how it compares to consumer-facing Jellyfish.',
+      kw: 'minleon permanent lighting',
+      kicker: 'Brand guide',
+      lead: 'Minleon is the gear behind a lot of the high-end displays you see — and now it is starting to show up in permanent residential installs.',
+      bodyParas: [
+        'Minleon is a US-based manufacturer that has supplied controllers and pixel-string LEDs to professional Christmas-light installers for over a decade. Their hardware powers many of the most elaborate residential and commercial holiday displays in the country, often programmed to music with thousands of individually-addressable pixels.',
+        'In recent years some installers have used Minleon components to build year-round permanent outdoor lighting systems — essentially repurposing the same controller and pixel-string hardware in a permanent track. The result is a system with more raw control flexibility than off-the-shelf consumer brands, but with a steeper learning curve and an installer-dependent app experience.',
+        'For most homeowners in Fresno, a turnkey system like Jellyfish RGBIC-RD (which we install) is going to be easier to live with day to day. Minleon shines when you have a perfectionist installer programming custom shows and you actually use that capability. Different audiences, different fits.'
+      ],
+      faqs: [
+        { q: 'Is Minleon Permanent Lighting a brand or a parts supplier?', a: 'Minleon is primarily a parts manufacturer. The "brand" of the install you see is usually the local installer who built it on Minleon hardware.' },
+        { q: 'Should I get Minleon or Jellyfish?', a: 'For most residential homeowners: Jellyfish — turnkey, polished app, broad dealer support. For show-driven music-sync displays: Minleon, if you have an installer who specializes.' }
+      ]
+    },
+    {
+      slug: 'minleon-permanent-lights',
+      h1: 'Minleon Permanent Lights: A Plain-English Explanation',
+      title: 'Minleon Permanent Lights | What They Are',
+      desc: 'Minleon permanent lights explained: where the hardware comes from, who installs it, and how it differs from off-the-shelf consumer permanent lighting brands.',
+      kw: 'minleon permanent lights',
+      kicker: 'Brand guide',
+      lead: 'Same hardware, different install philosophy than the consumer brands.',
+      bodyParas: [
+        'Minleon permanent lights are not a single brand-name product — they are a class of installs built on Minleon-made controllers and LED pixel strings. Minleon is a long-standing supplier to high-end Christmas-light professionals, and the same controllers that power national TV-feature holiday displays can be repurposed into permanent residential systems.',
+        'For a typical Fresno homeowner, the practical question is whether your installer can support Minleon hardware year over year. Off-the-shelf brands like Jellyfish ship with a polished consumer app and a global support stack. Minleon installs depend more on the local installer for app updates, scene programming, and warranty claims.',
+        'We install Jellyfish RGBIC-RD because the consumer experience is more predictable — the app does not require a programmer, the warranty is centralized, and replacement parts are stocked nationally. If you want music-sync show-grade flexibility, Minleon is interesting. For everyone else, the simpler system wins.'
+      ],
+      faqs: [
+        { q: 'Are Minleon permanent lights worth more than Jellyfish?', a: 'Only if you actually use the show-programming capability. For 95% of homeowners, the simpler turnkey system wins on day-to-day use.' }
+      ]
+    },
+    {
+      slug: 'trimlight-permanent-lights',
+      h1: 'Trimlight Permanent Lights: Comparison & Honest Take',
+      title: 'Trimlight Permanent Lights vs Jellyfish | 2026 Comparison',
+      desc: 'Trimlight permanent lights compared to professionally-installed Jellyfish RGBIC-RD from Twilight Zone in Fresno. Hardware generation, app polish, warranty, and install support.',
+      kw: 'trimlight permanent lights',
+      kicker: 'Brand comparison',
+      lead: 'Trimlight has the longer track record. Jellyfish has the newer hardware. Both are real systems.',
+      bodyParas: [
+        'Trimlight is one of the more established permanent outdoor lighting brands, with dealer presence in most US metros. The system uses individually-addressable RGB LEDs in an aluminum channel, mounted under the eave or along architectural lines, controlled by an app.',
+        'On hardware: Trimlight is a mature, well-understood platform. Jellyfish RGBIC-RD (what we install) is a newer chip generation with finer pixel pitch — meaning gradients and pixel-by-pixel animations look smoother. The visual difference is subtle on solid colors and obvious on flowing patterns.',
+        'On app: Jellyfish ships with a more current-generation interface and a larger preset library. Trimlight is functional and stable but feels a generation behind in UX.',
+        'On warranty: Jellyfish offers lifetime track warranty plus a 5-year LED warranty. Trimlight typically offers lifetime track plus 3-year LED. Two extra years on the LEDs is roughly 300 dollars of value over the system lifespan.',
+        'Locally in Fresno, both have authorized dealers. We are the Jellyfish dealer. The honest answer: pick the dealer you trust to be there in year four when something needs service.'
+      ],
+      faqs: [
+        { q: 'Is Trimlight cheaper than Jellyfish?', a: 'About 5 to 15 percent cheaper at the hardware level. Installed cost is comparable once you account for installer labor.' },
+        { q: 'Can you service Trimlight if I already have it?', a: 'We can do basic re-tightening and Wi-Fi reset for any aluminum-track system. Warranty claims need to go through your original Trimlight dealer.' }
+      ]
+    },
+    {
+      slug: 'govee-permanent-outdoor-lights-installation',
+      h1: 'Govee Permanent Outdoor Lights Installation: DIY vs Hiring a Pro',
+      title: 'Govee Permanent Outdoor Lights Installation | DIY Guide & Pro Comparison',
+      desc: 'Govee permanent outdoor lights installation walkthrough — DIY approach, common pitfalls, and when hiring a pro installer makes more sense for Fresno homeowners.',
+      kw: 'govee permanent outdoor lights installation',
+      kicker: 'Installation guide',
+      lead: 'Govee is the most popular DIY permanent lighting kit. Here is the honest install reality.',
+      bodyParas: [
+        'Govee Permanent Outdoor Lights are a consumer-grade RGBIC LED system designed for DIY installation. The kit ships with the LED string, mounting clips, controller, and a Wi-Fi app. For a single-story home with accessible eaves, a careful homeowner can install the front facade in a weekend.',
+        'Common install pitfalls: visible cable runs that did not get tucked into the soffit, clip spacing too wide, controller mounted in a spot that loses Wi-Fi, and connector ends that water-damage in the first heavy rain. None of these are unfixable but each one shows.',
+        'When DIY makes sense: single-story home, ground-level access via standard ladder, budget under 700 dollars, and you genuinely enjoy ladder work. When hiring a pro makes more sense: two-story home, complex roofline, you want the track invisible during the day, you want a long warranty, and you want one phone number to call when something fails.',
+        'Our pro install starts at $950 fully installed using Jellyfish RGBIC-RD aluminum track — color-matched to your trim, concealed wiring, lifetime track warranty. By the time a homeowner accounts for the value of their own time and the visible-cable trade-off, the gap between DIY Govee and a pro Starter install is smaller than it looks on paper.'
+      ],
+      faqs: [
+        { q: 'Will you install Govee for me?', a: 'We focus on professional Jellyfish installs. We do not subcontract Govee jobs — the warranty mismatch is not fair to you.' },
+        { q: 'How long does Govee installation take DIY?', a: 'A single facade typically takes 4 to 8 hours for a confident DIYer. A whole-home install spans a weekend or two for most homeowners.' }
+      ]
+    },
+    {
+      slug: 'govee-permanent-house-lights',
+      h1: 'Govee Permanent House Lights: Real Pros & Cons',
+      title: 'Govee Permanent House Lights | Honest Review & Pro Alternative',
+      desc: 'Govee permanent house lights explained — what the kit gets right, what it does not, and how the DIY consumer system compares to a professionally-installed Jellyfish system in Fresno County.',
+      kw: 'govee permanent house lights',
+      kicker: 'Brand review',
+      lead: 'Govee built the most accessible permanent lighting kit on the market. Here is what that buys you.',
+      bodyParas: [
+        'Govee Permanent House Lights are a DIY-friendly RGBIC permanent outdoor lighting kit aimed at homeowners who want the look of a pro install without the pro installer. The system uses individually-addressable RGB LEDs, an external Wi-Fi controller, and a polished consumer app with hundreds of preset patterns.',
+        'What Govee gets right: price (typically 400 to 700 dollars for a full kit), ease of programming, decent IP65 weather rating, and a large user community sharing scene presets online. For a single-story Fresno home, the visual outcome at night can rival professional installs.',
+        'Where Govee falls short: the cable is more visible by day than aluminum-track systems, the IP65 rating is a step below IP67 for very wet weather, the LED rated lifespan is about half that of pro-grade chips, and the warranty caps at 1 to 2 years vs lifetime track on pro systems.',
+        'The five-year math is what changes minds. A Govee kit at 600 dollars plus likely one or two replacement runs over five years lands at 1,200 to 1,800 dollars total. A pro Jellyfish Starter install at 950 dollars all-in, lifetime track warranty, lasts the same five years and beyond. Govee wins year one. Pro wins year four.'
+      ],
+      faqs: [
+        { q: 'Are Govee permanent house lights worth it?', a: 'For a single-story home, modest budget, and a homeowner who likes DIY: yes. For two-story homes, complex rooflines, or anyone who wants set-and-forget reliability: pro install wins on five-year cost.' }
+      ]
+    },
+    {
+      slug: 'govee-permanent-outdoor-house-lights',
+      h1: 'Govee Permanent Outdoor House Lights: Outdoor Use Cases',
+      title: 'Govee Permanent Outdoor House Lights | Outdoor Use Cases & Limits',
+      desc: 'Govee permanent outdoor house lights — what they handle well outdoors, where the IP65 rating starts to limit use, and when to step up to a IP67 pro system in Fresno.',
+      kw: 'govee permanent outdoor house lights',
+      kicker: 'Outdoor use guide',
+      lead: 'IP65 covers most outdoor scenarios. The remaining 10 percent is where pro hardware pays for itself.',
+      bodyParas: [
+        'Govee Permanent Outdoor House Lights are rated IP65 — dust-tight against sand and dry debris, and water-resistant against splashes and rain from any direction. For most Fresno homeowners that envelope is fine: summers are dry, winters bring tule fog and the occasional rain but rarely standing water.',
+        'Where IP65 starts to limit use: pool decks where lights sit close to splashing water, patios with permanent sprinkler overspray, and any install location prone to direct hose pressure during seasonal cleaning. The aluminum-track Jellyfish system we install is rated IP67 (submersible to one meter for thirty minutes) which removes those limits entirely.',
+        'On temperature: Govee is rated 14F to 122F operating. Fresno summer roof surfaces in direct sun routinely exceed 130F. Most installs are under the eave in shade, so this rarely surfaces — but it is the kind of edge case where pro-rated -40F to 140F hardware earns its keep over decades.',
+        'Bottom line for outdoor use: Govee is genuinely competent in most Fresno conditions. The pro upgrade matters when you want to never think about it again.'
+      ],
+      faqs: [
+        { q: 'Will Govee outdoor lights survive Fresno summer heat?', a: 'In shaded under-eave installs, generally yes. In direct sun on a black roofline, the rated envelope gets close to its ceiling. Pro-rated hardware has more margin.' }
+      ]
+    }
+  ];
+
+  brandPages.forEach(p => {
+    const slug = p.slug;
+    const canonical = `/${slug}`;
+    const crumbs = [{ name: 'Home', url: '/' }, { name: 'Compare', url: '/compare' }, { name: p.h1, url: canonical }];
+    const heroImg = heroImgFor(slug);
+    const jsonld = [
+      breadcrumbs(crumbs),
+      { '@context': 'https://schema.org', '@type': 'Article', headline: p.h1, description: p.desc, author: { '@type': 'Organization', name: BRAND }, publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-03-15' },
+      faqLD(p.faqs)
+    ];
+    const html = head({ title: p.title, desc: p.desc, canonical, kw: p.kw, ogImg: heroImg, jsonld }) +
+      headerHTML(canonical) +
+      `<main>` +
+      breadcrumbBlock(crumbs) +
+      heroBlock({ kicker: p.kicker, h1: p.h1, lead: p.lead, img: heroImg }) +
+      trustBar() +
+      `<section class="container article-body">
+        ${p.bodyParas.map((para, i) => i === 0 ? `<p class="lead-para">${esc(para)}</p>` : `<p>${esc(para)}</p>`).join('')}
+      </section>` +
+      testimonialBlock(fresno, pickPhotos('residential', slug + 't', 1)[0]) +
+      faqBlock(p.faqs) +
+      ctaBlock() +
+      `</main>` + footerHTML();
+    out.push({ url: canonical, html });
+  });
+
+  return out;
+}
+
 function buildGalleries() {
   const out = [];
   const galleries = [
