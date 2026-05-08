@@ -517,6 +517,8 @@ function fireConfetti() {
     if (counterEl) counterEl.textContent = display;
     if (prevBtn) prevBtn.disabled = i <= 0;
     if (nextBtn) nextBtn.disabled = i >= total - 1;
+    // Highlight active card
+    cards.forEach((c, idx) => c.classList.toggle('is-active', idx === i));
     // Progress bar: based on scrollLeft / max scrollable
     const max = track.scrollWidth - track.clientWidth;
     const pct = max > 0 ? (track.scrollLeft / max) * 100 : 0;

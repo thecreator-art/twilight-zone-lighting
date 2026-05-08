@@ -2185,17 +2185,18 @@ em {
 
 .reel-card {
   flex: 0 0 auto;
-  width: clamp(260px, 28vw, 360px);
+  width: clamp(320px, 38vw, 520px);
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   transition: transform .5s var(--ease);
 }
 .reel-card:hover { transform: translateY(-4px); }
 
 .reel-video {
   position: relative;
+  width: 100%;
   aspect-ratio: 9 / 16;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -2206,10 +2207,25 @@ em {
     0 0 0 1px rgba(168, 85, 247, 0.08),
     0 0 40px rgba(168, 85, 247, 0.06);
 }
+/* aspect-ratio fallback for older browsers / narrow-viewport edge cases */
+@supports not (aspect-ratio: 9 / 16) {
+  .reel-video { height: 0; padding-bottom: 177.77%; }
+  .reel-video > * { position: absolute; inset: 0; }
+}
 .reel-video video {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
+}
+/* Active card gets a subtle highlight ring */
+.reel-card.is-active .reel-video {
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 2px rgba(168, 85, 247, 0.5),
+    0 0 60px rgba(168, 85, 247, 0.25);
+}
+@media (max-width: 720px) {
+  .reel-card { width: 78vw; }
 }
 .reel-vignette {
   position: absolute;
