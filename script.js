@@ -745,3 +745,46 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// ---- LAZY-LOAD VIDEOS (reel-moment blocks) via IntersectionObserver ----
+// Sources have data-src instead of src; swap when scrolled near viewport.
+(() => {
+  const lazies = document.querySelectorAll('[data-lazy-video]');
+  if (!lazies.length || !('IntersectionObserver' in window)) {
+    // No-IO fallback: load all immediately
+    lazies.forEach((wrap) => {
+      wrap.querySelectorAll('source[data-src]').forEach((s) => {
+        s.src = s.dataset.src;
+        s.removeAttribute('data-src');
+      });
+      const v = wrap.querySelector('video');
+      if (v) v.load();
+    });
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const wrap = e.target;
+      wrap.querySelectorAll('source[data-src]').forEach((s) => {
+        s.src = s.dataset.src;
+        s.removeAttribute('data-src');
+      });
+      const v = wrap.querySelector('video');
+      if (v) {
+        v.load();
+        const tryPlay = v.play();
+        if (tryPlay && tryPlay.catch) tryPlay.catch(() => {});
+      }
+      io.unobserve(wrap);
+    });
+  }, { rootMargin: '300px 0px', threshold: 0.01 });
+  lazies.forEach((el) => io.observe(el));
+})();
+
+// ---- REGISTER SERVICE WORKER (idempotent) ----
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
