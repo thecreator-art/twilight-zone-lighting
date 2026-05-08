@@ -44,7 +44,52 @@ const writePage = (urlPath, html) => {
 };
 
 // ---------- SHARED CHROME ----------
-const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg', jsonld = [] }) => `<!DOCTYPE html>
+// Build a single @graph-linked JSON-LD block from multiple schema objects
+// so Google sees the entities as connected, not free-floating.
+function buildGraph(jsonld, canonical) {
+  if (!jsonld.length) return '';
+  // Tag each schema with @id derived from canonical + type, so they reference each other
+  const tagged = jsonld.map((j, i) => {
+    if (!j['@id']) j['@id'] = `${SITE}${canonical}#${(j['@type'] || 'thing').toString().toLowerCase()}-${i}`;
+    return j;
+  });
+  // Strip per-block @context (we'll set it once at @graph root)
+  const stripped = tagged.map(j => { const { '@context': _, ...rest } = j; return rest; });
+  return `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': stripped })}</script>`;
+}
+
+const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg', jsonld = [], speakable = ['h1', '.hero-est', '.section-head h2'] }) => {
+  // Add Speakable schema for AI/voice — adds explicit "answer here" markers for assistants
+  if (speakable && speakable.length) {
+    jsonld = [...jsonld, {
+      '@type': 'WebPage',
+      '@id': `${SITE}${canonical}#webpage`,
+      url: `${SITE}${canonical}`,
+      name: title,
+      description: desc,
+      inLanguage: 'en-US',
+      isPartOf: { '@id': `${SITE}/#website` },
+      speakable: { '@type': 'SpeakableSpecification', cssSelector: speakable }
+    }];
+  }
+  // Always inject the website root entity for graph linking
+  jsonld = [{
+    '@type': 'WebSite',
+    '@id': `${SITE}/#website`,
+    url: SITE + '/',
+    name: BRAND,
+    publisher: { '@id': `${SITE}/#org` }
+  }, {
+    '@type': 'Organization',
+    '@id': `${SITE}/#org`,
+    name: BRAND,
+    url: SITE + '/',
+    telephone: TEL,
+    email: shared.brand.email,
+    logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-600.png` },
+    sameAs: []
+  }, ...jsonld];
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -53,7 +98,7 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
 <meta name="description" content="${esc(desc)}" />
 ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <meta name="author" content="${esc(BRAND)}" />
-<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="${SITE}${canonical}" />
 <meta name="geo.region" content="US-CA" />
 <meta name="geo.placename" content="Fresno, California" />
@@ -65,19 +110,29 @@ ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <meta property="og:url" content="${SITE}${canonical}" />
 <meta property="og:site_name" content="${esc(BRAND)}" />
 <meta property="og:image" content="${SITE}${ogImg}" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="900" />
+<meta property="og:image:alt" content="${esc(title)}" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${esc(title)}" />
 <meta name="twitter:description" content="${esc(desc)}" />
 <meta name="twitter:image" content="${SITE}${ogImg}" />
 <meta name="theme-color" content="#050505" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="format-detection" content="telephone=yes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css" />
-${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
+${buildGraph(jsonld, canonical)}
 </head>
 <body>`;
+};
 
 // Active-link helper: marks current section in nav
 const navLink = (href, label, cur) => {
@@ -481,19 +536,25 @@ const processTimelineBlock = ({ kicker = 'How it works', h2 = 'Five steps,', em 
   </ol>
 </section>`;
 
-// Real install photo grid (6 images, asymmetric)
-const installPhotoGrid = ({ category, seed, kicker = 'Real installs', h2 = 'Ours, lit.', em = 'Yours, next.', intro }) => {
+// Real install photo grid (6 images, asymmetric, descriptive alt text)
+const installPhotoGrid = ({ category, seed, kicker = 'Real installs', h2 = 'Ours, lit.', em = 'Yours, next.', intro, altContext }) => {
   const pics = pickPhotos(category || 'residential', seed || 'a', 6);
+  // Derive contextual alt text from kicker + photo position
+  const ctx = altContext || kicker || 'Permanent outdoor lighting';
+  const altFor = (i, type) => {
+    const types = ['featured roofline outline', 'eave-mounted track detail', 'two-story facade install', 'soffit channel close-up', 'full-perimeter install at twilight', 'side-yard accent run'];
+    return `${ctx} — ${types[i] || 'permanent outdoor lighting install'} by ${BRAND}`;
+  };
   return `
 <section class="container install-grid-section" aria-label="Install gallery">
   ${sectionHead({ eyebrow: kicker, h2, em, intro: intro || `${shared.brand.installs}+ installs across the Central Valley. Same crew. Same warranty. Same hardware.` })}
   <div class="install-grid">
-    <figure class="install-photo install-photo-large"><img src="${pics[0]}" alt="Real permanent outdoor lighting install" loading="lazy" /></figure>
-    <figure class="install-photo"><img src="${pics[1]}" alt="Real install" loading="lazy" /></figure>
-    <figure class="install-photo"><img src="${pics[2]}" alt="Real install" loading="lazy" /></figure>
-    <figure class="install-photo"><img src="${pics[3]}" alt="Real install" loading="lazy" /></figure>
-    <figure class="install-photo install-photo-wide"><img src="${pics[4]}" alt="Real install" loading="lazy" /></figure>
-    <figure class="install-photo"><img src="${pics[5]}" alt="Real install" loading="lazy" /></figure>
+    <figure class="install-photo install-photo-large"><img src="${pics[0]}" alt="${esc(altFor(0))}" loading="lazy" width="800" height="600" /></figure>
+    <figure class="install-photo"><img src="${pics[1]}" alt="${esc(altFor(1))}" loading="lazy" width="400" height="300" /></figure>
+    <figure class="install-photo"><img src="${pics[2]}" alt="${esc(altFor(2))}" loading="lazy" width="400" height="300" /></figure>
+    <figure class="install-photo"><img src="${pics[3]}" alt="${esc(altFor(3))}" loading="lazy" width="400" height="300" /></figure>
+    <figure class="install-photo install-photo-wide"><img src="${pics[4]}" alt="${esc(altFor(4))}" loading="lazy" width="800" height="300" /></figure>
+    <figure class="install-photo"><img src="${pics[5]}" alt="${esc(altFor(5))}" loading="lazy" width="400" height="300" /></figure>
   </div>
 </section>`;
 };
@@ -942,7 +1003,7 @@ function renderCost({ slug, h1, title, desc, kw, lead, sections, faqs }) {
 }
 
 // ---------- TEMPLATE: Generic Article (guides, neighborhoods, gallery) ----------
-function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, faqs = [], img }) {
+function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, faqs = [], img, extraSchema = [] }) {
   const canonical = `/${slug}`;
   const crumbs = [{ name: 'Home', url: '/' }];
   if (parent) crumbs.push(parent);
@@ -954,6 +1015,7 @@ function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, 
     headline: h1, description: desc, author: { '@type': 'Organization', name: BRAND },
     publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-02-01'
   });
+  if (extraSchema.length) jsonld.push(...extraSchema);
   const heroImg = img || pickPhotos('residential', slug, 1)[0];
   const fresno = cities.find(c => c.slug === 'fresno');
   // For guides specifically, add a testimonial near the bottom
@@ -1429,17 +1491,41 @@ function buildUtility() {
     ]
   }));
   // Process / Reviews / Warranty / Guides hub
-  out.push(renderArticle({
-    slug: 'process',
-    h1: 'Our Install Process',
-    title: `Install Process | ${BRAND}`,
-    desc: 'Five-step install process for permanent outdoor lighting — quote, design, install, app setup, walkthrough.',
-    kw: 'permanent lighting install process', kicker: 'How it works', lead: 'Five steps. One day on site for most homes.',
-    img: pickPhotos('residential', 'process', 1)[0],
-    body: processTimelineBlock({ kicker: 'How it works', h2: 'Five steps,', em: 'one day on site.', intro: 'Free quote, design, install, app setup, walkthrough. Most homes finished by sundown.' }) +
-    installPhotoGrid({ category: 'residential', seed: 'process', kicker: 'Recent installs', h2: 'What it looks', em: 'when it ships.' }) +
-    testimonialBlock(cities.find(c => c.slug === 'fresno'))
-  }));
+  out.push((() => {
+    // HowTo schema — drives AI/LLM "how does install work" answers
+    const howTo = {
+      '@type': 'HowTo',
+      name: 'How permanent outdoor lighting is installed',
+      description: 'Five-step install process for permanent outdoor lighting from quote to walkthrough.',
+      totalTime: 'PT8H',
+      estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: shared.pricing.standardFrom },
+      tool: [
+        { '@type': 'HowToTool', name: 'Aluminum LED track' },
+        { '@type': 'HowToTool', name: 'RGBIC-RD LED strip' },
+        { '@type': 'HowToTool', name: 'Weatherproof control box' },
+        { '@type': 'HowToTool', name: 'Stainless steel screws' }
+      ],
+      step: [
+        { '@type': 'HowToStep', name: 'Free quote in 24 hours', text: 'On-site walk to measure linear feet, identify ladder access, and propose track color. Written quote on the spot.' },
+        { '@type': 'HowToStep', name: 'Design and track color', text: 'Match track to existing trim color (white, bronze, brown, or black). 3D rendering produced for HOA submission at no charge.' },
+        { '@type': 'HowToStep', name: 'Install in a day', text: 'W-2 in-house crew installs the aluminum channel and LED strip. Single-story homes finish in 6 to 8 hours.' },
+        { '@type': 'HowToStep', name: 'Wiring and control box', text: 'Concealed channel-routed wiring drops to attic. Weatherproof control box mounts in garage with surge protection inline.' },
+        { '@type': 'HowToStep', name: 'App pairing and walkthrough', text: 'Controller paired with home Wi-Fi. Homeowner trained on scenes, schedules, and smart-home integration before crew leaves.' }
+      ]
+    };
+    return renderArticle({
+      slug: 'process',
+      h1: 'Our Install Process',
+      title: `Install Process | ${BRAND}`,
+      desc: 'Five-step install process for permanent outdoor lighting — quote, design, install, app setup, walkthrough.',
+      kw: 'permanent lighting install process', kicker: 'How it works', lead: 'Five steps. One day on site for most homes.',
+      img: pickPhotos('residential', 'process', 1)[0],
+      extraSchema: [howTo],
+      body: processTimelineBlock({ kicker: 'How it works', h2: 'Five steps,', em: 'one day on site.', intro: 'Free quote, design, install, app setup, walkthrough. Most homes finished by sundown.' }) +
+      installPhotoGrid({ category: 'residential', seed: 'process', kicker: 'Recent installs', h2: 'What it looks', em: 'like when it ships.' }) +
+      testimonialBlock(cities.find(c => c.slug === 'fresno'))
+    });
+  })());
   out.push(renderArticle({
     slug: 'reviews',
     h1: `${shared.brand.reviews}+ Reviews at ${shared.brand.rating}★`,
@@ -1631,15 +1717,69 @@ pages.forEach(p => {
 console.log(`✓ Wrote ${written} pages (${skipped} duplicates skipped)`);
 
 // ============================================================
-// SITEMAP.XML
+// SITEMAP.XML — with lastmod, image sitemap extension
 // ============================================================
+const today = new Date().toISOString().split('T')[0];
 const allUrls = ['/'].concat(Array.from(writtenUrls).filter(u => u !== '/'));
+const priorityFor = (u) => {
+  if (u === '/') return '1.0';
+  if (/^\/(services|service-areas|commercial|pricing|quote|compare|blog|galleries|faq)$/.test(u)) return '0.9';
+  if (/^\/(permanent-outdoor-lights-|cost-)/.test(u)) return '0.85';
+  if (u.startsWith('/blog/')) return '0.7';
+  if (u.startsWith('/gallery-')) return '0.6';
+  return '0.8';
+};
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
-${allUrls.map(u => `  <url><loc>${SITE}${u}</loc><changefreq>weekly</changefreq><priority>${u === '/' ? '1.0' : '0.8'}</priority></url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${allUrls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${priorityFor(u)}</priority></url>`).join('\n')}
 </urlset>`;
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
-console.log(`✓ Wrote sitemap.xml (${allUrls.length} urls)`);
+console.log(`✓ Wrote sitemap.xml (${allUrls.length} urls, lastmod ${today})`);
+
+// ============================================================
+// 404.HTML — custom not-found page (Vercel uses /404.html automatically)
+// ============================================================
+const notFoundHTML = head({
+  title: `Page Not Found | ${BRAND}`,
+  desc: 'The page you tried to reach is no longer here. Find what you need from the links below or call us directly.',
+  canonical: '/404',
+  jsonld: []
+}) + headerHTML('/404') +
+`<main>
+  <section class="hero hero-sub" id="top" aria-label="404">
+    <div class="hero-media">
+      <img class="ken-burns" src="/images/03-accent.jpg" alt="" loading="eager" />
+      <div class="hero-vignette"></div>
+      <div class="hero-grain"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">404 · Page not found</div>
+      <h1 class="hero-title">
+        <span class="hero-line-1">This page</span>
+        <span class="hero-line-2"><em>went dark.</em></span>
+        <span class="hero-line-3">Let's find what you need.</span>
+      </h1>
+      <p class="hero-est">The address you tried doesn't exist on this site. Try one of the links below — or call us directly and we'll point you the right way.</p>
+      <div class="hero-actions">
+        <a href="/" class="btn btn-primary">Back to homepage</a>
+        <a href="tel:${TEL}" class="btn btn-text">${PHONE}</a>
+      </div>
+    </div>
+  </section>
+  <section class="solutions container">
+    ${sectionHead({ eyebrow: 'Try these instead', h2: 'Most-visited', em: 'pages.' })}
+    ${solutionsGrid([
+      { h: 'Pricing', p: 'Transparent published pricing. Starter from $950. Most homes $2,800-$5,800.', img: '/images/03-accent.jpg', alt: 'Pricing', href: '/pricing', linkLabel: 'See pricing' },
+      { h: 'Services', p: 'Christmas, Halloween, accent, security, game-day, year-round.', img: '/images/04-holiday.jpg', alt: 'Services', href: '/services', linkLabel: 'All services' },
+      { h: 'Service areas', p: 'Locally installed across Fresno, Clovis, Madera, Visalia and 8 more.', img: '/images/work/gameday/g1.jpg', alt: 'Service areas', href: '/service-areas', linkLabel: 'See coverage' },
+      { h: 'Free quote', p: 'On-site estimate within 24 hours. Written, fixed pricing on the spot.', img: '/images/work/gameday/g3.jpg', alt: 'Free quote', href: '/quote', linkLabel: 'Get quote' },
+      { h: 'Blog', p: 'Sixty plain-English articles on permanent outdoor lighting.', img: '/images/work/gameday/g8.jpg', alt: 'Blog', href: '/blog', linkLabel: 'Read the blog' },
+      { h: 'Gallery', p: 'Real installs across the Central Valley.', img: '/images/work/gameday/g11.jpg', alt: 'Gallery', href: '/galleries', linkLabel: 'View gallery' }
+    ])}
+  </section>` + ctaBlock() + `</main>` + footerHTML();
+fs.writeFileSync(path.join(ROOT, '404.html'), notFoundHTML);
+console.log('✓ Wrote 404.html');
 
 // ============================================================
 // ROBOTS.TXT
