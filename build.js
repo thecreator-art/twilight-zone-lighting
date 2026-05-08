@@ -46,7 +46,7 @@ const writePage = (urlPath, html) => {
 // ---------- SHARED CHROME ----------
 // Critical CSS — minimum needed for above-the-fold paint (header + hero).
 // Inlined to eliminate render-blocking on first visit. Full styles.css loads async.
-const CRITICAL_CSS = `*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}body{margin:0;background:#050505;color:#fff;font-family:Inter,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}img,video{max-width:100%;display:block}a{color:inherit;text-decoration:none}.container{max-width:1280px;margin:0 auto;padding:0 24px}.header-stack{position:fixed;top:0;left:0;right:0;z-index:100}.ann-bar{background:#050505;color:#fff;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;white-space:nowrap}.ann-track{display:flex;gap:48px;animation:annScroll 40s linear infinite;padding-left:100%;width:max-content}@keyframes annScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}.ann-pulse{display:inline-block;width:6px;height:6px;background:#c084fc;border-radius:999px;margin-right:10px;vertical-align:middle;animation:pulse 1.5s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.nav{background:rgba(5,5,5,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1280px;margin:0 auto;gap:24px}.brand-logo{height:42px;width:auto}.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.75);transition:color .2s}.nav-phone{color:#c084fc !important;font-weight:600}.nav-cta{display:flex;align-items:center;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .25s cubic-bezier(.2,.8,.2,1);text-decoration:none}.btn-primary{background:linear-gradient(135deg,#a855f7,#6366f1);color:#fff;box-shadow:0 4px 16px rgba(168,85,247,.3)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(168,85,247,.4)}.btn-text{background:transparent;color:rgba(255,255,255,.85);padding:12px 16px}.hamburger{display:none;background:transparent;border:0;width:32px;height:32px;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:0}.hamburger span{display:block;height:2px;background:#fff;border-radius:1px;transition:all .25s}.hero{position:relative;min-height:calc(100vh - 132px);display:flex;flex-direction:column;justify-content:center;padding:60px 0;overflow:hidden;background:#000}.hero.hero-sub{min-height:78vh;padding:80px 0 56px}.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}.ken-burns{width:110%;height:110%;object-fit:cover;position:absolute;inset:-5% 0 0 -5%;filter:brightness(.5) saturate(1.1) contrast(1.05);animation:kenBurns 24s ease-in-out infinite alternate;will-change:transform}@keyframes kenBurns{0%{transform:scale(1.05)}100%{transform:scale(1.18) translate(-2%,-3%)}}.hero-vignette{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,transparent 25%,transparent 55%,rgba(0,0,0,.95) 100%),radial-gradient(ellipse at 70% 30%,rgba(168,85,247,.22),transparent 60%);pointer-events:none}.hero-content{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 24px;width:100%}.hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#c084fc;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);padding:6px 14px;border-radius:999px;margin-bottom:22px}.hero-title{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,6vw,76px);line-height:1.05;font-weight:400;letter-spacing:-.02em;margin:0 0 22px;color:#fff;display:flex;flex-direction:column;gap:0}.hero-title span{display:block;opacity:0;transform:translateY(20px);animation:heroLineIn .8s cubic-bezier(.2,.8,.2,1) forwards}.hero-title .hero-line-1{animation-delay:.4s}.hero-title .hero-line-2{animation-delay:.6s}.hero-title .hero-line-3{animation-delay:.8s}@keyframes heroLineIn{to{opacity:1;transform:translateY(0)}}.hero-title em{font-style:italic;background:linear-gradient(135deg,#c084fc,#6366f1);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-est{font-size:clamp(17px,1.4vw,21px);line-height:1.55;color:rgba(255,255,255,.82);max-width:720px;margin:0 0 32px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.hero-foot{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);max-width:720px}.hero-foot-item .num{font-family:'Instrument Serif',Georgia,serif;font-size:36px;font-weight:400;color:#c084fc;line-height:1}.hero-foot-item .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px}@media (max-width:980px){.nav-links,.nav-cta .btn{display:none}.hamburger{display:flex}.hero-foot{grid-template-columns:repeat(2,1fr);gap:16px}}`;
+const CRITICAL_CSS = `*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}body{margin:0;background:#050505;color:#fff;font-family:Inter,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}img,video{max-width:100%;display:block}a{color:inherit;text-decoration:none}.container{max-width:1280px;margin:0 auto;padding:0 24px}.header-stack{position:fixed;top:0;left:0;right:0;z-index:100}.ann-bar{background:#050505;color:#fff;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;white-space:nowrap}.ann-track{display:flex;gap:48px;animation:annScroll 40s linear infinite;padding-left:100%;width:max-content}@keyframes annScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}.ann-pulse{display:inline-block;width:6px;height:6px;background:#c084fc;border-radius:999px;margin-right:10px;vertical-align:middle;animation:pulse 1.5s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.nav{background:rgba(5,5,5,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1280px;margin:0 auto;gap:24px}.brand-logo{height:42px;width:auto}.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.75);transition:color .2s}.nav-phone{color:#c084fc !important;font-weight:600}.nav-cta{display:flex;align-items:center;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .25s cubic-bezier(.2,.8,.2,1);text-decoration:none}.btn-primary{background:linear-gradient(135deg,#a855f7,#6366f1);color:#fff;box-shadow:0 4px 16px rgba(168,85,247,.3)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(168,85,247,.4)}.btn-text{background:transparent;color:rgba(255,255,255,.85);padding:12px 16px}.hamburger{display:none;background:transparent;border:0;width:32px;height:32px;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:0}.hamburger span{display:block;height:2px;background:#fff;border-radius:1px;transition:all .25s}.hero{position:relative;min-height:calc(100vh - 132px);display:flex;flex-direction:column;justify-content:center;padding:60px 0;overflow:hidden;background:#000}.hero.hero-sub{min-height:78vh;padding:80px 0 56px}.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}.ken-burns{width:110%;height:110%;object-fit:cover;position:absolute;inset:-5% 0 0 -5%;filter:brightness(.5) saturate(1.1) contrast(1.05);animation:kenBurns 24s ease-in-out infinite alternate;will-change:transform}@keyframes kenBurns{0%{transform:scale(1.05)}100%{transform:scale(1.18) translate(-2%,-3%)}}.hero-vignette{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,transparent 25%,transparent 55%,rgba(0,0,0,.95) 100%),radial-gradient(ellipse at 70% 30%,rgba(168,85,247,.22),transparent 60%);pointer-events:none}.hero-content{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 24px;width:100%}.hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#c084fc;margin-bottom:22px}.hero-title{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,6vw,76px);line-height:1.05;font-weight:400;letter-spacing:-.02em;margin:0 0 22px;color:#fff;display:flex;flex-direction:column;gap:0}.hero-title span{display:block;opacity:0;transform:translateY(20px);animation:heroLineIn .8s cubic-bezier(.2,.8,.2,1) forwards}.hero-title .hero-line-1{animation-delay:.4s}.hero-title .hero-line-2{animation-delay:.6s}.hero-title .hero-line-3{animation-delay:.8s}@keyframes heroLineIn{to{opacity:1;transform:translateY(0)}}.hero-title em{font-style:italic;background:linear-gradient(135deg,#c084fc,#6366f1);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-est{font-size:clamp(17px,1.4vw,21px);line-height:1.55;color:rgba(255,255,255,.82);max-width:720px;margin:0 0 32px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.hero-foot{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);max-width:720px}.hero-foot-item .num{font-family:'Instrument Serif',Georgia,serif;font-size:36px;font-weight:400;color:#c084fc;line-height:1}.hero-foot-item .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px}@media (max-width:980px){.nav-links,.nav-cta .btn{display:none}.hamburger{display:flex}.hero-foot{grid-template-columns:repeat(2,1fr);gap:16px}}`;
 
 // Build a single @graph-linked JSON-LD block from multiple schema objects
 // so Google sees the entities as connected, not free-floating.
@@ -161,8 +161,9 @@ const headerHTML = (cur = '') => `
     <span><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
     <span><i class="ann-pulse"></i> 60-DAY MONEY-BACK · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
     <span><i class="ann-pulse"></i> FRESNO · CLOVIS · MADERA · VISALIA · HANFORD · SELMA · SANGER</span>
-    <span><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
-    <span><i class="ann-pulse"></i> 60-DAY MONEY-BACK · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
+    <span aria-hidden="true"><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
+    <span aria-hidden="true"><i class="ann-pulse"></i> 60-DAY MONEY-BACK · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
+    <span aria-hidden="true"><i class="ann-pulse"></i> FRESNO · CLOVIS · MADERA · VISALIA · HANFORD · SELMA · SANGER</span>
   </div>
 </div>
 <header class="nav" id="nav">
@@ -365,15 +366,38 @@ const faqBlock = faqs => `
   </div>
 </section>`;
 
+// Full quote form — mirrors homepage's #quote section so every page has the same conversion path.
 const ctaBlock = () => `
-<section class="cta-band">
-  <div class="container">
-    <h2>Ready for a quote?</h2>
-    <p>Free on-site estimate within 24 hours. Written, fixed pricing on the spot. No obligation.</p>
-    <div class="cta-row">
-      <a href="/quote" class="btn btn-primary btn-lg">Get Free Quote</a>
-      <a href="tel:${TEL}" class="btn btn-ghost btn-lg">Call ${PHONE}</a>
+<section class="next-steps" id="quote" aria-label="Free quote form">
+  <div class="container ns-grid">
+    <div class="ns-text">
+      <p class="eyebrow">Next steps</p>
+      <h2>Get your <em>free quote.</em></h2>
+      <ol class="ns-steps">
+        <li><span class="ns-num">1</span> Request your free estimate.</li>
+        <li><span class="ns-num">2</span> We help you choose the right lighting for your property and budget.</li>
+        <li><span class="ns-num">3</span> Schedule your install with our W-2 technicians.</li>
+      </ol>
+      <div class="ns-progress"><span class="ns-pct" style="width:65%"></span></div>
+      <div class="ns-call">
+        <span>Or call us directly</span>
+        <a href="tel:${TEL}">${PHONE}</a>
+      </div>
     </div>
+    <form class="ns-form" aria-label="Request a free quote" action="mailto:${shared.brand.email}" method="post" enctype="text/plain">
+      <div class="ns-field"><label>First Name</label><input type="text" name="firstName" placeholder="Jane" required autocomplete="given-name" /></div>
+      <div class="ns-field"><label>Last Name</label><input type="text" name="lastName" placeholder="Smith" required autocomplete="family-name" /></div>
+      <div class="ns-field"><label>Email</label><input type="email" name="email" placeholder="email@site.com" required autocomplete="email" /></div>
+      <div class="ns-field"><label>Phone</label><input type="tel" name="phone" placeholder="123-456-7890" required autocomplete="tel" /></div>
+      <div class="ns-field"><label>Street Address</label><input type="text" name="address" placeholder="123 Main Ave" required autocomplete="street-address" /></div>
+      <div class="ns-field-row">
+        <div class="ns-field"><label>City</label><input type="text" name="city" placeholder="Fresno" required autocomplete="address-level2" /></div>
+        <div class="ns-field"><label>State</label><input type="text" name="state" placeholder="CA" required autocomplete="address-level1" value="CA" /></div>
+        <div class="ns-field"><label>Zip</label><input type="text" name="zip" placeholder="93704" required autocomplete="postal-code" /></div>
+      </div>
+      <p class="ns-fine">By submitting you agree to receive communication. 60-day money-back. $0 down.</p>
+      <button type="submit" class="btn btn-white btn-block btn-lg" data-magnetic>Request quote</button>
+    </form>
   </div>
 </section>`;
 
@@ -1073,9 +1097,17 @@ function renderPost(post) {
   const related = posts.filter(x => x.slug !== post.slug && x.intent === post.intent).slice(0, 3);
 
   // Pick category by intent
-  const intentToCat = { local: 'residential', informational: 'accent', commercial: 'residential', transactional: 'accent', troubleshooting: 'security', process: 'residential', niche: 'gameday' };
-  const photoCat = intentToCat[post.intent] || 'residential';
-  const heroImg = pickPhotos(photoCat, post.slug, 1)[0];
+  // Each blog post gets its own unique image from /images/blog/{intent}/.
+  // Posts within the same intent are deterministically assigned different files
+  // so no two posts share the same hero.
+  const blogImageCounts = { informational: 10, commercial: 17, transactional: 7, local: 10, troubleshooting: 6, process: 6, niche: 4 };
+  const blogPrefixes = { informational: 'i', commercial: 'c', transactional: 't', local: 'l', troubleshooting: 'tr', process: 'p', niche: 'n' };
+  const intent = post.intent || 'informational';
+  // Build an ordered list of slugs in this intent, then map by index → image #
+  const intentSlugs = posts.filter(x => x.intent === intent).map(x => x.slug);
+  const idx = (intentSlugs.indexOf(post.slug) % (blogImageCounts[intent] || 1)) + 1;
+  const heroImg = `/images/blog/${intent}/${blogPrefixes[intent] || 'i'}${idx}.jpg`;
+  const photoCat = { local: 'residential', informational: 'accent', commercial: 'residential', transactional: 'accent', troubleshooting: 'security', process: 'residential', niche: 'gameday' }[intent] || 'residential';
   const fresno = cities.find(c => c.slug === 'fresno');
   // Insert a pull-quote after the second section if there's a strong sentence to use
   let pulledIdx = -1;
@@ -1142,18 +1174,21 @@ function renderBlogIndex() {
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    `<section class="post-hero">
-       <div class="container post-hero-inner">
-         <div class="post-kicker">${posts.length} articles · written by installers</div>
-         <h1 class="post-h1">Permanent Outdoor Lighting Blog</h1>
-         <p class="post-lead">Plain-English answers to the questions homeowners actually ask before, during, and after a permanent lighting install.</p>
-       </div>
-     </section>` +
-    Object.keys(intentLabels).map(intent => {
+    heroBlock({
+      kicker: `${posts.length} articles · written by installers`,
+      h1: 'Permanent Outdoor Lighting Blog',
+      h1Lines: ['Permanent', 'lighting', 'insights.'],
+      lead: 'Plain-English answers to the questions homeowners actually ask before, during, and after a permanent lighting install.',
+      img: '/images/blog/informational/i1.jpg'
+    }) +
+    trustBar() +
+    Object.keys(intentLabels).map((intent, i) => {
       const list = grouped[intent] || [];
       if (!list.length) return '';
+      const emWord = intentLabels[intent].split(' ').pop();
+      const head = intentLabels[intent].split(' ').slice(0, -1).join(' ') || intentLabels[intent];
       return `<section class="container blog-bucket">
-        <h2>${esc(intentLabels[intent])}</h2>
+        ${sectionHead({ eyebrow: `${list.length} articles · ${intentLabels[intent].toLowerCase()}`, h2: head, em: emWord })}
         <div class="blog-grid">
           ${list.map(p => `<a href="/blog/${p.slug}" class="blog-card"><div class="blog-card-kicker">${esc(p.kicker)}</div><h3>${esc(p.h1)}</h3><p>${esc(p.lead.slice(0, 130))}</p></a>`).join('')}
         </div>

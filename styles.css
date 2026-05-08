@@ -2651,6 +2651,12 @@ em {
   letter-spacing: 0.14em;
   color: var(--purple-200);
   color: #e9d5ff;
+  /* Hardware accelerate so first paint never shows empty band */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  /* Kick in immediately, no animation-fill-mode flicker */
+  animation-delay: 0s;
+  animation-fill-mode: both;
 }
 .ann-track strong { color: #fff; font-weight: 800; }
 .ann-pulse {
