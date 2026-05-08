@@ -807,18 +807,22 @@
     <div class="sa-layout">
       <div class="sa-map" aria-label="Service area map">
         <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
-        <a href="/permanent-outdoor-lights-fresno"    data-pin="fresno"    class="sa-hot sa-hot-hq" style="left:36.3%;top:48.0%;width:16%;height:14%"  aria-label="Fresno (HQ)"><span>Fresno · HQ</span></a>
-        <a href="/permanent-outdoor-lights-madera"    data-pin="madera"    class="sa-hot"           style="left:15.5%;top:19.5%;width:11%;height:9%"  aria-label="Madera"><span>Madera</span></a>
-        <a href="/permanent-outdoor-lights-clovis"    data-pin="clovis"    class="sa-hot"           style="left:40.4%;top:30.5%;width:11%;height:9%"  aria-label="Clovis"><span>Clovis</span></a>
-        <a href="/permanent-outdoor-lights-sanger"    data-pin="sanger"    class="sa-hot"           style="left:52.8%;top:36.0%;width:11%;height:9%"  aria-label="Sanger"><span>Sanger</span></a>
-        <a href="/permanent-outdoor-lights-reedley"   data-pin="reedley"   class="sa-hot"           style="left:69.4%;top:47.5%;width:11%;height:9%"  aria-label="Reedley"><span>Reedley</span></a>
-        <a href="/permanent-outdoor-lights-kerman"    data-pin="kerman"    class="sa-hot"           style="left:15.5%;top:53.0%;width:11%;height:9%"  aria-label="Kerman"><span>Kerman</span></a>
-        <a href="/permanent-outdoor-lights-fowler"    data-pin="fowler"    class="sa-hot"           style="left:48.7%;top:58.5%;width:11%;height:9%"  aria-label="Fowler"><span>Fowler</span></a>
-        <a href="/permanent-outdoor-lights-selma"     data-pin="selma"     class="sa-hot"           style="left:59.6%;top:67.5%;width:11%;height:9%"  aria-label="Selma"><span>Selma</span></a>
-        <a href="/permanent-outdoor-lights-parlier"   data-pin="parlier"   class="sa-hot"           style="left:76.8%;top:67.5%;width:11%;height:9%"  aria-label="Parlier"><span>Parlier</span></a>
-        <a href="/permanent-outdoor-lights-kingsburg" data-pin="kingsburg" class="sa-hot"           style="left:66.0%;top:78.5%;width:11%;height:9%"  aria-label="Kingsburg"><span>Kingsburg</span></a>
-        <a href="/permanent-outdoor-lights-hanford"   data-pin="hanford"   class="sa-hot"           style="left:52.7%;top:86.5%;width:11%;height:9%"  aria-label="Hanford"><span>Hanford</span></a>
-        <a href="/permanent-outdoor-lights-visalia"   data-pin="visalia"   class="sa-hot"           style="left:83.7%;top:86.5%;width:11%;height:9%"  aria-label="Visalia"><span>Visalia</span></a>
+        <!-- SVG overlay uses image's actual pixel coordinates (1448 × 1086).
+             Browser scales clicks automatically — no math, no drift. -->
+        <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <a href="/permanent-outdoor-lights-fresno"    data-pin="fresno"    class="sa-hot sa-hot-hq"><ellipse cx="525" cy="490"  rx="115" ry="65" /><title>Fresno (HQ)</title></a>
+          <a href="/permanent-outdoor-lights-madera"    data-pin="madera"    class="sa-hot"><ellipse cx="218" cy="220"  rx="80"  ry="55" /><title>Madera</title></a>
+          <a href="/permanent-outdoor-lights-clovis"    data-pin="clovis"    class="sa-hot"><ellipse cx="585" cy="305"  rx="78"  ry="55" /><title>Clovis</title></a>
+          <a href="/permanent-outdoor-lights-sanger"    data-pin="sanger"    class="sa-hot"><ellipse cx="799" cy="410"  rx="78"  ry="55" /><title>Sanger</title></a>
+          <a href="/permanent-outdoor-lights-reedley"   data-pin="reedley"   class="sa-hot"><ellipse cx="982" cy="510"  rx="80"  ry="55" /><title>Reedley</title></a>
+          <a href="/permanent-outdoor-lights-kerman"    data-pin="kerman"    class="sa-hot"><ellipse cx="241" cy="555"  rx="80"  ry="55" /><title>Kerman</title></a>
+          <a href="/permanent-outdoor-lights-fowler"    data-pin="fowler"    class="sa-hot"><ellipse cx="698" cy="610"  rx="80"  ry="55" /><title>Fowler</title></a>
+          <a href="/permanent-outdoor-lights-selma"     data-pin="selma"     class="sa-hot"><ellipse cx="855" cy="685"  rx="78"  ry="55" /><title>Selma</title></a>
+          <a href="/permanent-outdoor-lights-parlier"   data-pin="parlier"   class="sa-hot"><ellipse cx="1110" cy="685" rx="78"  ry="55" /><title>Parlier</title></a>
+          <a href="/permanent-outdoor-lights-kingsburg" data-pin="kingsburg" class="sa-hot"><ellipse cx="960" cy="785"  rx="80"  ry="55" /><title>Kingsburg</title></a>
+          <a href="/permanent-outdoor-lights-hanford"   data-pin="hanford"   class="sa-hot"><ellipse cx="735" cy="920"  rx="80"  ry="55" /><title>Hanford</title></a>
+          <a href="/permanent-outdoor-lights-visalia"   data-pin="visalia"   class="sa-hot"><ellipse cx="1200" cy="925" rx="80"  ry="55" /><title>Visalia</title></a>
+        </svg>
       </div>
       <div class="sa-list">
         <div class="sa-county">
