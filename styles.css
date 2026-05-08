@@ -5194,38 +5194,60 @@ section.solutions { padding: 100px 0; }
 .sa-list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 18px;
+  align-self: stretch;
+  /* Cap to map height so list never overshoots the map visually */
+  max-height: 100%;
 }
 .sa-county h5 {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #c084fc;
-  margin: 0 0 12px;
+  margin: 0 0 6px;
   font-weight: 600;
 }
-.sa-county ul { list-style: none; padding: 0; margin: 0; }
+.sa-county ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  /* Multi-county = single column; Fresno (the big one) gets 2-col via :has() below */
+  grid-template-columns: 1fr;
+  column-gap: 18px;
+}
+/* The first county block (Fresno) has 9 cities — split into 2 columns to compact */
+.sa-list .sa-county:first-child ul {
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+}
 .sa-county li { border-bottom: 1px solid rgba(255,255,255,0.05); }
 .sa-county li:last-child { border-bottom: none; }
 .sa-county li a {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 12px 4px;
+  padding: 7px 4px;
   text-decoration: none;
   color: rgba(255,255,255,0.85);
   transition: all 0.2s;
+  gap: 8px;
 }
 .sa-county li a:hover, .sa-county li a.is-active {
   color: #fff;
-  padding-left: 12px;
+  padding-left: 10px;
   background: linear-gradient(90deg, rgba(168,85,247,0.08), transparent);
 }
 .sa-name {
   font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 22px;
+  font-size: 18px;
   font-style: italic;
   letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.sa-meta { white-space: nowrap; }
+@media (max-width: 720px) {
+  .sa-list .sa-county:first-child ul { grid-template-columns: 1fr; }
 }
 .sa-meta {
   font-size: 11px;
