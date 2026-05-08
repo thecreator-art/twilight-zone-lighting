@@ -804,19 +804,78 @@
       <p>Free on-site estimates within a 60-mile radius of Fresno.</p>
     </header>
 
-    <div class="sa-grid">
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Fresno</span><span class="sa-zip">93701–93730</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Clovis</span><span class="sa-zip">93611–93619</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Madera</span><span class="sa-zip">93636–93639</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Visalia</span><span class="sa-zip">93277–93292</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Hanford</span><span class="sa-zip">93230</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Selma</span><span class="sa-zip">93662</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Sanger</span><span class="sa-zip">93657</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Reedley</span><span class="sa-zip">93654</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Kingsburg</span><span class="sa-zip">93631</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Parlier</span><span class="sa-zip">93648</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Fowler</span><span class="sa-zip">93625</span></a>
-      <a href="#quote" class="sa-tile" data-tilt><span class="sa-city">Kerman</span><span class="sa-zip">93630</span></a>
+    <div class="sa-layout">
+      <div class="sa-map" aria-label="Service area map">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img">
+          <defs>
+            <radialGradient id="pinGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#c084fc" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="pinFill" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#c084fc"/>
+              <stop offset="100%" stop-color="#6366f1"/>
+            </linearGradient>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="600" fill="url(#grid)"/>
+          <!-- abstract Central Valley hint -->
+          <path d="M 40 80 Q 200 20, 380 100 T 760 180 L 760 540 Q 600 580, 420 520 T 80 540 Z" fill="rgba(168,85,247,0.04)" stroke="rgba(168,85,247,0.15)" stroke-width="1"/>
+          <text x="40" y="40" fill="rgba(255,255,255,0.4)" font-family="Inter, sans-serif" font-size="10" letter-spacing="2" font-weight="600">CENTRAL VALLEY · CALIFORNIA</text>
+          <text x="40" y="580" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="10" letter-spacing="1.5">60-MILE RADIUS · FRESNO HQ</text>
+          <!-- 60-mile radius ring around Fresno -->
+          <circle cx="302.1" cy="229.2" r="240" fill="none" stroke="rgba(168,85,247,0.18)" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <!-- pins -->
+          <a href="/permanent-outdoor-lights-fresno" data-pin="fresno" class="sa-pin sa-pin-hq"><circle cx="302.1" cy="229.2" r="36" fill="url(#pinGlow)"/><circle cx="302.1" cy="229.2" r="11" fill="url(#pinFill)" stroke="#fff" stroke-width="2"/><text x="302.1" y="265" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="13" font-weight="600">Fresno · HQ</text></a>
+          <a href="/permanent-outdoor-lights-clovis" data-pin="clovis" class="sa-pin"><circle cx="376.6" cy="163.1" r="28" fill="url(#pinGlow)"/><circle cx="376.6" cy="163.1" r="8" fill="url(#pinFill)"/><text x="376.6" y="195" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Inter,sans-serif" font-size="12">Clovis</text></a>
+          <a href="/permanent-outdoor-lights-madera" data-pin="madera" class="sa-pin"><circle cx="60" cy="60" r="28" fill="url(#pinGlow)"/><circle cx="60" cy="60" r="8" fill="url(#pinFill)"/><text x="60" y="92" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Inter,sans-serif" font-size="12">Madera</text></a>
+          <a href="/permanent-outdoor-lights-visalia" data-pin="visalia" class="sa-pin"><circle cx="740" cy="537.9" r="28" fill="url(#pinGlow)"/><circle cx="740" cy="537.9" r="8" fill="url(#pinFill)"/><text x="740" y="525" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Inter,sans-serif" font-size="12">Visalia</text></a>
+          <a href="/permanent-outdoor-lights-hanford" data-pin="hanford" class="sa-pin"><circle cx="427.2" cy="540" r="28" fill="url(#pinGlow)"/><circle cx="427.2" cy="540" r="8" fill="url(#pinFill)"/><text x="427.2" y="572" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Inter,sans-serif" font-size="12">Hanford</text></a>
+          <a href="/permanent-outdoor-lights-sanger" data-pin="sanger" class="sa-pin"><circle cx="506.5" cy="251.8" r="24" fill="url(#pinGlow)"/><circle cx="506.5" cy="251.8" r="6" fill="url(#pinFill)"/><text x="506.5" y="240" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="Inter,sans-serif" font-size="11">Sanger</text></a>
+          <a href="/permanent-outdoor-lights-selma" data-pin="selma" class="sa-pin"><circle cx="456.9" cy="355.7" r="24" fill="url(#pinGlow)"/><circle cx="456.9" cy="355.7" r="6" fill="url(#pinFill)"/><text x="456.9" y="378" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="Inter,sans-serif" font-size="11">Selma</text></a>
+          <a href="/permanent-outdoor-lights-reedley" data-pin="reedley" class="sa-pin"><circle cx="600.1" cy="336.4" r="24" fill="url(#pinGlow)"/><circle cx="600.1" cy="336.4" r="6" fill="url(#pinFill)"/><text x="600.1" y="324" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="Inter,sans-serif" font-size="11">Reedley</text></a>
+          <a href="/permanent-outdoor-lights-kingsburg" data-pin="kingsburg" class="sa-pin"><circle cx="508.3" cy="399.1" r="22" fill="url(#pinGlow)"/><circle cx="508.3" cy="399.1" r="6" fill="url(#pinFill)"/><text x="508.3" y="421" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="11">Kingsburg</text></a>
+          <a href="/permanent-outdoor-lights-parlier" data-pin="parlier" class="sa-pin"><circle cx="532.1" cy="324.8" r="20" fill="url(#pinGlow)"/><circle cx="532.1" cy="324.8" r="5" fill="url(#pinFill)"/><text x="555" y="328" text-anchor="start" fill="rgba(255,255,255,0.65)" font-family="Inter,sans-serif" font-size="10">Parlier</text></a>
+          <a href="/permanent-outdoor-lights-fowler" data-pin="fowler" class="sa-pin"><circle cx="398.7" cy="309.9" r="20" fill="url(#pinGlow)"/><circle cx="398.7" cy="309.9" r="5" fill="url(#pinFill)"/><text x="398.7" y="298" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-family="Inter,sans-serif" font-size="10">Fowler</text></a>
+          <a href="/permanent-outdoor-lights-kerman" data-pin="kerman" class="sa-pin"><circle cx="60.7" cy="239.8" r="22" fill="url(#pinGlow)"/><circle cx="60.7" cy="239.8" r="6" fill="url(#pinFill)"/><text x="60.7" y="262" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="11">Kerman</text></a>
+        </svg>
+      </div>
+      <div class="sa-list">
+        <div class="sa-county">
+          <h5>Fresno County</h5>
+          <ul>
+            <li><a href="/permanent-outdoor-lights-fresno" data-city="fresno"><span class="sa-name">Fresno</span><span class="sa-meta">HQ · 93701–93730</span></a></li>
+            <li><a href="/permanent-outdoor-lights-clovis" data-city="clovis"><span class="sa-name">Clovis</span><span class="sa-meta">93611–93619</span></a></li>
+            <li><a href="/permanent-outdoor-lights-sanger" data-city="sanger"><span class="sa-name">Sanger</span><span class="sa-meta">93657</span></a></li>
+            <li><a href="/permanent-outdoor-lights-reedley" data-city="reedley"><span class="sa-name">Reedley</span><span class="sa-meta">93654</span></a></li>
+            <li><a href="/permanent-outdoor-lights-selma" data-city="selma"><span class="sa-name">Selma</span><span class="sa-meta">93662</span></a></li>
+            <li><a href="/permanent-outdoor-lights-kingsburg" data-city="kingsburg"><span class="sa-name">Kingsburg</span><span class="sa-meta">93631</span></a></li>
+            <li><a href="/permanent-outdoor-lights-parlier" data-city="parlier"><span class="sa-name">Parlier</span><span class="sa-meta">93648</span></a></li>
+            <li><a href="/permanent-outdoor-lights-fowler" data-city="fowler"><span class="sa-name">Fowler</span><span class="sa-meta">93625</span></a></li>
+            <li><a href="/permanent-outdoor-lights-kerman" data-city="kerman"><span class="sa-name">Kerman</span><span class="sa-meta">93630</span></a></li>
+          </ul>
+        </div>
+        <div class="sa-county">
+          <h5>Madera County</h5>
+          <ul>
+            <li><a href="/permanent-outdoor-lights-madera" data-city="madera"><span class="sa-name">Madera</span><span class="sa-meta">93636–93639</span></a></li>
+          </ul>
+        </div>
+        <div class="sa-county">
+          <h5>Tulare County</h5>
+          <ul>
+            <li><a href="/permanent-outdoor-lights-visalia" data-city="visalia"><span class="sa-name">Visalia</span><span class="sa-meta">93277–93292</span></a></li>
+          </ul>
+        </div>
+        <div class="sa-county">
+          <h5>Kings County</h5>
+          <ul>
+            <li><a href="/permanent-outdoor-lights-hanford" data-city="hanford"><span class="sa-name">Hanford</span><span class="sa-meta">93230</span></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>

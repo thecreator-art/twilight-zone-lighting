@@ -790,3 +790,22 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});
   });
 }
+
+// ---- SERVICE-AREA MAP/LIST HOVER SYNC ----
+(() => {
+  const pins = document.querySelectorAll('.sa-pin');
+  const cities = document.querySelectorAll('.sa-county a[data-city]');
+  if (!pins.length || !cities.length) return;
+  const sync = (slug, on) => {
+    pins.forEach(p => p.classList.toggle('is-active', on && p.dataset.pin === slug));
+    cities.forEach(c => c.classList.toggle('is-active', on && c.dataset.city === slug));
+  };
+  pins.forEach(p => {
+    p.addEventListener('mouseenter', () => sync(p.dataset.pin, true));
+    p.addEventListener('mouseleave', () => sync(p.dataset.pin, false));
+  });
+  cities.forEach(c => {
+    c.addEventListener('mouseenter', () => sync(c.dataset.city, true));
+    c.addEventListener('mouseleave', () => sync(c.dataset.city, false));
+  });
+})();
