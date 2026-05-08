@@ -79,7 +79,21 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
 </head>
 <body>`;
 
-const headerHTML = () => `
+// Active-link helper: marks current section in nav
+const navLink = (href, label, cur) => {
+  const active = cur === href ||
+    (href !== '/' && cur.startsWith(href + '/')) ||
+    (href === '/services' && /^\/(permanent-christmas-|halloween-|accent-|security-|patio-|pool-|pathway-|game-day-|eave-|custom-|string-|year-round-)/.test(cur)) ||
+    (href === '/services' && cur === '/permanent-outdoor-lights') ||
+    (href === '/service-areas' && cur.startsWith('/permanent-outdoor-lights-')) ||
+    (href === '/commercial' && /^\/(restaurant-|hotel-|storefront-|hoa-|church-|dealership-|school-|office-|event-)/.test(cur)) ||
+    (href === '/blog' && cur.startsWith('/blog/')) ||
+    (href === '/galleries' && cur.startsWith('/gallery-')) ||
+    (href === '/pricing' && cur.startsWith('/cost'));
+  return `<a href="${href}"${active ? ' class="is-active" aria-current="page"' : ''}>${esc(label)}</a>`;
+};
+
+const headerHTML = (cur = '') => `
 <div class="header-stack" id="headerStack">
 <div class="ann-bar" role="banner">
   <div class="ann-track">
@@ -96,17 +110,18 @@ const headerHTML = () => `
       <img class="brand-logo" src="/images/logo-300.png" srcset="/images/logo-300.png 1x, /images/logo-600.png 2x" alt="${esc(BRAND)}" width="153" height="102" fetchpriority="high" />
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="/services">Services</a>
-      <a href="/service-areas">Areas</a>
-      <a href="/commercial">Commercial</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/compare">Compare</a>
-      <a href="/faq">FAQ</a>
+      ${navLink('/services', 'Services', cur)}
+      ${navLink('/service-areas', 'Areas', cur)}
+      ${navLink('/commercial', 'Commercial', cur)}
+      ${navLink('/pricing', 'Pricing', cur)}
+      ${navLink('/galleries', 'Gallery', cur)}
+      ${navLink('/blog', 'Blog', cur)}
+      ${navLink('/faq', 'FAQ', cur)}
       <a href="tel:${TEL}" class="nav-phone">${PHONE}</a>
     </nav>
     <div class="nav-cta">
       <a href="/quote" class="btn btn-primary">Get Quote</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -129,9 +144,11 @@ const footerHTML = () => `
           <a href="mailto:${shared.brand.email}">${shared.brand.email}</a>
         </address>
       </div>
-      <div><h5>Service Areas</h5><ul>${cities.slice(0,8).map(c => `<li><a href="/permanent-outdoor-lights-${c.slug}">${esc(c.name)}</a></li>`).join('')}</ul></div>
-      <div><h5>Services</h5><ul>${services.slice(0,8).map(s => `<li><a href="/${s.slug}">${esc(s.h1.split(' Installation')[0].split(' in ')[0])}</a></li>`).join('')}</ul></div>
-      <div><h5>Company</h5><ul><li><a href="/pricing">Pricing</a></li><li><a href="/process">Process</a></li><li><a href="/reviews">Reviews</a></li><li><a href="/faq">FAQ</a></li><li><a href="/quote">Free Quote</a></li><li><a href="tel:${TEL}">${PHONE}</a></li></ul></div>
+      <div class="foot-col"><h5>Service Areas</h5><ul>${cities.map(c => `<li><a href="/permanent-outdoor-lights-${c.slug}">${esc(c.name)}</a></li>`).join('')}<li><a href="/service-areas"><strong>All areas →</strong></a></li></ul></div>
+      <div class="foot-col"><h5>Services</h5><ul>${services.map(s => `<li><a href="/${s.slug}">${esc(s.h1.split(' Installation')[0].split(' in ')[0])}</a></li>`).join('')}<li><a href="/services"><strong>All services →</strong></a></li></ul></div>
+      <div class="foot-col"><h5>Commercial</h5><ul>${verticals.slice(0,8).map(v => `<li><a href="/${v.slug}">${esc(v.h1.split(' Installation')[0].split(' in ')[0])}</a></li>`).join('')}<li><a href="/commercial"><strong>All commercial →</strong></a></li></ul></div>
+      <div class="foot-col"><h5>Resources</h5><ul><li><a href="/blog">Blog (60 articles)</a></li><li><a href="/galleries">Gallery</a></li><li><a href="/guides">Buyer guides</a></li><li><a href="/compare">Compare brands</a></li><li><a href="/reviews">Reviews</a></li><li><a href="/process">Install process</a></li><li><a href="/warranty">Warranty</a></li></ul></div>
+      <div class="foot-col"><h5>Company</h5><ul><li><a href="/pricing">Pricing</a></li><li><a href="/quote">Free Quote</a></li><li><a href="/faq">FAQ</a></li><li><a href="tel:${TEL}">${PHONE}</a></li><li><a href="mailto:${shared.brand.email}">Email us</a></li><li><a href="/sitemap">Sitemap</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 ${esc(BRAND)} · Fresno, CA · Lic. #${shared.brand.license} · Bonded · Insured</span>
@@ -296,7 +313,7 @@ function renderServiceCity(service, city) {
   ];
   const useCases = service.useCases.slice(0, 6);
   const html = head({ title, desc, canonical, kw: localKw, ogImg: service.image, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker: `${city.name}, CA`, h1, lead: `${service.lead} ${city.intro}`, ctaPrice: service.fromPrice, img: service.image }) +
@@ -347,7 +364,7 @@ function renderServiceHub(service) {
     faqLD(faqs)
   ];
   const html = head({ title, desc, canonical, kw: service.primaryKw, ogImg: service.image, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker: 'Service', h1, lead: service.lead, ctaPrice: service.fromPrice, img: service.image }) +
@@ -390,7 +407,7 @@ function renderCityHub(city) {
   ];
   const jsonld = [breadcrumbs(crumbs), localBusinessLD(city), faqLD(faqs)];
   const html = head({ title, desc, canonical, kw: `permanent outdoor lights ${city.name.toLowerCase()}`, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker: `Serving ${city.name}, CA`, h1, lead: city.intro, ctaPrice: 950, img: '/images/03-accent.jpg' }) +
@@ -444,7 +461,7 @@ function renderVertical(v) {
     faqLD(faqs)
   ];
   const html = head({ title: v.title, desc: v.metaDesc, canonical, kw: v.primaryKw, ogImg: v.image, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker: 'Commercial', h1: v.h1, lead: v.lead, ctaPrice: v.fromPrice, img: v.image }) +
@@ -487,7 +504,7 @@ function renderVerticalCity(v, city) {
     faqLD(faqs)
   ];
   const html = head({ title, desc, canonical, kw: `${v.primaryKw} ${city.name.toLowerCase()}`, ogImg: v.image, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker: `${city.name} · Commercial`, h1, lead: `${v.lead} Serving ${city.name} businesses across ${city.neighborhoods.slice(0, 3).join(', ')}.`, ctaPrice: v.fromPrice, img: v.image }) +
@@ -516,7 +533,7 @@ function renderComparison(c) {
     publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-01-15'
   }];
   const html = head({ title: c.title, desc: c.metaDesc, canonical, kw: c.primaryKw, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     `<section class="hero hero-page hero-compact">
@@ -556,7 +573,7 @@ function renderCost({ slug, h1, title, desc, kw, lead, sections, faqs }) {
   ];
   const jsonld = [breadcrumbs(crumbs), faqLD(faqs)];
   const html = head({ title, desc, canonical, kw, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker: 'Pricing', h1, lead }) +
@@ -583,7 +600,7 @@ function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, 
     publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-02-01'
   });
   const html = head({ title, desc, canonical, kw, ogImg: img || '/images/03-accent.jpg', jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker, h1, lead, img }) +
@@ -623,7 +640,7 @@ function renderPost(post) {
   const related = posts.filter(x => x.slug !== post.slug && x.intent === post.intent).slice(0, 3);
 
   const html = head({ title: post.title, desc: post.desc, canonical, kw: post.kw, jsonld }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main class="blog-post">` +
     breadcrumbBlock(crumbs) +
     `<section class="post-hero">
@@ -676,7 +693,7 @@ function renderBlogIndex() {
     desc: 'Sixty plain-English articles on permanent outdoor lighting — how it works, what it costs, when it pays off, and how to get the install right.',
     canonical, kw: 'permanent outdoor lighting blog', jsonld
   }) +
-    headerHTML() +
+    headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
     `<section class="post-hero">

@@ -1904,10 +1904,11 @@ em {
 .footer { padding: 80px 0 32px; background: var(--bg-2); border-top: 1px solid var(--line); }
 .foot-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 32px;
   margin-bottom: 48px;
 }
+.foot-col h5 { white-space: nowrap; }
 .foot-brand .brand { margin-bottom: 16px; }
 .foot-brand p {
   color: var(--text-soft);
@@ -2011,7 +2012,7 @@ em {
   .temp-grid { grid-template-columns: 1fr; gap: 48px; }
   .ms-grid { grid-template-columns: repeat(2, 1fr); }
   .sa-grid { grid-template-columns: repeat(2, 1fr); }
-  .foot-top { grid-template-columns: 1fr 1fr; }
+  .foot-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
   .scene-stage { grid-template-columns: 1fr; }
   .scene-presets { grid-template-columns: repeat(2, 1fr); }
 }
@@ -4514,4 +4515,41 @@ a.pill:hover {
   .post-body { padding: 40px 20px 50px; }
   .post-body h2 { font-size: 24px; }
   .post-body p { font-size: 16px; }
+}
+
+/* Active nav state */
+.nav-links a.is-active {
+  color: #fff;
+  position: relative;
+}
+.nav-links a.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c084fc, #6366f1);
+  border-radius: 2px;
+}
+
+/* Footer responsive: 6-col → 3-col → 2-col → 1-col */
+@media (max-width: 1180px) {
+  .foot-top { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 720px) {
+  .foot-top { grid-template-columns: 1fr 1fr !important; gap: 28px; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .foot-top { grid-template-columns: 1fr !important; }
+}
+.foot-col ul { font-size: 0.88rem; }
+.foot-col ul li { line-height: 1.5; }
+
+/* Mobile menu — make sure new pages-nav stacks cleanly */
+@media (max-width: 980px) {
+  .nav.open .nav-links { gap: 4px; padding: 18px 20px; }
+  .nav.open .nav-links a { padding: 10px 12px; font-size: 16px; }
 }
