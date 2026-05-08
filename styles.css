@@ -5135,23 +5135,44 @@ section.solutions { padding: 100px 0; }
   position: relative;
   border-radius: var(--radius-lg, 18px);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(168,85,247,0.08), transparent 65%),
-    linear-gradient(180deg, #0a0710, #050308);
-  border: 1px solid rgba(168,85,247,0.18);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(168,85,247,0.06);
-  aspect-ratio: 4 / 3;
+  background: #000;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(168,85,247,0.08);
+  aspect-ratio: 1448 / 1086;
 }
-.sa-map svg { width: 100%; height: 100%; display: block; }
-.sa-pin { cursor: pointer; transition: opacity 0.25s; }
-.sa-pin circle { transition: r 0.3s cubic-bezier(0.2,0.8,0.2,1), filter 0.25s; transform-origin: center; transform-box: fill-box; }
-.sa-pin:hover circle:first-of-type, .sa-pin.is-active circle:first-of-type { r: 50; }
-.sa-pin:hover circle:last-of-type, .sa-pin.is-active circle:last-of-type { r: 13; filter: drop-shadow(0 0 12px rgba(168,85,247,0.8)); }
-.sa-pin:hover text, .sa-pin.is-active text { fill: #fff; font-weight: 600; }
-.sa-pin-hq circle:last-of-type { animation: pinPulse 2.4s ease-in-out infinite; }
-@keyframes pinPulse {
-  0%, 100% { filter: drop-shadow(0 0 0 rgba(168,85,247,0)); }
-  50% { filter: drop-shadow(0 0 16px rgba(168,85,247,0.7)); }
+.sa-map-img {
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+/* Absolutely-positioned clickable hotspots overlaid on each city logo on the map image */
+.sa-hot {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.2,0.8,0.2,1);
+}
+.sa-hot > span {
+  /* Hidden visual label — image already shows the city name */
+  position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
+}
+.sa-hot:hover, .sa-hot.is-active {
+  background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, rgba(168,85,247,0.12) 45%, transparent 75%);
+  box-shadow: 0 0 32px rgba(168,85,247,0.55), inset 0 0 16px rgba(168,85,247,0.25);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.sa-hot-hq {
+  /* Pulsing halo for HQ even when not hovered */
+  animation: hqPulse 2.6s ease-in-out infinite;
+}
+@keyframes hqPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(168,85,247,0); }
+  50%      { box-shadow: 0 0 26px rgba(168,85,247,0.4); }
 }
 
 .sa-list {

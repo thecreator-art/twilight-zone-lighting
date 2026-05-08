@@ -793,7 +793,7 @@ if ('serviceWorker' in navigator) {
 
 // ---- SERVICE-AREA MAP/LIST HOVER SYNC ----
 (() => {
-  const pins = document.querySelectorAll('.sa-pin');
+  const pins = document.querySelectorAll('.sa-hot');
   const cities = document.querySelectorAll('.sa-county a[data-city]');
   if (!pins.length || !cities.length) return;
   const sync = (slug, on) => {
