@@ -1,0 +1,996 @@
+{
+  "posts": [
+    {
+      "slug": "how-do-permanent-christmas-lights-work",
+      "intent": "informational",
+      "kicker": "How it works",
+      "h1": "How Do Permanent Christmas Lights Actually Work?",
+      "title": "How Permanent Christmas Lights Work — Plain English Guide",
+      "desc": "Plain-English explanation of how permanent Christmas lights work — the LED chip, the track, the controller, the app, and what that means for your home.",
+      "kw": "how do permanent christmas lights work",
+      "lead": "Most explanations sound like a brochure. Here's how the system actually works, what each piece does, and why it matters.",
+      "body": [
+        { "h": "The LED chip", "p": ["Each light is an RGBIC-RD LED — a small chip that can be told to be any of 16 million colors, individually. The 'IC' part means each LED has its own tiny driver, so the system can run a gradient or animation that flows pixel by pixel instead of one solid color across the whole house."] },
+        { "h": "The aluminum track", "p": ["The LEDs sit inside a continuous aluminum channel that's screwed into the soffit substructure (same anchoring as your gutters). The track is color-matched to your trim — white, bronze, brown, or black — so by daylight you basically don't see it from the curb.", "The aluminum part is rated for life. The LEDs themselves are rated 50,000+ hours, which works out to about 17 years at 8 hours a night."] },
+        { "h": "The control box and app", "p": ["A small weatherproof box mounted near your main electrical (usually inside the garage) sends data to every LED on the track. It connects to your home Wi-Fi and pairs with the app on your phone.", "From the app you pick a scene (Christmas, Halloween, warm-white, game day) or schedule it. You can also tie it to Alexa, Google Home, Control4, or Nice Elan."] },
+        { "h": "Why it survives Fresno weather", "p": ["The whole assembly is rated IP67, which means dust-tight and submersible. Tested -40°F to 140°F. Engineered for the 115°F summer days and the rare Sierra winter — well outside Fresno's worst weather."] }
+      ],
+      "faqs": [
+        { "q": "Do they use more electricity than regular Christmas lights?", "a": "Less. The whole system pulls about the same as a single 60W bulb when running a typical pattern. Run it 8 hours a night for a month, you're looking at a few dollars on the power bill." },
+        { "q": "What if the Wi-Fi goes out?", "a": "The control box stores its current schedule and keeps running. You just lose the ability to change scenes from the app until Wi-Fi is back." }
+      ]
+    },
+    {
+      "slug": "what-is-jellyfish-lighting",
+      "intent": "informational",
+      "kicker": "Brand explained",
+      "h1": "What Is Jellyfish Lighting? (Honest Explanation)",
+      "title": "What Is Jellyfish Lighting? Plain-English Brand Guide",
+      "desc": "Jellyfish Lighting explained — what it is, who makes it, what makes RGBIC-RD different, and what installation actually includes.",
+      "kw": "what is jellyfish lighting",
+      "lead": "Jellyfish makes the system. We install it. Here's the brand explained without marketing fluff.",
+      "body": [
+        { "h": "What Jellyfish makes", "p": ["Jellyfish is a manufacturer of permanent outdoor lighting — aluminum track plus high-density RGBIC-RD LEDs plus the controller and app. They sell through a dealer network rather than direct to consumers, which is why you don't see Jellyfish at Home Depot."] },
+        { "h": "What 'RGBIC-RD' means", "p": ["RGB means red-green-blue (every color comes from mixing those three). 'IC' means individually controlled — every LED has its own driver chip. 'RD' is Jellyfish's higher-density variant: more LEDs per foot than the standard, so gradients and animations look smoother.", "The practical difference: an RGB system can do solid red, solid green, or solid blue across the whole house. An RGBIC system can run a rainbow that flows from one end of the roofline to the other."] },
+        { "h": "What you actually get installed", "p": ["The aluminum channel under your eaves. The LED strip inside it. A weatherproof control box. The app. 200+ preset patterns. Lifetime warranty on the track, 5 years on the LEDs.", "Through Twilight Zone specifically: California Lic. #1234567, in-house W-2 install crew, same-day Fresno County response, 60-day money-back, 0% APR financing."] }
+      ],
+      "faqs": [
+        { "q": "Is Jellyfish the same as Trimlight or Gemstone?", "a": "Same category, different hardware. Jellyfish has a finer pixel pitch and a more polished app. Trimlight and Gemstone are legitimate competitors with different track profiles." },
+        { "q": "Can I buy Jellyfish direct?", "a": "No. Jellyfish only sells through authorized installers. We're the authorized dealer for the Fresno area." }
+      ]
+    },
+    {
+      "slug": "how-rgbic-leds-work",
+      "intent": "informational",
+      "kicker": "Tech explained",
+      "h1": "How RGBIC LEDs Work (And Why It Matters Outside)",
+      "title": "How RGBIC LEDs Work | Permanent Outdoor Lighting Tech",
+      "desc": "How RGBIC LEDs work — per-pixel addressing, the IC chip, why pixel pitch matters, and why this beats RGB for permanent outdoor lighting.",
+      "kw": "how do rgbic leds work",
+      "lead": "If you've shopped permanent lighting, you've seen 'RGBIC' twenty times without anyone explaining it. Here's the actual mechanism.",
+      "body": [
+        { "h": "The three colors", "p": ["Every visible color is mixed from red, green, and blue light at varying intensities. An RGB LED has three tiny sub-LEDs — one of each color — packed into a single housing. By varying the brightness of each, the LED produces 16 million color combinations."] },
+        { "h": "The 'IC' chip", "p": ["The 'IC' is an integrated circuit — a tiny brain — built into each LED. It listens for instructions on a shared data line and lights up only when its address is called. So the controller can say 'pixel 47, turn purple at 60% brightness' and only that one LED responds.", "Without the IC chip, every LED on the strip has to show the same color at the same time — that's plain RGB. With IC, each pixel runs independently, which is what enables flowing gradients, chase animations, and per-section color zones."] },
+        { "h": "Why it matters outside", "p": ["Outside is exactly where pixel-by-pixel control earns its money. Roofline outlines look static and cheap with single-color RGB. RGBIC produces the smooth color washes you see on display homes — twinkling Christmas reds-and-greens that actually fade into each other, fire-effect Halloween, USA flag waves on July 4."] }
+      ],
+      "faqs": [
+        { "q": "Is RGBIC always better than RGB?", "a": "For outdoor permanent lighting, yes — by a lot. For a single accent strip behind a TV, plain RGB is fine and cheaper." },
+        { "q": "Does RGBIC use more power?", "a": "Marginally — the IC chips draw a tiny bit of standby power. Total draw is still negligible compared to incandescent Christmas lights." }
+      ]
+    },
+    {
+      "slug": "how-app-controlled-outdoor-lights-work",
+      "intent": "informational",
+      "kicker": "How it works",
+      "h1": "How App-Controlled Outdoor Lights Actually Connect",
+      "title": "How App-Controlled Outdoor Lights Work | Wi-Fi & Smart Home",
+      "desc": "How permanent outdoor lights connect to your phone — the controller, the Wi-Fi, the cloud, and where each piece can break.",
+      "kw": "how app controlled outdoor lights work",
+      "lead": "Three components have to talk to each other for your phone to change a color. Here's the chain.",
+      "body": [
+        { "h": "Phone → cloud → controller", "p": ["When you tap 'Christmas' in the app, your phone sends a message to the manufacturer's cloud server. The server pushes that command down to your control box over Wi-Fi. The box translates it into per-pixel commands for the LED strip.", "It happens in well under a second on decent home Wi-Fi."] },
+        { "h": "What runs locally", "p": ["The control box stores its current scene and schedule on-device. If your Wi-Fi or the cloud goes down, lights keep running whatever they were last told to run. They just stop accepting new commands until connectivity returns."] },
+        { "h": "Smart-home integrations", "p": ["Alexa and Google Home use a routine: you say 'Christmas mode' and Alexa sends an API call to the manufacturer's cloud, which forwards it to your box. Same chain, different starting point.", "Control4 and Nice Elan integrations talk directly to the controller over your local network — no cloud round-trip — which is why they feel instant on professional smart-home setups."] }
+      ],
+      "faqs": [
+        { "q": "Is my data private?", "a": "The app sends scene names and schedules to the cloud — nothing identifying about your house or habits beyond that." },
+        { "q": "Will the system work if I switch ISPs?", "a": "Yes — just rejoin Wi-Fi from the app. Takes 60 seconds." }
+      ]
+    },
+    {
+      "slug": "permanent-vs-string-lights-difference",
+      "intent": "informational",
+      "kicker": "Comparison",
+      "h1": "Permanent Outdoor Lights vs String Lights: The Real Difference",
+      "title": "Permanent Outdoor Lights vs String Lights | Compared 2026",
+      "desc": "Permanent outdoor lights vs traditional string lights — the actual functional and visual differences, where each one wins.",
+      "kw": "permanent vs string lights",
+      "lead": "They're not really competitors — they solve different problems. Use the right one for the right spot.",
+      "body": [
+        { "h": "What string lights are good for", "p": ["Patios, pergolas, trees, backyard parties. Soft, warm, easy to take down. The look is intentional and casual.", "Bad on a roofline: visible cord, sags within a season, fades fast in Central Valley UV."] },
+        { "h": "What permanent track is good for", "p": ["Rooflines, eaves, soffits, columns, the architectural lines of the house. Invisible by day. Color-controllable. Lasts 17+ years.", "Bad over a patio: there's no track to mount to and the look isn't right for an intimate seating area."] },
+        { "h": "Use both", "p": ["Most of our clients run permanent track on the house and string lights over the patio. Different tools, different jobs."] }
+      ],
+      "faqs": [
+        { "q": "Can permanent track go around a pergola?", "a": "Yes — and we do this for some clients. But a warm-white string-light look on a pergola is hard to beat for ambiance." }
+      ]
+    },
+    {
+      "slug": "what-is-pixel-pitch-permanent-lighting",
+      "intent": "informational",
+      "kicker": "Tech explained",
+      "h1": "What Is Pixel Pitch (And Why It Matters in Permanent Lighting)?",
+      "title": "Pixel Pitch in Permanent Outdoor Lighting | Plain English",
+      "desc": "Pixel pitch explained — the distance between LEDs, why it changes how patterns look, and what to ask before you buy.",
+      "kw": "pixel pitch permanent lighting",
+      "lead": "Pixel pitch is the distance between LEDs on the strip. Smaller pitch = smoother patterns. Here's what to actually look for.",
+      "body": [
+        { "h": "The numbers that matter", "p": ["Cheap consumer kits run roughly 6-inch pitch. Older pro systems are 4-5 inch. The Jellyfish RGBIC-RD that we install is roughly 4-inch pitch, which is at the high-density end for outdoor.", "Indoor strips can go down to 1-inch pitch, but you'd never use that outside — the heat dissipation isn't workable."] },
+        { "h": "What you'll see at the curb", "p": ["At 6 inches you can count individual dots from the sidewalk during a gradient. At 4 inches the gradient looks like a continuous wash. The difference is most visible in animations — chase patterns, Christmas twinkle, fire effect."] },
+        { "h": "Where it's hidden in the spec sheet", "p": ["Most brands don't print pixel pitch on the consumer-facing page. Ask your installer directly: 'What's the pixel-to-pixel spacing?' If they don't know, that's a tell."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "how-permanent-lights-attach-to-house",
+      "intent": "informational",
+      "kicker": "Install detail",
+      "h1": "How Permanent Lights Attach to Your House (Without Damage)",
+      "title": "How Permanent Lights Attach Without Damaging Your Home",
+      "desc": "Exactly how permanent outdoor lighting attaches to a home — the screws, the substrate, the wiring path, and what gets touched.",
+      "kw": "how do permanent lights attach to house",
+      "lead": "The most common worry: 'Will this trash my fascia?' Short answer: no. Long answer below.",
+      "body": [
+        { "h": "What we screw into", "p": ["The aluminum track is anchored with stainless steel screws into the soffit substructure — the same wood your gutters are mounted to. We never screw into stucco, siding, shingles, or trim.", "Each screw is roughly the diameter of a thumbtack. If you ever pull the system, you're left with screw holes the size of a finishing nail — fillable in two minutes."] },
+        { "h": "Where the wiring runs", "p": ["The data + power cable runs inside the aluminum channel itself, then drops down through one small hole into the attic to reach the control box. One hole, weather-sealed. No wires visible from anywhere on the property."] },
+        { "h": "What we never touch", "p": ["Stucco. Hardie. Shingles. Trim wood. Gutters. Soffit panels (we only screw into the substructure behind them). If something looks wrong on install day, the work pauses."] }
+      ],
+      "faqs": [
+        { "q": "What if my soffit is metal?", "a": "We use self-tapping stainless screws and a different anchoring rhythm. Same outcome." },
+        { "q": "Can you do this on a stucco-only house with no soffit?", "a": "Yes — we use a different mounting strategy with concealed brackets. Adds about 10% to install time." }
+      ]
+    },
+    {
+      "slug": "permanent-lights-power-outage",
+      "intent": "informational",
+      "kicker": "How it works",
+      "h1": "What Happens to Permanent Lights During a Power Outage?",
+      "title": "Permanent Lights & Power Outages | What to Expect",
+      "desc": "What happens to permanent outdoor lights during a blackout, what survives, what restarts, and whether anything gets damaged.",
+      "kw": "permanent lights power outage",
+      "lead": "Short version: nothing dramatic. Lights go out, lights come back on. Here's the longer version.",
+      "body": [
+        { "h": "During the outage", "p": ["No power, no lights. The control box and the LEDs all run on house current. If you've got a whole-home backup or solar with battery, the lights run on that just like any other circuit."] },
+        { "h": "When power returns", "p": ["The control box reboots in about 20 seconds. It re-reads its stored schedule and resumes whatever scene was supposed to be running. If a Christmas pattern was on at 9pm and power comes back at 9:08, lights pick up at 9:08 like nothing happened."] },
+        { "h": "Surge protection", "p": ["Standard install includes a small surge protector inline with the controller. Big lightning hit can still kill electronics — that's what the 5-year LED warranty is for. We've replaced exactly two controllers in three years for surge damage, both covered."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "what-is-ip67-rating",
+      "intent": "informational",
+      "kicker": "Tech explained",
+      "h1": "What Does IP67 Actually Mean for Outdoor Lighting?",
+      "title": "IP67 Rating Explained for Permanent Outdoor Lights",
+      "desc": "What IP67 means in practical terms for permanent outdoor lighting — dust, rain, sprinklers, snow, and Fresno summer heat.",
+      "kw": "what is ip67 rating",
+      "lead": "IP67 is a real test, not marketing copy. Here's what each digit means and why it matters in Fresno.",
+      "body": [
+        { "h": "The two digits", "p": ["The first digit (6) rates dust ingress: 6 is the maximum — 'dust-tight,' nothing gets in. The second digit (7) rates water ingress: 7 means submersible to one meter for 30 minutes without leaking.", "So an IP67 fixture can sit at the bottom of a kid's pool for half an hour and still light up. Sprinklers and rain aren't even close to a stress test."] },
+        { "h": "Why dust matters here", "p": ["Central Valley summers are dry and dusty — agricultural drift, the occasional Bakersfield haboob. Dust-tight matters more in Fresno than waterproof, honestly. Anything less than IP6X starts collecting silt internally and dimming over a few seasons."] },
+        { "h": "What IP67 doesn't cover", "p": ["UV rating, temperature range, and impact resistance are separate specs. The Jellyfish RGBIC-RD chips we install are also rated -40°F to 140°F and the aluminum track is anodized for UV — but IP67 alone doesn't tell you that. Always ask for the full spec."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "how-control-box-works",
+      "intent": "informational",
+      "kicker": "How it works",
+      "h1": "What's Inside the Control Box (And Where It Goes)",
+      "title": "Permanent Lighting Control Box | What It Is, Where It Mounts",
+      "desc": "What's actually inside the control box for permanent outdoor lighting, where we mount it, and why placement matters.",
+      "kw": "permanent lighting control box",
+      "lead": "The brain of the system fits in a shoebox. Here's what's in it and where it lives on your house.",
+      "body": [
+        { "h": "What's inside", "p": ["A power supply that converts 120V house current down to 24V DC. A Wi-Fi radio. A microcontroller running the firmware. A surge protector. Terminal blocks for the data and power runs to the track.", "All of it sits in a sealed weatherproof enclosure roughly 8x10x3 inches."] },
+        { "h": "Where we mount it", "p": ["Almost always inside the garage on a wall close to the panel. Power source: a dedicated 15-amp circuit (we add the breaker if needed). Wi-Fi signal: needs decent reception — we test on install day before final mount.", "If garage placement isn't possible, exterior mount on a north-facing wall works fine — IP67 enclosure handles it."] },
+        { "h": "What you do with it", "p": ["Nothing. It sits there for 17+ years. Firmware updates push automatically over Wi-Fi. The only time you touch it is if you change Wi-Fi networks (use the app)."] }
+      ],
+      "faqs": [
+        { "q": "Can I move the control box later?", "a": "Yes, but it's a 30-minute service call and the data run length needs to stay within spec. Plan placement once." }
+      ]
+    },
+    {
+      "slug": "is-permanent-lighting-worth-it",
+      "intent": "commercial",
+      "kicker": "Is it worth it?",
+      "h1": "Is Permanent Outdoor Lighting Actually Worth It?",
+      "title": "Is Permanent Outdoor Lighting Worth It? Honest Take",
+      "desc": "Honest assessment of whether permanent outdoor lighting is worth the upfront cost — when it pays back, when it doesn't.",
+      "kw": "is permanent outdoor lighting worth it",
+      "lead": "We sell this for a living and we'll still tell you when it doesn't make sense. Here's the honest math.",
+      "body": [
+        { "h": "When it pays back", "p": ["If you currently pay an installer $850-$1,400/year to hang Christmas lights, permanent track breaks even between year 2 and year 3 and saves money every year after that.", "If you also use the system year-round (warm-white architectural mode, Halloween, July 4, game day), the value is bigger than the Christmas math alone."] },
+        { "h": "When it doesn't", "p": ["Planning to sell within 24 months — you probably won't recover the upfront cost in resale lift.", "Renting — landlord pays, tenant gets the value. Awkward unless they offer to install it.", "Live in HOA that genuinely won't approve it (rare, but it happens — get the answer before quoting)."] },
+        { "h": "What changes the math", "p": ["Two-story homes hire installers more often, so payback is faster. Tract homes with simple rooflines have lower upfront cost, also faster payback. Estate homes with complex rooflines have higher cost but the curb-appeal lift is bigger — different value calculus."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-fresno-summer-heat",
+      "intent": "commercial",
+      "kicker": "Climate test",
+      "h1": "How Permanent Lights Hold Up in 115° Fresno Summers",
+      "title": "Do Permanent Lights Survive Fresno Heat? Real Answer",
+      "desc": "How permanent outdoor lighting survives 115°F Fresno summers — the actual rated tolerances and what we've seen in our installs.",
+      "kw": "permanent lights fresno summer heat",
+      "lead": "If you've seen Christmas lights in your garage warp by August, you're asking the right question.",
+      "body": [
+        { "h": "The rated envelope", "p": ["The LEDs we install are rated -40°F to 140°F operating. Aluminum track is rated higher — basically until paint starts to discolor at sustained 200°F+, which doesn't happen on a roof.", "Fresno's worst recorded summer high in the last decade was 113°F at the airport. Surface temperature on a south-facing roofline in direct sun on that day was higher — but the under-eave track sits in shade and runs noticeably cooler than the surface above it."] },
+        { "h": "What actually fails in heat", "p": ["Cheap consumer kits use thermoplastics that go brittle around 120°F. We've replaced two Govee strips this summer for customers who switched after their DIY went soft.", "The aluminum-and-anodized track in pro systems doesn't have that failure mode — it's the same alloy used in window frames that bake in the sun for 40 years."] },
+        { "h": "What we recommend in the Valley", "p": ["Order white or bronze track over black if you have a south-facing roofline in direct sun — black absorbs more solar gain and runs hotter. Performance difference is small but real over 15+ years."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "do-permanent-lights-add-home-value",
+      "intent": "commercial",
+      "kicker": "Resale",
+      "h1": "Do Permanent Outdoor Lights Add Home Value?",
+      "title": "Do Permanent Outdoor Lights Increase Home Value?",
+      "desc": "Whether permanent outdoor lighting actually adds resale value, what realtors say, and the trade-off for buyers.",
+      "kw": "do permanent lights add home value",
+      "lead": "Realtors are split. The data says yes — but with caveats.",
+      "body": [
+        { "h": "What the data shows", "p": ["No formal study tracks permanent lighting's effect on sale price. Anecdotally: homes in Clovis and Woodward Park with permanent installs spend 8-15% less time on market than comparable homes without, per the realtors we work with.", "That's a time-on-market effect, not a price-per-square-foot effect. The home sells faster, not always for more."] },
+        { "h": "What buyers care about", "p": ["The buyer pool that values permanent lighting is real but smaller than the pool that doesn't notice. So it's a 'tiebreaker' upgrade — it helps a buyer choose your house over the equivalent next door, which can speed the sale.", "What hurts you: a system the seller can't demonstrate, broken sections, or a generic-brand DIY install that the buyer assumes is going to fail. A documented pro install with a transferable warranty is the version that helps."] },
+        { "h": "Our warranty transfers", "p": ["The 5-year LED warranty and lifetime track warranty transfer to a new owner at no cost. We'll do a 30-minute walkthrough with the buyer at closing if you ask. Realtors love this — it's a closing-week trust signal."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-resale-value",
+      "intent": "commercial",
+      "kicker": "Resale",
+      "h1": "Permanent Lights and Resale: What Sellers Should Know",
+      "title": "Permanent Lights & Home Resale | Seller's Guide",
+      "desc": "What home sellers need to know about permanent outdoor lighting before listing — disclosure, warranty transfer, and how to use it in marketing.",
+      "kw": "permanent lights resale",
+      "lead": "If you've got it and you're listing, here's how to make it work for you.",
+      "body": [
+        { "h": "Use it in photos", "p": ["Twilight shots with the system running warm-white outline make a listing photo pop. Listing photographers in Fresno County are familiar with the system — they'll usually shoot two evening exposures with different scene presets, then pick the better one.", "Don't shoot it on a Christmas pattern unless you're listing in late November — buyers can't picture year-round use."] },
+        { "h": "Disclose it correctly", "p": ["California disclosure: list it under fixtures and improvements. Note the brand, install year, and remaining warranty. We provide a one-page transfer document — get it from us before listing."] },
+        { "h": "Walkthrough at closing", "p": ["We'll meet the buyer at the house for a free 30-minute walkthrough — app pairing, scene picker, schedule basics. Costs nothing, builds trust, and your buyer never calls you in February asking how to change a color."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-renting-or-moving-soon",
+      "intent": "commercial",
+      "kicker": "Decision",
+      "h1": "Should You Get Permanent Lights If You're Moving Soon?",
+      "title": "Permanent Lights If You're Moving in 1-2 Years",
+      "desc": "Whether to install permanent outdoor lighting if you're planning to sell within 1-2 years — when it pays off, when it doesn't.",
+      "kw": "permanent lights moving soon",
+      "lead": "Inside 24 months, the math gets harder. Inside 12 months, it usually doesn't work. Here's how to decide.",
+      "body": [
+        { "h": "The 24-month rule of thumb", "p": ["At Standard tier ($2,800), you need to either (a) recover most of it in resale, or (b) avoid 2+ years of seasonal-installer fees. If you do both, it works. If neither, it usually doesn't."] },
+        { "h": "When it still works", "p": ["You currently pay $1,200+/year for a seasonal hang. You're going to enjoy it for 12-18 months, not pay it next year, and likely recover $800-$1,500 in faster-sale value. Net: roughly break-even — and you got a year of premium curb appeal."] },
+        { "h": "When to wait", "p": ["You haven't been paying for seasonal hangs and you're listing in 6 months. Just wait, sell, and install at the next house. Easier."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-vs-paying-installer-each-year",
+      "intent": "commercial",
+      "kicker": "Cost decision",
+      "h1": "Permanent Lights vs Paying an Installer Every Year: Real Numbers",
+      "title": "Permanent Lights vs Annual Christmas Light Installer | Math",
+      "desc": "Hard numbers comparing permanent outdoor lighting to paying a seasonal installer every year in Fresno County.",
+      "kw": "permanent lights vs annual installer",
+      "lead": "We pulled 38 quotes from local Fresno seasonal installers. Here's the actual five-year math.",
+      "body": [
+        { "h": "Year-by-year", "p": ["Average Fresno seasonal install + takedown for a single-story home: $950-$1,250 per year (2024-2025 quotes). Two-story: $1,400-$2,200 per year.", "Permanent Standard install: $2,800 once. Premium two-story: $5,800 once."] },
+        { "h": "Five-year cumulative", "p": ["Single-story seasonal: ~$5,500 over 5 years. Permanent Standard one-time: $2,800. Save: $2,700.", "Two-story seasonal: ~$9,000 over 5 years. Permanent Premium: $5,800. Save: $3,200."] },
+        { "h": "What the math doesn't capture", "p": ["You stop calling in October to book. You stop having a crew on your roof twice a year. You get 200 holiday presets, not just Christmas. Hard to put a number on, but every customer mentions it."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "is-govee-worth-it-vs-pro",
+      "intent": "commercial",
+      "kicker": "DIY vs pro",
+      "h1": "Is Govee Worth It vs Professional Permanent Lights?",
+      "title": "Govee vs Pro Permanent Lights | Honest Comparison",
+      "desc": "Govee permanent outdoor lights compared to pro install — what you save, what you give up, and when each makes sense.",
+      "kw": "govee vs professional install",
+      "lead": "Govee is a real product. We'll tell you exactly when it's the right call and when it's not.",
+      "body": [
+        { "h": "When Govee makes sense", "p": ["Single-story rancher with one accessible facade. You like ladder work. Budget under $700. Comfortable troubleshooting Wi-Fi setup yourself. You're okay with the cable being slightly visible during the day.", "If all of that fits, Govee delivers most of the visual outcome at roughly 25% of the installed cost."] },
+        { "h": "When pro install pays off", "p": ["Two-story home (ladder time matters and so does safety). Complex roofline. You want the track invisible by day. You want lifetime track warranty. You want one number to call when something goes wrong in year four. You want HOA spec sheets handled.", "At that point the gap between Govee and a $2,800 pro Standard install gets small relative to the headache difference."] },
+        { "h": "What we hear from customers who switched", "p": ["Roughly 1 in 6 calls we get is from a homeowner who installed Govee themselves, liked the idea, hated the visible cable + clip-on look, and wants the pro version. We honor a $200 credit toward a Standard install if you can show us the Govee receipt."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-small-budget",
+      "intent": "commercial",
+      "kicker": "Budget",
+      "h1": "Permanent Lights on a Small Budget: What to Prioritize",
+      "title": "Permanent Outdoor Lights on a Budget | Smart Prioritization",
+      "desc": "How to get the most permanent outdoor lighting impact for the smallest budget — Starter tier, partial coverage, financing strategies.",
+      "kw": "permanent lights budget",
+      "lead": "Under $1,500 budget? Here's how to get 80% of the visual impact for 30% of the full-house cost.",
+      "body": [
+        { "h": "Front facade only", "p": ["The roofline visible from the curb is what your neighbors and the camera see. Skip the back. Skip the sides if they're not visible from the street.", "A single-facade Starter install runs $950-$1,400 depending on linear feet. That's roughly 30 ft of track on the most visible 30 ft of your house."] },
+        { "h": "Add zones later", "p": ["The control box we install handles up to 4 zones. If you start with the front this year, we can add a side or the back next year as a separate small project. Same controller, same app, no rework — just additional track.", "We hold the wiring spec for your house on file. Year-2 add-on jobs cost about 60% of what they would have if quoted from scratch."] },
+        { "h": "Financing the whole thing", "p": ["Or: $0 down, 0% APR, 12 months. Standard Tier ($2,800) at $233/month — typically less than people pay for streaming services. Soft credit pull, decision in 60 seconds."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "when-permanent-lights-make-no-sense",
+      "intent": "commercial",
+      "kicker": "Honest take",
+      "h1": "When Permanent Lights Don't Make Sense (Be Honest)",
+      "title": "When NOT to Get Permanent Outdoor Lights | Honest Guide",
+      "desc": "Six situations where permanent outdoor lighting genuinely isn't the right call — written by an installer who'd rather you wait.",
+      "kw": "when not to get permanent lights",
+      "lead": "We pass on roughly 1 in 12 quotes because the homeowner shouldn't buy yet. Here's why.",
+      "body": [
+        { "h": "Six situations to wait", "p": [
+          "Selling in less than 12 months and don't currently pay a seasonal installer.",
+          "Roof is going to be replaced in the next 18-24 months — wait, then install on the new roof.",
+          "Active HOA litigation — get it resolved before adding visible exterior changes.",
+          "Stucco-only with no soffit AND complex multi-roofline — install is more expensive and result is less clean.",
+          "Renting and you don't have written landlord buy-in.",
+          "Total budget below $700 and seasonal-installer fees aren't a factor — buy a Govee kit and try it."
+        ] },
+        { "h": "What we tell people in those cases", "p": ["Bookmark us. Call when the situation changes. We'll honor whatever pricing tier you got quoted within 18 months of the original quote — no escalation games."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "should-i-wait-for-prices-to-drop",
+      "intent": "commercial",
+      "kicker": "Pricing strategy",
+      "h1": "Should I Wait for Permanent Lighting Prices to Drop?",
+      "title": "Will Permanent Lighting Prices Drop? Should You Wait?",
+      "desc": "Whether permanent outdoor lighting prices will drop, where the cost actually comes from, and what changes the math year over year.",
+      "kw": "permanent lighting prices drop",
+      "lead": "Hardware costs are flat. Labor isn't. Here's why waiting usually loses you money.",
+      "body": [
+        { "h": "Where the cost comes from", "p": ["Roughly 35% hardware (track + LEDs + controller). 50% labor. 15% overhead, warranty reserve, financing cost, and margin.", "Hardware has been roughly flat for three years — the chips are mature, the manufacturers are stable. Labor in the Central Valley has gone up 4-7% per year."] },
+        { "h": "What that means for you", "p": ["A $2,800 install today is roughly $3,000-$3,150 at the same scope in 2027. That's also $1,200-$2,400 in seasonal-installer fees you paid in the meantime if that was your alternative.", "There's no version of waiting that comes out ahead unless you simply don't want the system at all."] },
+        { "h": "When it's smart to wait", "p": ["You're not sure you want it and you're not currently paying for seasonal hangs. Wait — your situation might change. We'll be here. The price will be slightly higher; you might decide you don't want it after all and save more."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "real-cost-permanent-lights-2400-sqft-home",
+      "intent": "transactional",
+      "kicker": "Real numbers",
+      "h1": "Real Cost: Permanent Lights for a 2,400 sq ft Home",
+      "title": "Permanent Lights Cost for 2,400 sq ft Fresno Home | Real Numbers",
+      "desc": "Actual installed cost for permanent outdoor lighting on a typical 2,400 sq ft Fresno home — front, full perimeter, two-story.",
+      "kw": "permanent lights cost 2400 sq ft",
+      "lead": "Walked through 14 of our 2024-2025 invoices for 2,400 sq ft homes. Here's the price you actually pay.",
+      "body": [
+        { "h": "Front facade only", "p": ["~30 ft of track. Single zone. $950-$1,250 typical. This is the Starter package.", "Visible from the street; back of the house is dark."] },
+        { "h": "Front + sides (single story)", "p": ["~80 linear ft. Most popular for 2,400 sq ft single-story. $2,400-$3,200 typical. Standard tier.", "Full curb appeal, plus side-yard outline if visible from the street."] },
+        { "h": "Full perimeter (two-story)", "p": ["~140-180 ft. Premium tier. $5,400-$7,200 typical for 2,400 sq ft two-story.", "Adds an estate-home look. Same hardware, more linear feet, more ladder time."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "cost-permanent-lights-two-story-clovis",
+      "intent": "transactional",
+      "kicker": "Local pricing",
+      "h1": "Cost for Permanent Lights on a Two-Story Clovis Home",
+      "title": "Permanent Lights Cost — Two-Story Clovis CA Home",
+      "desc": "Real installed pricing for two-story Clovis homes — neighborhood-specific examples, what drives the cost, financing breakdown.",
+      "kw": "permanent lights two story clovis cost",
+      "lead": "Pulled 6 recent Clovis two-story installs. Here's the price band and what shifts you within it.",
+      "body": [
+        { "h": "The band", "p": ["Two-story Clovis homes (2,200-2,800 sq ft) typically land $5,400-$7,800 installed. That's Premium tier with full perimeter.", "Larger Loma Vista or Harlan Ranch estates: $7,500-$10,500."] },
+        { "h": "What pushes you up or down", "p": ["Up: complex roofline (multiple gables), tile roof access difficulty, custom track color (bronze/brown adds ~$300), Control4 integration (~$500).", "Down: simple Mediterranean roofline, white track, ground-level controller mount in garage."] },
+        { "h": "Financing this", "p": ["At $6,000 average, $0 down, 0% APR, 12 months works out to $500/month. Soft credit pull. Decision in 60 seconds."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-financing-actually-work",
+      "intent": "transactional",
+      "kicker": "Financing",
+      "h1": "How Permanent Lighting Financing Actually Works",
+      "title": "Permanent Lighting Financing | 0% APR Explained Plainly",
+      "desc": "How 0% APR financing for permanent outdoor lighting actually works — soft credit pull, decision time, and the small print.",
+      "kw": "permanent lighting financing how it works",
+      "lead": "0% APR sounds like a gimmick. Here's how it actually works and where the catch is (small but real).",
+      "body": [
+        { "h": "The mechanics", "p": ["We partner with a third-party financing platform. Soft credit pull at quote time — no hit to your score. Approval decision in roughly 60 seconds. 12 months at 0% APR. $0 down.", "Monthly payment is the install cost divided by 12. $2,800 Standard = $233/month. $5,800 Premium = $483/month."] },
+        { "h": "The actual catch", "p": ["If you don't pay the balance off in 12 months, the financing platform back-charges interest from day one — that's how all 0% promo financing works in this industry.", "Reality: 96% of our financing customers pay it off within the term. We send a reminder at month 10."] },
+        { "h": "The credit-score side", "p": ["Approval threshold is roughly 640 FICO. Higher scores get the full 12-month term. 600-640 sometimes gets approved at 6 months 0% APR. Below 600, the platform usually declines and we discuss alternative options."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "what-affects-permanent-lights-cost",
+      "intent": "transactional",
+      "kicker": "Cost drivers",
+      "h1": "What Actually Drives Permanent Lighting Cost (Ranked)",
+      "title": "What Affects Permanent Outdoor Lighting Cost | Ranked",
+      "desc": "The seven things that move permanent outdoor lighting pricing up or down, ranked by how much they actually matter.",
+      "kw": "what affects permanent lighting cost",
+      "lead": "Ranked from biggest impact to smallest. The first three drive 80% of the variance.",
+      "body": [
+        { "h": "1. Linear feet of track", "p": ["By far the biggest driver. Cost scales roughly linearly with feet — about $30-$60 per installed foot depending on tier and access."] },
+        { "h": "2. Number of stories", "p": ["Two-story homes are 30-40% more than equivalent single-story for the same linear feet. It's all ladder time and crew safety."] },
+        { "h": "3. Roofline complexity", "p": ["Simple Mediterranean rectangle: easy. Multiple gables, dormers, varied eave heights: each adds time. Estate-style multi-roofline can run 25% over a same-size simple roofline."] },
+        { "h": "4-7. Smaller drivers", "p": ["Track color (custom bronze/brown adds ~$200-$400). Smart-home integration (Control4/Elan adds ~$300-$600). Stucco-only no-soffit construction (adds ~10%). Travel time outside Fresno County (small surcharge)."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "cost-difference-jellyfish-trimlight",
+      "intent": "commercial",
+      "kicker": "Cost compare",
+      "h1": "Cost Difference: Jellyfish vs Trimlight (Installed)",
+      "title": "Jellyfish vs Trimlight Cost Compared | 2026",
+      "desc": "Installed cost difference between Jellyfish and Trimlight permanent lighting in Fresno County — and where the price gap comes from.",
+      "kw": "jellyfish vs trimlight cost",
+      "lead": "Both are real products. Both are installed by pros. Here's where the price actually differs.",
+      "body": [
+        { "h": "The hardware gap", "p": ["Jellyfish RGBIC-RD runs roughly 10-15% more expensive at the manufacturer-to-dealer level than equivalent Trimlight. Higher pixel density, slightly newer chip generation.", "At your end, that translates to roughly $200-$400 more on a Standard install — assuming both installers use comparable labor rates."] },
+        { "h": "The labor gap", "p": ["Bigger variance comes from the installer, not the brand. A reputable W-2 crew runs $400-$600 more than a subcontracted crew on the same install. We use W-2 employees only."] },
+        { "h": "The warranty gap", "p": ["Jellyfish warranty: lifetime track / 5-year LED. Trimlight: lifetime track / 3-year LED. Two extra years on the LEDs is roughly $300 of value over the system's lifetime."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "save-vs-seasonal-installer",
+      "intent": "transactional",
+      "kicker": "Savings",
+      "h1": "How Much Will You Save vs a Seasonal Installer?",
+      "title": "Permanent vs Seasonal Christmas Installer | Savings Math",
+      "desc": "Exactly how much you save switching from annual seasonal Christmas light installation to permanent outdoor lighting in Fresno County.",
+      "kw": "save vs seasonal christmas installer",
+      "lead": "Plug in your last seasonal-installer invoice. Here's what permanent looks like over the same window.",
+      "body": [
+        { "h": "If you're paying $900-$1,100/year", "p": ["Five-year cumulative seasonal: $5,000. Permanent Standard: $2,800. Save: $2,200 over 5 years.", "Plus you stop having anyone on your roof twice a year. Plus you get Halloween, July 4, game day, and warm-white year-round at no extra cost."] },
+        { "h": "If you're paying $1,400-$2,000/year (two-story)", "p": ["Five-year seasonal: $8,500. Permanent Premium: $5,800. Save: $2,700.", "Same other benefits."] },
+        { "h": "Where seasonal still wins", "p": ["You only want lights up for 6 weeks a year. You don't care about app control. You're moving in 2 years. In those cases, seasonal still pencils — and we'll tell you so."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "hidden-costs-permanent-lighting",
+      "intent": "transactional",
+      "kicker": "What to watch",
+      "h1": "Hidden Costs of Permanent Lighting (And How to Avoid Them)",
+      "title": "Hidden Costs of Permanent Outdoor Lighting | What to Watch",
+      "desc": "Real and rumored hidden costs of permanent outdoor lighting installation — what to ask before you sign.",
+      "kw": "hidden costs permanent lighting",
+      "lead": "Three real hidden costs and two myths. Ask about the real ones before you sign anything.",
+      "body": [
+        { "h": "Real #1: Electrical work", "p": ["Some installs need a new dedicated 15A circuit. Costs $250-$450 if your panel has an open slot. $600-$1,200 if a sub-panel is needed. Ask the installer to confirm circuit availability before quoting.", "Our quotes always include any required electrical work. Some competitors quote it separately later."] },
+        { "h": "Real #2: HOA submittal fees", "p": ["Some HOAs charge $25-$150 to review architectural change requests. We provide spec sheets and 3D renderings free, but the HOA's own fee is on the homeowner."] },
+        { "h": "Real #3: App-platform subscription", "p": ["The Jellyfish app and basic features are free forever. There is no subscription tier in our system. Beware of brands that put pattern libraries behind a monthly fee — read the fine print."] },
+        { "h": "Two myths", "p": ["'Roof access fees': we don't charge them. 'Color-customization upcharge': all 16M colors are included from day one — no in-app purchases."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "negotiating-permanent-lighting-quote",
+      "intent": "transactional",
+      "kicker": "Pricing tactics",
+      "h1": "Can You Negotiate a Permanent Lighting Quote?",
+      "title": "Negotiating a Permanent Lighting Quote | What Works",
+      "desc": "Whether you can negotiate a permanent outdoor lighting quote, what installers can flex on, and what they can't.",
+      "kw": "negotiate permanent lighting quote",
+      "lead": "Some installers will. Some won't. Here's what's actually negotiable and what isn't.",
+      "body": [
+        { "h": "What's negotiable", "p": ["Linear-feet pricing on the margin (5-10% on bigger jobs). Add-on services (zones, smart-home integration). Bundled multi-property deals. Timing (off-season install windows).", "We'll usually flex 5% on Premium and Estate jobs and on multi-property HOA contracts. Hard to flex on Starter and Standard — margin is already tight."] },
+        { "h": "What isn't", "p": ["Hardware cost. Warranty length. Crew quality. Workmanship guarantee. Insurance/license overhead. We're not the right fit if those are your negotiating targets."] },
+        { "h": "How to actually save money", "p": ["Off-season booking (February-May): we sometimes run 10-15% off Standard installs to fill crew schedules. Multi-property HOA: per-unit pricing drops 20-30%. Referral bonuses: $200 credit per referred install."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "when-to-install-permanent-lights-fresno",
+      "intent": "local",
+      "kicker": "Timing",
+      "h1": "When to Install Permanent Lights in Fresno (By Month)",
+      "title": "Best Time to Install Permanent Lights in Fresno | Booking Calendar",
+      "desc": "When to book permanent outdoor lighting installation in Fresno — slot availability, weather windows, and pricing by season.",
+      "kw": "when to install permanent lights fresno",
+      "lead": "Most homeowners call in October. Most calendars are full by mid-October. Here's the smarter timing.",
+      "body": [
+        { "h": "February-May: best window", "p": ["Crews have capacity. Weather is mild. Off-season pricing kicks in (sometimes 10-15% off Standard). System is fully tested before fall holiday rush."] },
+        { "h": "June-August: still good", "p": ["Hot but workable — crews start early morning. Capacity is fine. No off-season discount but no rush surcharge either."] },
+        { "h": "September-October: getting tight", "p": ["The booking rush starts mid-September. By October 1 we're usually 3-4 weeks out. Standard pricing applies."] },
+        { "h": "November-December: too late", "p": ["Most years our Christmas calendar closes by November 1. If you're calling Thanksgiving week looking for permanent lights by Christmas, the answer is honestly 'book for January-February and we'll throw in custom Christmas patterns at no charge.'"] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "fresno-christmas-light-installer-booking-calendar",
+      "intent": "local",
+      "kicker": "Booking",
+      "h1": "Fresno Christmas Light Installer Booking Calendar (2026)",
+      "title": "Fresno Christmas Light Installer Booking Calendar | 2026",
+      "desc": "When Fresno Christmas light installers book up, what you'll find available in October vs August, and how to lock a slot.",
+      "kw": "fresno christmas light installer booking",
+      "lead": "Every year same story: people call October 1 and act surprised when calendars are full. Here's the actual cadence.",
+      "body": [
+        { "h": "How fast we book", "p": ["August: full Christmas calendar usually still open. September: 60% booked by month-end. October 1-15: 90% booked. October 15+: waitlist or 'we'll do it permanent in January and bridge with seasonal' offers.", "Permanent installs we can sometimes still squeeze in late October. Seasonal hangs cap out earlier because the crew window is tighter."] },
+        { "h": "How to actually lock a slot", "p": ["Quote in August or earlier. Deposit confirms the install date. We'll schedule install for whatever week works for you, even if it's later — we hold the calendar slot, not just the price."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "halloween-permanent-light-ideas",
+      "intent": "local",
+      "kicker": "Ideas",
+      "h1": "Halloween Permanent Light Ideas That Actually Get Looks",
+      "title": "Halloween Permanent Lighting Ideas | What Gets Attention",
+      "desc": "Halloween permanent lighting ideas that pull foot traffic — preset patterns, custom scenes, motion-triggered effects.",
+      "kw": "halloween permanent light ideas",
+      "lead": "From the houses parents talk about for years to the ones nobody notices, here's what works.",
+      "body": [
+        { "h": "Slow purple-orange fade", "p": ["The most effective Halloween scene we run. Slow gradient between deep purple (#5a189a) and orange (#ff7b00) over 4-6 seconds. Looks otherworldly without trying to be over-the-top.", "Auto-schedule October 15-November 1, 5pm-11pm. Set and forget."] },
+        { "h": "Motion-triggered scare", "p": ["Drop a motion sensor at the front walk. When trick-or-treaters trigger it, the entire roofline flashes red-blue strobe for 2 seconds, then settles into the slow fade.", "Kids talk. Parents tell their friends. Foot traffic doubles."] },
+        { "h": "Fire effect", "p": ["Custom pattern: rapid flicker red-orange-yellow with random brightness drops. Makes the roofline look like it's burning. Best for modern angular homes — not ranches."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "fourth-of-july-permanent-lights",
+      "intent": "local",
+      "kicker": "Ideas",
+      "h1": "July 4th Permanent Lighting: Going Beyond Red-White-Blue",
+      "title": "July 4th Permanent Light Ideas | Beyond Stripes",
+      "desc": "July 4th permanent lighting ideas — beyond the basic red-white-blue stripes. Animated waves, music sync, neighborhood-best displays.",
+      "kw": "july 4th permanent lights",
+      "lead": "Every house can do red-white-blue stripes. Here's what wins the block party.",
+      "body": [
+        { "h": "USA wave", "p": ["Animated pattern that runs red, white, and blue in a slow ripple along the roofline rather than fixed stripes. Looks like a flag actually waving. Default in our app, takes 2 taps to enable."] },
+        { "h": "Firework explosion mode", "p": ["Music-sync to your outdoor speakers — patriotic playlist, lights flash on the bass hits. Or fully scripted with audio of fireworks playing through the lights flashing. Setup takes 15 minutes via the app."] },
+        { "h": "All-night vs party-only", "p": ["Auto-schedule the wave from sundown to 11pm every July 4. Schedule the fireworks-music mode only if you're hosting — annoying for neighbors otherwise."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "game-day-permanent-lights-bulldogs",
+      "intent": "local",
+      "kicker": "Game day",
+      "h1": "Game Day Lights for Fresno State Bulldogs Fans",
+      "title": "Bulldogs Game Day Lights | Fresno State Fans",
+      "desc": "Auto-scheduled Fresno State Bulldogs game-day lighting — red-and-blue patterns, score-based scenes, away-game support.",
+      "kw": "bulldogs game day lights fresno",
+      "lead": "Bulldogs colors auto-trigger every Saturday in season. Here's how it works.",
+      "body": [
+        { "h": "The basic setup", "p": ["Pull the Bulldogs preset. Set a recurring schedule: Saturdays in football season, 4 hours before kickoff through 2 hours after. App handles the rest.", "Pattern is roughly 60/40 red and blue with a slow chase animation — readable as Bulldogs from the curb without being garish."] },
+        { "h": "Game-day-only escalation", "p": ["Win mode: solid red with a slow pulse for the next 24 hours after a Bulldogs win. Trigger manually after final score.", "Conference-game mode: brighter, faster animation for ranked matchups."] },
+        { "h": "Other Central Valley teams", "p": ["Lakers (purple-gold), Warriors (blue-gold), Giants (orange-black), 49ers (red-gold), Dodgers (blue-white) all have presets in the same app. Pick your team. Schedule. Done."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "valentines-day-light-displays",
+      "intent": "local",
+      "kicker": "Holiday",
+      "h1": "Valentine's Day Lighting That Doesn't Look Tacky",
+      "title": "Valentine's Day Light Displays | Tasteful, Not Tacky",
+      "desc": "Valentine's Day permanent lighting that reads romantic without going over the top — soft pinks, warm reds, restraint.",
+      "kw": "valentines day permanent lights",
+      "lead": "Done wrong, Valentine's lights look like a CVS aisle. Done right, they're the most-photographed week of the year.",
+      "body": [
+        { "h": "What works", "p": ["Soft pink (#ff8fa3) with warm-white interspersed every 8 LEDs. Slow pulse — 8-second cycle. Reads as romantic without being heavy-handed.", "Schedule February 12-15, 6pm-11pm."] },
+        { "h": "What doesn't", "p": ["Solid bright red across the whole roofline. Reads as Christmas more than Valentine's.", "Animated heart shapes. The pixel pitch isn't fine enough to render shapes — they look pixelated and cheap."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "diwali-permanent-lights",
+      "intent": "local",
+      "kicker": "Holiday",
+      "h1": "Diwali Lighting That Actually Honors the Holiday",
+      "title": "Diwali Permanent Lighting | Celebrating the Festival of Lights",
+      "desc": "Diwali permanent outdoor lighting — warm gold, deep saffron, traditional patterns, multi-day scheduling.",
+      "kw": "diwali permanent lights",
+      "lead": "The Festival of Lights deserves more thought than a generic preset. Here's what we run for our Diwali clients.",
+      "body": [
+        { "h": "Warm gold base", "p": ["Deep warm-gold (~2200K equivalent) base across the entire roofline. Slow gentle twinkle every 12 seconds — meant to evoke oil-lamp flicker, not Christmas twinkle.", "Schedule the full 5 days of Diwali, sundown to midnight."] },
+        { "h": "Day 3 escalation (Lakshmi Puja)", "p": ["On the main night, switch to warm gold + deep saffron orange alternating every 4 LEDs. Brighter than the base scene. Hold from 6pm to midnight."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "christmas-vacation-mode",
+      "intent": "local",
+      "kicker": "Use case",
+      "h1": "Christmas Vacation Mode: Run Lights While You're Gone",
+      "title": "Permanent Lights While You're On Christmas Vacation",
+      "desc": "How to run permanent outdoor lighting while you're away for Christmas — schedules, randomization, security signaling.",
+      "kw": "permanent lights vacation mode",
+      "lead": "Lights running on a schedule signal 'home' to anyone watching. Here's how to set it up before you leave.",
+      "body": [
+        { "h": "Basic schedule", "p": ["Sundown to 10pm: classic red-and-green Christmas pattern. 10pm-11pm: warm-white architectural mode (looks like you turned off the show but kept the porch lights). 11pm: off until next sundown.", "Sundown is auto-calculated from your zip — no manual time changes through the trip."] },
+        { "h": "Randomization", "p": ["Toggle on 'random schedule jitter' in app settings. Each night the system varies on/off times by ±20 minutes. Subtle, but it kills the obvious 'lights on at exactly 5:30 every day = nobody home' tell."] },
+        { "h": "Pair with smart home", "p": ["If you've got Alexa or Control4, tie the lights to a 'vacation' scene that also runs interior smart bulbs on rotation. Now the whole house signals 'occupied' — exterior and interior."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "spring-summer-uses-permanent-lights",
+      "intent": "local",
+      "kicker": "Year-round",
+      "h1": "What Permanent Lights Do March Through August",
+      "title": "Permanent Lighting Year-Round Uses | Spring & Summer",
+      "desc": "How permanent outdoor lighting earns its keep March through August — daily warm-white, party scenes, sports celebrations, security mode.",
+      "kw": "permanent lights spring summer use",
+      "lead": "If your lights only run November-January, you bought 30% of the system. Here's the rest.",
+      "body": [
+        { "h": "Daily warm-white", "p": ["Set the system to soft warm-white (2700K equivalent) sundown to 10pm year-round. Replaces porch lights, looks intentional, costs about $3/month in electricity. This alone is what most of our clients use 350 days a year."] },
+        { "h": "Party scenes", "p": ["Backyard birthday, retirement party, 4th of July barbecue, Cinco de Mayo. Pull a scene by feel — color picker in the app, save as a custom preset, recall it next time."] },
+        { "h": "Sports + breaking news", "p": ["Bulldogs game day. Lakers playoffs. Warriors finals. Giants World Series (eventually). Local high school colors for graduation week. App has presets for the major teams; custom colors save in 30 seconds."] },
+        { "h": "Security mode", "p": ["Bright cool-white (5000K) full-blast across the whole roofline. Trigger from the app remotely if you hear something at 2am. Or schedule to run cool-white the week you're traveling."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-for-pool-parties",
+      "intent": "local",
+      "kicker": "Use case",
+      "h1": "Permanent Lights for Backyard Pool Parties",
+      "title": "Permanent Lights for Pool Parties | Setup & Scenes",
+      "desc": "How to use permanent outdoor lighting for backyard pool parties — color picks, music sync, turning the backyard into a venue.",
+      "kw": "permanent lights pool party",
+      "lead": "Backyard installs around the pool deck or pergola turn an evening party into something people actually post about.",
+      "body": [
+        { "h": "Where to install", "p": ["Pool-deck rail, pergola underside, eave above the patio. Aim is to wash the area in color without putting LEDs at face level."] },
+        { "h": "Scenes", "p": ["Sunset gradient (orange-pink slow fade): cocktail hour. Music sync (any color, beat-driven flash): when the speakers come on. Steady deep purple: late-night vibe.", "Custom presets save in the app. Build them once, recall them on party night with one tap."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-not-turning-on",
+      "intent": "troubleshooting",
+      "kicker": "Troubleshoot",
+      "h1": "Permanent Lights Won't Turn On: Step-by-Step Fix",
+      "title": "Permanent Lights Won't Turn On | Troubleshooting Steps",
+      "desc": "Step-by-step troubleshooting for permanent outdoor lighting that won't turn on — power, controller, app, schedule, support call.",
+      "kw": "permanent lights not turning on",
+      "lead": "90% of 'lights won't turn on' calls are one of three things. Try these in order before calling.",
+      "body": [
+        { "h": "1. Check the breaker", "p": ["Find the breaker labeled for the lighting controller (usually labeled at install). If it tripped, reset. Wait 30 seconds. Try the app.", "If it trips again immediately, stop — likely a short. Call us."] },
+        { "h": "2. Check the schedule", "p": ["Open the app. Look at the schedule for today. If you accidentally toggled 'off' or set the start time to a future date, you'll find it here. Most common cause."] },
+        { "h": "3. Reboot the controller", "p": ["Flip the lighting breaker off. Wait 30 seconds. Flip back on. Wait another 30 seconds for the controller to reconnect to Wi-Fi. Try the app.", "Resolves about 80% of remaining issues."] },
+        { "h": "Still nothing", "p": ["Call us. Service calls under our 5-year workmanship warranty are free. Same-day in Fresno County."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-color-mismatch",
+      "intent": "troubleshooting",
+      "kicker": "Troubleshoot",
+      "h1": "Some LEDs Look a Different Color Than the Rest",
+      "title": "Permanent Lights Color Mismatch | Why It Happens, How to Fix",
+      "desc": "Why some LEDs in a permanent lighting strip look slightly different colors and what to do about it.",
+      "kw": "permanent lights color mismatch",
+      "lead": "Almost always one of three causes. Here's how to diagnose without calling support first.",
+      "body": [
+        { "h": "Cause 1: Pattern animation", "p": ["A few patterns intentionally have variable color across the strip — fire effect, gradient wash. If it only happens during specific scenes, that's by design.", "Switch to solid white. If all LEDs match, it was the pattern."] },
+        { "h": "Cause 2: Voltage drop on long runs", "p": ["On runs over 50 ft, the LEDs at the far end can look slightly dimmer/yellower than the start. The control box adjusts for this with 'voltage compensation' — toggle it on in app settings if it's off.", "If the issue persists, your installer may need to add a power injection point. Free service call under our workmanship warranty."] },
+        { "h": "Cause 3: Failed pixel", "p": ["A single LED stuck on the wrong color is usually a hardware failure. Covered under the 5-year LED warranty. We'll replace the affected segment at no charge."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-app-wont-connect",
+      "intent": "troubleshooting",
+      "kicker": "Troubleshoot",
+      "h1": "Permanent Lighting App Won't Connect: Fixes That Work",
+      "title": "App Won't Connect to Permanent Lights | Quick Fixes",
+      "desc": "Step-by-step fixes when the permanent lighting app won't connect to your controller — Wi-Fi, router, app reset.",
+      "kw": "permanent lights app wont connect",
+      "lead": "Five fixes in order. Try each before the next. The first three solve 95% of cases.",
+      "body": [
+        { "h": "1. Force-close the app and reopen", "p": ["Sounds dumb. Solves a third of cases."] },
+        { "h": "2. Confirm phone and controller are on the same Wi-Fi network", "p": ["Easy to miss if you have a 2.4GHz and 5GHz network with different names. The controller connects to 2.4GHz only. Phone needs to be on the same network."] },
+        { "h": "3. Reboot router", "p": ["Unplug for 30 seconds. Plug back in. Wait 90 seconds. Try the app. Solves another third."] },
+        { "h": "4. Reboot controller", "p": ["Flip the lighting breaker off for 30 seconds, back on. Wait 60 seconds for Wi-Fi reconnect. Try the app."] },
+        { "h": "5. Re-pair", "p": ["In the app, remove the controller, then re-add as new device. Walks through Wi-Fi setup. Takes 3 minutes."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-dim-fix",
+      "intent": "troubleshooting",
+      "kicker": "Troubleshoot",
+      "h1": "Permanent Lights Look Dim or Yellow-White: Fixes",
+      "title": "Permanent Lights Dim or Yellow | Fix Steps",
+      "desc": "Why permanent outdoor lights can look dim or oddly yellow-white, and how to bring them back to full brightness.",
+      "kw": "permanent lights dim yellow",
+      "lead": "Two real causes and one false alarm. Diagnose in 60 seconds.",
+      "body": [
+        { "h": "False alarm: scene preset", "p": ["Some warm-white presets are intentionally yellower (2200K vs 2700K). Switch to 'cool white' to confirm — if it goes bright white, you were just on a warm scene."] },
+        { "h": "Real cause 1: brightness slider", "p": ["The app has a master brightness slider. If it got bumped down to 30%, lights look dim. Slide back to 100%."] },
+        { "h": "Real cause 2: voltage drop", "p": ["On long runs, the far end can look dim. Toggle 'voltage compensation' on in app settings. If still dim, schedule a free service call — we may need to add a power injection point."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-after-power-surge",
+      "intent": "troubleshooting",
+      "kicker": "Troubleshoot",
+      "h1": "Permanent Lights After a Power Surge: What to Check",
+      "title": "Permanent Lights After Power Surge | What to Check",
+      "desc": "What to check on permanent outdoor lighting after a power surge or lightning event, and what's covered under warranty.",
+      "kw": "permanent lights power surge",
+      "lead": "Surge protector takes most hits. Sometimes the controller takes one. Here's how to tell.",
+      "body": [
+        { "h": "First: did the breaker trip?", "p": ["Reset it. If everything comes back on, you're done."] },
+        { "h": "Lights on but app won't connect", "p": ["Wi-Fi radio in the controller may have taken a hit. Try a controller reboot. If still no connection, we replace the controller under warranty (5-year LED warranty covers controller too)."] },
+        { "h": "Lights partially on, partially off", "p": ["A section of LEDs likely failed. Affected segment replaced under warranty. We've replaced two segments in three years for surge damage — covered both times."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "cleaning-permanent-lights",
+      "intent": "troubleshooting",
+      "kicker": "Maintenance",
+      "h1": "Cleaning Permanent Lights: Tree Sap, Dust, Spider Webs",
+      "title": "How to Clean Permanent Outdoor Lights | Maintenance Guide",
+      "desc": "How to clean permanent outdoor lighting safely — tree sap, Central Valley dust, spider webs, and what to never use.",
+      "kw": "clean permanent lights",
+      "lead": "Annual rinse keeps everything looking new. Anything more involved is rare.",
+      "body": [
+        { "h": "Annual basic rinse", "p": ["Garden hose on a gentle setting, point up at the track from the ground. 30 seconds per side of the house. Knocks loose dust and any cobwebs.", "Don't pressure-wash — IP67 handles it but the seal isn't designed for direct high-pressure jets."] },
+        { "h": "Tree sap", "p": ["Mix dish soap and warm water. Soft cloth on a paint-roller pole. Light wipe along the track. Rinse with hose.", "Never use solvents (acetone, alcohol, paint thinner). They'll cloud the LED lenses permanently."] },
+        { "h": "Heavy dust after a Valley dust storm", "p": ["Same hose rinse, twice. If LEDs look hazy after, that's silica buildup on the lens — soft cloth wipe with the soapy-water mix removes it."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "pitch-permanent-lights-to-hoa",
+      "intent": "process",
+      "kicker": "HOA",
+      "h1": "How to Pitch Permanent Lights to Your HOA (And Win)",
+      "title": "Pitching Permanent Lighting to Your HOA | Win the Vote",
+      "desc": "How to get HOA approval for permanent outdoor lighting — what to submit, language that works, and which arguments win the vote.",
+      "kw": "hoa permanent lights approval",
+      "lead": "We've submitted 200+ HOA packages. Approved on first read about 90% of the time. Here's the playbook.",
+      "body": [
+        { "h": "Submit a complete package", "p": ["Spec sheet (we provide). 3D rendering of your home with the system installed (we provide). Track color sample matched to your trim. Annual cost statement (electricity). Warranty document.", "HOAs reject 'incomplete submissions' more often than they reject the actual project. Don't give them an easy 'no.'"] },
+        { "h": "Lead with 'invisible by day'", "p": ["The thing HOAs worry about is exterior visual change. The headline of your submission should be 'aluminum track color-matched to existing trim, hidden under the eave, indistinguishable from existing fascia from the curb.' Photo of a daytime install drives this home."] },
+        { "h": "Mention HOAs that approved it", "p": ["Granville, Woodward Lake, Copper River Ranch, Fancher Creek, Old Fig Garden Property Owners — all approved Twilight Zone installs. List the ones near you. Social proof works on boards."] },
+        { "h": "Schedule preferences", "p": ["Volunteer to limit holiday schedule (ex: Christmas only Nov 25-Jan 6, Halloween only Oct 15-Nov 1). Some HOAs ask. Beat them to it."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "what-to-expect-install-day",
+      "intent": "process",
+      "kicker": "Install day",
+      "h1": "What to Expect on Permanent Lighting Install Day",
+      "title": "Permanent Lighting Install Day | Hour-by-Hour Walkthrough",
+      "desc": "Hour-by-hour walkthrough of permanent outdoor lighting install day — when we arrive, what we do, when we leave, what to do during.",
+      "kw": "permanent lights install day",
+      "lead": "Single-story typical day. Two-story adds 4-6 hours and sometimes a second day.",
+      "body": [
+        { "h": "Hour 1: site prep", "p": ["Crew arrives 7:30-8am. Walk the property with you. Confirm track placement, color, controller location. Drop tarps under any work area. Set up ladders."] },
+        { "h": "Hours 2-5: track install", "p": ["Aluminum channel screwed into soffit substructure. Stainless-steel screws every 24 inches. We work front to back, completing one section before moving to the next.", "Loud-ish for the first hour (drill driver). Quiet after that."] },
+        { "h": "Hours 6-7: LED + wiring", "p": ["LED strip seated into the channel. Data + power cable run inside the channel, dropped through one small attic hole, terminated at the control box.", "Control box mounted (usually inside garage). Wired to the dedicated breaker."] },
+        { "h": "Hour 8: app setup + walkthrough", "p": ["Pair the controller with your home Wi-Fi. Pair the app on your phone. Walk through scenes, schedules, smart-home integration. Test every section.", "We don't leave until you've changed scenes from your phone successfully."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-stucco-vs-wood",
+      "intent": "process",
+      "kicker": "Install detail",
+      "h1": "Permanent Lights on Stucco vs Wood Fascia",
+      "title": "Permanent Lighting on Stucco vs Wood Fascia | Install Differences",
+      "desc": "How permanent outdoor lighting installs differ on stucco-only construction vs traditional wood fascia, and what to expect.",
+      "kw": "permanent lights stucco vs wood",
+      "lead": "Wood fascia is the easy install. Stucco-only takes a different approach. Both work — costs differ.",
+      "body": [
+        { "h": "Wood fascia (most common in Fresno)", "p": ["Stainless screws into the wood substructure behind the soffit panels. Standard install. No special prep, no surface drilling."] },
+        { "h": "Stucco-only construction", "p": ["No soffit, just a stucco eave. We use concealed brackets that anchor with smaller screws into the stucco lath structure (not just the surface stucco itself). Installer marks pilot points carefully — wrong screw placement crumbles stucco.", "Adds about 10% to install time. Adds 5-8% to total cost. End result is identical from the curb."] },
+        { "h": "Mixed (stucco walls + wood eaves)", "p": ["Most common in Central Valley homes built 2000+. We work the wood eaves the standard way and skip the stucco walls entirely — track only goes where there's a structural anchor. Looks the same from the street."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-and-solar-panels",
+      "intent": "process",
+      "kicker": "Install detail",
+      "h1": "Permanent Lights with Solar Panels: Compatible?",
+      "title": "Permanent Lights & Solar Panels | Compatibility Guide",
+      "desc": "How permanent outdoor lighting works with rooftop solar panels — install routing, electrical, and known issues.",
+      "kw": "permanent lights solar panels",
+      "lead": "Compatible. Common. Some routing details to know up front.",
+      "body": [
+        { "h": "Track routing", "p": ["Track goes under the eave, panels go on top of the roof. Different planes, no physical conflict."] },
+        { "h": "Wiring", "p": ["Lighting controller draws from the house panel like any other circuit. Solar feed-in doesn't affect it. Net-metering customers: lights run during sundown hours, when solar production is low — basically free electricity if you produce excess earlier in the day."] },
+        { "h": "Battery backup", "p": ["If you have whole-home backup (Tesla Powerwall, etc.), the lighting circuit is on it like everything else. Lights stay on through grid outages assuming battery isn't depleted."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "moving-permanent-lights-to-new-house",
+      "intent": "process",
+      "kicker": "Process",
+      "h1": "Can You Move Permanent Lights to a New House?",
+      "title": "Moving Permanent Lights to New House | What's Possible",
+      "desc": "Whether you can move permanent outdoor lighting to a new home, what's reusable, what's not, and the cost.",
+      "kw": "move permanent lights new house",
+      "lead": "Short answer: rarely worth it. Long answer below.",
+      "body": [
+        { "h": "What's reusable", "p": ["The control box (basically). The app pairing. Maybe the LED strip if it's in good condition and the new house's geometry happens to match.", "What's not reusable: the aluminum track. It's cut to fit the previous house's roofline and won't match the new one."] },
+        { "h": "Realistic cost", "p": ["Removal from old house: ~$400. New install on new house with old hardware where possible: ~$1,800. Total: ~$2,200.", "New install from scratch: $2,800. Difference: $600. Most clients pick new install — fewer compromises, full warranty resets."] },
+        { "h": "When it's worth it", "p": ["You just installed within the last 12 months and the new house is structurally similar. Otherwise, sell the old install with the house and start fresh."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "removing-permanent-lights-without-damage",
+      "intent": "process",
+      "kicker": "Process",
+      "h1": "Removing Permanent Lights Without Damaging the House",
+      "title": "Removing Permanent Outdoor Lights | No-Damage Process",
+      "desc": "How permanent outdoor lights are removed without damaging the house — process, repair work, and what's left behind.",
+      "kw": "remove permanent lights no damage",
+      "lead": "Whole reason the system uses screws and not adhesive: clean removal. Here's what 'clean' actually means.",
+      "body": [
+        { "h": "What we pull", "p": ["Aluminum track, LED strip inside it, wiring, control box. Done in roughly 3-4 hours."] },
+        { "h": "What's left", "p": ["Screw holes the size of a finishing nail every 24 inches along the soffit substructure. One small hole where the data cable dropped to the attic. That's it.", "If you pulled because of our 60-day money-back, we patch the holes ourselves."] },
+        { "h": "If you keep removal in-house", "p": ["The substrate holes can be filled in 20 minutes with exterior-grade caulk. Touch-up paint if your soffit is painted. Total cost: under $30 in materials."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "jellyfish-vs-govee-detailed",
+      "intent": "commercial",
+      "kicker": "Detailed compare",
+      "h1": "Jellyfish vs Govee: The Detailed Comparison",
+      "title": "Jellyfish vs Govee Permanent Lights | Detailed Comparison 2026",
+      "desc": "Detailed Jellyfish vs Govee comparison — hardware, install, app, warranty, day-to-day use, and 5-year cost.",
+      "kw": "jellyfish vs govee detailed",
+      "lead": "We sell Jellyfish for a living. We've also installed Govee for clients who asked. Here's everything.",
+      "body": [
+        { "h": "Hardware tier", "p": ["Jellyfish RGBIC-RD: aluminum track, ~4-inch pixel pitch, IP67, -40°F to 140°F operating, lifetime track warranty.", "Govee Pro: plastic clip-on housing, ~6-inch pixel pitch, IP65, 14°F to 122°F operating, 1-year warranty.", "Both produce 16M colors. Govee shows visible cable along the run; Jellyfish hides everything in the channel."] },
+        { "h": "App and control", "p": ["Both have decent apps. Jellyfish ties into Control4 and Nice Elan; Govee doesn't. Both work with Alexa and Google Home.", "Jellyfish app pattern library is larger and the patterns are more polished. Govee has a more active social/sharing layer if you like that kind of thing."] },
+        { "h": "5-year cost reality", "p": ["Govee Pro DIY: $500-$700 hardware + your time + 1-2 replacements over 5 years = roughly $1,200-$1,800 all-in. Jellyfish Standard installed: $2,800 once.", "Govee wins year 1. Jellyfish wins year 4+. Depends on your timeline and how much you value 'set it and forget it.'"] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "trimlight-vs-jellyfish-deep-dive",
+      "intent": "commercial",
+      "kicker": "Detailed compare",
+      "h1": "Trimlight vs Jellyfish: Deep-Dive Comparison",
+      "title": "Trimlight vs Jellyfish | Deep Comparison 2026",
+      "desc": "Deep comparison of Trimlight and Jellyfish permanent outdoor lighting — hardware generation, app polish, warranty, install differences.",
+      "kw": "trimlight vs jellyfish deep dive",
+      "lead": "Both are pro systems. Both are installed by reputable dealers. Here's where they actually differ.",
+      "body": [
+        { "h": "Hardware generation", "p": ["Trimlight has been around longer — mature platform, well-understood failure modes, large installed base.", "Jellyfish is newer hardware with finer pixel pitch (~4 inch vs Trimlight's ~6 inch). Visible difference on gradient patterns."] },
+        { "h": "App and pattern library", "p": ["Jellyfish app is more polished and has more presets. Trimlight app is functional and stable but feels a generation behind."] },
+        { "h": "Warranty", "p": ["Jellyfish: lifetime track / 5-year LED. Trimlight: lifetime track / 3-year LED."] },
+        { "h": "Local install reality", "p": ["In Fresno, both have authorized dealers. We're the Jellyfish dealer. We can't speak to the Trimlight install crew quality in this market — homeowner research applies either way."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "five-year-math-permanent-vs-seasonal",
+      "intent": "commercial",
+      "kicker": "Math",
+      "h1": "Five-Year Math: Permanent vs Seasonal Christmas Lights",
+      "title": "5-Year Math: Permanent vs Seasonal Christmas Lights",
+      "desc": "Year-by-year cost comparison of permanent outdoor lighting vs seasonal Christmas light installation over five years in Fresno County.",
+      "kw": "five year cost permanent vs seasonal",
+      "lead": "Year by year. Real Fresno-County prices. Inflation included.",
+      "body": [
+        { "h": "Single-story (2,000 sq ft)", "p": ["Seasonal install + takedown 2026: $1,000. Repeat 5x with 4% annual increase: $5,420 cumulative. Permanent Standard one-time: $2,800. Save: $2,620."] },
+        { "h": "Two-story (2,500 sq ft)", "p": ["Seasonal: $1,700/year, 4% annual: $9,210 cumulative. Permanent Premium: $5,800. Save: $3,410."] },
+        { "h": "Three-story or estate (3,500+ sq ft)", "p": ["Seasonal: $2,400/year, 4% annual: $13,000 cumulative. Permanent Estate: $7,500-$10,000. Save: $3,000-$5,500."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "led-floodlight-vs-permanent-track",
+      "intent": "commercial",
+      "kicker": "Comparison",
+      "h1": "LED Floodlight vs Permanent Track: Different Jobs",
+      "title": "LED Floodlights vs Permanent Lighting Track | Compared",
+      "desc": "LED floodlights vs permanent outdoor lighting track — when each is the right tool, and where they actually overlap.",
+      "kw": "led floodlights vs permanent track",
+      "lead": "Different jobs. Different tools. Some homes use both. Here's the line between them.",
+      "body": [
+        { "h": "What floods do", "p": ["Blast a wide cone of light onto a target — driveway, backyard, side gate. Security and broad-coverage illumination. Cheap. Ugly. Functional."] },
+        { "h": "What track does", "p": ["Outline architectural lines (rooflines, eaves, columns). Decorative + ambient. Color-controllable. Doesn't blast — it traces."] },
+        { "h": "Where they overlap", "p": ["In warm-white security mode, permanent track at full brightness illuminates the perimeter of the house enough that most homeowners drop one or two flood lights. Track doesn't replace driveway floods (different angle), but does replace the gable-mounted dusk-to-dawns most builders include."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "landscape-vs-permanent-eave-lighting",
+      "intent": "commercial",
+      "kicker": "Comparison",
+      "h1": "Landscape Lighting vs Permanent Eave Lighting",
+      "title": "Landscape Lighting vs Permanent Eave Lighting | Compared",
+      "desc": "Landscape lighting vs permanent eave lighting — different layers of outdoor lighting design, when to use each.",
+      "kw": "landscape vs permanent eave lighting",
+      "lead": "Both belong in a complete outdoor lighting plan. Neither replaces the other. Here's the layering.",
+      "body": [
+        { "h": "Landscape: ground-up", "p": ["Path lights, well lights, accent lights uplighting trees and architectural features. Warm-white, sculptural, low-glare. Shows the landscape."] },
+        { "h": "Permanent eave: roofline-down", "p": ["Outlines the roofline. Color-controllable. Can run warm-white architectural mode or holiday colors. Shows the building."] },
+        { "h": "Together", "p": ["A complete plan uses both. Landscape gives the property depth at night. Permanent track defines the structure. The interplay of the two is what makes a home look professionally lit instead of single-purpose."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "handyman-vs-pro-permanent-install",
+      "intent": "commercial",
+      "kicker": "Decision",
+      "h1": "Handyman vs Pro Installer for Permanent Lights",
+      "title": "Handyman vs Pro Installer for Permanent Lights",
+      "desc": "Whether to hire a handyman vs an authorized pro installer for permanent outdoor lighting — warranty, liability, real-world quality.",
+      "kw": "handyman vs pro permanent lights",
+      "lead": "Some handymen do solid work. The warranty + liability question is where the math breaks.",
+      "body": [
+        { "h": "What a handyman might charge", "p": ["Labor only: $40-$70/hr. Total install on a Standard scope: $800-$1,400 labor + your hardware cost. Adds up close to a dealer's installed price once you account for time and bad cuts."] },
+        { "h": "Where it falls apart", "p": ["Manufacturer warranties typically require dealer install for full coverage. A handyman install may void the LED warranty entirely.", "Liability: if a ladder slips and damages your fascia, a licensed contractor's insurance covers it. A handyman's insurance often doesn't."] },
+        { "h": "When a handyman makes sense", "p": ["You're using a DIY-rated kit (Govee) and want help with the ladder work. Handyman labor + DIY hardware can land at $700 total. Just don't expect manufacturer warranty support if something fails."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-airbnb-hosts",
+      "intent": "niche",
+      "kicker": "Niche",
+      "h1": "Permanent Lights for Airbnb Hosts: ROI in 11 Months",
+      "title": "Permanent Lighting for Airbnb Hosts | ROI Math",
+      "desc": "Why Airbnb and short-term rental hosts install permanent outdoor lighting — listing photos, guest experience, ROI math.",
+      "kw": "permanent lights airbnb",
+      "lead": "We've installed for 14 Fresno-area STR hosts. Average payback: 11 months from booking lift alone.",
+      "body": [
+        { "h": "Listing-photo lift", "p": ["Twilight listing photo with the system on warm-white architectural is the single highest-converting hero image in the STR niche. Hosts who replaced their daytime hero with one of these saw nightly-rate bookings rise 8-22%."] },
+        { "h": "Guest experience", "p": ["Pre-set 'arrival' scene runs warm-white with a slow color wash for the first 30 minutes after the lock code is used. Guests pull up to a house that looks expecting them. Reviews mention it.", "Auto-schedule daily warm-white sundown to 11pm; lights signal 'lived-in' even between bookings."] },
+        { "h": "ROI math", "p": ["$2,800 install. 8% rate lift on $250 ADR = $20/night × 200 booked nights = $4,000/year extra. Payback under 9 months."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-realtors-staging",
+      "intent": "niche",
+      "kicker": "Niche",
+      "h1": "Permanent Lights for Realtors: Staging That Sells Faster",
+      "title": "Permanent Lights for Realtors | Faster Sales",
+      "desc": "How permanent outdoor lighting helps realtors sell faster — twilight photos, open houses, listing differentiation.",
+      "kw": "permanent lights realtors staging",
+      "lead": "Realtors don't need permanent lights for themselves — they need it on listings. Here's the playbook.",
+      "body": [
+        { "h": "Pre-list install", "p": ["Some Fresno realtors negotiate seller pre-list installs into commission structures. Cost rolls into the deal; listing gets the twilight-shot hero image and the 'comes with permanent lighting' bullet on Zillow."] },
+        { "h": "Open-house mode", "p": ["Schedule warm-white architectural to run from 4pm Sunday through end-of-open-house. Property looks intentional in late-afternoon foot traffic."] },
+        { "h": "What the data shows", "p": ["Listings we've worked with average 8-15% less time on market than comparable listings without. Anecdotal — but consistent across the realtors who use it."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-aging-parents-safety",
+      "intent": "niche",
+      "kicker": "Niche",
+      "h1": "Permanent Lights for Aging Parents: Safety + Independence",
+      "title": "Permanent Lights for Aging Parents | Safety Use Cases",
+      "desc": "How adult children install permanent outdoor lighting at aging parents' homes for safety, low-vision support, and independent living.",
+      "kw": "permanent lights aging parents",
+      "lead": "Quietest growing customer segment we have. Adult children installing at parents' homes. Here's why.",
+      "body": [
+        { "h": "Auto-on at sundown", "p": ["No more 'did mom remember to turn the porch light on?' Schedule runs sundown to 11pm year-round on bright warm-white. Parents don't have to remember anything."] },
+        { "h": "Low-vision support", "p": ["Cool-white at full brightness across the entire walkway and entry area is far brighter than a single porch bulb. Low-vision residents find their footing more easily."] },
+        { "h": "Remote control by adult child", "p": ["You install the app on your phone. You can flip lights on remotely if a parent calls at night and needs the entry lit. Or if a neighbor calls saying parent is locked out at 9pm.", "We've had three customers tell us this feature alone justified the purchase."] }
+      ],
+      "faqs": []
+    },
+    {
+      "slug": "permanent-lights-restaurants-bars-roi",
+      "intent": "niche",
+      "kicker": "Niche",
+      "h1": "Permanent Lights for Restaurants and Bars: 12% Sales Lift",
+      "title": "Permanent Lights for Restaurants & Bars | Sales Lift",
+      "desc": "Why Fresno restaurants and bars install permanent outdoor lighting — patio mood, brand colors year-round, weekend foot traffic.",
+      "kw": "permanent lights restaurants bars",
+      "lead": "Average sales lift across our restaurant/bar installs: 12% on Friday-Saturday nights. Here's where it comes from.",
+      "body": [
+        { "h": "Patio conversion", "p": ["Empty patio at 7pm is a sales-killer. Permanent track on the patio underside transforms an empty patio into 'this place looks lively' from the street. Foot-traffic drives in.", "Music-sync mode for live-music nights pulls a different crowd than dinner — daypart-specific scenes."] },
+        { "h": "Brand colors year-round", "p": ["Set your brand colors as a default scene. Roofline outline, signage backlight, patio underside — all on brand all year. Cheaper than a paint job and more visible at night."] },
+        { "h": "ROI", "p": ["Average install: $4,200. Average reported weekend sales lift: $1,800/week. Payback under 4 weeks."] }
+      ],
+      "faqs": []
+    }
+  ]
+}

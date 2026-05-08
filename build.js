@@ -23,6 +23,7 @@ const cities = Object.values(_citiesRaw).map(c => ({
 const services = Object.values(_servicesRaw);
 const verticals = Object.values(_verticalsRaw);
 const comparisons = DATA('comparisons.json').comparisons;
+const posts = (() => { try { return DATA('posts.json').posts; } catch { return []; } })();
 
 const SITE = shared.brand.siteUrl.replace(/\/$/, '');
 const PHONE = shared.brand.phoneDisplay;
@@ -594,6 +595,112 @@ function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, 
   return { url: canonical, html };
 }
 
+// ---------- TEMPLATE: Blog Post ----------
+function renderPost(post) {
+  const canonical = `/blog/${post.slug}`;
+  const crumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: post.h1, url: canonical }
+  ];
+  const wordCount = post.body.reduce((n, s) => n + s.p.reduce((m, p) => m + p.split(/\s+/).length, 0), 0);
+  const readingMin = Math.max(2, Math.round(wordCount / 220));
+  const jsonld = [
+    breadcrumbs(crumbs),
+    {
+      '@context': 'https://schema.org', '@type': 'BlogPosting',
+      headline: post.h1, description: post.desc,
+      author: { '@type': 'Organization', name: BRAND, url: SITE },
+      publisher: { '@type': 'Organization', name: BRAND, logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-600.png` } },
+      datePublished: '2026-02-15', dateModified: '2026-02-15',
+      mainEntityOfPage: { '@type': 'WebPage', '@id': SITE + canonical },
+      wordCount, image: `${SITE}/images/03-accent.jpg`
+    }
+  ];
+  if (post.faqs && post.faqs.length) jsonld.push(faqLD(post.faqs));
+
+  // Pick 3 related posts (same intent) excluding self
+  const related = posts.filter(x => x.slug !== post.slug && x.intent === post.intent).slice(0, 3);
+
+  const html = head({ title: post.title, desc: post.desc, canonical, kw: post.kw, jsonld }) +
+    headerHTML() +
+    `<main class="blog-post">` +
+    breadcrumbBlock(crumbs) +
+    `<section class="post-hero">
+       <div class="container post-hero-inner">
+         <div class="post-kicker">${esc(post.kicker)} · ${readingMin} min read</div>
+         <h1 class="post-h1">${esc(post.h1)}</h1>
+         <p class="post-lead">${esc(post.lead)}</p>
+       </div>
+     </section>` +
+    `<article class="post-body container">
+       ${post.body.map(s => `<section class="post-section"><h2>${esc(s.h)}</h2>${s.p.map(p => `<p>${esc(p)}</p>`).join('')}</section>`).join('')}
+     </article>` +
+    (post.faqs && post.faqs.length ? faqBlock(post.faqs) : '') +
+    (related.length ? `<section class="container related-posts">
+       <h2>Related reads</h2>
+       <div class="related-grid">
+         ${related.map(r => `<a href="/blog/${r.slug}" class="related-card"><div class="related-kicker">${esc(r.kicker)}</div><h4>${esc(r.h1)}</h4><p>${esc(r.lead.slice(0, 110))}</p></a>`).join('')}
+       </div>
+     </section>` : '') +
+    ctaBlock() +
+    `</main>` + footerHTML();
+  return { url: canonical, html };
+}
+
+// ---------- TEMPLATE: Blog Index ----------
+function renderBlogIndex() {
+  const canonical = `/blog`;
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: canonical }];
+  const intentLabels = {
+    informational: 'How it works',
+    commercial: 'Decisions & comparisons',
+    transactional: 'Cost & financing',
+    local: 'Local & seasonal',
+    troubleshooting: 'Troubleshooting',
+    process: 'Install & process',
+    niche: 'Specific situations'
+  };
+  const jsonld = [breadcrumbs(crumbs), {
+    '@context': 'https://schema.org', '@type': 'Blog',
+    name: `${BRAND} Blog`, url: `${SITE}/blog`,
+    blogPost: posts.slice(0, 20).map(p => ({
+      '@type': 'BlogPosting', headline: p.h1, url: `${SITE}/blog/${p.slug}`,
+      description: p.desc, datePublished: '2026-02-15'
+    }))
+  }];
+  const grouped = {};
+  posts.forEach(p => { (grouped[p.intent] = grouped[p.intent] || []).push(p); });
+  const html = head({
+    title: `Blog | Permanent Outdoor Lighting Insights | ${BRAND}`,
+    desc: 'Sixty plain-English articles on permanent outdoor lighting — how it works, what it costs, when it pays off, and how to get the install right.',
+    canonical, kw: 'permanent outdoor lighting blog', jsonld
+  }) +
+    headerHTML() +
+    `<main>` +
+    breadcrumbBlock(crumbs) +
+    `<section class="post-hero">
+       <div class="container post-hero-inner">
+         <div class="post-kicker">${posts.length} articles · written by installers</div>
+         <h1 class="post-h1">Permanent Outdoor Lighting Blog</h1>
+         <p class="post-lead">Plain-English answers to the questions homeowners actually ask before, during, and after a permanent lighting install.</p>
+       </div>
+     </section>` +
+    Object.keys(intentLabels).map(intent => {
+      const list = grouped[intent] || [];
+      if (!list.length) return '';
+      return `<section class="container blog-bucket">
+        <h2>${esc(intentLabels[intent])}</h2>
+        <div class="blog-grid">
+          ${list.map(p => `<a href="/blog/${p.slug}" class="blog-card"><div class="blog-card-kicker">${esc(p.kicker)}</div><h3>${esc(p.h1)}</h3><p>${esc(p.lead.slice(0, 130))}</p></a>`).join('')}
+        </div>
+      </section>`;
+    }).join('') +
+    ctaBlock() +
+    `</main>` + footerHTML();
+  return { url: canonical, html };
+}
+
 // ============================================================
 // PAGE GENERATION
 // ============================================================
@@ -639,6 +746,12 @@ neighborhoodPages.forEach(p => pages.push(p));
 // 11. Gallery / use-case pages
 const galleryPages = buildGalleries();
 galleryPages.forEach(p => pages.push(p));
+
+// 12. Blog index + 60 posts
+if (posts.length) {
+  pages.push(renderBlogIndex());
+  posts.forEach(post => pages.push(renderPost(post)));
+}
 
 // ---------- COST PAGE BUILDERS ----------
 function buildCostPages() {
