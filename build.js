@@ -342,7 +342,7 @@ const guaranteeBlock = () => `
 
 const techSpecsBlock = () => `
 <section class="container tech-specs">
-  <h2>The hardware</h2>
+  ${sectionHead({ eyebrow: 'The hardware', h2: 'Built for', em: 'fifty thousand hours.' })}
   <div class="spec-grid">
     <div><dt>LED chip</dt><dd>${esc(shared.tech.ledType)}</dd></div>
     <div><dt>Colors</dt><dd>${esc(shared.tech.colors)}</dd></div>
@@ -350,6 +350,208 @@ const techSpecsBlock = () => `
     <div><dt>Lifespan</dt><dd>${esc(shared.tech.lifespan)}</dd></div>
     <div><dt>Weather</dt><dd>${esc(shared.tech.weatherRating)} · ${esc(shared.tech.tempRange)}</dd></div>
     <div><dt>Smart home</dt><dd>${shared.tech.appCompat.join(', ')}</dd></div>
+  </div>
+</section>`;
+
+// ============================================================
+// ASSET REGISTRY — real install photos by category
+// ============================================================
+const ASSETS = {
+  residential: ['/images/work/gameday/g1.jpg','/images/work/gameday/g3.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g9.jpg','/images/work/gameday/g11.jpg','/images/work/gameday/g12.jpg','/images/03-accent.jpg','/images/04-holiday.jpg','/images/02-security.jpg'],
+  gameday:     ['/images/work/gameday/g1.jpg','/images/work/gameday/g2.jpg','/images/work/gameday/g3.jpg','/images/work/gameday/g4.jpg','/images/work/gameday/g5.jpg','/images/work/gameday/g6.jpg','/images/work/gameday/g7.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g9.jpg','/images/work/gameday/g10.jpg','/images/work/gameday/g11.jpg','/images/work/gameday/g12.jpg'],
+  holiday:     ['/images/04-holiday.jpg','/images/work/gameday/g3.jpg','/images/work/gameday/g11.jpg','/images/work/gameday/g4.jpg','/images/work/gameday/g7.jpg','/images/work/gameday/g10.jpg'],
+  accent:      ['/images/03-accent.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g12.jpg','/images/work/gameday/g6.jpg','/images/work/gameday/g9.jpg'],
+  security:    ['/images/02-security.jpg','/images/work/gameday/g5.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g11.jpg'],
+  restaurant:  ['/images/work/restaurant/r1.jpg','/images/work/restaurant/r2.jpg','/images/work/restaurant/r3.jpg','/images/work/restaurant/r4.jpg'],
+  entertainment:['/images/work/entertainment/e1.jpg','/images/work/entertainment/e2.jpg','/images/work/entertainment/e3.jpg','/images/work/entertainment/e4.jpg'],
+  municipal:   ['/images/work/municipal/m1.jpg','/images/work/municipal/m2.jpg','/images/work/municipal/m3.jpg','/images/work/municipal/m4.jpg','/images/work/municipal/m5.jpg','/images/work/municipal/m6.jpg'],
+  commercial:  ['/images/work/restaurant/r1.jpg','/images/work/entertainment/e2.jpg','/images/work/municipal/m1.jpg','/images/work/restaurant/r3.jpg','/images/work/entertainment/e4.jpg','/images/work/municipal/m4.jpg']
+};
+
+// Map each service slug → photo category
+const SERVICE_PHOTO_MAP = {
+  'permanent-outdoor-lights': 'residential',
+  'permanent-christmas-lights': 'holiday',
+  'halloween-lights': 'holiday',
+  'accent-lighting': 'accent',
+  'security-lighting': 'security',
+  'patio-lighting': 'residential',
+  'pool-deck-lighting': 'residential',
+  'pathway-landscape-lighting': 'accent',
+  'game-day-lighting': 'gameday',
+  'eave-soffit-lighting': 'residential',
+  'custom-architectural-lighting': 'accent',
+  'string-lights-installation': 'residential',
+  'year-round-lighting': 'residential'
+};
+const VERTICAL_PHOTO_MAP = {
+  'restaurant-bar-lighting': 'restaurant',
+  'hotel-resort-lighting': 'entertainment',
+  'storefront-retail-lighting': 'restaurant',
+  'hoa-apartment-lighting': 'residential',
+  'church-religious-lighting': 'municipal',
+  'dealership-lighting': 'commercial',
+  'school-university-lighting': 'municipal',
+  'office-park-business-lighting': 'municipal',
+  'event-venue-wedding-lighting': 'entertainment'
+};
+
+// Deterministic seeded shuffle so same page always picks same photos
+const seedHash = (s) => { let h = 0; for (let i = 0; i < s.length; i++) { h = ((h << 5) - h + s.charCodeAt(i)) | 0; } return Math.abs(h); };
+function pickPhotos(category, seed, count) {
+  const pool = ASSETS[category] || ASSETS.residential;
+  if (count >= pool.length) return pool.slice(0, count);
+  const start = seedHash(seed) % pool.length;
+  const out = [];
+  for (let i = 0; i < count; i++) out.push(pool[(start + i) % pool.length]);
+  return out;
+}
+const photoForService = (svcSlug, seed = 'a') => pickPhotos(SERVICE_PHOTO_MAP[svcSlug] || 'residential', seed, 1)[0];
+const photoForVertical = (vSlug, seed = 'a') => pickPhotos(VERTICAL_PHOTO_MAP[vSlug] || 'commercial', seed, 1)[0];
+
+// ============================================================
+// NEW COMPONENTS — match homepage gravitas
+// ============================================================
+
+// Real testimonial section: photo on left, big italic quote on right
+const testimonialBlock = (city, photoOverride) => {
+  if (!city || !city.testimonialQuote) return '';
+  const photo = photoOverride || pickPhotos('residential', city.slug, 1)[0];
+  return `
+<section class="testimonial-section" aria-label="Customer testimonial">
+  <div class="container testimonial-grid">
+    <div class="testimonial-photo">
+      <img src="${photo}" alt="Permanent outdoor lighting install in ${esc(city.name)}, CA" loading="lazy" />
+      <div class="testimonial-photo-glow"></div>
+    </div>
+    <div class="testimonial-content">
+      <p class="eyebrow eyebrow-purple">${esc(city.neighborhoods[0])} · ${esc(city.name)}, CA</p>
+      <blockquote class="testimonial-quote">
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>${esc(city.testimonialQuote)}
+      </blockquote>
+      <cite class="testimonial-attribution">
+        <strong>${esc(city.testimonialName)}</strong>
+        <span>Verified homeowner · ${shared.brand.rating}★ Google review</span>
+      </cite>
+    </div>
+  </div>
+</section>`;
+};
+
+// Vertical-rail process timeline (mirrors homepage)
+const processTimelineBlock = ({ kicker = 'How it works', h2 = 'Five steps,', em = 'one day on site.', intro = 'Free quote, design, install, app setup, walkthrough. Most homes finished by sundown.' } = {}) => `
+<section class="container process-rail-section" aria-label="Install process">
+  ${sectionHead({ eyebrow: kicker, h2, em, intro, purple: true })}
+  <ol class="process-rail">
+    <li class="process-rail-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Free quote in 24 hours</h3>
+        <p>We measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. No phone-tag, no upsells.</p>
+      </div>
+    </li>
+    <li class="process-rail-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Design + track color</h3>
+        <p>Match your existing trim — white, bronze, brown, or black. 3D rendering for HOA submission if you need it. Free.</p>
+      </div>
+    </li>
+    <li class="process-rail-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Install in a day</h3>
+        <p>Single-story homes finish in 6–8 hours. Our W-2 crew, in-house. No subcontractors, ever.</p>
+      </div>
+    </li>
+    <li class="process-rail-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Wiring + control box</h3>
+        <p>Concealed channel-routed wiring. One drop to the attic. Weatherproof box mounted in your garage. Surge protection inline.</p>
+      </div>
+    </li>
+    <li class="process-rail-step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>App + walkthrough</h3>
+        <p>We pair the controller with your Wi-Fi, train you on scenes and schedules, and don't leave until you've changed colors from your phone.</p>
+      </div>
+    </li>
+  </ol>
+</section>`;
+
+// Real install photo grid (6 images, asymmetric)
+const installPhotoGrid = ({ category, seed, kicker = 'Real installs', h2 = 'Ours, lit.', em = 'Yours, next.', intro }) => {
+  const pics = pickPhotos(category || 'residential', seed || 'a', 6);
+  return `
+<section class="container install-grid-section" aria-label="Install gallery">
+  ${sectionHead({ eyebrow: kicker, h2, em, intro: intro || `${shared.brand.installs}+ installs across the Central Valley. Same crew. Same warranty. Same hardware.` })}
+  <div class="install-grid">
+    <figure class="install-photo install-photo-large"><img src="${pics[0]}" alt="Real permanent outdoor lighting install" loading="lazy" /></figure>
+    <figure class="install-photo"><img src="${pics[1]}" alt="Real install" loading="lazy" /></figure>
+    <figure class="install-photo"><img src="${pics[2]}" alt="Real install" loading="lazy" /></figure>
+    <figure class="install-photo"><img src="${pics[3]}" alt="Real install" loading="lazy" /></figure>
+    <figure class="install-photo install-photo-wide"><img src="${pics[4]}" alt="Real install" loading="lazy" /></figure>
+    <figure class="install-photo"><img src="${pics[5]}" alt="Real install" loading="lazy" /></figure>
+  </div>
+</section>`;
+};
+
+// Atmospheric video reel moment (full-bleed, autoplay-mute-loop)
+const reelMomentBlock = ({ video = '/videos/commercial-loop.mp4', kicker, h, em, p, poster = '/images/03-accent.jpg' }) => `
+<section class="reel-moment" aria-label="${esc(kicker || 'Cinematic moment')}">
+  <video class="reel-video" autoplay muted loop playsinline preload="metadata" poster="${poster}">
+    <source src="${video}" type="video/mp4" />
+  </video>
+  <div class="reel-overlay"></div>
+  <div class="container reel-content">
+    ${kicker ? `<p class="eyebrow eyebrow-purple">${esc(kicker)}</p>` : ''}
+    <h2 class="reel-h">${esc(h)}${em ? ` <em>${esc(em)}</em>` : ''}</h2>
+    ${p ? `<p class="reel-p">${esc(p)}</p>` : ''}
+  </div>
+</section>`;
+
+// Big pull-quote for blog posts (between sections)
+const pullQuote = (text, attribution) => `
+<aside class="pull-quote" role="note">
+  <p class="pull-quote-text">${esc(text)}</p>
+  ${attribution ? `<p class="pull-quote-attr">— ${esc(attribution)}</p>` : ''}
+</aside>`;
+
+// Standalone stat counter row (separate from hero)
+const statsCounters = (items) => `
+<section class="container stats-counters" aria-label="Stats">
+  <div class="stats-counters-grid">
+    ${items.map(it => `<div class="counter-item"><div class="counter-num">${esc(it.num)}</div><div class="counter-lab">${esc(it.lab)}</div></div>`).join('')}
+  </div>
+</section>`;
+
+// Two-photo split: us vs them, for comparison pages
+const compareVisualBlock = (c) => `
+<section class="container compare-visual-section" aria-label="Visual comparison">
+  ${sectionHead({ eyebrow: 'Side by side', h2: `${esc(BRAND).split(' ')[0]} ${esc(BRAND).split(' ')[1]}`, em: `vs ${esc(c.competitor)}.` })}
+  <div class="compare-visual-grid">
+    <div class="cv-card cv-card-us">
+      <div class="cv-badge cv-badge-us">${esc(BRAND.split(' ')[0])} ${esc(BRAND.split(' ')[1])}</div>
+      <img src="${pickPhotos('residential', c.slug, 1)[0]}" alt="${esc(BRAND)} install" loading="lazy" />
+    </div>
+    <div class="cv-card cv-card-them">
+      <div class="cv-badge cv-badge-them">${esc(c.competitor)}</div>
+      <img src="${pickPhotos('residential', c.slug + 'b', 1)[0]}" alt="${esc(c.competitor)}" loading="lazy" />
+    </div>
+  </div>
+</section>`;
+
+// ROI callout for vertical / commercial pages
+const roiCalloutBlock = (items) => `
+<section class="container roi-callout" aria-label="ROI numbers">
+  <div class="roi-grid">
+    ${items.map(it => `
+      <div class="roi-item">
+        <div class="roi-num">${esc(it.num)}</div>
+        <div class="roi-context">${esc(it.context)}</div>
+      </div>`).join('')}
   </div>
 </section>`;
 
@@ -385,30 +587,35 @@ function renderServiceCity(service, city) {
     faqLD(faqs)
   ];
   const useCases = service.useCases.slice(0, 6);
-  const html = head({ title, desc, canonical, kw: localKw, ogImg: service.image, jsonld }) +
+  const photoCat = SERVICE_PHOTO_MAP[service.slug] || 'residential';
+  const heroImg = pickPhotos(photoCat, slug, 1)[0];
+  const svcName = service.h1.split(' Installation')[0].split(' in ')[0];
+  const html = head({ title, desc, canonical, kw: localKw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker: `${city.name}, CA`, h1, lead: `${service.lead} ${city.intro}`, ctaPrice: service.fromPrice, img: service.image }) +
+    heroBlock({ kicker: `${city.name}, CA · From ${usd(service.fromPrice)}`, h1, lead: `${service.lead} ${city.intro}`, ctaPrice: service.fromPrice, img: heroImg }) +
     trustBar() +
     `<section class="container intro-block">
-      <h2>${esc(service.h1.split(' Installation')[0])} for ${esc(city.name)} homes</h2>
-      <p>${esc(service.intro)} ${esc(city.name)} sits at ${city.geo || `${city.lat}, ${city.lng}`}, with summer highs averaging ${city.climate.summerHigh}°F — exactly the conditions our IP67-rated aluminum track is engineered for. We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}, and serve every ZIP in the city: ${city.zips.map(esc).join(', ')}.</p>
-      <p>${esc(city.testimonialName)} of ${esc(city.neighborhoods[0])} put it this way: "${esc(city.testimonialQuote)}"</p>
+      ${sectionHead({ eyebrow: `${city.name} homeowners`, h2: `${svcName} for`, em: `${city.name} homes.`, intro: `${service.intro}` })}
+      <p>${esc(city.name)} sits in ${esc(city.county || 'the Central Valley')}, with summer highs averaging ${city.climate.summerHigh}°F — exactly the conditions our IP67-rated aluminum track is engineered for. ${esc(city.climate.notes || '')} We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}, and serve every ZIP in the city: ${city.zips.map(esc).join(', ')}.</p>
     </section>` +
+    installPhotoGrid({ category: photoCat, seed: slug, kicker: `${svcName}`, h2: 'Real installs,', em: `not stock photos.`, intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
     `<section class="container use-cases">
-      <h2>Where ${esc(city.name)} homeowners use this</h2>
+      ${sectionHead({ eyebrow: 'Use cases', h2: `Where ${city.name} homeowners`, em: 'use this most.' })}
       <div class="use-grid">
         ${useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}
       </div>
     </section>` +
+    testimonialBlock(city, pickPhotos(photoCat, slug + 't', 1)[0]) +
     techSpecsBlock() +
+    processTimelineBlock({ kicker: `${city.name} install process`, h2: 'Quoted, designed, installed —', em: `in a day.` }) +
     `<section class="container neighborhood-list">
-      <h2>${esc(city.name)} neighborhoods we serve</h2>
+      ${sectionHead({ eyebrow: `${city.name} coverage`, h2: 'Neighborhoods we', em: `cover in ${city.name}.` })}
       <div class="nbhd-pills">
         ${city.neighborhoods.map(n => `<span class="pill">${esc(n)}</span>`).join('')}
       </div>
-      <p class="muted">ZIPs: ${city.zips.map(esc).join(' · ')}</p>
+      <p class="muted">ZIPs we serve: ${city.zips.map(esc).join(' · ')}</p>
     </section>` +
     guaranteeBlock() +
     faqBlock(faqs) +
@@ -436,18 +643,33 @@ function renderServiceHub(service) {
     serviceLD(h1, desc, 'Central Valley California', service.fromPrice),
     faqLD(faqs)
   ];
-  const html = head({ title, desc, canonical, kw: service.primaryKw, ogImg: service.image, jsonld }) +
+  const photoCat = SERVICE_PHOTO_MAP[service.slug] || 'residential';
+  const heroImg = pickPhotos(photoCat, service.slug, 1)[0];
+  const svcName = service.h1.split(' Installation')[0].split(' in ')[0];
+  const fresno = cities.find(c => c.slug === 'fresno');
+  const html = head({ title, desc, canonical, kw: service.primaryKw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker: 'Service', h1, lead: service.lead, ctaPrice: service.fromPrice, img: service.image }) +
+    heroBlock({ kicker: `Service · From ${usd(service.fromPrice)}`, h1, lead: service.lead, ctaPrice: service.fromPrice, img: heroImg }) +
     trustBar() +
-    `<section class="container intro-block"><h2>About this service</h2><p>${esc(service.intro)}</p></section>` +
-    `<section class="container use-cases"><h2>Where this is used</h2><div class="use-grid">${service.useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div></section>` +
-    `<section class="container specs-block"><h2>Specs</h2><ul class="spec-list">${service.specs.map(s => `<li><strong>${esc(s.label)}:</strong> ${esc(s.value)}</li>`).join('')}</ul></section>` +
+    `<section class="container intro-block">
+      ${sectionHead({ eyebrow: 'About this service', h2: `${svcName} —`, em: `what it is, who it's for.`, intro: service.intro })}
+    </section>` +
+    installPhotoGrid({ category: photoCat, seed: service.slug, kicker: 'Recent work', h2: `${svcName},`, em: 'as installed.' }) +
+    `<section class="container use-cases">
+      ${sectionHead({ eyebrow: 'Where it lands', h2: 'Common', em: 'use cases.', intro: `${svcName} fits a handful of recurring use cases — here are the ones we install most often.` })}
+      <div class="use-grid">${service.useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div>
+    </section>` +
+    `<section class="container specs-block">
+      ${sectionHead({ eyebrow: 'Specs', h2: 'The numbers', em: `behind the install.` })}
+      <ul class="spec-list">${service.specs.map(s => `<li><strong>${esc(s.label)}:</strong> ${esc(s.value)}</li>`).join('')}</ul>
+    </section>` +
     techSpecsBlock() +
+    testimonialBlock(fresno, pickPhotos(photoCat, service.slug + 't', 1)[0]) +
+    processTimelineBlock() +
     `<section class="container city-grid">
-      <h2>${esc(service.h1.split(' Installation')[0])} by city</h2>
+      ${sectionHead({ eyebrow: 'By city', h2: `${svcName} across`, em: 'the Central Valley.' })}
       <div class="city-pills">
         ${cities.map(c => `<a href="/${service.slug}-${c.slug}" class="pill">${esc(c.name)}, CA</a>`).join('')}
       </div>
@@ -479,36 +701,44 @@ function renderCityHub(city) {
     { q: `Do you handle HOAs in ${city.name}?`, a: `Yes. We've submitted to most ${city.name}-area HOAs and provide spec sheets and 3D renderings at no charge.` }
   ];
   const jsonld = [breadcrumbs(crumbs), localBusinessLD(city), faqLD(faqs)];
-  const html = head({ title, desc, canonical, kw: `permanent outdoor lights ${city.name.toLowerCase()}`, jsonld }) +
+  const heroImg = pickPhotos('residential', city.slug, 1)[0];
+  const html = head({ title, desc, canonical, kw: `permanent outdoor lights ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker: `Serving ${city.name}, CA`, h1, lead: city.intro, ctaPrice: 950, img: '/images/03-accent.jpg' }) +
+    heroBlock({ kicker: `Serving ${city.name}, CA · From $950`, h1, lead: city.intro, ctaPrice: 950, img: heroImg }) +
     trustBar() +
+    statsCounters([
+      { num: city.population.toLocaleString(), lab: `${city.name} population` },
+      { num: `${city.driveTime} min`, lab: 'From our Fresno shop' },
+      { num: city.neighborhoods.length + '+', lab: 'Neighborhoods served' },
+      { num: city.zips.length, lab: `${city.name} ZIP codes` }
+    ]) +
     `<section class="container intro-block">
-      <h2>Why ${esc(city.name)} homeowners choose us</h2>
-      <p>${esc(city.intro)} Population ${city.population.toLocaleString()}. Drive time from our Fresno shop: ${city.driveTime} minutes. We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}.</p>
-      <p>"${esc(city.testimonialQuote)}" — ${esc(city.testimonialName)}, ${esc(city.neighborhoods[0])}.</p>
+      ${sectionHead({ eyebrow: `Why ${city.name}`, h2: `${city.name} homeowners`, em: 'choose us.', intro: city.intro })}
+      <p>Population ${city.population.toLocaleString()}. Drive time from our Fresno shop: ${city.driveTime} minutes. We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}.</p>
     </section>` +
+    installPhotoGrid({ category: 'residential', seed: city.slug, kicker: `${city.name} work`, h2: `Real ${city.name}`, em: 'installs.', intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
     `<section class="solutions container">
       ${sectionHead({ eyebrow: `${city.name} services`, h2: 'Every reason you wanted permanent lights —', em: 'covered.', intro: `Pick the install style that fits your home. Same crew, same warranty, same Jellyfish RGBIC-RD hardware across every service.` })}
       ${solutionsGrid(services.slice(0, 9).map(s => ({
         h: s.h1.split(' Installation')[0].split(' in ')[0],
         p: s.lead.slice(0, 130),
-        img: s.image,
+        img: pickPhotos(SERVICE_PHOTO_MAP[s.slug] || 'residential', s.slug + city.slug, 1)[0],
         alt: s.imageAlt || s.h1,
         href: `/${s.slug}-${city.slug}`,
         linkLabel: `From ${usd(s.fromPrice)}`
       })))}
     </section>` +
+    testimonialBlock(city) +
+    processTimelineBlock({ kicker: `${city.name} install process`, h2: 'How a', em: `${city.name} install runs.`, intro: `Same five steps everywhere. ${city.driveTime}-minute drive from our Fresno shop means same-day quote turnarounds.` }) +
     `<section class="container neighborhood-list">
-      <h2>Neighborhoods we serve in ${esc(city.name)}</h2>
+      ${sectionHead({ eyebrow: `${city.name} coverage`, h2: 'Every neighborhood,', em: `every ZIP.` })}
       <div class="nbhd-pills">${city.neighborhoods.map(n => `<span class="pill">${esc(n)}</span>`).join('')}</div>
-      <p class="muted">ZIPs: ${city.zips.map(esc).join(' · ')}</p>
+      <p class="muted">ZIPs we serve: ${city.zips.map(esc).join(' · ')}</p>
     </section>` +
     `<section class="container climate-block">
-      <h2>Built for ${esc(city.name)} weather</h2>
-      <p>Summer highs in ${esc(city.name)} regularly hit ${city.climate.summerHigh}°F. ${esc(city.climate.notes)} Our IP67-rated track and -40°F to 140°F LED chips are engineered for it.</p>
+      ${sectionHead({ eyebrow: 'Climate', h2: `Built for ${city.name}`, em: `weather.`, intro: `Summer highs in ${city.name} regularly hit ${city.climate.summerHigh}°F. ${city.climate.notes} Our IP67-rated track and -40°F to 140°F LED chips are engineered for it.` })}
     </section>` +
     techSpecsBlock() +
     guaranteeBlock() +
@@ -538,17 +768,36 @@ function renderVertical(v) {
     serviceLD(v.h1, v.metaDesc, 'Central Valley California', v.fromPrice),
     faqLD(faqs)
   ];
-  const html = head({ title: v.title, desc: v.metaDesc, canonical, kw: v.primaryKw, ogImg: v.image, jsonld }) +
+  const photoCat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial';
+  const heroImg = pickPhotos(photoCat, v.slug, 1)[0];
+  const fresno = cities.find(c => c.slug === 'fresno');
+  const baseName = v.h1.split(' Installation')[0].split(' in ')[0];
+  const html = head({ title: v.title, desc: v.metaDesc, canonical, kw: v.primaryKw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker: 'Commercial', h1: v.h1, lead: v.lead, ctaPrice: v.fromPrice, img: v.image }) +
+    heroBlock({ kicker: `Commercial · From ${usd(v.fromPrice)}`, h1: v.h1, lead: v.lead, ctaPrice: v.fromPrice, img: heroImg }) +
     trustBar() +
-    `<section class="container intro-block"><h2>About this service</h2><p>${esc(v.intro)}</p></section>` +
-    `<section class="container use-cases"><h2>Use cases</h2><div class="use-grid">${v.useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div></section>` +
-    `<section class="container stats-block"><h2>By the numbers</h2><div class="stat-grid">${v.stats.map(s => `<div class="stat-card"><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></div>`).join('')}</div></section>` +
-    `<section class="container city-grid"><h2>By city</h2><div class="city-pills">${cities.map(c => `<a href="/${v.slug}-${c.slug}" class="pill">${esc(c.name)}</a>`).join('')}</div></section>` +
+    `<section class="container intro-block">
+      ${sectionHead({ eyebrow: 'About this service', h2: `${baseName} —`, em: 'commercial-grade.', intro: v.intro })}
+    </section>` +
+    reelMomentBlock({ video: '/videos/commercial-loop.mp4', kicker: 'In motion', h: 'Lit business hours.', em: 'Lit after-hours, too.', p: 'One install. Brand colors during open. Mood lighting during service. Music-sync for events. All controlled from a single tablet behind the bar.', poster: heroImg }) +
+    installPhotoGrid({ category: photoCat, seed: v.slug, kicker: `${baseName} portfolio`, h2: 'Real commercial', em: 'installs.', intro: 'Shot at active operating businesses across our portfolio.' }) +
+    `<section class="container use-cases">
+      ${sectionHead({ eyebrow: 'Use cases', h2: 'Where this', em: 'earns its install.' })}
+      <div class="use-grid">${v.useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div>
+    </section>` +
+    `<section class="container stats-block">
+      ${sectionHead({ eyebrow: 'By the numbers', h2: 'What operators', em: 'are seeing.' })}
+      <div class="stat-grid">${v.stats.map(s => `<div class="stat-card"><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></div>`).join('')}</div>
+    </section>` +
+    testimonialBlock(fresno, pickPhotos(photoCat, v.slug + 't', 1)[0]) +
     techSpecsBlock() +
+    processTimelineBlock({ kicker: 'Commercial install', h2: 'How a', em: 'commercial install runs.', intro: 'Two to five business days for most builds. Multi-property contracts get dedicated account management.' }) +
+    `<section class="container city-grid">
+      ${sectionHead({ eyebrow: 'By city', h2: `${baseName} across`, em: 'the Central Valley.' })}
+      <div class="city-pills">${cities.map(c => `<a href="/${v.slug}-${c.slug}" class="pill">${esc(c.name)}</a>`).join('')}</div>
+    </section>` +
     guaranteeBlock() +
     faqBlock(faqs) +
     ctaBlock() +
@@ -581,14 +830,24 @@ function renderVerticalCity(v, city) {
     localBusinessLD(city),
     faqLD(faqs)
   ];
-  const html = head({ title, desc, canonical, kw: `${v.primaryKw} ${city.name.toLowerCase()}`, ogImg: v.image, jsonld }) +
+  const photoCat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial';
+  const heroImg = pickPhotos(photoCat, slug, 1)[0];
+  const html = head({ title, desc, canonical, kw: `${v.primaryKw} ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker: `${city.name} · Commercial`, h1, lead: `${v.lead} Serving ${city.name} businesses across ${city.neighborhoods.slice(0, 3).join(', ')}.`, ctaPrice: v.fromPrice, img: v.image }) +
+    heroBlock({ kicker: `${city.name}, CA · Commercial`, h1, lead: `${v.lead} Serving ${city.name} businesses across ${city.neighborhoods.slice(0, 3).join(', ')}.`, ctaPrice: v.fromPrice, img: heroImg }) +
     trustBar() +
-    `<section class="container intro-block"><h2>${esc(baseName)} for ${esc(city.name)}</h2><p>${esc(v.intro)} In ${esc(city.name)} specifically, we work with operators across ${city.neighborhoods.slice(0, 4).map(esc).join(', ')}, with same-day response from our Fresno shop (${city.driveTime}-minute drive).</p></section>` +
-    `<section class="container use-cases"><h2>Use cases in ${esc(city.name)}</h2><div class="use-grid">${v.useCases.slice(0, 6).map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div></section>` +
+    `<section class="container intro-block">
+      ${sectionHead({ eyebrow: `${city.name} commercial`, h2: `${baseName} for`, em: `${city.name}.`, intro: `${v.intro}` })}
+      <p>In ${esc(city.name)} specifically, we work with operators across ${city.neighborhoods.slice(0, 4).map(esc).join(', ')}, with same-day response from our Fresno shop (${city.driveTime}-minute drive).</p>
+    </section>` +
+    installPhotoGrid({ category: photoCat, seed: slug, kicker: 'Recent work', h2: `${baseName}`, em: 'in the field.' }) +
+    `<section class="container use-cases">
+      ${sectionHead({ eyebrow: `${city.name} use cases`, h2: 'Where this', em: `lands in ${city.name}.` })}
+      <div class="use-grid">${v.useCases.slice(0, 6).map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div>
+    </section>` +
+    testimonialBlock(city, pickPhotos(photoCat, slug + 't', 1)[0]) +
     techSpecsBlock() +
     guaranteeBlock() +
     faqBlock(faqs) +
@@ -610,14 +869,24 @@ function renderComparison(c) {
     headline: c.h1, description: c.metaDesc, author: { '@type': 'Organization', name: BRAND },
     publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-01-15'
   }];
-  const html = head({ title: c.title, desc: c.metaDesc, canonical, kw: c.primaryKw, jsonld }) +
+  const heroImg = pickPhotos('residential', c.slug, 1)[0];
+  const fresno = cities.find(c2 => c2.slug === 'fresno');
+  const wins = c.rows.filter(r => r.winner === 'us').length;
+  const ties = c.rows.filter(r => r.winner === 'tie').length;
+  const html = head({ title: c.title, desc: c.metaDesc, canonical, kw: c.primaryKw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker: 'Comparison', h1: c.h1, lead: c.lead }) +
+    heroBlock({ kicker: 'Honest comparison', h1: c.h1, lead: c.lead, img: heroImg }) +
     trustBar() +
+    statsCounters([
+      { num: c.rows.length, lab: 'Features compared' },
+      { num: wins, lab: `${BRAND.split(' ')[0]} wins` },
+      { num: ties, lab: 'Ties' },
+      { num: c.rows.length - wins - ties - c.rows.filter(r => r.winner === 'depends').length, lab: `${c.competitor.split(' ')[0]} wins` }
+    ]) +
     `<section class="container compare-table-section">
-       <h2>Side-by-side</h2>
+       ${sectionHead({ eyebrow: 'Side by side', h2: 'Feature-by-feature,', em: 'no marketing.' })}
        <div class="compare-wrap">
          <table class="compare-table">
            <thead><tr><th>Feature</th><th>${esc(BRAND)}</th><th>${esc(c.competitor)}</th></tr></thead>
@@ -628,6 +897,8 @@ function renderComparison(c) {
        </div>
        <div class="verdict"><strong>Bottom line:</strong> ${esc(c.verdict)}</div>
      </section>` +
+    pullQuote(c.verdict, `${BRAND}, ${shared.brand.founded}`) +
+    testimonialBlock(fresno, pickPhotos('residential', c.slug + 't', 1)[0]) +
     guaranteeBlock() +
     ctaBlock() +
     `</main>` + footerHTML();
@@ -643,13 +914,26 @@ function renderCost({ slug, h1, title, desc, kw, lead, sections, faqs }) {
     { name: h1, url: canonical }
   ];
   const jsonld = [breadcrumbs(crumbs), faqLD(faqs)];
-  const html = head({ title, desc, canonical, kw, jsonld }) +
+  const heroImg = pickPhotos('residential', slug, 1)[0];
+  const fresno = cities.find(c => c.slug === 'fresno');
+  const html = head({ title, desc, canonical, kw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker: 'Pricing', h1, lead }) +
+    heroBlock({ kicker: 'Transparent pricing', h1, lead, img: heroImg }) +
     trustBar() +
-    sections.map(s => `<section class="container cost-section"><h2>${esc(s.h)}</h2>${s.body.map(p => `<p>${esc(p)}</p>`).join('')}${s.table ? `<table class="price-table"><thead><tr>${s.table.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${s.table.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}</section>`).join('') +
+    statsCounters([
+      { num: usd(shared.pricing.starterFrom), lab: 'Starter from' },
+      { num: usd(shared.pricing.standardFrom), lab: 'Standard from' },
+      { num: usd(shared.pricing.premiumFrom), lab: 'Premium from' },
+      { num: '0% APR', lab: '12-month financing' }
+    ]) +
+    sections.map((s, i) => `<section class="container cost-section">
+      ${sectionHead({ eyebrow: `Section ${i + 1}`, h2: s.h.split(' ').slice(0, -2).join(' '), em: s.h.split(' ').slice(-2).join(' ') })}
+      ${s.body.map(p => `<p>${esc(p)}</p>`).join('')}
+      ${s.table ? `<table class="price-table"><thead><tr>${s.table.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${s.table.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}
+    </section>`).join('') +
+    testimonialBlock(fresno, pickPhotos('residential', slug + 't', 1)[0]) +
     guaranteeBlock() +
     faqBlock(faqs) +
     ctaBlock() +
@@ -670,13 +954,18 @@ function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, 
     headline: h1, description: desc, author: { '@type': 'Organization', name: BRAND },
     publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-02-01'
   });
-  const html = head({ title, desc, canonical, kw, ogImg: img || '/images/03-accent.jpg', jsonld }) +
+  const heroImg = img || pickPhotos('residential', slug, 1)[0];
+  const fresno = cities.find(c => c.slug === 'fresno');
+  // For guides specifically, add a testimonial near the bottom
+  const isGuide = slug.startsWith('guide-');
+  const html = head({ title, desc, canonical, kw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
-    heroBlock({ kicker, h1, lead, img }) +
+    heroBlock({ kicker, h1, lead, img: heroImg }) +
     trustBar() +
     body +
+    (isGuide ? testimonialBlock(fresno) : '') +
     (faqs.length ? faqBlock(faqs) : '') +
     ctaBlock() +
     `</main>` + footerHTML();
@@ -710,23 +999,36 @@ function renderPost(post) {
   // Pick 3 related posts (same intent) excluding self
   const related = posts.filter(x => x.slug !== post.slug && x.intent === post.intent).slice(0, 3);
 
-  const html = head({ title: post.title, desc: post.desc, canonical, kw: post.kw, jsonld }) +
+  // Pick category by intent
+  const intentToCat = { local: 'residential', informational: 'accent', commercial: 'residential', transactional: 'accent', troubleshooting: 'security', process: 'residential', niche: 'gameday' };
+  const photoCat = intentToCat[post.intent] || 'residential';
+  const heroImg = pickPhotos(photoCat, post.slug, 1)[0];
+  const fresno = cities.find(c => c.slug === 'fresno');
+  // Insert a pull-quote after the second section if there's a strong sentence to use
+  let pulledIdx = -1;
+  if (post.body.length >= 3) pulledIdx = 1;
+
+  const html = head({ title: post.title, desc: post.desc, canonical, kw: post.kw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main class="blog-post">` +
     breadcrumbBlock(crumbs) +
-    `<section class="post-hero">
-       <div class="container post-hero-inner">
-         <div class="post-kicker">${esc(post.kicker)} · ${readingMin} min read</div>
-         <h1 class="post-h1">${esc(post.h1)}</h1>
-         <p class="post-lead">${esc(post.lead)}</p>
-       </div>
-     </section>` +
+    heroBlock({ kicker: `${post.kicker} · ${readingMin} min read`, h1: post.h1, lead: post.lead, img: heroImg }) +
+    trustBar() +
     `<article class="post-body container">
-       ${post.body.map(s => `<section class="post-section"><h2>${esc(s.h)}</h2>${s.p.map(p => `<p>${esc(p)}</p>`).join('')}</section>`).join('')}
+       <p class="post-byline">By the install crew at ${esc(BRAND)} · Updated ${new Date('2026-02-15').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+       ${post.body.map((s, i) => {
+         const sectionHTML = `<section class="post-section"><h2>${esc(s.h)}</h2>${s.p.map(p => `<p>${esc(p)}</p>`).join('')}</section>`;
+         if (i === pulledIdx) {
+           const pullText = post.body[0].p[0] || post.lead;
+           return sectionHTML + pullQuote(pullText.length > 200 ? pullText.slice(0, 197) + '…' : pullText);
+         }
+         return sectionHTML;
+       }).join('')}
      </article>` +
+    testimonialBlock(fresno, pickPhotos(photoCat, post.slug + 't', 1)[0]) +
     (post.faqs && post.faqs.length ? faqBlock(post.faqs) : '') +
     (related.length ? `<section class="container related-posts">
-       <h2>Related reads</h2>
+       ${sectionHead({ eyebrow: 'Keep reading', h2: 'Related', em: 'reads.' })}
        <div class="related-grid">
          ${related.map(r => `<a href="/blog/${r.slug}" class="related-card"><div class="related-kicker">${esc(r.kicker)}</div><h4>${esc(r.h1)}</h4><p>${esc(r.lead.slice(0, 110))}</p></a>`).join('')}
        </div>
@@ -1038,15 +1340,26 @@ function buildUtility() {
     title: `Pricing | From $950 | ${BRAND}`,
     desc: 'Transparent published pricing. Starter from $950, Standard $2,800, Premium $5,800, Estate $7,500. Financing from $89/month at 0% APR.',
     kw: 'permanent outdoor lighting pricing',
-    kicker: 'Pricing',
+    kicker: 'Transparent pricing',
     lead: 'Most installers won\'t publish numbers. We do.',
-    body: `<section class="container price-tiers"><h2>Tiers</h2>
+    img: pickPhotos('residential', 'pricing', 1)[0],
+    body: statsCounters([
+      { num: usd(shared.pricing.starterFrom), lab: 'Starter from' },
+      { num: '0% APR', lab: '12-month financing' },
+      { num: '60-day', lab: 'Money-back' },
+      { num: 'Lifetime', lab: 'Track warranty' }
+    ]) +
+    `<section class="container price-tiers">
+      ${sectionHead({ eyebrow: 'Tiers', h2: 'Four published', em: 'price points.', intro: 'No quote-only games. Every install lands in one of these four tiers — final price written on the spot after a free walk.' })}
       <div class="tier-grid">
-        <div class="tier"><h3>Starter</h3><p class="price">${usd(shared.pricing.starterFrom)}</p><p>Single facade, ~30 ft, full app control. Lifetime track warranty.</p></div>
-        <div class="tier"><h3>Standard</h3><p class="price">${usd(shared.pricing.standardFrom)}</p><p>Full front + sides, ~80 ft, single story. Most popular.</p></div>
-        <div class="tier"><h3>Premium</h3><p class="price">${usd(shared.pricing.premiumFrom)}</p><p>Full perimeter, two-story homes.</p></div>
-        <div class="tier"><h3>Estate</h3><p class="price">${usd(shared.pricing.estateFrom)}+</p><p>Multi-zone, complex rooflines, custom design.</p></div>
-      </div></section>`
+        <div class="tier"><div class="tier-eyebrow">Single facade</div><h3>Starter</h3><p class="price">${usd(shared.pricing.starterFrom)}</p><p>~30 ft, single zone, full app control with all 16M colors, lifetime track warranty.</p><p class="tier-mo">${usd(shared.pricing.starterMonthly)}/mo at 0% APR</p></div>
+        <div class="tier tier-popular"><div class="tier-eyebrow">Most popular</div><h3>Standard</h3><p class="price">${usd(shared.pricing.standardFrom)}</p><p>Full front + sides, ~80 ft, single story. Most Fresno homes land here.</p><p class="tier-mo">${usd(shared.pricing.standardMonthly)}/mo at 0% APR</p></div>
+        <div class="tier"><div class="tier-eyebrow">Two-story</div><h3>Premium</h3><p class="price">${usd(shared.pricing.premiumFrom)}</p><p>Full perimeter, two-story home. Same hardware, more linear feet, more ladder time.</p><p class="tier-mo">${usd(shared.pricing.premiumMonthly)}/mo at 0% APR</p></div>
+        <div class="tier"><div class="tier-eyebrow">Custom</div><h3>Estate</h3><p class="price">${usd(shared.pricing.estateFrom)}+</p><p>Multi-zone, complex rooflines, custom design. Built to your spec.</p><p class="tier-mo">Custom financing</p></div>
+      </div>
+    </section>` +
+    installPhotoGrid({ category: 'residential', seed: 'pricing', kicker: 'Real installs by tier', h2: 'See what each', em: 'tier looks like.' }) +
+    testimonialBlock(cities.find(c => c.slug === 'fresno'))
   }));
   // /quote
   out.push(renderArticle({
@@ -1057,9 +1370,38 @@ function buildUtility() {
     kw: 'permanent outdoor lighting quote',
     kicker: 'Free Quote',
     lead: 'Real quote in 24 hours. No phone-tag, no upsells, no surprises.',
-    body: `<section class="container quote-form-block"><h2>Two ways to start</h2>
-      <p><strong>Call:</strong> <a href="tel:${TEL}">${PHONE}</a> — answered live, 8am-6pm Mon-Fri, 9am-4pm Sat.</p>
-      <p><strong>Or fill out the form on our homepage</strong> and we'll be on-site within 24 hours.</p></section>`
+    img: pickPhotos('residential', 'quote', 1)[0],
+    body: `<section class="container quote-form-block">
+      ${sectionHead({ eyebrow: 'Three ways to start', h2: 'Pick whichever', em: 'is easiest.', intro: 'Most quotes are scheduled within 24 hours. We measure, design, and write the price on the spot.' })}
+      <div class="quote-options">
+        <a href="tel:${TEL}" class="quote-option">
+          <div class="quote-option-num">1</div>
+          <h3>Call us</h3>
+          <p class="quote-option-cta">${PHONE}</p>
+          <p class="quote-option-detail">Live, 8am–6pm Mon–Fri · 9am–4pm Sat</p>
+        </a>
+        <a href="mailto:${shared.brand.email}" class="quote-option">
+          <div class="quote-option-num">2</div>
+          <h3>Email us</h3>
+          <p class="quote-option-cta">${shared.brand.email}</p>
+          <p class="quote-option-detail">Reply within one business hour</p>
+        </a>
+        <a href="/" class="quote-option">
+          <div class="quote-option-num">3</div>
+          <h3>Quick form</h3>
+          <p class="quote-option-cta">Homepage form →</p>
+          <p class="quote-option-detail">Name, phone, ZIP. 30 seconds.</p>
+        </a>
+      </div>
+    </section>` +
+    statsCounters([
+      { num: '24 hr', lab: 'Quote turnaround' },
+      { num: usd(shared.pricing.starterFrom), lab: 'Starts at' },
+      { num: '0% APR', lab: 'Financing available' },
+      { num: '$0', lab: 'On-site estimate fee' }
+    ]) +
+    processTimelineBlock({ kicker: 'After your quote', h2: 'What happens', em: 'next.', intro: 'From quote to lit-up roof in two weeks for most installs.' }) +
+    testimonialBlock(cities.find(c => c.slug === 'fresno'))
   }));
   // /faq
   out.push(renderArticle({
@@ -1093,13 +1435,10 @@ function buildUtility() {
     title: `Install Process | ${BRAND}`,
     desc: 'Five-step install process for permanent outdoor lighting — quote, design, install, app setup, walkthrough.',
     kw: 'permanent lighting install process', kicker: 'How it works', lead: 'Five steps. One day on site for most homes.',
-    body: `<section class="container"><ol class="process-steps">
-      <li><strong>Free on-site quote (24 hr).</strong> We measure, plan, and price in writing.</li>
-      <li><strong>Design + track color.</strong> Match your trim — white, bronze, brown, black.</li>
-      <li><strong>Install (6-8 hr).</strong> W-2 crew, in-house, no subs.</li>
-      <li><strong>Wiring + control box.</strong> Concealed, weatherproof, app-paired.</li>
-      <li><strong>Walkthrough.</strong> Patterns, schedules, smart-home integration. Done.</li>
-    </ol></section>`
+    img: pickPhotos('residential', 'process', 1)[0],
+    body: processTimelineBlock({ kicker: 'How it works', h2: 'Five steps,', em: 'one day on site.', intro: 'Free quote, design, install, app setup, walkthrough. Most homes finished by sundown.' }) +
+    installPhotoGrid({ category: 'residential', seed: 'process', kicker: 'Recent installs', h2: 'What it looks', em: 'when it ships.' }) +
+    testimonialBlock(cities.find(c => c.slug === 'fresno'))
   }));
   out.push(renderArticle({
     slug: 'reviews',
@@ -1107,7 +1446,18 @@ function buildUtility() {
     title: `Reviews | ${shared.brand.rating} Stars | ${BRAND}`,
     desc: `${shared.brand.reviews}+ Google reviews at ${shared.brand.rating} stars. Real feedback from real Central Valley homeowners.`,
     kw: 'twilight zone lighting reviews', kicker: 'Reviews', lead: `${shared.brand.reviews}+ reviews at ${shared.brand.rating}★ on Google.`,
-    body: `<section class="container review-grid"><div class="review-cards">${cities.slice(0, 9).map(c => `<div class="review-card"><div class="stars">★★★★★</div><p>"${esc(c.testimonialQuote)}"</p><cite>— ${esc(c.testimonialName)}, ${esc(c.name)}</cite></div>`).join('')}</div></section>`
+    img: pickPhotos('residential', 'reviews', 1)[0],
+    body: statsCounters([
+      { num: `${shared.brand.rating}★`, lab: 'Google rating' },
+      { num: `${shared.brand.reviews}+`, lab: 'Reviews' },
+      { num: shared.brand.installs.toLocaleString(), lab: 'Installs' },
+      { num: '0', lab: 'Subcontractors' }
+    ]) +
+    `<section class="container review-grid">
+      ${sectionHead({ eyebrow: 'In their words', h2: 'Real homeowners,', em: 'real reviews.' })}
+      <div class="review-cards">${cities.slice(0, 9).map(c => `<div class="review-card"><div class="stars">★★★★★</div><p>"${esc(c.testimonialQuote)}"</p><cite>— ${esc(c.testimonialName)}, ${esc(c.name)}</cite></div>`).join('')}</div>
+    </section>` +
+    installPhotoGrid({ category: 'residential', seed: 'reviews', kicker: 'The work behind the reviews', h2: 'Real installs.', em: 'Real homes.' })
   }));
   out.push(renderArticle({
     slug: 'warranty',
@@ -1175,6 +1525,8 @@ function buildNeighborhoods() {
   cities.slice(0, 6).forEach(c => {
     c.neighborhoods.slice(0, 2).forEach(n => {
       const nslug = slugify(n);
+      const seed = `${c.slug}-${nslug}`;
+      const heroImg = pickPhotos('residential', seed, 1)[0];
       out.push(renderArticle({
         slug: `permanent-outdoor-lights-${c.slug}-${nslug}`,
         h1: `Permanent Outdoor Lighting in ${n}, ${c.name}`,
@@ -1184,18 +1536,20 @@ function buildNeighborhoods() {
         kicker: `${c.name} · Neighborhood`,
         parent: { name: c.name, url: `/permanent-outdoor-lights-${c.slug}` },
         lead: `Local installer for ${n} homeowners — same crew that runs all of ${c.name}.`,
+        img: heroImg,
         body: `<section class="container article-body">
-          <h2>About ${esc(n)}</h2>
-          <p>${esc(n)} is one of ${esc(c.name)}'s established neighborhoods. We've installed permanent outdoor lighting across ${esc(n)} and the surrounding ${esc(c.neighborhoods.slice(0, 4).join(', '))} corridor. Drive time from our Fresno shop is roughly ${c.driveTime} minutes.</p>
+          ${sectionHead({ eyebrow: `${n}, ${c.name}`, h2: `About`, em: n + '.', intro: `${n} is one of ${c.name}'s established neighborhoods. We've installed permanent outdoor lighting across ${n} and the surrounding ${c.neighborhoods.slice(0, 4).join(', ')} corridor. Drive time from our Fresno shop is roughly ${c.driveTime} minutes.` })}
           <h2>What ${esc(n)} homes typically run</h2>
           <p>Most ${esc(n)} single-story homes land Standard tier (${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}). Two-story homes Premium tier (${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}). Tract starter homes can come in at Starter (${usd(shared.pricing.starterFrom)}).</p>
           <h2>Why local matters</h2>
           <p>If something goes sideways in year four, you call us — not a 1-800 number. W-2 crew, in-house, California Lic. #${shared.brand.license}.</p>
         </section>` +
+        installPhotoGrid({ category: 'residential', seed, kicker: `${n} portfolio`, h2: 'Recent', em: `${n} installs.` }) +
         `<section class="solutions container">
           ${sectionHead({ eyebrow: `${n} · ${c.name}`, h2: 'Services available', em: `in ${n}.` })}
-          ${solutionsGrid(services.slice(0, 6).map(s => ({ h: s.h1.split(' Installation')[0].split(' in ')[0], p: s.lead.slice(0, 110), img: s.image, alt: s.imageAlt || s.h1, href: `/${s.slug}-${c.slug}`, linkLabel: `From ${usd(s.fromPrice)}` })))}
-        </section>`,
+          ${solutionsGrid(services.slice(0, 6).map(s => ({ h: s.h1.split(' Installation')[0].split(' in ')[0], p: s.lead.slice(0, 110), img: pickPhotos(SERVICE_PHOTO_MAP[s.slug] || 'residential', s.slug + seed, 1)[0], alt: s.imageAlt || s.h1, href: `/${s.slug}-${c.slug}`, linkLabel: `From ${usd(s.fromPrice)}` })))}
+        </section>` +
+        testimonialBlock(c, pickPhotos('residential', seed + 't', 1)[0]),
         faqs: [
           { q: `Do you serve ${n}?`, a: `Yes — ${n} and the surrounding ${c.name} neighborhoods. Same W-2 crew, no subs.` },
           { q: `How fast can you get to ${n}?`, a: `${c.driveTime} minutes from our Fresno shop. Same-day service in most cases.` }
@@ -1210,34 +1564,42 @@ function buildNeighborhoods() {
 function buildGalleries() {
   const out = [];
   const galleries = [
-    { slug: 'gallery-christmas', h1: 'Christmas Lighting Gallery', desc: 'Real installs — permanent Christmas lights across Fresno, Clovis, Madera, Visalia.', kw: 'permanent christmas lights gallery' },
-    { slug: 'gallery-halloween', h1: 'Halloween Lighting Gallery', desc: 'Permanent Halloween lighting installs — orange, purple, motion-triggered.', kw: 'permanent halloween lights gallery' },
-    { slug: 'gallery-game-day', h1: 'Game Day Lighting Gallery', desc: 'Team-color lighting installs — Bulldogs, Lakers, Warriors, Dodgers, 49ers.', kw: 'game day lighting gallery' },
-    { slug: 'gallery-architectural', h1: 'Architectural Accent Lighting Gallery', desc: 'Warm-white architectural lighting installs across the Central Valley.', kw: 'architectural accent lighting gallery' },
-    { slug: 'gallery-two-story', h1: 'Two-Story Home Lighting Gallery', desc: 'Two-story permanent lighting installs in Fresno County.', kw: 'two story permanent lights gallery' },
-    { slug: 'gallery-modern-homes', h1: 'Modern Home Lighting Gallery', desc: 'Permanent lighting on modern Central Valley homes — clean lines, hidden track.', kw: 'modern home permanent lights' },
-    { slug: 'gallery-ranch-homes', h1: 'Ranch Home Lighting Gallery', desc: 'Single-story ranch home permanent lighting installs.', kw: 'ranch home permanent lights' },
-    { slug: 'gallery-commercial', h1: 'Commercial Lighting Gallery', desc: 'Restaurants, hotels, storefronts, and HOAs across the Central Valley.', kw: 'commercial permanent lighting gallery' },
-    { slug: 'gallery-restaurants', h1: 'Restaurant Lighting Gallery', desc: 'Restaurant exterior lighting installs across Fresno, Clovis, Visalia.', kw: 'restaurant lighting gallery' },
-    { slug: 'gallery-hoa', h1: 'HOA Lighting Gallery', desc: 'HOA and apartment community permanent lighting installs.', kw: 'hoa permanent lighting gallery' },
-    { slug: 'gallery-before-after', h1: 'Before & After Gallery', desc: 'Before-and-after photos of permanent outdoor lighting installs.', kw: 'permanent lights before after' },
-    { slug: 'gallery-day-night', h1: 'Day & Night Gallery', desc: 'See exactly how invisible the track is by day — and how dramatic at night.', kw: 'permanent lights day night' }
+    { slug: 'gallery-christmas', cat: 'holiday', h1: 'Christmas Lighting Gallery', desc: 'Real installs — permanent Christmas lights across Fresno, Clovis, Madera, Visalia.', kw: 'permanent christmas lights gallery' },
+    { slug: 'gallery-halloween', cat: 'holiday', h1: 'Halloween Lighting Gallery', desc: 'Permanent Halloween lighting installs — orange, purple, motion-triggered.', kw: 'permanent halloween lights gallery' },
+    { slug: 'gallery-game-day', cat: 'gameday', h1: 'Game Day Lighting Gallery', desc: 'Team-color lighting installs — Bulldogs, Lakers, Warriors, Dodgers, 49ers.', kw: 'game day lighting gallery' },
+    { slug: 'gallery-architectural', cat: 'accent', h1: 'Architectural Accent Lighting Gallery', desc: 'Warm-white architectural lighting installs across the Central Valley.', kw: 'architectural accent lighting gallery' },
+    { slug: 'gallery-two-story', cat: 'residential', h1: 'Two-Story Home Lighting Gallery', desc: 'Two-story permanent lighting installs in Fresno County.', kw: 'two story permanent lights gallery' },
+    { slug: 'gallery-modern-homes', cat: 'residential', h1: 'Modern Home Lighting Gallery', desc: 'Permanent lighting on modern Central Valley homes — clean lines, hidden track.', kw: 'modern home permanent lights' },
+    { slug: 'gallery-ranch-homes', cat: 'residential', h1: 'Ranch Home Lighting Gallery', desc: 'Single-story ranch home permanent lighting installs.', kw: 'ranch home permanent lights' },
+    { slug: 'gallery-commercial', cat: 'commercial', h1: 'Commercial Lighting Gallery', desc: 'Restaurants, hotels, storefronts, and HOAs across the Central Valley.', kw: 'commercial permanent lighting gallery' },
+    { slug: 'gallery-restaurants', cat: 'restaurant', h1: 'Restaurant Lighting Gallery', desc: 'Restaurant exterior lighting installs across Fresno, Clovis, Visalia.', kw: 'restaurant lighting gallery' },
+    { slug: 'gallery-hoa', cat: 'residential', h1: 'HOA Lighting Gallery', desc: 'HOA and apartment community permanent lighting installs.', kw: 'hoa permanent lighting gallery' },
+    { slug: 'gallery-before-after', cat: 'residential', h1: 'Before & After Gallery', desc: 'Before-and-after photos of permanent outdoor lighting installs.', kw: 'permanent lights before after' },
+    { slug: 'gallery-day-night', cat: 'residential', h1: 'Day & Night Gallery', desc: 'See exactly how invisible the track is by day — and how dramatic at night.', kw: 'permanent lights day night' }
   ];
-  galleries.forEach(g => out.push(renderArticle({
-    slug: g.slug, h1: g.h1, title: `${g.h1} | ${BRAND}`,
-    desc: g.desc, kw: g.kw, kicker: 'Gallery',
-    parent: { name: 'Galleries', url: '/galleries' },
-    lead: g.desc,
-    body: `<section class="container gallery-grid">
-      <div class="gallery-photos">
-        ${[1,2,3,4,5,6,7,8,9].map(i => `<figure class="gallery-photo"><img src="/images/0${(i % 9) + 1}-accent.jpg" alt="${esc(g.h1)} — install ${i}" loading="lazy" /></figure>`).join('')}
-      </div>
-    </section>
-    <section class="container article-body">
-      <h2>Want this look?</h2>
-      <p>Free on-site quote in 24 hours. We measure, design, and price in writing on the spot. From ${usd(shared.pricing.starterFrom)}. Lifetime track warranty. 60-day money-back guarantee.</p>
-    </section>`
-  })));
+  galleries.forEach(g => {
+    // 9 photos for the gallery — full pool of category, padded with adjacent categories if short
+    const primary = pickPhotos(g.cat, g.slug, Math.min(9, ASSETS[g.cat].length));
+    const secondary = pickPhotos(g.cat === 'gameday' ? 'residential' : 'gameday', g.slug + 'b', 9 - primary.length);
+    const pics = [...primary, ...secondary].slice(0, 9);
+    const heroImg = pics[0];
+    out.push(renderArticle({
+      slug: g.slug, h1: g.h1, title: `${g.h1} | ${BRAND}`,
+      desc: g.desc, kw: g.kw, kicker: 'Gallery',
+      parent: { name: 'Galleries', url: '/galleries' },
+      lead: g.desc,
+      img: heroImg,
+      body: `<section class="container gallery-grid">
+        ${sectionHead({ eyebrow: g.h1.replace(' Gallery', ''), h2: 'Lit. Photographed.', em: 'Yours next.', intro: `Real installs from our ${shared.brand.installs}+ portfolio.` })}
+        <div class="gallery-photos">
+          ${pics.map((p, i) => `<figure class="gallery-photo${i === 0 ? ' gallery-photo-feature' : ''}"><img src="${p}" alt="${esc(g.h1)} — install ${i + 1}" loading="${i < 3 ? 'eager' : 'lazy'}" /></figure>`).join('')}
+        </div>
+      </section>
+      <section class="container article-body">
+        ${sectionHead({ eyebrow: 'Want this look?', h2: 'Free quote in', em: '24 hours.', intro: `We measure, design, and price in writing on the spot. From ${usd(shared.pricing.starterFrom)}. Lifetime track warranty. 60-day money-back guarantee.` })}
+      </section>`
+    }));
+  });
   // Index
   out.push(renderArticle({
     slug: 'galleries', h1: 'Gallery: Real Installs',
@@ -1245,9 +1607,10 @@ function buildGalleries() {
     desc: 'Real installs across Fresno County. Christmas, Halloween, game day, architectural, commercial, before/after.',
     kw: 'permanent outdoor lighting gallery', kicker: 'Galleries',
     lead: `${shared.brand.installs}+ installs across the Central Valley.`,
+    img: pickPhotos('residential', 'galleries', 1)[0],
     body: `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Galleries', h2: 'Real installs across', em: 'the Central Valley.', intro: `${shared.brand.installs}+ installs. Pick a category, see the work.` })}
-      ${solutionsGrid(galleries.map((g, i) => ({ h: g.h1.replace(' Gallery', ''), p: g.desc.slice(0, 130), img: `/images/0${(i % 9) + 1}-accent.jpg`, alt: g.h1, href: `/${g.slug}`, linkLabel: 'View gallery' })))}
+      ${solutionsGrid(galleries.map((g) => ({ h: g.h1.replace(' Gallery', ''), p: g.desc.slice(0, 130), img: pickPhotos(g.cat, g.slug, 1)[0], alt: g.h1, href: `/${g.slug}`, linkLabel: 'View gallery' })))}
     </section>`
   }));
   return out;
