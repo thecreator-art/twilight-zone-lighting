@@ -1,0 +1,232 @@
+{
+  "comparisons": [
+    {
+      "slug": "twilight-zone-vs-jellyfish-lighting",
+      "type": "brand",
+      "competitor": "Jellyfish Lighting",
+      "h1": "Twilight Zone vs Jellyfish Lighting: Honest Side-by-Side (2026)",
+      "title": "Twilight Zone vs Jellyfish Lighting Comparison | Fresno, CA 2026",
+      "metaDesc": "We're an authorized Jellyfish Lighting dealer. Here's the honest comparison — what's the same, what's different, and what installation by Twilight Zone gets you in Fresno County.",
+      "primaryKw": "twilight zone vs jellyfish lighting",
+      "lead": "Short version: Jellyfish makes the track. We install it. You get the same factory warranty either way — what changes is who you call when something goes sideways.",
+      "verdict": "If you're in Fresno, Clovis, Madera, Visalia, Hanford or anywhere in the Central Valley, going through us means a local crew under California Lic. #1234567 — not a hand-off to a sub.",
+      "rows": [
+        {"feature": "Hardware", "us": "Genuine Jellyfish RGBIC-RD track", "them": "Genuine Jellyfish RGBIC-RD track", "winner": "tie"},
+        {"feature": "LED warranty", "us": "5 years (factory)", "them": "5 years (factory)", "winner": "tie"},
+        {"feature": "Track warranty", "us": "Lifetime", "them": "Lifetime", "winner": "tie"},
+        {"feature": "Install crew", "us": "W-2 employees, in-house", "them": "Varies by region (often subs)", "winner": "us"},
+        {"feature": "Local response", "us": "Same-day in Fresno County", "them": "Routed through HQ", "winner": "us"},
+        {"feature": "Pricing transparency", "us": "Published from $950", "them": "Quote-only", "winner": "us"},
+        {"feature": "60-day refund", "us": "Yes — pulled and refunded", "them": "Varies by dealer", "winner": "us"},
+        {"feature": "Financing", "us": "0% APR, 12 months", "them": "Varies by dealer", "winner": "tie"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-trimlight",
+      "type": "brand",
+      "competitor": "Trimlight",
+      "h1": "Twilight Zone vs Trimlight: Which Permanent Lighting System Wins?",
+      "title": "Trimlight vs Twilight Zone (Jellyfish) Comparison | 2026",
+      "metaDesc": "Trimlight vs Jellyfish-based permanent lighting from Twilight Zone. Track quality, app, warranty, and Central Valley install support compared.",
+      "primaryKw": "trimlight vs jellyfish",
+      "lead": "Both are real, both work. The differences are in the track profile, the app, and how repairs go in year four.",
+      "verdict": "Trimlight is solid older-generation hardware. Jellyfish RGBIC-RD (what we install) has finer pixel pitch and a cleaner app. Locally, we beat both on response time.",
+      "rows": [
+        {"feature": "LED type", "us": "RGBIC-RD (per-pixel control)", "them": "RGB (zone control)", "winner": "us"},
+        {"feature": "Pixel pitch", "us": "~4 inches", "them": "~6 inches", "winner": "us"},
+        {"feature": "Track color", "us": "White, black, bronze, brown", "them": "White, brown", "winner": "us"},
+        {"feature": "App", "us": "Jellyfish (200+ patterns)", "them": "Trimlight (50+ patterns)", "winner": "us"},
+        {"feature": "Smart home", "us": "Alexa, Google, Control4, Elan", "them": "Alexa, Google", "winner": "us"},
+        {"feature": "Warranty", "us": "Lifetime track / 5yr LED", "them": "Lifetime track / 3yr LED", "winner": "us"},
+        {"feature": "Local install", "us": "Twilight Zone, Fresno", "them": "Varies", "winner": "us"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-gemstone-lights",
+      "type": "brand",
+      "competitor": "Gemstone Lights",
+      "h1": "Gemstone Lights vs Twilight Zone (Jellyfish): The Real Differences",
+      "title": "Gemstone Lights vs Jellyfish Permanent Lighting | 2026",
+      "metaDesc": "Gemstone Lights compared to Jellyfish-based installs from Twilight Zone. Profile design, durability, app, and Central Valley support.",
+      "primaryKw": "gemstone lights vs jellyfish",
+      "lead": "Gemstone makes a clean profile. Jellyfish makes a cleaner one. Both deliver permanent outdoor lighting — here's where they actually differ.",
+      "verdict": "If invisibility from the curb during the day matters, Jellyfish RGBIC-RD wins. For the Central Valley specifically, our local crew closes it.",
+      "rows": [
+        {"feature": "Track visibility (day)", "us": "Tucked in soffit channel", "them": "Visible profile", "winner": "us"},
+        {"feature": "Pixel control", "us": "Per-LED (RGBIC)", "them": "Per-LED (RGBIC)", "winner": "tie"},
+        {"feature": "Pattern library", "us": "200+", "them": "100+", "winner": "us"},
+        {"feature": "Weather rating", "us": "IP67, -40 to 140°F", "them": "IP66", "winner": "us"},
+        {"feature": "Warranty", "us": "Lifetime / 5yr", "them": "Limited lifetime / 3yr", "winner": "us"},
+        {"feature": "Local install", "us": "In-house Fresno crew", "them": "Dealer network", "winner": "us"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-everlights",
+      "type": "brand",
+      "competitor": "EverLights",
+      "h1": "EverLights vs Twilight Zone (Jellyfish) Permanent Lighting",
+      "title": "EverLights vs Jellyfish Permanent Lighting Comparison | 2026",
+      "metaDesc": "EverLights individual-bulb systems compared to Jellyfish RGBIC-RD track from Twilight Zone. Look, feel, app, repair, and warranty.",
+      "primaryKw": "everlights vs jellyfish",
+      "lead": "EverLights uses individual bulbs that clip into a track. Jellyfish uses a continuous LED strip in a low-profile channel. Two different design philosophies.",
+      "verdict": "EverLights look more like classic Christmas bulbs. Jellyfish disappears during the day. Pick the look you want — both work.",
+      "rows": [
+        {"feature": "Daytime appearance", "us": "Nearly invisible track", "them": "Visible bulb sockets", "winner": "depends"},
+        {"feature": "Bulb replacement", "us": "Strip swap (rare)", "them": "Single bulb swap", "winner": "them"},
+        {"feature": "Pattern smoothness", "us": "Pixel-smooth gradients", "them": "Bulb-by-bulb steps", "winner": "us"},
+        {"feature": "Warranty", "us": "Lifetime / 5yr", "them": "Lifetime / 3yr", "winner": "us"},
+        {"feature": "Local Fresno install", "us": "Twilight Zone in-house", "them": "Limited", "winner": "us"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-oelo",
+      "type": "brand",
+      "competitor": "Oelo",
+      "h1": "Oelo vs Twilight Zone (Jellyfish) Permanent Lighting",
+      "title": "Oelo vs Jellyfish Lighting Comparison | Fresno 2026",
+      "metaDesc": "Oelo permanent lighting compared to Jellyfish RGBIC-RD installed by Twilight Zone. Profile, app, control, warranty, and California install support.",
+      "primaryKw": "oelo vs jellyfish",
+      "lead": "Oelo is one of the older permanent lighting brands. Jellyfish is newer hardware with a more refined app. Here's the matrix.",
+      "verdict": "Both are legitimate. Jellyfish wins on app and pixel density. Locally, we close the gap with same-day Central Valley response.",
+      "rows": [
+        {"feature": "Hardware generation", "us": "Current (RGBIC-RD)", "them": "Mature platform", "winner": "us"},
+        {"feature": "App polish", "us": "Modern UX", "them": "Functional", "winner": "us"},
+        {"feature": "Pattern library", "us": "200+", "them": "Custom-only", "winner": "us"},
+        {"feature": "Control protocols", "us": "WiFi + Control4 + Elan", "them": "WiFi", "winner": "us"},
+        {"feature": "Warranty", "us": "Lifetime / 5yr", "them": "Lifetime / 5yr", "winner": "tie"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-brite-idea",
+      "type": "brand",
+      "competitor": "Brite Idea",
+      "h1": "Brite Idea Lighting vs Twilight Zone (Jellyfish): Compared",
+      "title": "Brite Idea vs Jellyfish Lighting Comparison | 2026",
+      "metaDesc": "Brite Idea Lighting compared to Jellyfish RGBIC-RD installed by Twilight Zone in Fresno County. Hardware, control, warranty, support.",
+      "primaryKw": "brite idea vs jellyfish",
+      "lead": "Brite Idea is regional. Jellyfish is national. The hardware overlap is real but the control stack differs.",
+      "verdict": "For Central Valley homeowners who want Control4 or Nice Elan integration, Jellyfish through Twilight Zone is the cleaner pick.",
+      "rows": [
+        {"feature": "Smart-home protocols", "us": "Alexa, Google, Control4, Elan", "them": "Alexa, Google", "winner": "us"},
+        {"feature": "Pixel density", "us": "RGBIC-RD high density", "them": "Standard RGBIC", "winner": "us"},
+        {"feature": "Pattern library", "us": "200+", "them": "Custom", "winner": "us"},
+        {"feature": "Warranty", "us": "Lifetime / 5yr", "them": "Lifetime / 3yr", "winner": "us"},
+        {"feature": "Service area", "us": "Central Valley + Coast", "them": "Limited", "winner": "us"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-govee",
+      "type": "brand",
+      "competitor": "Govee Permanent Outdoor Lights",
+      "h1": "Govee Permanent Outdoor Lights vs Professional Install (Jellyfish)",
+      "title": "Govee Permanent Lights vs Jellyfish Professional Install | 2026",
+      "metaDesc": "Govee H7028 / Outdoor Pro DIY lights compared to professionally installed Jellyfish RGBIC-RD from Twilight Zone in Fresno County.",
+      "primaryKw": "govee vs jellyfish",
+      "lead": "Govee is a DIY product. Jellyfish (installed) is a permanent system. They're not the same category — but homeowners weigh them, so let's lay it out.",
+      "verdict": "Govee is a $400 weekend project. Jellyfish is a $3k+ installed system that disappears during the day and lasts 50,000+ hours. Different jobs, different tools.",
+      "rows": [
+        {"feature": "Installation", "us": "Professional, hidden", "them": "DIY, exposed clips", "winner": "us"},
+        {"feature": "Daytime look", "us": "Nearly invisible", "them": "Visible cable + clips", "winner": "us"},
+        {"feature": "Weather rating", "us": "IP67, -40 to 140°F", "them": "IP65", "winner": "us"},
+        {"feature": "Lifespan", "us": "50,000+ hours", "them": "~25,000 hours", "winner": "us"},
+        {"feature": "Warranty", "us": "Lifetime / 5yr", "them": "1-2 years", "winner": "us"},
+        {"feature": "Upfront cost", "us": "From $950 installed", "them": "$300-$600 DIY", "winner": "them"},
+        {"feature": "5-year total cost", "us": "Lower (no replacement)", "them": "Higher (1-2 replacements)", "winner": "us"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-seasonal-installer",
+      "type": "category",
+      "competitor": "Seasonal Christmas Light Installers",
+      "h1": "Permanent Lighting vs Annual Christmas Light Installation: 5-Year Math",
+      "title": "Permanent Lights vs Seasonal Christmas Light Service | Fresno 2026",
+      "metaDesc": "We ran the 5-year math. Permanent Jellyfish lighting from Twilight Zone vs annual seasonal Christmas light installation in Fresno County.",
+      "primaryKw": "permanent vs seasonal christmas lights",
+      "lead": "A typical 2,400 sq ft Fresno home pays $850-$1,400 every year for seasonal install + takedown. Five years of that buys you a permanent system that also covers Halloween, July 4th, game day, and accent lighting year-round.",
+      "verdict": "Past year three, permanent wins on cost. From day one, it wins on convenience.",
+      "rows": [
+        {"feature": "Year 1 cost", "us": "$2,800 (one-time)", "them": "$1,100 (recurring)", "winner": "them"},
+        {"feature": "Year 5 cumulative", "us": "$2,800", "them": "$5,500", "winner": "us"},
+        {"feature": "Holidays covered", "us": "Every holiday", "them": "Christmas only", "winner": "us"},
+        {"feature": "On your roof", "us": "Once, then never", "them": "Twice every year", "winner": "us"},
+        {"feature": "Storage", "us": "None", "them": "Boxes in garage", "winner": "us"},
+        {"feature": "Booking pressure", "us": "Year-round", "them": "Sells out by Oct", "winner": "us"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-diy-string-lights",
+      "type": "category",
+      "competitor": "DIY String Lights",
+      "h1": "Permanent Outdoor Lighting vs DIY String Lights: Honest Comparison",
+      "title": "Permanent Lights vs DIY String Lights | Fresno Comparison 2026",
+      "metaDesc": "DIY string lights vs professionally installed permanent outdoor lighting from Twilight Zone. Look, longevity, warranty, and 5-year cost compared.",
+      "primaryKw": "permanent lights vs string lights",
+      "lead": "String lights are charming for a backyard. They're not the answer for a roofline. Here's the breakdown most homeowners wish they'd seen first.",
+      "verdict": "Use string lights for patios and pergolas. Use permanent track for the roofline. They're complementary — not competing.",
+      "rows": [
+        {"feature": "Best use", "us": "Roofline, eaves, soffit", "them": "Patio, pergola, tree", "winner": "depends"},
+        {"feature": "Visible by day", "us": "No", "them": "Yes (cord visible)", "winner": "us"},
+        {"feature": "Color control", "us": "16M colors per pixel", "them": "On/off only (most)", "winner": "us"},
+        {"feature": "Replacement cycle", "us": "10+ years", "them": "1-3 years", "winner": "us"},
+        {"feature": "Wind/storm rating", "us": "IP67, attached", "them": "Hung loose", "winner": "us"},
+        {"feature": "Cost installed", "us": "From $950", "them": "$50-$200 DIY", "winner": "them"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-dusk-to-dawn",
+      "type": "category",
+      "competitor": "Dusk-to-Dawn Floodlights",
+      "h1": "Permanent Color Lighting vs Dusk-to-Dawn Floodlights",
+      "title": "Permanent Lights vs Dusk-to-Dawn Floods | Fresno 2026",
+      "metaDesc": "Dusk-to-dawn flood lights vs RGBIC permanent lighting from Twilight Zone in Fresno County. Security, ambiance, control, and value compared.",
+      "primaryKw": "permanent lights vs floodlights",
+      "lead": "Floodlights blast the yard. Permanent track outlines the architecture. One is a security tool, the other is design — and the right answer is usually both.",
+      "verdict": "Permanent lighting in warm-white mode does 90% of what floods do, plus it looks designed instead of utilitarian.",
+      "rows": [
+        {"feature": "Security coverage", "us": "Roofline + perimeter", "them": "Targeted hot spots", "winner": "tie"},
+        {"feature": "Curb appeal", "us": "Architectural outline", "them": "Glare", "winner": "us"},
+        {"feature": "Light spill into windows", "us": "Aimed down", "them": "Blasts everywhere", "winner": "us"},
+        {"feature": "Control", "us": "App, schedules, scenes", "them": "Sensor on/off", "winner": "us"},
+        {"feature": "Cost installed", "us": "From $950", "them": "$200-$600", "winner": "them"}
+      ]
+    },
+    {
+      "slug": "permanent-lighting-vs-rope-light",
+      "type": "category",
+      "competitor": "Rope / Tape Light Kits",
+      "h1": "Permanent Lighting vs Rope Light & LED Tape Kits",
+      "title": "Permanent Lights vs Rope Light Kits | 2026 Comparison",
+      "metaDesc": "Hardware-store rope light and LED tape kits compared to professionally installed Jellyfish permanent lighting from Twilight Zone in Fresno.",
+      "primaryKw": "permanent lights vs rope light",
+      "lead": "Rope light is for indoor accent or temporary outdoor use. Permanent track is engineered for 50,000+ hours outdoors. The gap is bigger than the price tag suggests.",
+      "verdict": "If it'll be up for one season, rope light is fine. If it stays up, permanent wins on cost-per-year by year two.",
+      "rows": [
+        {"feature": "Outdoor lifespan", "us": "50,000+ hours", "them": "~5,000 hours", "winner": "us"},
+        {"feature": "Pixel control", "us": "Per-LED RGBIC", "them": "Single-color zones", "winner": "us"},
+        {"feature": "Mounting", "us": "Permanent channel", "them": "Clips, zip ties", "winner": "us"},
+        {"feature": "Warranty", "us": "Lifetime / 5yr", "them": "90 days", "winner": "us"},
+        {"feature": "Cost", "us": "From $950 installed", "them": "$80-$300 DIY", "winner": "them"}
+      ]
+    },
+    {
+      "slug": "twilight-zone-vs-other-fresno-installers",
+      "type": "category",
+      "competitor": "Other Fresno Lighting Installers",
+      "h1": "Twilight Zone vs Other Fresno Permanent Lighting Installers",
+      "title": "Best Fresno Permanent Lighting Installer Comparison | 2026",
+      "metaDesc": "How Twilight Zone Permanent Lighting compares to other Fresno-area permanent lighting installers on hardware, warranty, response time, and pricing.",
+      "primaryKw": "best permanent lighting installer fresno",
+      "lead": "There are a handful of installers covering the Central Valley. Here's how we stack up on the things that actually matter once the truck is gone.",
+      "verdict": "We publish pricing, run W-2 crews, hold California Lic. #1234567, and respond same-day in Fresno County. Compare freely — we'll be on the short list.",
+      "rows": [
+        {"feature": "Published pricing", "us": "From $950, online", "them": "Quote only", "winner": "us"},
+        {"feature": "License", "us": "CA Lic. #1234567", "them": "Varies", "winner": "us"},
+        {"feature": "Crew", "us": "W-2, in-house", "them": "Often subcontracted", "winner": "us"},
+        {"feature": "Response time", "us": "Same-day Fresno County", "them": "1-3 business days", "winner": "us"},
+        {"feature": "Reviews", "us": "412+ at 4.9★", "them": "Varies", "winner": "us"},
+        {"feature": "60-day refund", "us": "Yes", "them": "Rare", "winner": "us"},
+        {"feature": "Financing", "us": "0% APR x 12mo", "them": "Varies", "winner": "tie"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "brand": {
+    "name": "Twilight Zone Permanent Lighting",
+    "tagline": "Permanent. Invisible by day. Unforgettable by night.",
+    "phone": "+15595550199",
+    "phoneDisplay": "(559) 555-0199",
+    "phoneShort": "559.555.0199",
+    "email": "hello@twilightzonelighting.com",
+    "address": {
+      "street": "1234 N Blackstone Ave",
+      "city": "Fresno",
+      "state": "CA",
+      "zip": "93704"
+    },
+    "geo": { "lat": 36.7378, "lng": -119.7871 },
+    "license": "1234567",
+    "founded": "2019",
+    "employees": 12,
+    "installs": 2400,
+    "reviews": 412,
+    "rating": 4.9,
+    "siteUrl": "https://twilightzonelighting.com",
+    "domain": "twilightzonelighting.com"
+  },
+  "pricing": {
+    "starterFrom": 950,
+    "standardFrom": 2800,
+    "premiumFrom": 5800,
+    "estateFrom": 7500,
+    "starterMonthly": 32,
+    "standardMonthly": 89,
+    "premiumMonthly": 169,
+    "financingApr": 0,
+    "financingMonths": 12
+  },
+  "guarantees": [
+    { "title": "60-day refund", "desc": "Pulled and refunded in full. No fine print." },
+    { "title": "Lifetime warranty", "desc": "Track for life. Five years on LEDs." },
+    { "title": "$0 down", "desc": "From $89/month at 0% APR." },
+    { "title": "Locally installed", "desc": "Lic. #1234567. Bonded. Insured." }
+  ],
+  "tech": {
+    "ledType": "RGBIC-RD",
+    "colors": "16 million",
+    "patterns": 200,
+    "lifespan": "50,000+ hours",
+    "weatherRating": "IP67",
+    "tempRange": "-40°F to 140°F",
+    "appCompat": ["Alexa", "Google Home", "Control 4", "Nice Elan"]
+  }
+}

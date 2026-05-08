@@ -1,0 +1,212 @@
+{
+  "restaurant-bar-lighting": {
+    "slug": "restaurant-bar-lighting",
+    "h1": "Restaurant & Bar Permanent Lighting",
+    "title": "Restaurant & Bar Permanent Lighting — Patio Mood, Brand Color, Music Sync",
+    "metaDesc": "Permanent lighting for Fresno restaurants and bars. Patio mood lighting, brand colors year-round, music sync for events. From $4,200.",
+    "lead": "Permanent lighting for restaurants and bars that doubles your patio's evening appeal. Brand colors year-round. Mood lighting for dinner. Music-sync for events. Sales lift averaging 12% on Fri-Sat nights from foot traffic alone.",
+    "primaryKw": "restaurant lighting",
+    "fromPrice": 4200,
+    "image": "images/02-security.jpg",
+    "imageAlt": "Restaurant patio with permanent lighting",
+    "intro": "Restaurant and bar permanent lighting is one of our highest-ROI commercial installs. Patios that previously needed seasonal bistro lights are upgraded to permanent RGBIC-RD track that delivers brand colors during business hours, mood lighting for dinner service, and music-sync for events — all controlled from a single tablet behind the bar.",
+    "useCases": [
+      { "title": "Patio mood lighting", "desc": "Dim warm-white during dinner service, bright color shifts after 10pm." },
+      { "title": "Brand colors", "desc": "Display logo colors year-round on the entry." },
+      { "title": "Game night sync", "desc": "Auto-switch to local team colors on game days." },
+      { "title": "Special events", "desc": "Music-sync for live music nights, color shifts for private events." }
+    ],
+    "stats": [
+      "12% average sales lift Fri-Sat from foot-traffic alone (3 Fresno restaurants tracked)",
+      "Pays for itself in 6-9 months at average ticket size",
+      "1-day install, no business interruption"
+    ],
+    "useCasesShort": "Patio mood, brand colors, game-night sync, music-reactive"
+  },
+  "hotel-resort-lighting": {
+    "slug": "hotel-resort-lighting",
+    "h1": "Hotel & Resort Permanent Lighting",
+    "title": "Hotel & Resort Permanent Lighting — Holiday-Ready Guest Experience",
+    "metaDesc": "Permanent lighting for Fresno hotels and resorts. Award-winning ambiance, auto holiday rotation, multi-property contracts available. From $6,800.",
+    "lead": "Permanent lighting for hotels and resorts that delivers award-winning ambiance year-round, automatic holiday rotation for guest delight, and white-glove install scheduled around your business hours.",
+    "primaryKw": "hotel lighting",
+    "fromPrice": 6800,
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "Hotel exterior with permanent lighting",
+    "intro": "Hotel and resort permanent lighting eliminates the annual cost of bringing in seasonal-light contractors. Once installed, the system auto-rotates through Christmas, Halloween, July 4th, Valentine's, and brand colors — never a missed holiday, never a maintenance headache.",
+    "useCases": [
+      { "title": "Auto holiday rotation", "desc": "Christmas, Halloween, July 4th, Valentine's auto-trigger." },
+      { "title": "Brand color always-on", "desc": "Logo colors during business hours, holiday rotation after." },
+      { "title": "Wedding events", "desc": "Color shifts for receptions, dinner-mood for events." },
+      { "title": "Guest experience", "desc": "Memorable arrival every night." }
+    ],
+    "stats": [
+      "Lifetime warranty eliminates annual maintenance contract",
+      "Multi-property volume pricing available",
+      "ROI in 18 months vs. annual installer fees"
+    ],
+    "useCasesShort": "Holiday rotation, brand colors, weddings, guest experience"
+  },
+  "storefront-retail-lighting": {
+    "slug": "storefront-retail-lighting",
+    "h1": "Storefront & Retail Permanent Lighting",
+    "title": "Storefront & Retail Permanent Lighting — Brand Colors, Foot Traffic Magnet",
+    "metaDesc": "Permanent lighting for Fresno retail storefronts. Brand colors year-round, holiday auto-schedule, motion-triggered evening illumination. From $3,800.",
+    "lead": "Permanent lighting that turns your storefront into the most visible address on the street. Brand colors year-round, holiday auto-schedule, motion-triggered evening illumination.",
+    "primaryKw": "storefront lighting",
+    "fromPrice": 3800,
+    "image": "images/02-security.jpg",
+    "imageAlt": "Retail storefront with permanent brand-color lighting",
+    "intro": "Retail storefront permanent lighting is the modern equivalent of a neon sign — except it changes with the season, the holiday, the campaign. Brand colors during business hours. Holiday rotation after dark. Motion-triggered illumination after closing for security.",
+    "useCases": [
+      { "title": "Brand visibility", "desc": "Logo colors year-round on the storefront." },
+      { "title": "Holiday campaigns", "desc": "Auto-rotation matches your retail calendar." },
+      { "title": "Sale events", "desc": "Color flash for promotions and grand openings." },
+      { "title": "After-hours security", "desc": "Motion-triggered illumination after closing." }
+    ],
+    "stats": [
+      "Foot-traffic increase averages 8-15% in first 90 days",
+      "Tax-deductible business investment",
+      "Volume pricing for multi-location chains"
+    ],
+    "useCasesShort": "Brand visibility, holiday campaigns, sale events, security"
+  },
+  "hoa-apartment-lighting": {
+    "slug": "hoa-apartment-lighting",
+    "h1": "HOA & Apartment Complex Permanent Lighting",
+    "title": "HOA & Apartment Complex Permanent Lighting — Unified, Multi-Unit",
+    "metaDesc": "Permanent lighting for HOAs and apartment complexes. Unified design across units, eliminate per-unit holiday chaos. Volume pricing. From $4,500/unit.",
+    "lead": "Permanent lighting for HOAs and apartment complexes that delivers unified, professional appearance across every unit and eliminates per-unit holiday chaos.",
+    "primaryKw": "HOA lighting",
+    "fromPrice": 4500,
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "HOA complex with unified permanent lighting",
+    "intro": "HOA and apartment-complex permanent lighting solves the seasonal-decoration nightmare. Instead of 40 different residents putting up 40 different displays, the entire community runs on one synchronized system — same colors, same patterns, same schedule. Property managers love it.",
+    "useCases": [
+      { "title": "Unified design", "desc": "Every unit, one consistent look." },
+      { "title": "Holiday consistency", "desc": "Auto-schedule eliminates per-unit chaos." },
+      { "title": "Multi-property contracts", "desc": "Single agreement covers entire portfolio." }
+    ],
+    "stats": [
+      "Volume pricing starts at 12 units",
+      "Single property-wide app dashboard for management",
+      "Lifetime warranty eliminates per-unit replacement"
+    ],
+    "useCasesShort": "Unified design, holiday consistency, volume pricing"
+  },
+  "church-religious-lighting": {
+    "slug": "church-religious-lighting",
+    "h1": "Church & Religious Venue Permanent Lighting",
+    "title": "Church & Religious Venue Permanent Lighting — Worship-Ready",
+    "metaDesc": "Permanent lighting for churches, mosques, temples, and religious venues. Welcoming entries, special-event lighting, congregation-friendly. From $4,200.",
+    "lead": "Permanent lighting for churches and religious venues — welcoming entries that convey your community's warmth, plus special-event lighting for holidays, weddings, and worship gatherings.",
+    "primaryKw": "church lighting",
+    "fromPrice": 4200,
+    "image": "images/03-accent.jpg",
+    "imageAlt": "Church with permanent welcoming lighting",
+    "intro": "Religious-venue permanent lighting balances welcoming warmth (year-round) with seasonal celebration (Christmas, Easter, Diwali, Hanukkah, Eid) — all auto-scheduled, all color-matched to your community.",
+    "useCases": [
+      { "title": "Christmas + Easter rotation", "desc": "Major Christian holidays auto-trigger." },
+      { "title": "Hanukkah + Diwali + Eid", "desc": "Multi-faith presets supported." },
+      { "title": "Wedding + funeral events", "desc": "Soft warm-white for ceremonies." }
+    ],
+    "stats": [
+      "Welcomes congregants 365 nights a year",
+      "Multi-holiday auto-schedule (Christian, Jewish, Hindu, Muslim)",
+      "Donor-supported ROI calculator available"
+    ],
+    "useCasesShort": "Welcome warmth, holidays, weddings, services"
+  },
+  "dealership-lighting": {
+    "slug": "dealership-lighting",
+    "h1": "Auto Dealership Permanent Lighting",
+    "title": "Auto Dealership Permanent Lighting — Lot Illumination That Sells",
+    "metaDesc": "Permanent lighting for Fresno auto dealerships. Brand colors, sale-event flashes, after-hours security. Make your lot impossible to miss. From $5,800.",
+    "lead": "Permanent lighting for auto dealerships that makes your lot impossible to miss from the highway. Brand colors during business hours, sale-event flashes for promotions, motion-triggered security after closing.",
+    "primaryKw": "dealership lighting",
+    "fromPrice": 5800,
+    "image": "images/02-security.jpg",
+    "imageAlt": "Auto dealership with permanent perimeter lighting",
+    "intro": "Auto-dealership permanent lighting is one of the most measurable commercial ROIs we deliver. Highway visibility increases significantly. Sale-event color flashes drive measurable foot traffic. After-hours security illumination protects inventory.",
+    "useCases": [
+      { "title": "Brand colors", "desc": "Manufacturer logo colors year-round on the entry." },
+      { "title": "Sale flashes", "desc": "Color flash for limited-time promotions." },
+      { "title": "After-hours security", "desc": "Motion-triggered illumination protects inventory." }
+    ],
+    "stats": [
+      "Highway visibility increase measurable in foot-traffic counts",
+      "Tax-deductible business investment",
+      "Multi-location franchise pricing available"
+    ],
+    "useCasesShort": "Brand visibility, sale events, security, foot-traffic"
+  },
+  "school-university-lighting": {
+    "slug": "school-university-lighting",
+    "h1": "School & University Permanent Lighting",
+    "title": "School & University Permanent Lighting — Stadium, Game Day, Events",
+    "metaDesc": "Permanent lighting for Fresno schools and universities. School colors year-round, game-day stadium lighting, special-event programming. From $5,200.",
+    "lead": "Permanent lighting for schools and universities that delivers school colors year-round on the entry, full stadium illumination for game day, and special-event programming for graduations and ceremonies.",
+    "primaryKw": "school lighting",
+    "fromPrice": 5200,
+    "image": "images/01-gameday.jpg",
+    "imageAlt": "School with permanent game-day team-color lighting",
+    "intro": "School and university permanent lighting is school spirit on demand. The entry gets school colors year-round. Game-day Friday nights flip to full team-color animation. Graduation events get celebration patterns. All scheduled by the school calendar.",
+    "useCases": [
+      { "title": "School colors year-round", "desc": "Entry building displays school colors." },
+      { "title": "Game day", "desc": "Full team-color animation Fridays/Saturdays." },
+      { "title": "Graduation + special events", "desc": "Celebration patterns for ceremonies." }
+    ],
+    "stats": [
+      "Bond-funded budget eligible",
+      "ASB / booster club partnerships available",
+      "Multi-school district volume pricing"
+    ],
+    "useCasesShort": "School colors, game day, graduation, events"
+  },
+  "office-park-business-lighting": {
+    "slug": "office-park-business-lighting",
+    "h1": "Office Park & Business Permanent Lighting",
+    "title": "Office Park & Business Permanent Lighting — Corporate Property",
+    "metaDesc": "Permanent lighting for Fresno office parks and corporate properties. Brand colors year-round, after-hours security, multi-building synchronization. From $5,500.",
+    "lead": "Permanent lighting for office parks and corporate properties — brand colors year-round, after-hours security illumination, and multi-building synchronization across the entire campus.",
+    "primaryKw": "office lighting",
+    "fromPrice": 5500,
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "Office park with permanent corporate lighting",
+    "intro": "Office-park and corporate-property permanent lighting upgrades your professional appearance. Brand colors during business hours. Cool-white security after dark. Holiday celebration on schedule. Multi-building synchronization across the entire campus.",
+    "useCases": [
+      { "title": "Brand identity", "desc": "Corporate colors on entry buildings." },
+      { "title": "After-hours security", "desc": "Motion-triggered cool-white illumination." },
+      { "title": "Multi-building sync", "desc": "Entire campus on one schedule." }
+    ],
+    "stats": [
+      "Tax-deductible business investment",
+      "Multi-building volume pricing",
+      "After-hours liability reduction"
+    ],
+    "useCasesShort": "Brand identity, security, multi-building, holidays"
+  },
+  "event-venue-wedding-lighting": {
+    "slug": "event-venue-wedding-lighting",
+    "h1": "Event Venue & Wedding Permanent Lighting",
+    "title": "Event Venue & Wedding Permanent Lighting — Reception-Ready",
+    "metaDesc": "Permanent lighting for Fresno event venues and wedding venues. Reception-ready color shifts, music sync, booking-rate boosting. From $4,800.",
+    "lead": "Permanent lighting for wedding and event venues — reception-ready color shifts for every booking, music sync for receptions, and a portfolio enhancement that's measurably increased booking rates.",
+    "primaryKw": "wedding venue lighting",
+    "fromPrice": 4800,
+    "image": "images/scenes/valentines.jpg",
+    "imageAlt": "Wedding venue with permanent reception lighting",
+    "intro": "Wedding and event-venue permanent lighting is one of the highest-impact commercial installs we deliver. Color-shifting per reception. Music sync. Custom theme presets that match wedding planners' needs. Bookings increase. Photos look better. Customers post more.",
+    "useCases": [
+      { "title": "Reception color themes", "desc": "Couple picks colors, system delivers." },
+      { "title": "Music sync", "desc": "Beat-reactive color shifts during dancing." },
+      { "title": "Photo-ready ambiance", "desc": "Couples post and tag your venue." }
+    ],
+    "stats": [
+      "Booking-rate increase: 20% average in first year",
+      "Reduces per-event lighting rental costs",
+      "Photo-quality improvement drives social proof"
+    ],
+    "useCasesShort": "Reception themes, music sync, photo-ready, bookings"
+  }
+}

@@ -3668,3 +3668,685 @@ body { padding-top: 152px; }
     font-size: 16px !important;
   }
 }
+
+/* ============================================================
+   GENERATED PAGE COMPONENTS — service/city/vertical/comparison/cost/guide
+   ============================================================ */
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 18px 0 6px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.02em;
+}
+.breadcrumb a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb a:hover { color: #c084fc; }
+.breadcrumb .sep { margin: 0 6px; opacity: 0.4; }
+.breadcrumb [aria-current="page"] { color: #fff; font-weight: 500; }
+
+/* Hero (page variant) */
+.hero-page {
+  position: relative;
+  min-height: 64vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 120px 0 80px;
+}
+.hero-page.hero-compact { min-height: 44vh; padding: 80px 0 60px; }
+.hero-page .hero-media {
+  position: absolute; inset: 0; z-index: -2;
+}
+.hero-page .hero-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(1.1) brightness(0.55);
+}
+.hero-page .hero-overlay {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(168, 85, 247, 0.25), transparent 60%),
+    linear-gradient(180deg, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.55) 50%, rgba(5,5,5,0.95) 100%);
+}
+.hero-page .hero-content {
+  position: relative; z-index: 1;
+  max-width: 920px;
+}
+.hero-kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+.hero-h1 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0 0 22px;
+  color: #fff;
+}
+.hero-lead {
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 720px;
+  margin: 0 0 32px;
+}
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.hero-meta {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+}
+.hero-meta strong { color: #fff; font-weight: 600; }
+
+/* Buttons (large variants used by pages) */
+.btn-lg {
+  padding: 16px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+}
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Trust bar */
+.trustbar {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 28px 0;
+}
+.trustbar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trust-item strong {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+}
+.trust-item span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Section spacing for generated pages */
+.intro-block, .use-cases, .tech-specs, .neighborhood-list, .guarantees,
+.cost-section, .city-grid, .service-grid, .specs-block, .stats-block,
+.faq-section, .climate-block, .article-body, .city-row, .service-row,
+.compare-table-section, .price-tiers, .review-grid, .gallery-grid,
+.quote-form-block {
+  padding: 64px 0;
+}
+.intro-block h2, .use-cases h2, .tech-specs h2, .neighborhood-list h2,
+.guarantees h2, .cost-section h2, .city-grid h2, .service-grid h2,
+.specs-block h2, .stats-block h2, .faq-section h2, .climate-block h2,
+.compare-table-section h2, .price-tiers h2, .review-grid h2,
+.gallery-grid h2, .city-row h3, .service-row h3, .article-body h2 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin: 0 0 28px;
+  color: #fff;
+}
+.intro-block p, .article-body p, .climate-block p, .cost-section p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 780px;
+  margin: 0 0 16px;
+}
+
+/* Use case grid */
+.use-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+.use-card {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  transition: all 0.3s;
+}
+.use-card:hover {
+  background: rgba(168, 85, 247, 0.05);
+  border-color: rgba(168, 85, 247, 0.25);
+  transform: translateY(-2px);
+}
+.use-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.use-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* Spec grid */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.spec-grid > div {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+.spec-grid dt {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 6px;
+}
+.spec-grid dd {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+.spec-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.spec-list li {
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.spec-list strong { color: #fff; }
+
+/* Pills (cities, neighborhoods, services) */
+.nbhd-pills, .city-pills, .service-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+a.pill:hover {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #fff;
+}
+.muted {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 14px;
+}
+
+/* Guarantee grid */
+.guarantee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.g-card {
+  padding: 26px;
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 14px;
+}
+.g-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #c084fc;
+  margin: 0 0 8px;
+}
+.g-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 880px;
+}
+.faq-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer;
+  padding: 18px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  list-style: none;
+  position: relative;
+  padding-right: 48px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: rgba(168, 85, 247, 0.7);
+  font-weight: 300;
+  transition: transform 0.25s;
+}
+.faq-item[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq-item > div {
+  padding: 0 22px 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* CTA band */
+.cta-band {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(99, 102, 241, 0.12));
+  border-top: 1px solid rgba(168, 85, 247, 0.25);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+  padding: 80px 0;
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  margin: 0 0 14px;
+  color: #fff;
+}
+.cta-band p {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 600px;
+  margin: 0 auto 28px;
+}
+.cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* City row / service row (related links) */
+.city-row, .service-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.city-row h3, .service-row h3 {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+/* Service / city card grid */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.svc-card {
+  display: block;
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.25s;
+  position: relative;
+}
+.svc-card:hover {
+  background: rgba(168, 85, 247, 0.06);
+  border-color: rgba(168, 85, 247, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(168, 85, 247, 0.12);
+}
+.svc-card h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.svc-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 14px;
+}
+.svc-card .from {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c084fc;
+  letter-spacing: 0.04em;
+}
+
+/* Compare table (reused on comparison pages) */
+.compare-wrap {
+  overflow-x: auto;
+  margin: 0 0 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.compare-table-section .compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.02);
+}
+.compare-table-section .compare-table th,
+.compare-table-section .compare-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.compare-table-section .compare-table thead th {
+  background: rgba(168, 85, 247, 0.08);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.compare-table-section tr.winner-us td:nth-child(2) {
+  background: rgba(168, 85, 247, 0.08);
+  color: #fff;
+  font-weight: 500;
+}
+.compare-table-section tr.winner-them td:nth-child(3) {
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 500;
+}
+.verdict {
+  padding: 22px 26px;
+  background: rgba(168, 85, 247, 0.08);
+  border-left: 3px solid #c084fc;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+.verdict strong { color: #fff; }
+
+/* Cost / Price tables */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.price-table th, .price-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: left;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.price-table thead th {
+  background: rgba(168, 85, 247, 0.08);
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Pricing tiers */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.tier {
+  padding: 30px 26px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  text-align: left;
+}
+.tier h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.tier .price {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 38px;
+  font-weight: 400;
+  color: #c084fc;
+  margin: 0 0 14px;
+}
+.tier p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Stats grid */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.stat-card {
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  text-align: center;
+}
+.stat-card strong {
+  display: block;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 38px;
+  font-weight: 400;
+  color: #c084fc;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-card span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.02em;
+}
+
+/* Reviews */
+.review-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.review-card {
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+.review-card .stars {
+  color: #fbbf24;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.review-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 12px;
+  font-style: italic;
+}
+.review-card cite {
+  font-style: normal;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+/* Galleries */
+.gallery-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.gallery-photo {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #1a1a1a;
+}
+.gallery-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.gallery-photo:hover img { transform: scale(1.04); }
+
+/* Process steps */
+.process-steps {
+  list-style: none;
+  padding: 0;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 780px;
+}
+.process-steps li {
+  position: relative;
+  padding: 22px 22px 22px 78px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  counter-increment: step;
+}
+.process-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 18px;
+  border-radius: 999px;
+}
+.process-steps li strong { color: #fff; font-weight: 600; }
+
+/* Link list */
+.link-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px;
+}
+.link-list li a {
+  display: block;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.link-list li a:hover {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #fff;
+}
+
+/* Article body */
+.article-body h2 { margin-top: 36px; }
+.article-body h2:first-child { margin-top: 0; }
+
+/* Mobile tuning for generated pages */
+@media (max-width: 720px) {
+  .hero-page { min-height: 56vh; padding: 100px 0 60px; }
+  .hero-page.hero-compact { min-height: 36vh; padding: 70px 0 50px; }
+  .intro-block, .use-cases, .tech-specs, .neighborhood-list, .guarantees,
+  .cost-section, .city-grid, .service-grid, .specs-block, .stats-block,
+  .faq-section, .climate-block, .article-body, .city-row, .service-row,
+  .compare-table-section, .price-tiers, .review-grid, .gallery-grid {
+    padding: 44px 0;
+  }
+  .cta-band { padding: 56px 0; }
+  .compare-table-section .compare-table th,
+  .compare-table-section .compare-table td { padding: 11px 12px; font-size: 13px; }
+}

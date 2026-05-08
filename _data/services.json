@@ -1,0 +1,367 @@
+{
+  "permanent-outdoor-lights": {
+    "slug": "permanent-outdoor-lights",
+    "h1": "Permanent Outdoor Lights",
+    "title": "Permanent Outdoor Lights — Color-Changing LED Installation",
+    "metaDesc": "Professional permanent outdoor lights installed in a day. 16 million colors, app-controlled, lifetime warranty, invisible by day. From $950.",
+    "lead": "Aluminum-track LED systems mounted under your eaves — 16 million colors, app-controlled, invisible by day. One install. Beautiful for life.",
+    "primaryKw": "permanent outdoor lights",
+    "primaryVolume": 500,
+    "primaryDifficulty": "LOW",
+    "image": "images/03-accent.jpg",
+    "imageAlt": "Modern home with permanent outdoor lights along the rooflines",
+    "fromPrice": 950,
+    "intro": "Permanent outdoor lights are the most significant residential exterior upgrade of the past decade. A continuous aluminum track — color-matched to your trim — houses individually-addressable RGBIC-RD LEDs that produce all 16 million colors and 200+ patterns. Once installed, the system is essentially invisible by day and unforgettable by night.",
+    "specs": [
+      { "label": "LED chip", "value": "RGBIC-RD" },
+      { "label": "Color range", "value": "16 million" },
+      { "label": "Patterns", "value": "200+ presets" },
+      { "label": "Weather rating", "value": "IP67 (-40°F to 140°F)" },
+      { "label": "Track material", "value": "Aluminum (lifetime warranty)" },
+      { "label": "Bulb life", "value": "50,000+ hours" },
+      { "label": "Power draw", "value": "≈ ceiling fan equivalent" },
+      { "label": "App", "value": "iOS + Android (Alexa, Google, Control 4, Nice Elan)" }
+    ],
+    "useCases": [
+      { "title": "Architectural accent", "desc": "Adjustable warm whites (2700K-5000K) highlight your home's best features year-round." },
+      { "title": "Holiday rotation", "desc": "Christmas, Halloween, July 4th, Diwali, Valentine's, St. Patrick's — auto-scheduled by date." },
+      { "title": "Game day", "desc": "Bulldogs red-and-blue, Lakers purple-and-gold, your school's colors triggered by event time." },
+      { "title": "Security", "desc": "Motion-triggered cool-white floods + scheduled deterrent lighting." }
+    ],
+    "faqs": [
+      { "q": "How much do permanent outdoor lights cost?", "a": "Starter installs from $950 (single-facade, ~30 ft, one zone). Most single-story homes range $2,800-$5,800. Two-story: $5,800-$9,000. Estate and commercial: $7,500+." },
+      { "q": "Are permanent outdoor lights worth it?", "a": "Over 10 years, yes — significantly. A standard install at $2,800 vs. typical Fresno-area annual Christmas-light services at $800-$1,800/year ($8,000-$18,000 over 10 years). Permanent lights also cover 200+ holidays beyond Christmas." },
+      { "q": "Are permanent outdoor lights visible during the day?", "a": "No. The aluminum track is color-matched to your trim (white, bronze, black, brown) and tucks tightly under the eave. From the curb at noon, you'd never know they're there." },
+      { "q": "What's the warranty?", "a": "Lifetime warranty on aluminum track. 5-year on LEDs and workmanship. Plus 60-day money-back guarantee." }
+    ]
+  },
+  "permanent-christmas-lights": {
+    "slug": "permanent-christmas-lights",
+    "h1": "Permanent Christmas Lights",
+    "title": "Permanent Christmas Lights — Year-Round Installation",
+    "metaDesc": "Permanent Christmas lights installed once, lit forever. 200+ holiday patterns, app-controlled, invisible by day. From $950. Free quote.",
+    "lead": "Christmas lights you install once and never put up again. Auto-scheduled red-and-green from November 15 through January 5, plus 200+ other holiday and accent patterns the rest of the year.",
+    "primaryKw": "permanent christmas lights",
+    "primaryVolume": 500,
+    "primaryDifficulty": "HIGH",
+    "image": "images/04-holiday.jpg",
+    "imageAlt": "Permanent Christmas lights on home roofline at night",
+    "fromPrice": 950,
+    "intro": "Permanent Christmas lights replace the annual ritual of climbing ladders, untangling string lights, and renting installers every November. Our system is mounted permanently under your eaves and color-matched to your trim — invisible by day, then auto-scheduled to display red-and-green for Christmas, orange-and-purple for Halloween, red-white-and-blue for July 4th, and 200+ other patterns all year.",
+    "specs": [
+      { "label": "Holiday patterns", "value": "200+ presets" },
+      { "label": "Custom patterns", "value": "Unlimited (per-bulb control)" },
+      { "label": "Auto-schedule", "value": "By date, sunset, or event" },
+      { "label": "Christmas presets", "value": "Red-green, candy cane, snowfall, twinkle" },
+      { "label": "Track lifetime", "value": "Lifetime warranty" },
+      { "label": "App", "value": "iOS + Android" },
+      { "label": "Voice control", "value": "Alexa, Google, Control 4" }
+    ],
+    "useCases": [
+      { "title": "Christmas (Nov 15 – Jan 5)", "desc": "Classic red-and-green, candy cane, twinkle, snowfall animations." },
+      { "title": "Halloween (Oct 1 – Nov 1)", "desc": "Orange-and-purple, fade animations, motion-triggered scares." },
+      { "title": "Other holidays", "desc": "July 4th, Diwali, Valentine's, St. Patrick's, Easter, Mother's Day, Memorial Day." },
+      { "title": "Year-round accent", "desc": "Warm-white architectural accent the rest of the year (2700K-5000K)." }
+    ],
+    "faqs": [
+      { "q": "How much do permanent Christmas lights cost?", "a": "Starter installs from $950. Most homes $2,800-$5,800. Two-story $5,800-$9,000." },
+      { "q": "Are permanent Christmas lights worth it?", "a": "Over 10 years, yes. Pays for itself in 2-4 years vs. annual rental services that cost $800-$1,800/year." },
+      { "q": "Do permanent Christmas lights stay up all year?", "a": "Yes, but only the aluminum track is visible — and it's color-matched to your trim. The lights only turn on when scheduled." }
+    ]
+  },
+  "halloween-lights": {
+    "slug": "halloween-lights",
+    "h1": "Halloween Lights",
+    "title": "Permanent Halloween Lights — Auto-Scheduled October Through November",
+    "metaDesc": "Permanent Halloween lights with orange and purple presets, motion-triggered scares, and fade animations. Auto-scheduled October 1 through November 1. From $950.",
+    "lead": "Halloween lights so good your house becomes the haunted destination. Orange and purple presets, motion-triggered scares, and fade animations — auto-scheduled October 1 through November 1.",
+    "primaryKw": "halloween lights",
+    "primaryVolume": 500,
+    "primaryDifficulty": "MEDIUM",
+    "image": "images/04-holiday.jpg",
+    "imageAlt": "Permanent Halloween lights in orange and purple",
+    "fromPrice": 950,
+    "intro": "Permanent Halloween lights mean you never have to rush the spooky display. The system auto-flips to orange-and-purple on October 1, runs animations like ghost-fade, lightning-flash, and motion-triggered scares, and auto-flips back to warm-white accent on November 1.",
+    "specs": [
+      { "label": "Halloween patterns", "value": "30+ presets" },
+      { "label": "Motion triggers", "value": "Yes (jumpscare integration)" },
+      { "label": "Music sync", "value": "Yes (party mode)" },
+      { "label": "Fade animations", "value": "Yes (ghost-fade, candle-flicker, lightning)" }
+    ],
+    "useCases": [
+      { "title": "Trick-or-treat night", "desc": "Bright orange-purple, motion-triggered jumpscares for kids." },
+      { "title": "Adult parties", "desc": "Music-synced color shifting, dimmed mood lighting." },
+      { "title": "All-month rotation", "desc": "Subtle ghost-fade evenings, full intensity weekends." }
+    ],
+    "faqs": [
+      { "q": "How much do permanent Halloween lights cost?", "a": "Same install as our other permanent lighting: $950+ Starter, $2,800+ Standard. The Halloween presets come built into every install." }
+    ]
+  },
+  "accent-lighting": {
+    "slug": "accent-lighting",
+    "h1": "Architectural Accent Lighting",
+    "title": "Permanent Architectural Accent Lighting — Adjustable Warm Whites",
+    "metaDesc": "Architectural accent lighting in adjustable warm whites — 2700K to 5000K. Highlights your home's best features year-round. From $950.",
+    "lead": "Adjustable warm-white permanent outdoor lights (2700K to 5000K) that highlight your home's best architectural features 365 days a year.",
+    "primaryKw": "architectural accent lighting",
+    "primaryVolume": 50,
+    "primaryDifficulty": "MEDIUM",
+    "image": "images/03-accent.jpg",
+    "imageAlt": "Permanent architectural accent lighting on modern home",
+    "fromPrice": 950,
+    "intro": "Architectural accent lighting is the most-requested year-round configuration. Adjustable warm whites — 2700K (candle-warm) to 5000K (clean-white) — highlight roof lines, peaks, columns, and dormers. It's the lighting equivalent of curating your home for night-time.",
+    "specs": [
+      { "label": "Color temperature range", "value": "2700K, 3000K, 3500K, 4000K, 5000K" },
+      { "label": "CRI (color rendering)", "value": "90+" },
+      { "label": "Dimmable", "value": "Yes (1-100%)" }
+    ],
+    "useCases": [
+      { "title": "Year-round elegance", "desc": "Warm-white roof line accent for modern, ranch, and craftsman homes." },
+      { "title": "Architectural reveal", "desc": "Highlight stone columns, brick chimneys, and dormer windows." },
+      { "title": "Dinner-party mode", "desc": "Lower brightness for outdoor entertaining." }
+    ],
+    "faqs": [
+      { "q": "What color temperature is best for accent lighting?", "a": "Most homes default to 3000K (warm white) — flattering on stone, wood, and stucco. Switch to 5000K (cool white) for security mode." }
+    ]
+  },
+  "security-lighting": {
+    "slug": "security-lighting",
+    "h1": "Outdoor Security Lighting",
+    "title": "Outdoor Security Lighting — Motion-Activated, App-Controlled",
+    "metaDesc": "Permanent outdoor security lighting with motion-triggered floods, scheduled deterrent illumination, and full-property coverage. From $950.",
+    "lead": "Motion-triggered outdoor floods, scheduled deterrent lighting, and full-property cool-white illumination — all built into your permanent outdoor lighting system.",
+    "primaryKw": "outdoor lighting motion activated",
+    "primaryVolume": 500,
+    "primaryDifficulty": "HIGH",
+    "image": "images/02-security.jpg",
+    "imageAlt": "Bright cool-white security lighting on residential entrance",
+    "fromPrice": 950,
+    "intro": "Outdoor security lighting from Twilight Zone integrates motion-activated floods, scheduled cool-white deterrent illumination, and instant full-property activation via app or voice command — all in the same fixture system as your accent lighting.",
+    "specs": [
+      { "label": "Motion sensor range", "value": "30 feet" },
+      { "label": "Security preset", "value": "5000K, full brightness" },
+      { "label": "Voice control", "value": "Alexa, Google, Control 4" },
+      { "label": "Schedule", "value": "By time or event trigger" }
+    ],
+    "useCases": [
+      { "title": "Motion deterrent", "desc": "Bright cool-white flood when motion detected after sunset." },
+      { "title": "Vacation mode", "desc": "Random schedule simulates occupied home." },
+      { "title": "Voice activation", "desc": "\"Alexa, turn on security\" instantly lights every fixture." }
+    ],
+    "faqs": [
+      { "q": "Can security lighting be combined with accent lighting?", "a": "Yes. Both run on the same system — security mode is one tap or voice command from your warm-white accent setting." }
+    ]
+  },
+  "patio-lighting": {
+    "slug": "patio-lighting",
+    "h1": "Permanent Patio Lighting",
+    "title": "Permanent Patio Lighting — Pergola, Bistro & Outdoor Living",
+    "metaDesc": "Permanent patio lighting for pergolas, outdoor living spaces, and bistro setups. Music sync, mood lighting, weather-rated. From $1,200.",
+    "lead": "Permanent patio lighting that replaces seasonal bistro string lights with weather-rated, app-controlled, music-syncable installations under pergolas and over outdoor living spaces.",
+    "primaryKw": "patio lighting",
+    "primaryVolume": 50,
+    "primaryDifficulty": "MEDIUM",
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "Permanent patio lighting under pergola",
+    "fromPrice": 1200,
+    "intro": "Patio lighting is the most-requested expansion add-on after the main perimeter install. We mount the same RGBIC-RD track under pergolas, around outdoor kitchens, and along patio cover edges — the same app, the same colors, music-sync ready.",
+    "specs": [
+      { "label": "Pergola integration", "value": "Yes" },
+      { "label": "Music sync", "value": "Yes (party mode)" },
+      { "label": "Weather rating", "value": "IP67" }
+    ],
+    "useCases": [
+      { "title": "Dinner parties", "desc": "Warm dim mood lighting." },
+      { "title": "Live music", "desc": "Beat-reactive color shifts." },
+      { "title": "Year-round outdoor living", "desc": "Adjustable warm whites for evening use." }
+    ],
+    "faqs": [
+      { "q": "Can patio lights be added later?", "a": "Yes — most customers add patio integration during a second-phase install. The original control box handles it." }
+    ]
+  },
+  "pool-deck-lighting": {
+    "slug": "pool-deck-lighting",
+    "h1": "Permanent Pool Deck Lighting",
+    "title": "Permanent Pool Deck Lighting — Water-Rated, Color-Changing",
+    "metaDesc": "Permanent pool deck lighting in 16 million colors. Water-rated, app-controlled. Synchronizes with pool pump and party mode. From $1,400.",
+    "lead": "Permanent pool deck lighting around the perimeter of your pool — water-rated, color-changing, and synchronizable with party mode, music, and pool pump schedules.",
+    "primaryKw": "pool deck lighting",
+    "primaryVolume": 50,
+    "primaryDifficulty": "MEDIUM",
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "Permanent pool deck lighting in blue and white",
+    "fromPrice": 1400,
+    "intro": "Pool deck lighting is one of the highest-impact upgrades you can make to your backyard. We mount weather-rated track around the deck perimeter — perfect for pool parties, evening swims, and full-property security after dark.",
+    "specs": [
+      { "label": "Water rating", "value": "IP67 (rated for direct splash)" },
+      { "label": "Pool pump sync", "value": "Yes (Pentair, Hayward, Jandy compatible)" },
+      { "label": "Music sync", "value": "Yes" }
+    ],
+    "useCases": [
+      { "title": "Pool parties", "desc": "Music-synced color shifts." },
+      { "title": "Evening swim", "desc": "Soft warm-white deck lighting." },
+      { "title": "Security", "desc": "Cool-white pool surround for after-dark visibility." }
+    ],
+    "faqs": [
+      { "q": "Is pool deck lighting safe near water?", "a": "Yes. IP67 weather rating means full direct-splash submersion is rated. All wiring is GFCI-protected." }
+    ]
+  },
+  "pathway-landscape-lighting": {
+    "slug": "pathway-landscape-lighting",
+    "h1": "Pathway & Landscape Lighting",
+    "title": "Permanent Pathway & Landscape Lighting — Color-Changing, App-Controlled",
+    "metaDesc": "Permanent landscape lighting along walkways, garden paths, and yard perimeters. Low-voltage, weather-rated, app-controlled. From $1,100.",
+    "lead": "Permanent landscape lighting along walkways, garden paths, and yard perimeters — weatherproof, app-controlled, and synchronized with the same system as your eave lights.",
+    "primaryKw": "landscape lighting",
+    "primaryVolume": 50,
+    "primaryDifficulty": "HIGH",
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "Permanent landscape lighting along garden walkway",
+    "fromPrice": 1100,
+    "intro": "Landscape lighting from Twilight Zone uses the same RGBIC-RD platform as eave installs — so your walkway, garden path, tree uplights, and yard perimeter all sync with the same app, same scenes, same auto-schedule.",
+    "specs": [
+      { "label": "Voltage", "value": "Low-voltage 12V" },
+      { "label": "Weather rating", "value": "IP65 (in-ground IP67)" }
+    ],
+    "useCases": [
+      { "title": "Walkway markers", "desc": "Soft warm-white path illumination." },
+      { "title": "Garden uplights", "desc": "Highlight tree trunks and architectural plantings." },
+      { "title": "Holiday rotation", "desc": "Match house colors during festive seasons." }
+    ],
+    "faqs": [
+      { "q": "Does landscape lighting use the same controller as eave lights?", "a": "Yes — single app, single hardware controller for both." }
+    ]
+  },
+  "game-day-lighting": {
+    "slug": "game-day-lighting",
+    "h1": "Game Day Team-Color Lighting",
+    "title": "Game Day Lighting — Auto-Scheduled by Team",
+    "metaDesc": "Permanent game-day lighting in your team's colors — Fresno State Bulldogs, Lakers, Buchanan Bears, your school. Auto-scheduled by game time. From $950.",
+    "lead": "Permanent game-day lighting auto-scheduled by team or event time. Fresno State Bulldogs red-and-blue, Lakers purple-and-gold, your school's colors triggered Friday night by game time.",
+    "primaryKw": "game day lighting",
+    "primaryVolume": 50,
+    "primaryDifficulty": "LOW",
+    "image": "images/01-gameday.jpg",
+    "imageAlt": "Game day team-color permanent lighting",
+    "fromPrice": 950,
+    "intro": "Game day lighting is one of the most-requested features in Fresno-area installs. The system auto-flips to your team's colors based on the game schedule — Fresno State Bulldogs Friday-night football, Buchanan Bears Saturday, Clovis North Broncos, Lakers, Warriors, 49ers, Dodgers — fully customizable.",
+    "specs": [
+      { "label": "Pre-loaded teams", "value": "100+ college, NFL, NBA, MLB" },
+      { "label": "Custom schedules", "value": "By date or event" },
+      { "label": "Pattern animations", "value": "Color flash, alternating, fade" }
+    ],
+    "useCases": [
+      { "title": "Friday night football", "desc": "Local high school colors auto-trigger 5pm Fridays." },
+      { "title": "March Madness", "desc": "School colors during tournament weeks." },
+      { "title": "Pro team game day", "desc": "Lakers, Warriors, Dodgers, 49ers, Niners — all 4-major-league pre-loaded." }
+    ],
+    "faqs": [
+      { "q": "Can I add multiple teams?", "a": "Yes — schedule as many as you want. Most homes have 3-5 teams active." }
+    ]
+  },
+  "eave-soffit-lighting": {
+    "slug": "eave-soffit-lighting",
+    "h1": "Eave & Soffit Lighting",
+    "title": "Permanent Eave & Soffit Lighting — Color-Matched Aluminum Track",
+    "metaDesc": "Permanent eave and soffit lighting installed in color-matched aluminum track. Hidden by day, brilliant by night. From $950.",
+    "lead": "Permanent eave and soffit lighting in color-matched aluminum track — white, bronze, black, or brown. Hidden by day, brilliant at night.",
+    "primaryKw": "eave lighting",
+    "primaryVolume": 50,
+    "primaryDifficulty": "MEDIUM",
+    "image": "images/03-accent.jpg",
+    "imageAlt": "Permanent eave lighting on home roofline",
+    "fromPrice": 950,
+    "intro": "Eave and soffit lighting is the foundation install — the continuous track mounted under your roofline that defines the entire system. The track itself is the most invisible element of any permanent lighting setup.",
+    "specs": [
+      { "label": "Track material", "value": "Aluminum (lifetime warranty)" },
+      { "label": "Trim colors", "value": "White, bronze, black, brown" },
+      { "label": "Mounting", "value": "Stainless steel screws into soffit substructure" }
+    ],
+    "useCases": [
+      { "title": "Single-story ranches", "desc": "~100 ft typical, $2,800 starting." },
+      { "title": "Two-story homes", "desc": "~200 ft typical, $5,800 starting." },
+      { "title": "Custom estates", "desc": "400+ ft, fully customized track routing." }
+    ],
+    "faqs": [
+      { "q": "Will eave lighting damage my roof?", "a": "No. Track mounts into the soffit substructure with stainless screws — same anchoring as gutters. Removal leaves only thumbtack-sized holes." }
+    ]
+  },
+  "custom-architectural-lighting": {
+    "slug": "custom-architectural-lighting",
+    "h1": "Custom Architectural Lighting",
+    "title": "Custom Architectural Lighting — Custom Estates & Luxury Homes",
+    "metaDesc": "Custom architectural permanent lighting for estates, luxury homes, and award-winning architecture. Bespoke design, multi-zone advanced control. From $7,500.",
+    "lead": "Custom architectural lighting for estates and luxury homes — bespoke design with multi-zone advanced control, integrated landscape, and white-glove install team.",
+    "primaryKw": "custom architectural lighting",
+    "primaryVolume": 50,
+    "primaryDifficulty": "LOW",
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "Custom architectural permanent lighting on luxury estate",
+    "fromPrice": 7500,
+    "intro": "Custom architectural lighting is our highest-tier residential service. We design bespoke installs for custom estates — the kind of lighting that integrates with the architecture, not just attached to it.",
+    "specs": [
+      { "label": "Multi-building", "value": "Yes (main, guest, pool house)" },
+      { "label": "Custom design", "value": "Yes (architect-collaboration)" },
+      { "label": "Maintenance plan", "value": "Optional annual service" }
+    ],
+    "useCases": [
+      { "title": "Estate homes", "desc": "Multi-building integration, landscape lighting, pool deck." },
+      { "title": "Custom architecture", "desc": "Track routing engineered to architectural lines." },
+      { "title": "Trophy properties", "desc": "Showcase your home as the most-photographed in the neighborhood." }
+    ],
+    "faqs": [
+      { "q": "Do you collaborate with architects?", "a": "Yes — many of our estate installs are designed during the build, with track integrated into the architectural plans." }
+    ]
+  },
+  "string-lights-installation": {
+    "slug": "string-lights-installation",
+    "h1": "Christmas String Lights Installation",
+    "title": "Christmas String Lights Installation — Permanent Alternative",
+    "metaDesc": "Tired of Christmas string lights? Permanent installation replaces seasonal string lights with year-round LED. From $950.",
+    "lead": "Christmas string lights installed permanently — no more annual setup, no more storage, no more ladders. The permanent answer to seasonal string lights.",
+    "primaryKw": "christmas string lights",
+    "primaryVolume": 500,
+    "primaryDifficulty": "HIGH",
+    "image": "images/04-holiday.jpg",
+    "imageAlt": "Christmas string lights installed permanently",
+    "fromPrice": 950,
+    "intro": "Christmas string lights are the most popular holiday tradition — and the most painful annual chore. Permanent installation replaces seasonal string lights with a continuous aluminum track that delivers all the holiday warmth without any of the annual hassle.",
+    "specs": [
+      { "label": "vs. retail string lights", "value": "Last 25+ years vs. 1-3 years" },
+      { "label": "vs. annual install service", "value": "$2,800 vs. $8,000-$18,000 over 10 years" },
+      { "label": "Bulb spacing", "value": "Custom-engineered to your roofline" }
+    ],
+    "useCases": [
+      { "title": "Replace string lights", "desc": "End the annual rotation forever." },
+      { "title": "Holiday plus year-round", "desc": "Same fixtures, all 200+ patterns." }
+    ],
+    "faqs": [
+      { "q": "Can I keep my old Christmas string lights too?", "a": "Yes — most customers keep a few decorative pieces but eliminate the long string runs." }
+    ]
+  },
+  "year-round-lighting": {
+    "slug": "year-round-lighting",
+    "h1": "Year-Round Permanent Lighting",
+    "title": "Year-Round Permanent Lighting — One Install, Every Holiday Covered",
+    "metaDesc": "Year-round permanent lighting that auto-rotates between Christmas, Halloween, July 4th, accent, and security. One install. Every season covered.",
+    "lead": "Year-round permanent lighting that auto-rotates between Christmas red-and-green, Halloween orange-and-purple, July 4th red-white-and-blue, warm-white accent, and cool-white security. One install. Every season.",
+    "primaryKw": "year round lights",
+    "primaryVolume": 50,
+    "primaryDifficulty": "HIGH",
+    "image": "images/scenes/twilight.jpg",
+    "imageAlt": "Year-round permanent lighting on home",
+    "fromPrice": 950,
+    "intro": "Year-round permanent lighting is the all-seasons configuration. The system runs continuous schedules — Halloween in October, Christmas November-January, Valentine's February, St. Patrick's March, Easter, July 4th, accent the rest. Always on schedule. Never touched.",
+    "specs": [
+      { "label": "Pre-loaded schedules", "value": "12 holidays + accent" },
+      { "label": "Custom schedules", "value": "Unlimited" }
+    ],
+    "useCases": [
+      { "title": "Set it and forget it", "desc": "Schedule once, runs forever." },
+      { "title": "Auto holiday rotation", "desc": "Every major holiday auto-flips into place." }
+    ],
+    "faqs": [
+      { "q": "What's the auto-schedule like?", "a": "Halloween Oct 1-Nov 1, Thanksgiving Nov 1-Dec 1, Christmas Nov 15-Jan 5, Valentine's Feb 1-15, St. Patrick's March 14-18, Easter, July 4th, etc. Fully customizable." }
+    ]
+  }
+}
