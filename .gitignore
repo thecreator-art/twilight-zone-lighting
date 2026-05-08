@@ -14,3 +14,4 @@ npm-debug.log*
 
 # Original heavy source PNGs that are now baked into /images
 twiglight zone logo.png
+.vercel
