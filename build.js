@@ -309,13 +309,6 @@ const heroBlock = ({ kicker, h1, h1Lines, lead, ctaPrice, img }) => {
       <a href="tel:${TEL}" class="btn btn-text">${PHONE}</a>
     </div>
   </div>
-  <div class="hero-foot">
-    <div class="hero-foot-item"><div class="num">${shared.brand.installs.toLocaleString()}</div><div class="lab">Homes lit</div></div>
-    <div class="hero-foot-item"><div class="num">${shared.brand.rating}★</div><div class="lab">${shared.brand.reviews}+ reviews</div></div>
-    <div class="hero-foot-item"><div class="num">${ctaPrice ? '$' + Number(ctaPrice).toLocaleString() : '$950'}</div><div class="lab">Starts at</div></div>
-    <div class="hero-foot-item"><div class="num">60-day</div><div class="lab">Money-back</div></div>
-  </div>
-  <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><div class="cue-line"></div></div>
 </section>`;
 };
 
