@@ -1474,7 +1474,10 @@ function buildUtility() {
     kw: 'permanent outdoor lighting faq',
     kicker: 'FAQ',
     lead: 'Everything we\'re asked, answered straight.',
-    body: '',
+    img: pickPhotos('residential', 'faq', 1)[0],
+    body: `<section class="container article-body">
+      ${sectionHead({ eyebrow: 'Frequently asked', h2: 'Plain-English answers,', em: `no asterisks.`, intro: `${shared.brand.installs}+ installs and ${shared.brand.reviews}+ reviews — these are the questions we hear most. If yours isn't here, call us at ${PHONE}.` })}
+    </section>`,
     faqs: [
       { q: 'How much does permanent outdoor lighting cost?', a: `Starts at ${usd(shared.pricing.starterFrom)} for a Starter install. Most homes land ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}. Two-story estates ${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}+. Financing from ${usd(shared.pricing.standardMonthly)}/month at 0% APR.` },
       { q: 'How long does the install take?', a: 'Single-story homes finish in 6-8 hours. Two-story 1-2 days.' },
@@ -1766,8 +1769,9 @@ const notFoundHTML = head({
         <a href="tel:${TEL}" class="btn btn-text">${PHONE}</a>
       </div>
     </div>
-  </section>
-  <section class="solutions container">
+  </section>` +
+  trustBar() +
+  `<section class="solutions container">
     ${sectionHead({ eyebrow: 'Try these instead', h2: 'Most-visited', em: 'pages.' })}
     ${solutionsGrid([
       { h: 'Pricing', p: 'Transparent published pricing. Starter from $950. Most homes $2,800-$5,800.', img: '/images/03-accent.jpg', alt: 'Pricing', href: '/pricing', linkLabel: 'See pricing' },

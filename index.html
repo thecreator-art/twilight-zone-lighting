@@ -52,8 +52,28 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "@id": "https://twilightzonelighting.com/#business",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://twilightzonelighting.com/#website",
+      "url": "https://twilightzonelighting.com/",
+      "name": "Twilight Zone Permanent Lighting",
+      "publisher": { "@id": "https://twilightzonelighting.com/#business" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://twilightzonelighting.com/#webpage",
+      "url": "https://twilightzonelighting.com/",
+      "name": "Permanent Outdoor Lights Fresno | Christmas Light Installer | Twilight Zone",
+      "isPartOf": { "@id": "https://twilightzonelighting.com/#website" },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": "https://twilightzonelighting.com/images/03-accent.jpg" },
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".hero-est", ".solutions-head h2", ".pricing-head h2"] },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://twilightzonelighting.com/#business",
   "name": "Twilight Zone Permanent Lighting",
   "alternateName": "Twilight Zone Lighting Fresno",
   "description": "Fresno, California's premier permanent outdoor lighting installer. Color-changing LED systems for residential and commercial properties across the Central Valley. Lifetime warranty on track, 60-day money-back guarantee. Pricing starts at $950.",
@@ -84,12 +104,8 @@
     { "@type": "Offer", "name": "Premium", "price": "5800", "priceCurrency": "USD" },
     { "@type": "Offer", "name": "Estate", "price": "7500", "priceCurrency": "USD" }
   ]
-}
-</script>
-
-<script type="application/ld+json">
+},
 {
-  "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Permanent Outdoor Lighting Installation",
   "provider": { "@id": "https://twilightzonelighting.com/#business" },
@@ -97,24 +113,16 @@
   "name": "Permanent Color-Changing LED Outdoor Lighting Installation",
   "description": "Professional installation of permanent, app-controlled, weather-rated color-changing LED outdoor lighting systems in Fresno, Clovis, Madera, Visalia, and surrounding Central Valley cities.",
   "offers": { "@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "950", "highPrice": "15000", "offerCount": "4" }
-}
-</script>
-
-<script type="application/ld+json">
+},
 {
-  "@context": "https://schema.org",
   "@type": "Product",
   "name": "Permanent Outdoor Color-Changing LED Lighting System",
   "description": "RGBIC-RD LED chip permanent outdoor lighting system. 16 million colors, 200+ patterns, app-controlled, IP67 weather-rated, color-matched aluminum track concealed under eaves.",
   "brand": { "@type": "Brand", "name": "Twilight Zone" },
   "offers": { "@type": "AggregateOffer", "lowPrice": "950", "highPrice": "15000", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
   "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "412" }
-}
-</script>
-
-<script type="application/ld+json">
+},
 {
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "How much do permanent outdoor lights cost in Fresno?", "acceptedAnswer": { "@type": "Answer", "text": "Permanent outdoor lights in Fresno start at $950 for a Starter front-accent install. Most single-story Fresno homes range $2,800–$5,800. Two-story homes typically run $5,800–$9,000. Estate and commercial: $7,500+. Financing as low as $89/month with 0% APR for 12 months." } },
@@ -134,12 +142,8 @@
     { "@type": "Question", "name": "Will the lights survive Fresno heat?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. IP67 weather-rated and tested from -40°F to 140°F. Engineered for Fresno summers (115°F+) and Sierra winters." } },
     { "@type": "Question", "name": "Is permanent lighting HOA-approved?", "acceptedAnswer": { "@type": "Answer", "text": "Almost always. Most Fresno-area HOAs approve Twilight Zone on first submission. Spec sheets and 3D renderings provided at no charge." } }
   ]
-}
-</script>
-
-<script type="application/ld+json">
+},
 {
-  "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Permanent Outdoor Lighting Services in Fresno County",
   "itemListElement": [
@@ -150,12 +154,8 @@
     { "@type": "Service", "position": 5, "name": "Outdoor Security Lighting", "description": "Motion-triggered security lighting and scheduled deterrent illumination. Bright cool-white (5000K) presets, full-property coverage, app-controlled.", "areaServed": "Fresno County, Madera County, Tulare County, Kings County" },
     { "@type": "Service", "position": 6, "name": "Commercial Permanent Lighting", "description": "Permanent outdoor lighting for restaurants, hotels, storefronts, HOAs, churches, and auto dealerships across the Central Valley. Volume pricing and multi-property contracts.", "areaServed": "Central Valley California" }
   ]
-}
-</script>
-
-<script type="application/ld+json">
+},
 {
-  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://twilightzonelighting.com/" },
@@ -163,6 +163,8 @@
     { "@type": "ListItem", "position": 3, "name": "Pricing", "item": "https://twilightzonelighting.com/#pricing" },
     { "@type": "ListItem", "position": 4, "name": "Free Quote", "item": "https://twilightzonelighting.com/#quote" }
   ]
+}
+]
 }
 </script>
 </head>
