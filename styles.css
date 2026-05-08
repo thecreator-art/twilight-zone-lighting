@@ -5260,3 +5260,118 @@ section.solutions { padding: 100px 0; }
   .sa-layout { grid-template-columns: 1fr; gap: 32px; }
   .sa-map { aspect-ratio: 3 / 2; }
 }
+
+/* ============================================================
+   MOBILE: convert key grids to horizontal-scroll carousels
+   so users can swipe instead of scrolling forever vertically.
+   Same UX pattern as the work reel — manual swipe, scroll-snap.
+   ============================================================ */
+@media (max-width: 720px) {
+  /* Generic carousel pattern applied to multiple grids */
+  .afs-grid,
+  .t-grid,
+  .sol-grid,
+  .tier-grid,
+  .service-cards,
+  .related-grid,
+  .review-cards,
+  .blog-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* bleed past container so first/last cards align with the side */
+    margin: 0 -20px;
+    padding: 4px 20px 24px;
+    scroll-padding-left: 20px;
+  }
+  .afs-grid::-webkit-scrollbar,
+  .t-grid::-webkit-scrollbar,
+  .sol-grid::-webkit-scrollbar,
+  .tier-grid::-webkit-scrollbar,
+  .service-cards::-webkit-scrollbar,
+  .related-grid::-webkit-scrollbar,
+  .review-cards::-webkit-scrollbar,
+  .blog-grid::-webkit-scrollbar { display: none; }
+
+  /* Each card snaps to the start, takes ~78% of viewport — peek of next card visible */
+  .afs-card,
+  .t-card,
+  .sol-card,
+  .tier,
+  .svc-card,
+  .related-card,
+  .review-card,
+  .blog-card {
+    flex: 0 0 78vw;
+    scroll-snap-align: start;
+    max-width: 78vw;
+  }
+  /* Make sure popular tier doesn't translateY -8px on mobile (looks broken in scroll) */
+  .tier-popular { transform: none; }
+
+  /* Hint that you can swipe — small text under each carousel */
+  .afs-grid::after,
+  .t-grid::after,
+  .sol-grid::after { content: none; } /* placeholder; section-level hints below */
+
+  /* Section-level swipe hint: append a 1-line hint below grids that became scrollers */
+  .app-features-section .afs-head::after,
+  .trusted-section .trusted-head::after,
+  .solutions-head::after {
+    content: '↔ swipe';
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(168, 85, 247, 0.7);
+    margin-top: 14px;
+    font-weight: 600;
+  }
+
+  /* Ensure container padding doesn't double when scrollers bleed */
+  .afs-grid + *, .t-grid + *, .sol-grid + *, .tier-grid + * { margin-top: 24px; }
+
+  /* Tighten section-head padding on mobile */
+  .section-head { margin-bottom: 28px; }
+
+  /* App-features cards on mobile: keep their visual identity but constrain height */
+  .afs-card {
+    min-height: 460px;
+    padding: 28px 24px;
+  }
+  .afs-card h3 { font-size: 1.4rem; }
+
+  /* Testimonial cards: shorter height, full width minus peek */
+  .t-card { min-height: auto; }
+  .t-photo { aspect-ratio: 16 / 10; }
+
+  /* Solutions cards: same treatment */
+  .sol-card { width: 78vw; }
+  .sol-image { aspect-ratio: 16 / 10; }
+
+  /* Pricing tiers stay full width on phones; horizontal scroll lets users compare */
+  .tier { padding: 24px 22px; }
+
+  /* Service-area map: already stacks via earlier rule. Make it tight. */
+  .sa-layout { gap: 24px; }
+  .sa-list .sa-county:first-child ul { grid-template-columns: 1fr; }
+
+  /* General mobile body padding to keep content from kissing edges */
+  .container { padding: 0 20px; }
+
+  /* Hide pseudo-after hints on sections that already have them in markup */
+  .reel-hint { font-size: 12px; }
+}
+
+/* Tablet middle ground — 2 columns instead of horizontal scroll */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .afs-grid { grid-template-columns: repeat(2, 1fr); }
+  .t-grid { grid-template-columns: repeat(2, 1fr); }
+  .tier-grid { grid-template-columns: repeat(2, 1fr); }
+}
