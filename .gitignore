@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local dev
+.claude/
+node_modules/
+.vercel/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Original heavy source PNGs that are now baked into /images
+twiglight zone logo.png
