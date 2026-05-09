@@ -62,7 +62,7 @@ function buildGraph(jsonld, canonical) {
   return `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': stripped })}</script>`;
 }
 
-const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg', jsonld = [], speakable = ['h1', '.hero-est', '.section-head h2', '.faq-item summary', '.faq-item div', '.post-section p:first-of-type'], noindex = false }) => {
+const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg', jsonld = [], speakable = ['h1', '.hero-est', '.section-head h2', '.faq-item summary', '.faq-item div', '.post-section p:first-of-type'], noindex = false, geo = null }) => {
   // Add Speakable schema for AI/voice — adds explicit "answer here" markers for assistants
   if (speakable && speakable.length) {
     jsonld = [...jsonld, {
@@ -125,9 +125,9 @@ ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
 <link rel="canonical" href="${SITE}${canonical}" />
 <meta name="geo.region" content="US-CA" />
-<meta name="geo.placename" content="Fresno, California" />
-<meta name="geo.position" content="36.7378;-119.7871" />
-<meta name="ICBM" content="36.7378, -119.7871" />
+<meta name="geo.placename" content="${geo ? esc(geo.placename) : 'Fresno, California'}" />
+<meta name="geo.position" content="${geo ? `${geo.lat};${geo.lng}` : '36.7378;-119.7871'}" />
+<meta name="ICBM" content="${geo ? `${geo.lat}, ${geo.lng}` : '36.7378, -119.7871'}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(desc)}" />
@@ -151,6 +151,7 @@ ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>${CRITICAL_CSS}</style>
 <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -478,7 +479,10 @@ const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${
     </header>
     <div class="sa-layout">
       <div class="sa-map" aria-label="Service area map">
-        <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
+        <picture>
+          <source srcset="/images/coverage-map.avif" type="image/avif" />
+          <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
+        </picture>
         <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <a href="${urlPattern('fresno')}" data-pin="fresno" class="sa-hot sa-hot-hq"><ellipse cx="525" cy="495" rx="115" ry="52" /><title>Fresno (HQ)</title></a>
           <a href="${urlPattern('madera')}" data-pin="madera" class="sa-hot"><ellipse cx="218" cy="195" rx="78" ry="35" /><title>Madera</title></a>
@@ -878,7 +882,7 @@ function renderServiceCity(service, city) {
   const useCases = service.useCases.slice(0, 6);
   const photoCat = SERVICE_PHOTO_MAP[service.slug] || 'residential';
   const heroImg = pickPhotos(photoCat, slug, 1)[0];
-  const html = head({ title, desc, canonical, kw: localKw, ogImg: heroImg, jsonld }) +
+  const html = head({ title, desc, canonical, kw: localKw, ogImg: heroImg, jsonld, geo: { lat: city.lat, lng: city.lng, placename: `${city.name}, California` } }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
@@ -1006,7 +1010,7 @@ function renderCityHub(city) {
   ];
   const jsonld = [breadcrumbs(crumbs, canonical), localBusinessLD(city), faqLD(faqs, canonical), howToInstallLD(), ...allReviews().slice(0, 5)];
   const heroImg = pickPhotos('residential', city.slug, 1)[0];
-  const html = head({ title, desc, canonical, kw: `permanent outdoor lights ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld }) +
+  const html = head({ title, desc, canonical, kw: `permanent outdoor lights ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld, geo: { lat: city.lat, lng: city.lng, placename: `${city.name}, California` } }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
@@ -1151,7 +1155,7 @@ function renderVerticalCity(v, city) {
   ];
   const photoCat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial';
   const heroImg = pickPhotos(photoCat, slug, 1)[0];
-  const html = head({ title, desc, canonical, kw: `${v.primaryKw} ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld }) +
+  const html = head({ title, desc, canonical, kw: `${v.primaryKw} ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld, geo: { lat: city.lat, lng: city.lng, placename: `${city.name}, California` } }) +
     headerHTML(canonical) +
     `<main>` +
     breadcrumbBlock(crumbs) +
@@ -2227,9 +2231,33 @@ const priorityFor = (u) => {
   if (u.startsWith('/gallery-')) return '0.6';
   return '0.8';
 };
+// Per-URL lastmod & changefreq so crawl prioritization is meaningful.
+// Blog posts use deterministic dates derived from slug (matches BlogPosting schema).
+const lastmodFor = (u) => {
+  if (u.startsWith('/blog/')) {
+    const slug = u.replace('/blog/', '').replace(/\/$/, '');
+    const monthOffset = seedHash(slug) % 9;
+    const dayOffset = (seedHash(slug + 'd') % 27) + 1;
+    const baseMonth = 8 + monthOffset;
+    const yr = baseMonth > 12 ? 2026 : 2025;
+    const mm = baseMonth > 12 ? baseMonth - 12 : baseMonth;
+    return `${yr}-${String(mm).padStart(2, '0')}-${String(dayOffset).padStart(2, '0')}`;
+  }
+  if (u === '/' || /^\/(services|service-areas|commercial|pricing|blog)$/.test(u)) return today;
+  if (u.startsWith('/permanent-outdoor-lights-') || /^\/(cost-)/.test(u)) return today;
+  // Service hubs and service×city: bake in build date but earlier; spread by hash
+  const offsetDays = seedHash(u) % 30;
+  const d = new Date(); d.setDate(d.getDate() - offsetDays);
+  return d.toISOString().split('T')[0];
+};
+const changefreqFor = (u) => {
+  if (u === '/' || /^\/(blog|services)$/.test(u)) return 'weekly';
+  if (u.startsWith('/blog/')) return 'monthly';
+  return 'monthly';
+};
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${allUrls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${priorityFor(u)}</priority></url>`).join('\n')}
+${allUrls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${lastmodFor(u)}</lastmod><changefreq>${changefreqFor(u)}</changefreq><priority>${priorityFor(u)}</priority></url>`).join('\n')}
 </urlset>`;
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
 console.log(`✓ Wrote sitemap.xml (${allUrls.length} urls, lastmod ${today})`);

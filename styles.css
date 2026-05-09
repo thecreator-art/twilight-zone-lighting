@@ -3921,7 +3921,10 @@ body { padding-top: 152px; }
   pointer-events: none;
   z-index: 0;
   opacity: 0.55;
+  contain: layout paint;
 }
+.tech-specs-bg span { will-change: transform; }
+.process-rail::after { will-change: top; contain: layout; }
 .tech-specs-bg span {
   position: absolute;
   border-radius: 50%;

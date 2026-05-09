@@ -800,7 +800,10 @@
 
     <div class="sa-layout">
       <div class="sa-map" aria-label="Service area map">
-        <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
+        <picture>
+          <source srcset="/images/coverage-map.avif" type="image/avif" />
+          <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
+        </picture>
         <!-- SVG overlay uses image's actual pixel coordinates (1448 × 1086).
              Browser scales clicks automatically — no math, no drift. -->
         <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
