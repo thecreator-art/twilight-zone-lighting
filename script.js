@@ -646,8 +646,8 @@ function fireConfetti() {
     const landscape = landscapeChk.checked ? 800 : 0;
     const music = musicChk.checked ? 300 : 0;
 
-    // Base cost: ~$22/ft for single-story, $32/ft 2-story, $42/ft estate
-    const perFoot = stories === 1 ? 22 : stories === 2 ? 32 : 42;
+    // Base cost: $32/ft single-story, $42/ft two-story, $55/ft estate
+    const perFoot = stories === 1 ? 32 : stories === 2 ? 42 : 55;
     const baseFromFeet = feet * perFoot;
 
     // Zone multiplier
@@ -656,9 +656,9 @@ function fireConfetti() {
     // Subtotal
     const sub = baseFromFeet + zoneAdd + landscape + music;
 
-    // Floor at $950 (Starter minimum)
-    const low = Math.max(950, Math.round(sub * 0.92 / 50) * 50);
-    const high = Math.max(low + 200, Math.round(sub * 1.12 / 50) * 50);
+    // Floor at $950 (Starter minimum) — small homes still get the Starter price
+    const low = Math.max(950, Math.round(sub / 50) * 50);
+    const high = Math.max(low + 250, Math.round(sub * 1.18 / 50) * 50);
 
     feetEl.textContent = feet + ' ft';
     zonesEl.textContent = zones;

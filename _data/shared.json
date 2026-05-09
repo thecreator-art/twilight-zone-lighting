@@ -2,17 +2,17 @@
   "brand": {
     "name": "Twilight Zone Permanent Lighting",
     "tagline": "Permanent. Invisible by day. Unforgettable by night.",
-    "phone": "+15595550199",
-    "phoneDisplay": "(559) 555-0199",
-    "phoneShort": "559.555.0199",
+    "phone": "+15593732220",
+    "phoneDisplay": "(559) 373-2220",
+    "phoneShort": "559.373.2220",
     "email": "hello@twilightzonelighting.com",
     "address": {
-      "street": "1234 N Blackstone Ave",
+      "street": "4120 W Regency Ave",
       "city": "Fresno",
       "state": "CA",
-      "zip": "93704"
+      "zip": "93722"
     },
-    "geo": { "lat": 36.7378, "lng": -119.7871 },
+    "geo": { "lat": 36.8094, "lng": -119.8821 },
     "license": "1234567",
     "founded": "2019",
     "employees": 12,
@@ -35,7 +35,7 @@
   },
   "guarantees": [
     { "title": "60-day refund", "desc": "Pulled and refunded in full. No fine print." },
-    { "title": "Lifetime warranty", "desc": "Track for life. Five years on LEDs." },
+    { "title": "5-year warranty", "desc": "Track + LEDs covered five years. Workmanship too." },
     { "title": "$0 down", "desc": "From $89/month at 0% APR." },
     { "title": "Locally installed", "desc": "Lic. #1234567. Bonded. Insured." }
   ],

@@ -197,7 +197,7 @@ const footerHTML = () => `
         <a href="/" class="brand brand-light">
           <img class="brand-logo brand-logo-foot" src="/images/logo-600.png" alt="${esc(BRAND)}" width="240" height="160" loading="lazy" />
         </a>
-        <p>Fresno's authorized permanent outdoor lighting installer. Locally owned. Lifetime warranty. From $950.</p>
+        <p>Fresno's authorized permanent outdoor lighting installer. Locally owned. 5-year warranty. From $950.</p>
         <address class="foot-nap">
           <strong>${esc(BRAND)}</strong><br />
           ${esc(shared.brand.address.street)}<br />
@@ -246,7 +246,7 @@ const serviceLD = (name, desc, area, price) => ({
 const localBusinessLD = (city) => ({
   '@context': 'https://schema.org', '@type': 'HomeAndConstructionBusiness',
   name: `${BRAND} — ${city.name}`,
-  description: `Permanent outdoor lighting installer serving ${city.name}, CA. From $950. Lifetime warranty.`,
+  description: `Permanent outdoor lighting installer serving ${city.name}, CA. From $950. 5-year warranty.`,
   telephone: TEL, priceRange: '$950 - $15000+',
   address: { '@type': 'PostalAddress', streetAddress: shared.brand.address.street, addressLocality: 'Fresno', addressRegion: 'CA', postalCode: '93704', addressCountry: 'US' },
   geo: { '@type': 'GeoCoordinates', latitude: city.lat, longitude: city.lng },
@@ -391,6 +391,55 @@ const ctaBlock = () => `
       <p class="ns-fine">By submitting you agree to receive communication. 60-day money-back. $0 down.</p>
       <button type="submit" class="btn btn-white btn-block btn-lg" data-magnetic>Request quote</button>
     </form>
+  </div>
+</section>`;
+
+// Reusable coverage map block — mirrors homepage map section, with hrefs parameterized
+// to whatever URL pattern the consuming page wants (e.g. /{servicePrefix}-{city.slug}).
+const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${slug}`, eyebrow = 'Service areas', h2 = 'Locally installed across', em = 'the Central Valley.' } = {}) => `
+<section class="service-area" aria-label="Service area map">
+  <div class="container">
+    <header class="sa-head">
+      ${sectionHead({ eyebrow, h2, em, intro: `Free on-site estimates within a 60-mile radius of Fresno.` })}
+    </header>
+    <div class="sa-layout">
+      <div class="sa-map" aria-label="Service area map">
+        <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
+        <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <a href="${urlPattern('fresno')}" data-pin="fresno" class="sa-hot sa-hot-hq"><ellipse cx="525" cy="495" rx="115" ry="52" /><title>Fresno (HQ)</title></a>
+          <a href="${urlPattern('madera')}" data-pin="madera" class="sa-hot"><ellipse cx="218" cy="195" rx="78" ry="35" /><title>Madera</title></a>
+          <a href="${urlPattern('clovis')}" data-pin="clovis" class="sa-hot"><ellipse cx="585" cy="298" rx="75" ry="35" /><title>Clovis</title></a>
+          <a href="${urlPattern('sanger')}" data-pin="sanger" class="sa-hot"><ellipse cx="799" cy="375" rx="75" ry="35" /><title>Sanger</title></a>
+          <a href="${urlPattern('reedley')}" data-pin="reedley" class="sa-hot"><ellipse cx="982" cy="478" rx="78" ry="35" /><title>Reedley</title></a>
+          <a href="${urlPattern('kerman')}" data-pin="kerman" class="sa-hot"><ellipse cx="241" cy="522" rx="78" ry="35" /><title>Kerman</title></a>
+          <a href="${urlPattern('fowler')}" data-pin="fowler" class="sa-hot"><ellipse cx="698" cy="578" rx="78" ry="35" /><title>Fowler</title></a>
+          <a href="${urlPattern('selma')}" data-pin="selma" class="sa-hot"><ellipse cx="855" cy="652" rx="75" ry="35" /><title>Selma</title></a>
+          <a href="${urlPattern('parlier')}" data-pin="parlier" class="sa-hot"><ellipse cx="1110" cy="652" rx="75" ry="35" /><title>Parlier</title></a>
+          <a href="${urlPattern('kingsburg')}" data-pin="kingsburg" class="sa-hot"><ellipse cx="960" cy="752" rx="78" ry="35" /><title>Kingsburg</title></a>
+          <a href="${urlPattern('hanford')}" data-pin="hanford" class="sa-hot"><ellipse cx="735" cy="888" rx="78" ry="35" /><title>Hanford</title></a>
+          <a href="${urlPattern('visalia')}" data-pin="visalia" class="sa-hot"><ellipse cx="1200" cy="893" rx="78" ry="35" /><title>Visalia</title></a>
+        </svg>
+      </div>
+      <div class="sa-list">
+        <div class="sa-county">
+          <h5>Fresno County</h5>
+          <ul>
+            <li><a href="${urlPattern('fresno')}" data-city="fresno"><span class="sa-name">Fresno</span><span class="sa-meta">HQ · 93701–93730</span></a></li>
+            <li><a href="${urlPattern('clovis')}" data-city="clovis"><span class="sa-name">Clovis</span><span class="sa-meta">93611–93619</span></a></li>
+            <li><a href="${urlPattern('sanger')}" data-city="sanger"><span class="sa-name">Sanger</span><span class="sa-meta">93657</span></a></li>
+            <li><a href="${urlPattern('reedley')}" data-city="reedley"><span class="sa-name">Reedley</span><span class="sa-meta">93654</span></a></li>
+            <li><a href="${urlPattern('selma')}" data-city="selma"><span class="sa-name">Selma</span><span class="sa-meta">93662</span></a></li>
+            <li><a href="${urlPattern('kingsburg')}" data-city="kingsburg"><span class="sa-name">Kingsburg</span><span class="sa-meta">93631</span></a></li>
+            <li><a href="${urlPattern('parlier')}" data-city="parlier"><span class="sa-name">Parlier</span><span class="sa-meta">93648</span></a></li>
+            <li><a href="${urlPattern('fowler')}" data-city="fowler"><span class="sa-name">Fowler</span><span class="sa-meta">93625</span></a></li>
+            <li><a href="${urlPattern('kerman')}" data-city="kerman"><span class="sa-name">Kerman</span><span class="sa-meta">93630</span></a></li>
+          </ul>
+        </div>
+        <div class="sa-county"><h5>Madera County</h5><ul><li><a href="${urlPattern('madera')}" data-city="madera"><span class="sa-name">Madera</span><span class="sa-meta">93636–93639</span></a></li></ul></div>
+        <div class="sa-county"><h5>Tulare County</h5><ul><li><a href="${urlPattern('visalia')}" data-city="visalia"><span class="sa-name">Visalia</span><span class="sa-meta">93277–93292</span></a></li></ul></div>
+        <div class="sa-county"><h5>Kings County</h5><ul><li><a href="${urlPattern('hanford')}" data-city="hanford"><span class="sa-name">Hanford</span><span class="sa-meta">93230</span></a></li></ul></div>
+      </div>
+    </div>
   </div>
 </section>`;
 
@@ -649,7 +698,7 @@ function renderServiceCity(service, city) {
   const slug = `${service.slug}-${city.slug}`;
   const h1 = `${service.h1.replace(' Installation', '')} Installation in ${city.name}, CA`;
   const title = `${service.h1.replace(' Installation', '')} ${city.name} CA | From ${usd(service.fromPrice)} | ${BRAND}`;
-  const desc = `${service.h1.replace(' Installation', '')} installation in ${city.name}, CA. ${service.lead} Serving ${city.neighborhoods.slice(0,4).join(', ')}. Lifetime warranty. From ${usd(service.fromPrice)}.`;
+  const desc = `${service.h1.replace(' Installation', '')} installation in ${city.name}, CA. ${service.lead} Serving ${city.neighborhoods.slice(0,4).join(', ')}. 5-year warranty. From ${usd(service.fromPrice)}.`;
   const localKw = `${service.primaryKw} ${city.name.toLowerCase()}`;
   const canonical = `/${slug}`;
   const crumbs = [
@@ -770,12 +819,12 @@ function renderServiceHub(service) {
     techSpecsBlock() +
     testimonialBlock(fresno, pickPhotos(photoCat, service.slug + 't', 1)[0]) +
     processTimelineBlock() +
-    `<section class="container city-grid">
-      ${sectionHead({ eyebrow: 'By city', h2: `${svcName} across`, em: 'the Central Valley.' })}
-      <div class="city-pills">
-        ${cities.map(c => `<a href="/${service.slug}-${c.slug}" class="pill">${esc(c.name)}, CA</a>`).join('')}
-      </div>
-    </section>` +
+    coverageMapBlock({
+      urlPattern: (slug) => `/${service.slug}-${slug}`,
+      eyebrow: 'By city',
+      h2: `${svcName} across`,
+      em: 'the Central Valley.'
+    }) +
     guaranteeBlock() +
     faqBlock(faqs) +
     serviceRowBlock(service.slug) +
@@ -788,7 +837,7 @@ function renderServiceHub(service) {
 function renderCityHub(city) {
   const h1 = `Permanent Outdoor Lighting in ${city.name}, CA`;
   const title = `Permanent Outdoor Lights ${city.name} CA | From $950 | ${BRAND}`;
-  const desc = `Permanent outdoor lighting installer serving ${city.name}, CA and ${city.neighborhoods.slice(0, 3).join(', ')}. From $950. Lifetime warranty. ${shared.brand.reviews}+ reviews at ${shared.brand.rating}★.`;
+  const desc = `Permanent outdoor lighting installer serving ${city.name}, CA and ${city.neighborhoods.slice(0, 3).join(', ')}. From $950. 5-year warranty. ${shared.brand.reviews}+ reviews at ${shared.brand.rating}★.`;
   const canonical = `/permanent-outdoor-lights-${city.slug}`;
   const crumbs = [
     { name: 'Home', url: '/' },
@@ -897,10 +946,12 @@ function renderVertical(v) {
     testimonialBlock(fresno, pickPhotos(photoCat, v.slug + 't', 1)[0]) +
     techSpecsBlock() +
     processTimelineBlock({ kicker: 'Commercial install', h2: 'How a', em: 'commercial install runs.', intro: 'Two to five business days for most builds. Multi-property contracts get dedicated account management.' }) +
-    `<section class="container city-grid">
-      ${sectionHead({ eyebrow: 'By city', h2: `${baseName} across`, em: 'the Central Valley.' })}
-      <div class="city-pills">${cities.map(c => `<a href="/${v.slug}-${c.slug}" class="pill">${esc(c.name)}</a>`).join('')}</div>
-    </section>` +
+    coverageMapBlock({
+      urlPattern: (slug) => `/${v.slug}-${slug}`,
+      eyebrow: 'By city',
+      h2: `${baseName} across`,
+      em: 'the Central Valley.'
+    }) +
     guaranteeBlock() +
     faqBlock(faqs) +
     ctaBlock() +
@@ -1194,10 +1245,16 @@ function renderBlogIndex() {
       if (!list.length) return '';
       const emWord = intentLabels[intent].split(' ').pop();
       const head = intentLabels[intent].split(' ').slice(0, -1).join(' ') || intentLabels[intent];
+      const blogImageCounts = { informational: 10, commercial: 17, transactional: 7, local: 10, troubleshooting: 6, process: 6, niche: 4 };
+      const blogPrefixes = { informational: 'i', commercial: 'c', transactional: 't', local: 'l', troubleshooting: 'tr', process: 'p', niche: 'n' };
       return `<section class="container blog-bucket">
         ${sectionHead({ eyebrow: `${list.length} articles · ${intentLabels[intent].toLowerCase()}`, h2: head, em: emWord })}
         <div class="blog-grid">
-          ${list.map(p => `<a href="/blog/${p.slug}" class="blog-card"><div class="blog-card-kicker">${esc(p.kicker)}</div><h3>${esc(p.h1)}</h3><p>${esc(p.lead.slice(0, 130))}</p></a>`).join('')}
+          ${list.map((p, idx) => {
+            const imgIdx = (idx % (blogImageCounts[intent] || 1)) + 1;
+            const img = `/images/blog/${intent}/${blogPrefixes[intent] || 'i'}${imgIdx}.jpg`;
+            return `<a href="/blog/${p.slug}" class="blog-card"><figure class="blog-card-img"><img src="${img}" alt="${esc(p.h1)}" loading="lazy" decoding="async" /></figure><div class="blog-card-body"><div class="blog-card-kicker">${esc(p.kicker)}</div><h3>${esc(p.h1)}</h3><p>${esc(p.lead.slice(0, 130))}</p></div></a>`;
+          }).join('')}
         </div>
       </section>`;
     }).join('') +
@@ -1265,7 +1322,7 @@ if (posts.length) {
 function buildCostPages() {
   const out = [];
   const baseFaqs = [
-    { q: 'What is the cheapest option?', a: `Our Starter package starts at ${usd(shared.pricing.starterFrom)} — single facade, ~30 ft, full app control with 16M colors and 200+ patterns, lifetime track warranty.` },
+    { q: 'What is the cheapest option?', a: `Our Starter package starts at ${usd(shared.pricing.starterFrom)} — single facade, ~30 ft, full app control with 16M colors and 200+ patterns, 5-year warranty.` },
     { q: 'Do you finance?', a: `Yes — 0% APR for 12 months. Standard installs run ~$89/month, Premium ~$169/month. $0 down.` },
     { q: 'Is the quote firm?', a: 'Yes. Written, fixed price on the spot after a free on-site walk. No upsells, no surprises.' },
     { q: 'Are there permit costs?', a: 'No permit is required for residential under-eave installation in Fresno County. Commercial varies — we handle filing if needed.' }
@@ -1282,7 +1339,7 @@ function buildCostPages() {
       { h: 'Quick price ranges', body: [`Starter (single facade, ~30 ft): from ${usd(shared.pricing.starterFrom)}.`, `Standard (full front + sides, ~80 ft, single story): from ${usd(shared.pricing.standardFrom)}.`, `Premium (full perimeter, two-story): from ${usd(shared.pricing.premiumFrom)}.`, `Estate (multi-zone, complex rooflines): from ${usd(shared.pricing.estateFrom)}.`],
         table: { headers: ['Tier', 'Coverage', 'From'], rows: [['Starter', '~30 ft single facade', usd(shared.pricing.starterFrom)], ['Standard', '~80 ft single story', usd(shared.pricing.standardFrom)], ['Premium', 'Two-story full perimeter', usd(shared.pricing.premiumFrom)], ['Estate', 'Multi-zone complex', usd(shared.pricing.estateFrom) + '+']] } },
       { h: 'What drives the price', body: ['Linear feet of track is the biggest driver. Two-story stories add 30-40% for ladder time. Custom track color (bronze, brown) adds $200-$400. Smart-home integration (Control4, Elan) adds $300-$600.'] },
-      { h: 'What\'s included', body: ['Genuine Jellyfish RGBIC-RD aluminum track. IP67 weather-rated LEDs. Color-matched to your trim. Concealed wiring. Weatherproof control box. App setup and walkthrough. Lifetime track warranty. 5-year LED warranty. 60-day money-back guarantee.'] },
+      { h: 'What\'s included', body: ['Genuine Jellyfish RGBIC-RD aluminum track. IP67 weather-rated LEDs. Color-matched to your trim. Concealed wiring. Weatherproof control box. App setup and walkthrough. 5-year track warranty. 5-year LED warranty. 60-day money-back guarantee.'] },
       { h: 'Financing', body: [`0% APR for 12 months. Starter ~${usd(shared.pricing.starterMonthly)}/mo. Standard ~${usd(shared.pricing.standardMonthly)}/mo. Premium ~${usd(shared.pricing.premiumMonthly)}/mo. $0 down. Soft credit pull, decision in 60 seconds.`] }
     ],
     faqs: baseFaqs
@@ -1297,7 +1354,7 @@ function buildCostPages() {
     lead: `Pricing for ${c.name} homes specifically — based on actual ${c.name} installs we've completed across ${c.neighborhoods.slice(0, 3).join(', ')}.`,
     sections: [
       { h: `${c.name} price ranges (typical homes)`, body: [`Most ${c.name} single-story homes (1,800-2,400 sq ft) land Standard tier: ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}.`, `Two-story homes in ${c.neighborhoods[0]} and ${c.neighborhoods[1]} typically Premium tier: ${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}.`, `Tract starter homes: ${usd(shared.pricing.starterFrom)}-${usd(shared.pricing.standardFrom)}.`] },
-      { h: 'What\'s the same as our master pricing', body: ['Same RGBIC-RD hardware. Same lifetime track warranty. Same 60-day money-back. Same financing terms (0% APR, 12 months).'] },
+      { h: 'What\'s the same as our master pricing', body: ['Same RGBIC-RD hardware. Same 5-year warranty. Same 60-day money-back. Same financing terms (0% APR, 12 months).'] },
       { h: `${c.name}-specific notes`, body: [`Drive time from our Fresno shop is about ${c.driveTime} minutes — no travel surcharge inside Fresno County.`, `${c.name} summer highs of ${c.climate.summerHigh}°F are well within our IP67/-40°F-to-140°F operating envelope.`, c.popularUseCase ? `Most-requested in ${c.name}: ${c.popularUseCase}` : ''].filter(Boolean) }
     ],
     faqs: baseFaqs
@@ -1308,7 +1365,7 @@ function buildCostPages() {
     slug: `cost-${s.slug}`,
     h1: `${s.h1.split(' Installation')[0]} Cost (2026)`,
     title: `${s.h1.split(' Installation')[0]} Cost | 2026 Fresno Pricing`,
-    desc: `Real 2026 pricing for ${(s.h1.split(' Installation')[0]).toLowerCase()} in Fresno County. From ${usd(s.fromPrice)}. Lifetime warranty. Financing available.`,
+    desc: `Real 2026 pricing for ${(s.h1.split(' Installation')[0]).toLowerCase()} in Fresno County. From ${usd(s.fromPrice)}. 5-year warranty. Financing available.`,
     kw: `${s.primaryKw} cost`,
     lead: `Pricing specifically for ${(s.h1.split(' Installation')[0]).toLowerCase()} — based on ${shared.brand.installs}+ installs across the Central Valley.`,
     sections: [
@@ -1347,7 +1404,7 @@ function buildGuides() {
     { slug: 'guide-rgbic-vs-rgb', h1: 'RGBIC vs RGB: The Difference for Outdoor Lights', desc: 'RGBIC vs RGB explained — pixel control, gradient smoothness, pattern variety. Why RGBIC matters for permanent lights.', kw: 'rgbic vs rgb', kicker: 'Tech guide' },
     { slug: 'guide-hoa-approval', h1: 'How to Get HOA Approval for Permanent Lighting', desc: 'Step-by-step HOA submission for permanent outdoor lighting in Fresno County. Spec sheets, renderings, and language that wins.', kw: 'hoa permanent lighting approval', kicker: 'Process guide' },
     { slug: 'guide-installation-process', h1: 'Permanent Lighting Installation: What to Expect', desc: 'Day-of installation walkthrough — site prep, track install, wiring, control box, app setup, walkthrough.', kw: 'permanent lighting installation process', kicker: 'Process guide' },
-    { slug: 'guide-warranty-explained', h1: 'Permanent Lighting Warranty: What\'s Actually Covered', desc: 'Lifetime track warranty, 5-year LED warranty, 5-year workmanship, 60-day money-back. Plain-English coverage.', kw: 'permanent lighting warranty', kicker: 'Buyer guide' },
+    { slug: 'guide-warranty-explained', h1: 'Permanent Lighting Warranty: What\'s Actually Covered', desc: '5-year track warranty, 5-year LED warranty, 5-year workmanship, 60-day money-back. Plain-English coverage.', kw: 'permanent lighting warranty', kicker: 'Buyer guide' },
     { slug: 'guide-app-control', h1: 'Permanent Lighting App: 200+ Patterns Explained', desc: 'Full walkthrough of the app — schedules, scenes, music sync, holiday auto-mode, smart-home integration.', kw: 'permanent lighting app', kicker: 'Owner guide' },
     { slug: 'guide-smart-home', h1: 'Permanent Lighting + Control4, Elan, Alexa, Google', desc: 'Smart home integration for permanent outdoor lighting — Control4, Nice Elan, Alexa, Google Home setup.', kw: 'permanent lighting smart home', kicker: 'Tech guide' },
     { slug: 'guide-led-track-types', h1: 'Permanent Lighting Track Types: Which Profile You Want', desc: 'Square channel vs RD profile vs J-channel — track shapes for permanent outdoor lighting compared.', kw: 'permanent lighting track types', kicker: 'Tech guide' },
@@ -1374,7 +1431,7 @@ function buildGuides() {
     </section>`,
     faqs: [
       { q: 'How long does install take?', a: 'Single-story homes 6-8 hours. Two-story 1-2 days.' },
-      { q: 'What\'s the warranty?', a: `Lifetime on the aluminum track. 5 years on the LEDs. 5 years on workmanship. Plus 60-day money-back guarantee.` },
+      { q: 'What\'s the warranty?', a: `5-year warranty on track, LEDs, and workmanship. Plus 60-day money-back guarantee.` },
       { q: 'How much does it cost?', a: `Starts at ${usd(shared.pricing.starterFrom)}. Most homes ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}. Financing from ${usd(shared.pricing.standardMonthly)}/month.` }
     ]
   })));
@@ -1394,7 +1451,7 @@ function buildUtility() {
     kicker: 'Services',
     lead: 'Every lighting service we offer, all in one place.',
     body: `<section class="solutions container">
-      ${sectionHead({ eyebrow: 'Residential', h2: 'Lighting for', em: 'every reason.', intro: 'One install, every holiday, every architectural mode. App-controlled. Lifetime warranty.' })}
+      ${sectionHead({ eyebrow: 'Residential', h2: 'Lighting for', em: 'every reason.', intro: 'One install, every holiday, every architectural mode. App-controlled. 5-year warranty.' })}
       ${solutionsGrid(services.map(s => ({ h: s.h1.split(' Installation')[0].split(' in ')[0], p: s.lead.slice(0, 130), img: s.image, alt: s.imageAlt || s.h1, href: `/${s.slug}`, linkLabel: `From ${usd(s.fromPrice)}` })))}
     </section>
     <section class="solutions container">
@@ -1465,12 +1522,12 @@ function buildUtility() {
       { num: usd(shared.pricing.starterFrom), lab: 'Starter from' },
       { num: '0% APR', lab: '12-month financing' },
       { num: '60-day', lab: 'Money-back' },
-      { num: 'Lifetime', lab: 'Track warranty' }
+      { num: '5-year', lab: 'Warranty' }
     ]) +
     `<section class="container price-tiers">
       ${sectionHead({ eyebrow: 'Tiers', h2: 'Four published', em: 'price points.', intro: 'No quote-only games. Every install lands in one of these four tiers — final price written on the spot after a free walk.' })}
       <div class="tier-grid">
-        <div class="tier"><div class="tier-eyebrow">Single facade</div><h3>Starter</h3><p class="price">${usd(shared.pricing.starterFrom)}</p><p>~30 ft, single zone, full app control with all 16M colors, lifetime track warranty.</p><p class="tier-mo">${usd(shared.pricing.starterMonthly)}/mo at 0% APR</p></div>
+        <div class="tier"><div class="tier-eyebrow">Single facade</div><h3>Starter</h3><p class="price">${usd(shared.pricing.starterFrom)}</p><p>~30 ft, single zone, full app control with all 16M colors, 5-year warranty.</p><p class="tier-mo">${usd(shared.pricing.starterMonthly)}/mo at 0% APR</p></div>
         <div class="tier tier-popular"><div class="tier-eyebrow">Most popular</div><h3>Standard</h3><p class="price">${usd(shared.pricing.standardFrom)}</p><p>Full front + sides, ~80 ft, single story. Most Fresno homes land here.</p><p class="tier-mo">${usd(shared.pricing.standardMonthly)}/mo at 0% APR</p></div>
         <div class="tier"><div class="tier-eyebrow">Two-story</div><h3>Premium</h3><p class="price">${usd(shared.pricing.premiumFrom)}</p><p>Full perimeter, two-story home. Same hardware, more linear feet, more ladder time.</p><p class="tier-mo">${usd(shared.pricing.premiumMonthly)}/mo at 0% APR</p></div>
         <div class="tier"><div class="tier-eyebrow">Custom</div><h3>Estate</h3><p class="price">${usd(shared.pricing.estateFrom)}+</p><p>Multi-zone, complex rooflines, custom design. Built to your spec.</p><p class="tier-mo">Custom financing</p></div>
@@ -1538,7 +1595,7 @@ function buildUtility() {
       { q: 'How much does permanent outdoor lighting cost?', a: `Starts at ${usd(shared.pricing.starterFrom)} for a Starter install. Most homes land ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}. Two-story estates ${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}+. Financing from ${usd(shared.pricing.standardMonthly)}/month at 0% APR.` },
       { q: 'How long does the install take?', a: 'Single-story homes finish in 6-8 hours. Two-story 1-2 days.' },
       { q: 'Are the lights visible during the day?', a: 'No. The aluminum track is color-matched to your trim and tucks under the eave. Essentially invisible from the curb.' },
-      { q: 'What\'s the warranty?', a: `Lifetime on the aluminum track. 5 years on the LEDs. 5 years on workmanship. Plus our 60-day money-back guarantee.` },
+      { q: 'What\'s the warranty?', a: `5-year warranty on track, LEDs, and workmanship. Plus our 60-day money-back guarantee.` },
       { q: 'Will the lights survive Fresno summers?', a: 'Yes. IP67 weather-rated, tested -40°F to 140°F. Engineered for 115°F+ Fresno summers.' },
       { q: 'Is permanent lighting HOA-approved?', a: 'Almost always. Most Fresno-area HOAs approve us on first submission. We provide spec sheets and 3D renderings at no charge.' },
       { q: 'Do you damage the roof or fascia?', a: 'No. Aluminum track is anchored with stainless screws into the soffit substructure — same anchoring as gutters. No damage to siding, stucco, shingles, or trim.' },
@@ -1606,12 +1663,12 @@ function buildUtility() {
   }));
   out.push(renderArticle({
     slug: 'warranty',
-    h1: 'Lifetime Track Warranty',
-    title: `Warranty | Lifetime Track | 5-Year LED | ${BRAND}`,
-    desc: 'Lifetime warranty on the aluminum track. 5 years on LEDs. 5 years on workmanship. 60-day money-back guarantee.',
-    kw: 'permanent lighting warranty', kicker: 'Warranty', lead: 'Track is for life. LEDs for five years. Money back for sixty days.',
+    h1: '5-Year Warranty',
+    title: `5-Year Warranty | ${BRAND}`,
+    desc: '5-year warranty on the aluminum track. 5 years on LEDs. 5 years on workmanship. 60-day money-back guarantee.',
+    kw: 'permanent lighting warranty', kicker: 'Warranty', lead: 'Track, LEDs, workmanship — all five years. Money back for sixty days.',
     body: `<section class="container"><h2>What's covered</h2><ul>
-      <li><strong>Aluminum track:</strong> Lifetime — replaced at no cost if it fails.</li>
+      <li><strong>Aluminum track:</strong> 5-year warranty — replaced at no cost if it fails.</li>
       <li><strong>LEDs:</strong> 5-year manufacturer warranty.</li>
       <li><strong>Workmanship:</strong> 5 years on our install.</li>
       <li><strong>60-day money-back:</strong> Pulled and refunded in full. No fine print.</li>
@@ -1676,7 +1733,7 @@ function buildNeighborhoods() {
         slug: `permanent-outdoor-lights-${c.slug}-${nslug}`,
         h1: `Permanent Outdoor Lighting in ${n}, ${c.name}`,
         title: `Permanent Outdoor Lights ${n} ${c.name} CA | ${BRAND}`,
-        desc: `Permanent outdoor lighting installer for ${n} in ${c.name}, CA. From $950. Lifetime warranty. ${shared.brand.installs}+ Central Valley installs.`,
+        desc: `Permanent outdoor lighting installer for ${n} in ${c.name}, CA. From $950. 5-year warranty. ${shared.brand.installs}+ Central Valley installs.`,
         kw: `permanent outdoor lights ${n.toLowerCase()} ${c.name.toLowerCase()}`,
         kicker: `${c.name} · Neighborhood`,
         parent: { name: c.name, url: `/permanent-outdoor-lights-${c.slug}` },
@@ -1747,7 +1804,7 @@ function buildBrandPages() {
         'Gemstone Permanent Lights is a Canadian-rooted permanent outdoor lighting brand with strong dealer presence in the Mountain West and parts of the Central Valley. The system uses individually-controlled RGBIC LEDs in a track that runs under the eave or along architectural trim.',
         'Where Gemstone visually differs: the track profile sits slightly more visible during the day than the Jellyfish RGBIC-RD aluminum channel we install, which color-matches your trim and tucks tighter under the soffit. Whether that matters is a curb-appeal question — both systems essentially disappear from forty feet away, but inspection from the driveway tells a different story.',
         'On the technology side, Gemstone is a current-generation system with a competent app and 100+ presets. Jellyfish RGBIC-RD has slightly finer pixel pitch (better gradients), 200+ presets, and integrates with Control4 and Nice Elan. For homeowners with a smart home, that integration is the deciding factor.',
-        'Honest summary: if Gemstone has a great local installer near you, it is a real option. In Fresno, we install Jellyfish, full lifetime track warranty, 5-year LED, 60-day money-back. Pick whichever you can hold accountable in year four.'
+        'Honest summary: if Gemstone has a great local installer near you, it is a real option. In Fresno, we install Jellyfish, full 5-year warranty, 5-year LED, 60-day money-back. Pick whichever you can hold accountable in year four.'
       ],
       faqs: [
         { q: 'Is Gemstone better than Jellyfish?', a: 'Different trade-offs. Gemstone has a longer track record. Jellyfish has finer pixel density and broader smart-home integration. Locally, installer quality decides which is better for your house.' },
@@ -1801,7 +1858,7 @@ function buildBrandPages() {
         'Trimlight is one of the more established permanent outdoor lighting brands, with dealer presence in most US metros. The system uses individually-addressable RGB LEDs in an aluminum channel, mounted under the eave or along architectural lines, controlled by an app.',
         'On hardware: Trimlight is a mature, well-understood platform. Jellyfish RGBIC-RD (what we install) is a newer chip generation with finer pixel pitch — meaning gradients and pixel-by-pixel animations look smoother. The visual difference is subtle on solid colors and obvious on flowing patterns.',
         'On app: Jellyfish ships with a more current-generation interface and a larger preset library. Trimlight is functional and stable but feels a generation behind in UX.',
-        'On warranty: Jellyfish offers lifetime track warranty plus a 5-year LED warranty. Trimlight typically offers lifetime track plus 3-year LED. Two extra years on the LEDs is roughly 300 dollars of value over the system lifespan.',
+        'On warranty: Jellyfish offers 5-year warranty plus a 5-year LED warranty. Trimlight typically offers 3-year warranty. Two extra years on the LEDs is roughly 300 dollars of value over the system lifespan.',
         'Locally in Fresno, both have authorized dealers. We are the Jellyfish dealer. The honest answer: pick the dealer you trust to be there in year four when something needs service.'
       ],
       faqs: [
@@ -1821,7 +1878,7 @@ function buildBrandPages() {
         'Govee Permanent Outdoor Lights are a consumer-grade RGBIC LED system designed for DIY installation. The kit ships with the LED string, mounting clips, controller, and a Wi-Fi app. For a single-story home with accessible eaves, a careful homeowner can install the front facade in a weekend.',
         'Common install pitfalls: visible cable runs that did not get tucked into the soffit, clip spacing too wide, controller mounted in a spot that loses Wi-Fi, and connector ends that water-damage in the first heavy rain. None of these are unfixable but each one shows.',
         'When DIY makes sense: single-story home, ground-level access via standard ladder, budget under 700 dollars, and you genuinely enjoy ladder work. When hiring a pro makes more sense: two-story home, complex roofline, you want the track invisible during the day, you want a long warranty, and you want one phone number to call when something fails.',
-        'Our pro install starts at $950 fully installed using Jellyfish RGBIC-RD aluminum track — color-matched to your trim, concealed wiring, lifetime track warranty. By the time a homeowner accounts for the value of their own time and the visible-cable trade-off, the gap between DIY Govee and a pro Starter install is smaller than it looks on paper.'
+        'Our pro install starts at $950 fully installed using Jellyfish RGBIC-RD aluminum track — color-matched to your trim, concealed wiring, 5-year warranty. By the time a homeowner accounts for the value of their own time and the visible-cable trade-off, the gap between DIY Govee and a pro Starter install is smaller than it looks on paper.'
       ],
       faqs: [
         { q: 'Will you install Govee for me?', a: 'We focus on professional Jellyfish installs. We do not subcontract Govee jobs — the warranty mismatch is not fair to you.' },
@@ -1839,8 +1896,8 @@ function buildBrandPages() {
       bodyParas: [
         'Govee Permanent House Lights are a DIY-friendly RGBIC permanent outdoor lighting kit aimed at homeowners who want the look of a pro install without the pro installer. The system uses individually-addressable RGB LEDs, an external Wi-Fi controller, and a polished consumer app with hundreds of preset patterns.',
         'What Govee gets right: price (typically 400 to 700 dollars for a full kit), ease of programming, decent IP65 weather rating, and a large user community sharing scene presets online. For a single-story Fresno home, the visual outcome at night can rival professional installs.',
-        'Where Govee falls short: the cable is more visible by day than aluminum-track systems, the IP65 rating is a step below IP67 for very wet weather, the LED rated lifespan is about half that of pro-grade chips, and the warranty caps at 1 to 2 years vs lifetime track on pro systems.',
-        'The five-year math is what changes minds. A Govee kit at 600 dollars plus likely one or two replacement runs over five years lands at 1,200 to 1,800 dollars total. A pro Jellyfish Starter install at 950 dollars all-in, lifetime track warranty, lasts the same five years and beyond. Govee wins year one. Pro wins year four.'
+        'Where Govee falls short: the cable is more visible by day than aluminum-track systems, the IP65 rating is a step below IP67 for very wet weather, the LED rated lifespan is about half that of pro-grade chips, and the warranty caps at 1 to 2 years vs 5-year on pro systems.',
+        'The five-year math is what changes minds. A Govee kit at 600 dollars plus likely one or two replacement runs over five years lands at 1,200 to 1,800 dollars total. A pro Jellyfish Starter install at 950 dollars all-in, 5-year warranty, lasts the same five years and beyond. Govee wins year one. Pro wins year four.'
       ],
       faqs: [
         { q: 'Are Govee permanent house lights worth it?', a: 'For a single-story home, modest budget, and a homeowner who likes DIY: yes. For two-story homes, complex rooflines, or anyone who wants set-and-forget reliability: pro install wins on five-year cost.' }
@@ -1930,7 +1987,7 @@ function buildGalleries() {
         </div>
       </section>
       <section class="container article-body">
-        ${sectionHead({ eyebrow: 'Want this look?', h2: 'Free quote in', em: '24 hours.', intro: `We measure, design, and price in writing on the spot. From ${usd(shared.pricing.starterFrom)}. Lifetime track warranty. 60-day money-back guarantee.` })}
+        ${sectionHead({ eyebrow: 'Want this look?', h2: 'Free quote in', em: '24 hours.', intro: `We measure, design, and price in writing on the spot. From ${usd(shared.pricing.starterFrom)}. 5-year track warranty. 60-day money-back guarantee.` })}
       </section>`
     }));
   });

@@ -2642,21 +2642,19 @@ em {
   padding: 10px 0;
 }
 .ann-track {
-  display: inline-flex;
-  white-space: nowrap;
-  gap: 56px;
+  display: flex;
+  width: max-content;
   animation: ann-scroll 38s linear infinite;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.14em;
-  color: var(--purple-200);
   color: #e9d5ff;
-  /* Hardware accelerate so first paint never shows empty band */
   will-change: transform;
-  transform: translate3d(0, 0, 0);
-  /* Kick in immediately, no animation-fill-mode flicker */
-  animation-delay: 0s;
-  animation-fill-mode: both;
+}
+.ann-track > span {
+  padding-right: 56px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .ann-track strong { color: #fff; font-weight: 800; }
 .ann-pulse {
@@ -5458,3 +5456,21 @@ section.solutions { padding: 100px 0; }
     animation: none;
   }
 }
+
+/* Blog index cards with images */
+.blog-card { display: flex; flex-direction: column; overflow: hidden; }
+.blog-card-img {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #0a0710;
+}
+.blog-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.blog-card:hover .blog-card-img img { transform: scale(1.04); }
+.blog-card-body { padding: 18px 6px 0; }
