@@ -623,6 +623,47 @@ const VERTICAL_PHOTO_MAP = {
 
 // Deterministic seeded shuffle so same page always picks same photos
 const seedHash = (s) => { let h = 0; for (let i = 0; i < s.length; i++) { h = ((h << 5) - h + s.charCodeAt(i)) | 0; } return Math.abs(h); };
+
+// Deterministic per-(service, city) unique intro paragraphs.
+// Picks one of 4 framings based on the slug hash and rotates through neighborhoods,
+// use cases, and city facts so no two of the 156 matrix pages share identical prose.
+function cityServiceUnique(service, city) {
+  const slug = `${service.slug}-${city.slug}`;
+  const h = seedHash(slug);
+  const variant = h % 4;
+  const svcName = service.h1.replace(' Installation', '');
+  const svcShort = svcName.replace(/^(Architectural |Custom |Permanent |Commercial )/, '');
+  const neighborhoods = city.neighborhoods || [];
+  const nb = (i) => esc(neighborhoods[(h + i) % neighborhoods.length] || city.name);
+  const uc = service.useCases || [];
+  const useCase = uc[h % Math.max(1, uc.length)] || {};
+  const ucTitle = useCase.title || useCase || '';
+  const ucDesc = useCase.desc || '';
+  const summerHi = city.climate && city.climate.summerHigh;
+  const winterLo = city.climate && city.climate.winterLow;
+  const driveTime = city.driveTime;
+  const popK = city.population ? Math.round(city.population / 1000) + 'K' : '';
+  const fromPrice = usd(service.fromPrice);
+  const zipCount = (city.zips || []).length;
+
+  const paras = [];
+
+  if (variant === 0) {
+    paras.push(`${esc(svcName)} in ${esc(city.name)} usually starts with one of the older streets near ${nb(0)} or ${nb(1)} — homes with deep eaves, mixed trim colors, and HOAs that want to see a 3D rendering before you screw anything into a soffit. We design for that. The aluminum track gets color-matched to your existing trim, the LEDs run RGBIC-RD so individual bulbs can render holiday patterns instead of a flat color wash, and the controller stays inside the garage where ${summerHi || 'Central Valley'}°F summers can't bake it.`);
+    paras.push(`${ucTitle ? esc(ucTitle) + ' is the most-requested use case here. ' + esc(ucDesc) + ' ' : ''}Same crew handles every job from quote to walkthrough. ${driveTime ? `Drive time from our Fresno shop is about ${driveTime} minutes` : 'We dispatch from Fresno'}, so service calls in ${esc(city.name)} land same-day. ${zipCount ? `Coverage spans every ${esc(city.name)} ZIP — ${(city.zips || []).slice(0, 5).join(', ')}${zipCount > 5 ? ', and more' : ''}.` : ''} Pricing for a ${esc(city.name)} install starts at ${fromPrice} for the front facade and scales by linear footage.`);
+  } else if (variant === 1) {
+    paras.push(`Two things ${esc(city.name)} homes do to permanent lighting that nobody warns you about: ${summerHi ? `summers crest ${summerHi}°F and bake any non-IP67-rated chip` : 'long sun hours degrade consumer-grade chips'}, and ${winterLo ? `tule fog drops nighttime humidity onto fixtures` : 'the dust season pushes particulate into anything with an open seam'}. The Jellyfish RGBIC-RD track we install is rated -40°F to 140°F, sealed IP67, and warrantied 5 years on LEDs and lifetime on the track itself.`);
+    paras.push(`${esc(svcShort)} on a ${esc(city.name)} home is usually a one-day install — the W-2 crew arrives at 8 AM, the wiring drops cleanly through one attic penetration, and you're cycling colors from the app by sunset. We've installed across ${nb(0)}, ${nb(1)}, and ${nb(2)}${popK ? `, with the ${popK} ${esc(city.name)} households roughly evenly split between single-story tract homes and two-story custom builds` : ''}. ${ucTitle ? `Most ${esc(city.name)} owners start with ${esc(ucTitle.toLowerCase())}; ${esc(ucDesc.toLowerCase())}` : ''}`);
+  } else if (variant === 2) {
+    paras.push(`The reason permanent lighting works in ${esc(city.name)} where seasonal Christmas-light services don't is math. A typical ${esc(city.name)} install/teardown service runs $800–$1,800 a year — over a decade that's $8,000–$18,000 versus a ${fromPrice} permanent install once. ${summerHi ? `${summerHi}°F summers also mean you need lighting that doesn't sag or yellow under year-round UV` : 'Year-round UV exposure means consumer string lights yellow and sag within a single season'}, which is why we use commercial-grade aluminum track instead of plastic clip channels.`);
+    paras.push(`${esc(city.name)} ${esc(svcShort.toLowerCase())} installs typically run between $${(service.fromPrice / 1000).toFixed(1)}K (single-story front facade) and $${((service.fromPrice * 6) / 1000).toFixed(1)}K (full perimeter, two-story, multi-zone). HOA submittal packages — spec sheets, 3D renderings, color samples — are included free for any submission you need. ${nb(0)}, ${nb(1)}, and ${nb(2)} owners have run the program through their HOAs without amendment. ${ucTitle ? `${esc(ucTitle)} is a common ${esc(city.name)} configuration: ${esc(ucDesc)}` : ''}`);
+  } else {
+    paras.push(`Architecturally, ${esc(city.name)} runs the gamut: ${nb(0)} stucco ranchers, ${nb(1)} two-story Mediterranean builds, and the older bungalows around ${nb(2)} with deep porch overhangs. ${esc(svcShort)} reads differently on each — a tract single-story takes ~80 linear feet of track on the front facade, while a custom build with multiple roof planes can need 200+ feet across three to five independent zones.`);
+    paras.push(`We design every ${esc(city.name)} job around what the home actually needs, not a flat per-foot price. The free on-site quote includes measurement, ladder-access check, written pricing on the spot, and a 3D render of the lit-up facade if your HOA wants one. ${driveTime ? `${driveTime}-minute drive from our Fresno shop` : 'Same Fresno-based crew'} means a tight feedback loop on warranty and service. ${ucTitle ? `${esc(ucTitle)}: ${esc(ucDesc)}` : `Pricing starts at ${fromPrice} for the front facade and scales with the size of the home.`}`);
+  }
+  return paras.map(p => `<p>${p}</p>`).join('\n');
+}
+
 function pickPhotos(category, seed, count) {
   const pool = (ASSETS[category] && ASSETS[category].length) ? ASSETS[category] : ASSETS.residential;
   const start = seedHash(seed) % pool.length;
@@ -845,7 +886,7 @@ function renderServiceCity(service, city) {
     trustBar() +
     `<section class="container intro-block">
       ${sectionHead({ eyebrow: `${city.name} homeowners`, h2: `${svcName} for`, em: `${city.name} homes.`, intro: `${service.intro}` })}
-      <p>${esc(city.name)} sits in ${esc(city.county || 'the Central Valley')}, with summer highs averaging ${city.climate.summerHigh}°F — exactly the conditions our IP67-rated aluminum track is engineered for. ${esc(city.climate.notes || '')} We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}, and serve every ZIP in the city: ${city.zips.map(esc).join(', ')}.</p>
+      ${cityServiceUnique(service, city)}
     </section>` +
     installPhotoGrid({ category: photoCat, seed: slug, kicker: `${svcName}`, h2: 'Real installs,', em: `not stock photos.`, intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
     `<section class="solutions container">
