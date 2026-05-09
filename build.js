@@ -759,7 +759,12 @@ function renderServiceCity(service, city) {
 
     faqBlock(faqs) +
     serviceRowBlock(service.slug) +
-    cityRowBlock(city.slug) +
+    coverageMapBlock({
+      urlPattern: (slug) => `/${service.slug}-${slug}`,
+      eyebrow: 'Service areas',
+      h2: `${service.h1.split(' Installation')[0]} across`,
+      em: 'the Central Valley.'
+    }) +
     ctaBlock() +
     `</main>` + footerHTML();
   return { url: canonical, html };
