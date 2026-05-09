@@ -109,11 +109,6 @@
       <div class="tb-item"><strong>60-day refund</strong><span>Pulled and refunded in full. No fine print.</span></div><div class="tb-item"><strong>5-year warranty</strong><span>Track + LEDs covered five years. Workmanship too.</span></div><div class="tb-item"><strong>$0 down</strong><span>From $89/month at 0% APR.</span></div><div class="tb-item"><strong>Locally installed</strong><span>Lic. #1234567. Bonded. Insured.</span></div>
     </div>
   </div>
-</section>
-<section class="container stats-counters" aria-label="Stats">
-  <div class="stats-counters-grid">
-    <div class="counter-item"><div class="counter-num">16,000</div><div class="counter-lab">Kerman population</div></div><div class="counter-item"><div class="counter-num">25 min</div><div class="counter-lab">From our Fresno shop</div></div><div class="counter-item"><div class="counter-num">3+</div><div class="counter-lab">Neighborhoods served</div></div><div class="counter-item"><div class="counter-num">1</div><div class="counter-lab">Kerman ZIP codes</div></div>
-  </div>
 </section><section class="container intro-block">
       
 <header class="section-head">
@@ -303,6 +298,7 @@
 </header>
     </section>
 <section class="container tech-specs">
+  <div class="tech-specs-bg" aria-hidden="true"><span></span><span></span><span></span></div>
   
 <header class="section-head">
   <p class="eyebrow">The hardware</p>
@@ -310,12 +306,30 @@
   
 </header>
   <div class="spec-grid">
-    <div><dt>LED chip</dt><dd>RGBIC-RD</dd></div>
-    <div><dt>Colors</dt><dd>16 million</dd></div>
-    <div><dt>Patterns</dt><dd>200+ presets</dd></div>
-    <div><dt>Lifespan</dt><dd>50,000+ hours</dd></div>
-    <div><dt>Weather</dt><dd>IP67 · -40°F to 140°F</dd></div>
-    <div><dt>Smart home</dt><dd>Alexa, Google Home, Control 4, Nice Elan</dd></div>
+    <div class="spec-card" data-spec="led">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
+      <dt>LED chip</dt><dd>RGBIC-RD</dd>
+    </div>
+    <div class="spec-card" data-spec="colors">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="5" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="15" r="5" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="9" r="5" stroke="currentColor" stroke-width="1.6" opacity="0.6"/></svg>
+      <dt>Colors</dt><dd>16 million</dd>
+    </div>
+    <div class="spec-card" data-spec="patterns">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 18c2-4 4-4 6 0s4 4 6 0 4-4 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/></svg>
+      <dt>Patterns</dt><dd>200+ presets</dd>
+    </div>
+    <div class="spec-card" data-spec="lifespan">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <dt>Lifespan</dt><dd>50,000+ hours</dd>
+    </div>
+    <div class="spec-card" data-spec="weather">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 16a4 4 0 0 1 0-8 5 5 0 0 1 9.6 1.5A4 4 0 0 1 16 17H7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 19l-1 2M13 19l-1 2M17 19l-1 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <dt>Weather</dt><dd>IP67 · -40°F to 140°F</dd>
+    </div>
+    <div class="spec-card" data-spec="smart">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="14" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+      <dt>Smart home</dt><dd>Alexa, Google Home, Control 4, Nice Elan</dd>
+    </div>
   </div>
 </section>
 <section class="faq-section container">
@@ -324,10 +338,54 @@
     <details class="faq-item"><summary>Do you serve all of Kerman?</summary><div>Yes — every ZIP in Kerman (93630) and every neighborhood including Kerman East, Kerman West, Old Kerman.</div></details><details class="faq-item"><summary>How much does permanent lighting cost in Kerman?</summary><div>Starts at $950 for a single-facade Starter install. Most Kerman homes land $2,800-$5,800. Two-story estates $5,800-$9,000. Financing from $89/month.</div></details><details class="faq-item"><summary>What's the most popular install style in Kerman?</summary><div>Most-requested in Kerman: residential permanent lighting with seasonal auto-schedules.</div></details><details class="faq-item"><summary>How long does it take you to get to Kerman?</summary><div>About 25 minutes from our Fresno shop. We dispatch the same W-2 install crew — no subcontractors.</div></details><details class="faq-item"><summary>Do you handle HOAs in Kerman?</summary><div>Yes. We've submitted to most Kerman-area HOAs and provide spec sheets and 3D renderings at no charge.</div></details>
   </div>
 </section>
-<section class="city-row container">
-  <h3>Serving the Central Valley</h3>
-  <div class="city-pills">
-    <a href="/permanent-outdoor-lights-fresno" class="pill">Fresno</a><a href="/permanent-outdoor-lights-clovis" class="pill">Clovis</a><a href="/permanent-outdoor-lights-madera" class="pill">Madera</a><a href="/permanent-outdoor-lights-visalia" class="pill">Visalia</a><a href="/permanent-outdoor-lights-hanford" class="pill">Hanford</a><a href="/permanent-outdoor-lights-sanger" class="pill">Sanger</a><a href="/permanent-outdoor-lights-selma" class="pill">Selma</a><a href="/permanent-outdoor-lights-reedley" class="pill">Reedley</a><a href="/permanent-outdoor-lights-kingsburg" class="pill">Kingsburg</a><a href="/permanent-outdoor-lights-parlier" class="pill">Parlier</a><a href="/permanent-outdoor-lights-fowler" class="pill">Fowler</a>
+<section class="service-area" aria-label="Service area map">
+  <div class="container">
+    <header class="sa-head">
+      
+<header class="section-head">
+  <p class="eyebrow">Service areas</p>
+  <h2>Locally installed across <em>the Central Valley.</em></h2>
+  <p class="section-intro">Free on-site estimates within a 60-mile radius of Fresno.</p>
+</header>
+    </header>
+    <div class="sa-layout">
+      <div class="sa-map" aria-label="Service area map">
+        <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
+        <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <a href="/permanent-outdoor-lights-fresno" data-pin="fresno" class="sa-hot sa-hot-hq"><ellipse cx="525" cy="495" rx="115" ry="52" /><title>Fresno (HQ)</title></a>
+          <a href="/permanent-outdoor-lights-madera" data-pin="madera" class="sa-hot"><ellipse cx="218" cy="195" rx="78" ry="35" /><title>Madera</title></a>
+          <a href="/permanent-outdoor-lights-clovis" data-pin="clovis" class="sa-hot"><ellipse cx="585" cy="298" rx="75" ry="35" /><title>Clovis</title></a>
+          <a href="/permanent-outdoor-lights-sanger" data-pin="sanger" class="sa-hot"><ellipse cx="799" cy="375" rx="75" ry="35" /><title>Sanger</title></a>
+          <a href="/permanent-outdoor-lights-reedley" data-pin="reedley" class="sa-hot"><ellipse cx="982" cy="478" rx="78" ry="35" /><title>Reedley</title></a>
+          <a href="/permanent-outdoor-lights-kerman" data-pin="kerman" class="sa-hot"><ellipse cx="241" cy="522" rx="78" ry="35" /><title>Kerman</title></a>
+          <a href="/permanent-outdoor-lights-fowler" data-pin="fowler" class="sa-hot"><ellipse cx="698" cy="578" rx="78" ry="35" /><title>Fowler</title></a>
+          <a href="/permanent-outdoor-lights-selma" data-pin="selma" class="sa-hot"><ellipse cx="855" cy="652" rx="75" ry="35" /><title>Selma</title></a>
+          <a href="/permanent-outdoor-lights-parlier" data-pin="parlier" class="sa-hot"><ellipse cx="1110" cy="652" rx="75" ry="35" /><title>Parlier</title></a>
+          <a href="/permanent-outdoor-lights-kingsburg" data-pin="kingsburg" class="sa-hot"><ellipse cx="960" cy="752" rx="78" ry="35" /><title>Kingsburg</title></a>
+          <a href="/permanent-outdoor-lights-hanford" data-pin="hanford" class="sa-hot"><ellipse cx="735" cy="888" rx="78" ry="35" /><title>Hanford</title></a>
+          <a href="/permanent-outdoor-lights-visalia" data-pin="visalia" class="sa-hot"><ellipse cx="1200" cy="893" rx="78" ry="35" /><title>Visalia</title></a>
+        </svg>
+      </div>
+      <div class="sa-list">
+        <div class="sa-county">
+          <h5>Fresno County</h5>
+          <ul>
+            <li><a href="/permanent-outdoor-lights-fresno" data-city="fresno"><span class="sa-name">Fresno</span><span class="sa-meta">HQ · 93701–93730</span></a></li>
+            <li><a href="/permanent-outdoor-lights-clovis" data-city="clovis"><span class="sa-name">Clovis</span><span class="sa-meta">93611–93619</span></a></li>
+            <li><a href="/permanent-outdoor-lights-sanger" data-city="sanger"><span class="sa-name">Sanger</span><span class="sa-meta">93657</span></a></li>
+            <li><a href="/permanent-outdoor-lights-reedley" data-city="reedley"><span class="sa-name">Reedley</span><span class="sa-meta">93654</span></a></li>
+            <li><a href="/permanent-outdoor-lights-selma" data-city="selma"><span class="sa-name">Selma</span><span class="sa-meta">93662</span></a></li>
+            <li><a href="/permanent-outdoor-lights-kingsburg" data-city="kingsburg"><span class="sa-name">Kingsburg</span><span class="sa-meta">93631</span></a></li>
+            <li><a href="/permanent-outdoor-lights-parlier" data-city="parlier"><span class="sa-name">Parlier</span><span class="sa-meta">93648</span></a></li>
+            <li><a href="/permanent-outdoor-lights-fowler" data-city="fowler"><span class="sa-name">Fowler</span><span class="sa-meta">93625</span></a></li>
+            <li><a href="/permanent-outdoor-lights-kerman" data-city="kerman"><span class="sa-name">Kerman</span><span class="sa-meta">93630</span></a></li>
+          </ul>
+        </div>
+        <div class="sa-county"><h5>Madera County</h5><ul><li><a href="/permanent-outdoor-lights-madera" data-city="madera"><span class="sa-name">Madera</span><span class="sa-meta">93636–93639</span></a></li></ul></div>
+        <div class="sa-county"><h5>Tulare County</h5><ul><li><a href="/permanent-outdoor-lights-visalia" data-city="visalia"><span class="sa-name">Visalia</span><span class="sa-meta">93277–93292</span></a></li></ul></div>
+        <div class="sa-county"><h5>Kings County</h5><ul><li><a href="/permanent-outdoor-lights-hanford" data-city="hanford"><span class="sa-name">Hanford</span><span class="sa-meta">93230</span></a></li></ul></div>
+      </div>
+    </div>
   </div>
 </section>
 <section class="next-steps" id="quote" aria-label="Free quote form">

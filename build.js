@@ -474,14 +474,33 @@ const guaranteeBlock = () => `
 
 const techSpecsBlock = () => `
 <section class="container tech-specs">
+  <div class="tech-specs-bg" aria-hidden="true"><span></span><span></span><span></span></div>
   ${sectionHead({ eyebrow: 'The hardware', h2: 'Built for', em: 'fifty thousand hours.' })}
   <div class="spec-grid">
-    <div><dt>LED chip</dt><dd>${esc(shared.tech.ledType)}</dd></div>
-    <div><dt>Colors</dt><dd>${esc(shared.tech.colors)}</dd></div>
-    <div><dt>Patterns</dt><dd>${shared.tech.patterns}+ presets</dd></div>
-    <div><dt>Lifespan</dt><dd>${esc(shared.tech.lifespan)}</dd></div>
-    <div><dt>Weather</dt><dd>${esc(shared.tech.weatherRating)} · ${esc(shared.tech.tempRange)}</dd></div>
-    <div><dt>Smart home</dt><dd>${shared.tech.appCompat.join(', ')}</dd></div>
+    <div class="spec-card" data-spec="led">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
+      <dt>LED chip</dt><dd>${esc(shared.tech.ledType)}</dd>
+    </div>
+    <div class="spec-card" data-spec="colors">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="5" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="15" r="5" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="9" r="5" stroke="currentColor" stroke-width="1.6" opacity="0.6"/></svg>
+      <dt>Colors</dt><dd>${esc(shared.tech.colors)}</dd>
+    </div>
+    <div class="spec-card" data-spec="patterns">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 18c2-4 4-4 6 0s4 4 6 0 4-4 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/></svg>
+      <dt>Patterns</dt><dd>${shared.tech.patterns}+ presets</dd>
+    </div>
+    <div class="spec-card" data-spec="lifespan">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <dt>Lifespan</dt><dd>${esc(shared.tech.lifespan)}</dd>
+    </div>
+    <div class="spec-card" data-spec="weather">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 16a4 4 0 0 1 0-8 5 5 0 0 1 9.6 1.5A4 4 0 0 1 16 17H7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 19l-1 2M13 19l-1 2M17 19l-1 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <dt>Weather</dt><dd>${esc(shared.tech.weatherRating)} · ${esc(shared.tech.tempRange)}</dd>
+    </div>
+    <div class="spec-card" data-spec="smart">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="14" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+      <dt>Smart home</dt><dd>${shared.tech.appCompat.join(', ')}</dd>
+    </div>
   </div>
 </section>`;
 
@@ -866,12 +885,6 @@ function renderCityHub(city) {
     breadcrumbBlock(crumbs) +
     heroBlock({ kicker: `Serving ${city.name}, CA · From $950`, h1, lead: city.intro, ctaPrice: 950, img: heroImg }) +
     trustBar() +
-    statsCounters([
-      { num: city.population.toLocaleString(), lab: `${city.name} population` },
-      { num: `${city.driveTime} min`, lab: 'From our Fresno shop' },
-      { num: city.neighborhoods.length + '+', lab: 'Neighborhoods served' },
-      { num: city.zips.length, lab: `${city.name} ZIP codes` }
-    ]) +
     `<section class="container intro-block">
       ${sectionHead({ eyebrow: `Why ${city.name}`, h2: `${city.name} homeowners`, em: 'choose us.', intro: city.intro })}
       <p>Population ${city.population.toLocaleString()}. Drive time from our Fresno shop: ${city.driveTime} minutes. We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}.</p>
@@ -897,7 +910,11 @@ function renderCityHub(city) {
     techSpecsBlock() +
 
     faqBlock(faqs) +
-    cityRowBlock(city.slug) +
+    coverageMapBlock({
+      eyebrow: 'Service areas',
+      h2: 'Locally installed across',
+      em: 'the Central Valley.'
+    }) +
     ctaBlock() +
     `</main>` + footerHTML();
   return { url: canonical, html };
