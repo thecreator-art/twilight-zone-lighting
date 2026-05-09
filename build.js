@@ -744,16 +744,19 @@ function renderServiceCity(service, city) {
       <p>${esc(city.name)} sits in ${esc(city.county || 'the Central Valley')}, with summer highs averaging ${city.climate.summerHigh}°F — exactly the conditions our IP67-rated aluminum track is engineered for. ${esc(city.climate.notes || '')} We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}, and serve every ZIP in the city: ${city.zips.map(esc).join(', ')}.</p>
     </section>` +
     installPhotoGrid({ category: photoCat, seed: slug, kicker: `${svcName}`, h2: 'Real installs,', em: `not stock photos.`, intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
-    `<section class="container use-cases">
+    `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Use cases', h2: `Where ${city.name} homeowners`, em: 'use this most.' })}
-      <div class="use-grid">
-        ${useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}
-      </div>
+      ${solutionsGrid(useCases.map((u, i) => ({
+        h: u.title || u,
+        p: u.desc || '',
+        img: pickPhotos(photoCat, slug + 'u' + i, 1)[0],
+        alt: u.title || u
+      })))}
     </section>` +
     testimonialBlock(city, pickPhotos(photoCat, slug + 't', 1)[0]) +
     techSpecsBlock() +
     processTimelineBlock({ kicker: `${city.name} install process`, h2: 'Quoted, designed, installed —', em: `in a day.` }) +
-    guaranteeBlock() +
+
     faqBlock(faqs) +
     serviceRowBlock(service.slug) +
     cityRowBlock(city.slug) +
@@ -806,13 +809,14 @@ function renderServiceHub(service) {
       ${altPhrases.length ? `<p class="muted">Also searched as: ${altPhrases.map(esc).join(', ')}.</p>` : ''}
     </section>` +
     installPhotoGrid({ category: photoCat, seed: service.slug, kicker: 'Recent work', h2: `${svcName},`, em: 'as installed.' }) +
-    `<section class="container use-cases">
+    `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Where it lands', h2: 'Common', em: 'use cases.', intro: `${svcName} fits a handful of recurring use cases — here are the ones we install most often.` })}
-      <div class="use-grid">${service.useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div>
-    </section>` +
-    `<section class="container specs-block">
-      ${sectionHead({ eyebrow: 'Specs', h2: 'The numbers', em: `behind the install.` })}
-      <ul class="spec-list">${service.specs.map(s => `<li><strong>${esc(s.label)}:</strong> ${esc(s.value)}</li>`).join('')}</ul>
+      ${solutionsGrid(service.useCases.map((u, i) => ({
+        h: u.title || u,
+        p: u.desc || '',
+        img: pickPhotos(photoCat, service.slug + 'u' + i, 1)[0],
+        alt: u.title || u
+      })))}
     </section>` +
     techSpecsBlock() +
     testimonialBlock(fresno, pickPhotos(photoCat, service.slug + 't', 1)[0]) +
@@ -823,7 +827,7 @@ function renderServiceHub(service) {
       h2: `${svcName} across`,
       em: 'the Central Valley.'
     }) +
-    guaranteeBlock() +
+
     faqBlock(faqs) +
     serviceRowBlock(service.slug) +
     ctaBlock() +
@@ -886,7 +890,7 @@ function renderCityHub(city) {
       ${sectionHead({ eyebrow: 'Climate', h2: `Built for ${city.name}`, em: `weather.`, intro: `Summer highs in ${city.name} regularly hit ${city.climate.summerHigh}°F. ${city.climate.notes} Our IP67-rated track and -40°F to 140°F LED chips are engineered for it. Coverage spans every ${city.name} neighborhood — ${city.neighborhoods.slice(0, 8).join(', ')}, and the rest — across ZIPs ${city.zips.join(', ')}.` })}
     </section>` +
     techSpecsBlock() +
-    guaranteeBlock() +
+
     faqBlock(faqs) +
     cityRowBlock(city.slug) +
     ctaBlock() +
@@ -928,9 +932,14 @@ function renderVertical(v) {
     </section>` +
     reelMomentBlock({ video: '/videos/commercial-loop.mp4', kicker: 'In motion', h: 'Lit business hours.', em: 'Lit after-hours, too.', p: 'One install. Brand colors during open. Mood lighting during service. Music-sync for events. All controlled from a single tablet behind the bar.', poster: heroImg }) +
     installPhotoGrid({ category: photoCat, seed: v.slug, kicker: `${baseName} portfolio`, h2: 'Real commercial', em: 'installs.', intro: 'Shot at active operating businesses across our portfolio.' }) +
-    `<section class="container use-cases">
+    `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Use cases', h2: 'Where this', em: 'earns its install.' })}
-      <div class="use-grid">${v.useCases.map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div>
+      ${solutionsGrid(v.useCases.map((u, i) => ({
+        h: u.title || u,
+        p: u.desc || '',
+        img: pickPhotos(photoCat, v.slug + 'u' + i, 1)[0],
+        alt: u.title || u
+      })))}
     </section>` +
     `<section class="container stats-block">
       ${sectionHead({ eyebrow: 'By the numbers', h2: 'What operators', em: 'are seeing.' })}
@@ -945,7 +954,7 @@ function renderVertical(v) {
       h2: `${baseName} across`,
       em: 'the Central Valley.'
     }) +
-    guaranteeBlock() +
+
     faqBlock(faqs) +
     ctaBlock() +
     `</main>` + footerHTML();
@@ -990,13 +999,17 @@ function renderVerticalCity(v, city) {
       <p>In ${esc(city.name)} specifically, we work with operators across ${city.neighborhoods.slice(0, 4).map(esc).join(', ')}, with same-day response from our Fresno shop (${city.driveTime}-minute drive).</p>
     </section>` +
     installPhotoGrid({ category: photoCat, seed: slug, kicker: 'Recent work', h2: `${baseName}`, em: 'in the field.' }) +
-    `<section class="container use-cases">
+    `<section class="solutions container">
       ${sectionHead({ eyebrow: `${city.name} use cases`, h2: 'Where this', em: `lands in ${city.name}.` })}
-      <div class="use-grid">${v.useCases.slice(0, 6).map(u => `<div class="use-card"><h4>${esc(u.title || u)}</h4><p>${esc(u.desc || '')}</p></div>`).join('')}</div>
+      ${solutionsGrid(v.useCases.slice(0, 6).map((u, i) => ({
+        h: u.title || u,
+        p: u.desc || '',
+        img: pickPhotos(photoCat, slug + 'u' + i, 1)[0],
+        alt: u.title || u
+      })))}
     </section>` +
     testimonialBlock(city, pickPhotos(photoCat, slug + 't', 1)[0]) +
     techSpecsBlock() +
-    guaranteeBlock() +
     faqBlock(faqs) +
     ctaBlock() +
     `</main>` + footerHTML();
@@ -1046,7 +1059,7 @@ function renderComparison(c) {
      </section>` +
     pullQuote(c.verdict, `${BRAND}, ${shared.brand.founded}`) +
     testimonialBlock(fresno, pickPhotos('residential', c.slug + 't', 1)[0]) +
-    guaranteeBlock() +
+
     ctaBlock() +
     `</main>` + footerHTML();
   return { url: canonical, html };
@@ -1081,7 +1094,7 @@ function renderCost({ slug, h1, title, desc, kw, lead, sections, faqs }) {
       ${s.table ? `<table class="price-table"><thead><tr>${s.table.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${s.table.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}
     </section>`).join('') +
     testimonialBlock(fresno, pickPhotos('residential', slug + 't', 1)[0]) +
-    guaranteeBlock() +
+
     faqBlock(faqs) +
     ctaBlock() +
     `</main>` + footerHTML();
