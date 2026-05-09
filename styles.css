@@ -1461,9 +1461,17 @@ em {
   background: #0a0a0a;
   height: 100%;
   border-radius: 22px 22px 0 0;
-  padding: 18px 14px;
+  padding: 0;
   color: #fff;
   font-size: 0.78rem;
+  overflow: hidden;
+}
+.afs-phone-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 .afs-screen-head { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 14px; font-size: 0.85rem; color: #fff; }
 .afs-screen-head span { color: #888; font-weight: 400; }
