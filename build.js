@@ -753,13 +753,6 @@ function renderServiceCity(service, city) {
     testimonialBlock(city, pickPhotos(photoCat, slug + 't', 1)[0]) +
     techSpecsBlock() +
     processTimelineBlock({ kicker: `${city.name} install process`, h2: 'Quoted, designed, installed —', em: `in a day.` }) +
-    `<section class="container neighborhood-list">
-      ${sectionHead({ eyebrow: `${city.name} coverage`, h2: 'Neighborhoods we', em: `cover in ${city.name}.` })}
-      <div class="nbhd-pills">
-        ${city.neighborhoods.map(n => `<span class="pill">${esc(n)}</span>`).join('')}
-      </div>
-      <p class="muted">ZIPs we serve: ${city.zips.map(esc).join(' · ')}</p>
-    </section>` +
     guaranteeBlock() +
     faqBlock(faqs) +
     serviceRowBlock(service.slug) +
@@ -889,13 +882,8 @@ function renderCityHub(city) {
     </section>` +
     testimonialBlock(city) +
     processTimelineBlock({ kicker: `${city.name} install process`, h2: 'How a', em: `${city.name} install runs.`, intro: `Same five steps everywhere. ${city.driveTime}-minute drive from our Fresno shop means same-day quote turnarounds.` }) +
-    `<section class="container neighborhood-list">
-      ${sectionHead({ eyebrow: `${city.name} coverage`, h2: 'Every neighborhood,', em: `every ZIP.` })}
-      <div class="nbhd-pills">${city.neighborhoods.map(n => `<span class="pill">${esc(n)}</span>`).join('')}</div>
-      <p class="muted">ZIPs we serve: ${city.zips.map(esc).join(' · ')}</p>
-    </section>` +
     `<section class="container climate-block">
-      ${sectionHead({ eyebrow: 'Climate', h2: `Built for ${city.name}`, em: `weather.`, intro: `Summer highs in ${city.name} regularly hit ${city.climate.summerHigh}°F. ${city.climate.notes} Our IP67-rated track and -40°F to 140°F LED chips are engineered for it.` })}
+      ${sectionHead({ eyebrow: 'Climate', h2: `Built for ${city.name}`, em: `weather.`, intro: `Summer highs in ${city.name} regularly hit ${city.climate.summerHigh}°F. ${city.climate.notes} Our IP67-rated track and -40°F to 140°F LED chips are engineered for it. Coverage spans every ${city.name} neighborhood — ${city.neighborhoods.slice(0, 8).join(', ')}, and the rest — across ZIPs ${city.zips.join(', ')}.` })}
     </section>` +
     techSpecsBlock() +
     guaranteeBlock() +
