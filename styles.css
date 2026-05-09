@@ -3856,6 +3856,24 @@ body { padding-top: 152px; }
 .faq-section { text-align: center; }
 .faq-section h2 { margin: 0 auto 36px; }
 .faq-section .faq-list { text-align: left; }
+
+/* NAP block on city hubs — visible business contact for local SEO */
+.nap-block {
+  margin: 24px 0;
+  padding: 18px 22px;
+  background: rgba(168, 85, 247, 0.04);
+  border-left: 3px solid rgba(192, 132, 252, 0.5);
+  border-radius: 8px;
+}
+.nap-block p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+}
+.nap-block strong { color: #fff; }
+.nap-block a { color: #c084fc; text-decoration: none; }
+.nap-block a:hover { text-decoration: underline; }
 .intro-block p, .article-body p, .climate-block p, .cost-section p {
   font-size: 17px;
   line-height: 1.65;
@@ -4596,7 +4614,7 @@ a.pill:hover {
   color: #c084fc;
   margin-bottom: 10px;
 }
-.related-card h4 {
+.related-card h3 {
   font-size: 17px;
   font-weight: 600;
   color: #fff;

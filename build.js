@@ -534,7 +534,7 @@ const serviceRowBlock = (currentSlug) => `
     img: s.image,
     alt: s.imageAlt || s.h1,
     href: `/${s.slug}`,
-    linkLabel: `From ${usd(s.fromPrice)}`
+    linkLabel: `Explore ${s.h1.split(' Installation')[0].split(' in ')[0].toLowerCase()} — from ${usd(s.fromPrice)}`
   })))}
 </section>`;
 
@@ -793,9 +793,21 @@ const roiCalloutBlock = (items) => `
 // ---------- TEMPLATE: Service × City ----------
 function renderServiceCity(service, city) {
   const slug = `${service.slug}-${city.slug}`;
-  const h1 = `${service.h1.replace(' Installation', '')} Installation in ${city.name}, CA`;
-  const title = `${service.h1.replace(' Installation', '')} ${city.name} CA | From ${usd(service.fromPrice)} | ${BRAND}`;
-  const desc = `${service.h1.replace(' Installation', '')} installation in ${city.name}, CA. ${service.lead} Serving ${city.neighborhoods.slice(0,4).join(', ')}. 5-year warranty. From ${usd(service.fromPrice)}.`;
+  const svcName = service.h1.replace(' Installation', '');
+  // Short service name for tight title; fall back to full if no obvious shortening
+  const svcShort = service.shortName || svcName.replace(/^(Architectural |Custom |Permanent |Commercial )/, '');
+  const h1 = `${svcName} Installation in ${city.name}, CA`;
+  // Title: aim for 50-60 chars. e.g. "Accent Lighting Fresno CA | $950+ | Twilight Zone"
+  const title = `${svcShort} ${city.name} CA | ${usd(service.fromPrice)}+ | ${BRAND.split(' ')[0]} ${BRAND.split(' ')[1]}`;
+  // Description: aim for 150-160 chars. Include city, price, warranty, CTA.
+  // Truncate at word boundary to avoid mid-word cuts.
+  const descBase = service.metaShort || service.lead.split('.')[0];
+  const wordBoundaryCut = (s, max) => {
+    if (s.length <= max) return s;
+    const cut = s.slice(0, max);
+    return cut.slice(0, cut.lastIndexOf(' '));
+  };
+  const desc = `${svcName} in ${city.name}, CA from ${usd(service.fromPrice)}. ${wordBoundaryCut(descBase, 70)}. 5-year warranty. Free quote.`;
   const localKw = `${service.primaryKw} ${city.name.toLowerCase()}`;
   const canonical = `/${slug}`;
   const crumbs = [
@@ -825,7 +837,6 @@ function renderServiceCity(service, city) {
   const useCases = service.useCases.slice(0, 6);
   const photoCat = SERVICE_PHOTO_MAP[service.slug] || 'residential';
   const heroImg = pickPhotos(photoCat, slug, 1)[0];
-  const svcName = service.h1.split(' Installation')[0].split(' in ')[0];
   const html = head({ title, desc, canonical, kw: localKw, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
     `<main>` +
@@ -963,6 +974,20 @@ function renderCityHub(city) {
     `<section class="container intro-block">
       ${sectionHead({ eyebrow: `Why ${city.name}`, h2: `${city.name} homeowners`, em: 'choose us.', intro: city.intro })}
       <p>Population ${city.population.toLocaleString()}. Drive time from our Fresno shop: ${city.driveTime} minutes. We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}.</p>
+      <aside class="nap-block" itemscope itemtype="https://schema.org/HomeAndConstructionBusiness">
+        <p>
+          <strong itemprop="name">${esc(BRAND)}</strong> serves <span itemprop="areaServed">${esc(city.name)}, CA</span> and surrounding ZIPs <span>${city.zips.join(', ')}</span>.
+          <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            HQ at <span itemprop="streetAddress">${esc(shared.brand.address.street)}</span>,
+            <span itemprop="addressLocality">${esc(shared.brand.address.city)}</span>,
+            <span itemprop="addressRegion">${esc(shared.brand.address.state)}</span>
+            <span itemprop="postalCode">${esc(shared.brand.address.zip)}</span>.
+          </span>
+          Call <a href="tel:${TEL}" itemprop="telephone">${esc(PHONE)}</a> ·
+          <a href="mailto:${shared.brand.email}" itemprop="email">${esc(shared.brand.email)}</a> ·
+          Lic. #${esc(shared.brand.license)} · Bonded · Insured.
+        </p>
+      </aside>
       <p class="muted">Also searched as: ${city.name} permanent outdoor lights, outdoor lights permanent ${city.name}, permanent out door lights ${city.name}, permanent exterior house lighting ${city.name}, ${city.name} christmas lighting company.</p>
     </section>` +
     installPhotoGrid({ category: 'residential', seed: city.slug, kicker: `${city.name} work`, h2: `Real ${city.name}`, em: 'installs.', intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
@@ -974,7 +999,7 @@ function renderCityHub(city) {
         img: pickPhotos(SERVICE_PHOTO_MAP[s.slug] || 'residential', s.slug + city.slug, 1)[0],
         alt: s.imageAlt || s.h1,
         href: `/${s.slug}-${city.slug}`,
-        linkLabel: `From ${usd(s.fromPrice)}`
+        linkLabel: `${s.h1.split(' Installation')[0].split(' in ')[0]} in ${city.name} from ${usd(s.fromPrice)}`
       })))}
     </section>` +
     testimonialBlock(city) +
@@ -1321,7 +1346,7 @@ function renderPost(post) {
            const rIntentSlugs = posts.filter(x => x.intent === rIntent).map(x => x.slug);
            const rIdx = (rIntentSlugs.indexOf(r.slug) % (blogImageCounts[rIntent] || 1)) + 1;
            const rImg = `/images/blog/${rIntent}/${blogPrefixes[rIntent] || 'i'}${rIdx}.jpg`;
-           return `<a href="/blog/${r.slug}" class="related-card"><figure class="related-card-img"><img src="${rImg}" alt="${esc(r.h1)}" loading="lazy" decoding="async" /></figure><div class="related-card-body"><div class="related-kicker">${esc(r.kicker)}</div><h4>${esc(r.h1)}</h4><p>${esc(r.lead.slice(0, 110))}</p></div></a>`;
+           return `<a href="/blog/${r.slug}" class="related-card"><figure class="related-card-img"><img src="${rImg}" alt="${esc(r.h1)}" loading="lazy" decoding="async" /></figure><div class="related-card-body"><div class="related-kicker">${esc(r.kicker)}</div><h3>${esc(r.h1)}</h3><p>${esc(r.lead.slice(0, 110))}</p></div></a>`;
          }).join('')}
        </div>
      </section>` : '') +
@@ -1581,11 +1606,11 @@ function buildUtility() {
     lead: 'Every lighting service we offer, all in one place.',
     body: `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Residential', h2: 'Lighting for', em: 'every reason.', intro: 'One install, every holiday, every architectural mode. App-controlled. 5-year warranty.' })}
-      ${solutionsGrid(services.map(s => ({ h: s.h1.split(' Installation')[0].split(' in ')[0], p: s.lead.slice(0, 130), img: s.image, alt: s.imageAlt || s.h1, href: `/${s.slug}`, linkLabel: `From ${usd(s.fromPrice)}` })))}
+      ${solutionsGrid(services.map(s => { const n = s.h1.split(' Installation')[0].split(' in ')[0]; return { h: n, p: s.lead.slice(0, 130), img: s.image, alt: s.imageAlt || s.h1, href: `/${s.slug}`, linkLabel: `Explore ${n.toLowerCase()} — from ${usd(s.fromPrice)}` }; }))}
     </section>
     <section class="solutions container">
       ${sectionHead({ eyebrow: 'Commercial', h2: 'Built for', em: 'business operators.', intro: 'Multi-property accounts, single-invoice billing, same-day SLA service across the Central Valley.' })}
-      ${solutionsGrid(verticals.map(v => ({ h: v.h1.split(' Installation')[0].split(' in ')[0], p: v.lead.slice(0, 130), img: v.image, alt: v.imageAlt || v.h1, href: `/${v.slug}`, linkLabel: `From ${usd(v.fromPrice)}` })))}
+      ${solutionsGrid(verticals.map(v => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; return { h: n, p: v.lead.slice(0, 130), img: v.image, alt: v.imageAlt || v.h1, href: `/${v.slug}`, linkLabel: `Explore ${n.toLowerCase()} commercial install — from ${usd(v.fromPrice)}` }; }))}
     </section>`
   }));
   // /service-areas hub
@@ -1620,7 +1645,7 @@ function buildUtility() {
     lead: 'Multi-property accounts. Same-day SLA service. Single-invoice billing.',
     body: `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Commercial verticals', h2: 'Lighting that', em: 'works your business.', intro: 'Restaurants, hotels, storefronts, HOAs, churches, dealerships, schools, offices, and event venues — same hardware, vertical-specific design.' })}
-      ${solutionsGrid(verticals.map(v => ({ h: v.h1.split(' Installation')[0].split(' in ')[0], p: v.lead.slice(0, 140), img: v.image, alt: v.imageAlt || v.h1, href: `/${v.slug}`, linkLabel: `From ${usd(v.fromPrice)}` })))}
+      ${solutionsGrid(verticals.map(v => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; return { h: n, p: v.lead.slice(0, 140), img: v.image, alt: v.imageAlt || v.h1, href: `/${v.slug}`, linkLabel: `${n} commercial install — from ${usd(v.fromPrice)}` }; }))}
     </section>`
   }));
   // /compare hub
