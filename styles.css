@@ -1428,10 +1428,10 @@ em {
 .afs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 .afs-card {
   border-radius: var(--radius-xl);
-  padding: 36px 28px;
+  padding: 36px 28px 0;
   position: relative;
   overflow: hidden;
-  min-height: 560px;
+  min-height: 680px;
   display: flex;
   flex-direction: column;
   color: #1a1a1a;
@@ -1447,15 +1447,16 @@ em {
 .afs-5 { background: var(--p-sky); }
 .afs-phone {
   margin-top: auto;
-  background: #1a1a1a;
-  border-radius: 28px 28px 0 0;
-  padding: 14px 14px 0;
-  height: 320px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 32px 32px 0 0;
+  padding: 10px 10px 0;
+  aspect-ratio: 0.62 / 1;
+  width: calc(100% + 56px);
+  margin-left: -28px;
+  margin-right: -28px;
+  align-self: stretch;
   overflow: hidden;
-  border: 8px solid #1a1a1a;
-  border-bottom: none;
-  margin-left: -8px;
-  margin-right: -8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 -4px 14px rgba(0, 0, 0, 0.06);
 }
 .afs-phone-screen {
   background: #0a0a0a;
@@ -2012,7 +2013,7 @@ em {
   .hamburger { display: flex; }
   .sol-grid { grid-template-columns: repeat(2, 1fr); }
   .afs-grid { grid-template-columns: repeat(2, 1fr); }
-  .afs-card { min-height: 480px; }
+  .afs-card { min-height: 620px; }
   .cv-grid { grid-template-columns: repeat(2, 1fr); }
   .t-grid { grid-template-columns: repeat(2, 1fr); }
   .ns-grid { grid-template-columns: 1fr; gap: 64px; }
@@ -3597,9 +3598,9 @@ body { padding-top: 152px; }
   .switch { font-size: 14px; }
 
   /* App features */
-  .afs-card { padding: 28px 22px; min-height: 440px; }
+  .afs-card { padding: 28px 22px 0; min-height: 560px; }
   .afs-card h3 { font-size: 1.4rem; }
-  .afs-phone { height: 280px; }
+  .afs-phone { width: calc(100% + 44px); margin-left: -22px; margin-right: -22px; }
 
   /* Pricing */
   .price-card { padding: 28px 24px; border-radius: 22px; }
@@ -4451,17 +4452,36 @@ a.pill:hover {
 }
 .related-card {
   display: block;
-  padding: 24px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   text-decoration: none;
   transition: all 0.25s;
+  overflow: hidden;
 }
 .related-card:hover {
   background: rgba(168, 85, 247, 0.06);
   border-color: rgba(168, 85, 247, 0.3);
   transform: translateY(-2px);
+}
+.related-card-img {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+}
+.related-card-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease, ease);
+}
+.related-card:hover .related-card-img img {
+  transform: scale(1.04);
+}
+.related-card-body {
+  padding: 24px;
 }
 .related-kicker {
   font-size: 11px;

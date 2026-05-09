@@ -1199,7 +1199,13 @@ function renderPost(post) {
     (related.length ? `<section class="container related-posts">
        ${sectionHead({ eyebrow: 'Keep reading', h2: 'Related', em: 'reads.' })}
        <div class="related-grid">
-         ${related.map(r => `<a href="/blog/${r.slug}" class="related-card"><div class="related-kicker">${esc(r.kicker)}</div><h4>${esc(r.h1)}</h4><p>${esc(r.lead.slice(0, 110))}</p></a>`).join('')}
+         ${related.map(r => {
+           const rIntent = r.intent || 'informational';
+           const rIntentSlugs = posts.filter(x => x.intent === rIntent).map(x => x.slug);
+           const rIdx = (rIntentSlugs.indexOf(r.slug) % (blogImageCounts[rIntent] || 1)) + 1;
+           const rImg = `/images/blog/${rIntent}/${blogPrefixes[rIntent] || 'i'}${rIdx}.jpg`;
+           return `<a href="/blog/${r.slug}" class="related-card"><figure class="related-card-img"><img src="${rImg}" alt="${esc(r.h1)}" loading="lazy" decoding="async" /></figure><div class="related-card-body"><div class="related-kicker">${esc(r.kicker)}</div><h4>${esc(r.h1)}</h4><p>${esc(r.lead.slice(0, 110))}</p></div></a>`;
+         }).join('')}
        </div>
      </section>` : '') +
     ctaBlock() +
