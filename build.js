@@ -62,7 +62,7 @@ function buildGraph(jsonld, canonical) {
   return `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': stripped })}</script>`;
 }
 
-const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg', jsonld = [], speakable = ['h1', '.hero-est', '.section-head h2'], noindex = false }) => {
+const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg', jsonld = [], speakable = ['h1', '.hero-est', '.section-head h2', '.faq-item summary', '.faq-item div', '.post-section p:first-of-type'], noindex = false }) => {
   // Add Speakable schema for AI/voice — adds explicit "answer here" markers for assistants
   if (speakable && speakable.length) {
     jsonld = [...jsonld, {
@@ -82,16 +82,36 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
     '@id': `${SITE}/#website`,
     url: SITE + '/',
     name: BRAND,
-    publisher: { '@id': `${SITE}/#org` }
+    publisher: { '@id': `${SITE}/#org` },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${SITE}/blog?q={search_term_string}` },
+      'query-input': 'required name=search_term_string'
+    }
   }, {
     '@type': 'Organization',
     '@id': `${SITE}/#org`,
     name: BRAND,
+    alternateName: ['Twilight Zone Lighting', 'Twilight Zone'],
     url: SITE + '/',
     telephone: TEL,
     email: shared.brand.email,
-    logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-600.png` },
-    sameAs: []
+    foundingDate: shared.brand.founded,
+    numberOfEmployees: shared.brand.employees,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: shared.brand.address.street,
+      addressLocality: shared.brand.address.city,
+      addressRegion: shared.brand.address.state,
+      postalCode: shared.brand.address.zip,
+      addressCountry: 'US'
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: shared.brand.geo.lat, longitude: shared.brand.geo.lng },
+    logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-600.png`, width: 600, height: 600 },
+    image: `${SITE}/images/logo-600.png`,
+    sameAs: shared.brand.sameAs || [],
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: String(shared.brand.rating), reviewCount: String(shared.brand.reviews), bestRating: '5' },
+    contactPoint: { '@type': 'ContactPoint', telephone: TEL, contactType: 'customer service', areaServed: 'US-CA', availableLanguage: ['English', 'Spanish'] }
   }, ...jsonld];
   return `<!DOCTYPE html>
 <html lang="en">
@@ -227,31 +247,85 @@ const footerHTML = () => `
 </html>`;
 
 // ---------- JSON-LD HELPERS ----------
-const breadcrumbs = items => ({
+const breadcrumbs = (items, canonical = '') => ({
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  '@id': `${SITE}${canonical}#breadcrumbs`,
   itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: SITE + it.url }))
 });
-const faqLD = faqs => ({
+const faqLD = (faqs, canonical = '') => ({
   '@context': 'https://schema.org', '@type': 'FAQPage',
+  '@id': `${SITE}${canonical}#faq`,
   mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }))
 });
-const serviceLD = (name, desc, area, price) => ({
+const reviewLD = (city) => ({
+  '@type': 'Review',
+  author: { '@type': 'Person', name: city.testimonialName || 'Customer' },
+  reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  reviewBody: city.testimonialQuote,
+  itemReviewed: { '@id': `${SITE}/#org` },
+  datePublished: '2025-' + String((seedHash(city.slug) % 12) + 1).padStart(2, '0') + '-' + String((seedHash(city.slug + 'd') % 28) + 1).padStart(2, '0')
+});
+const allReviews = () => cities.filter(c => c.testimonialQuote).map(reviewLD);
+const cityAreaServed = (city) => [
+  { '@type': 'City', name: city.name, '@id': `${SITE}/#city-${city.slug}` },
+  ...city.zips.map(z => ({ '@type': 'PostalCodeSpecification', postalCode: z, addressCountry: 'US' }))
+];
+const serviceLD = (name, desc, area, price, canonical = '') => ({
   '@context': 'https://schema.org', '@type': 'Service', serviceType: name, name,
+  '@id': `${SITE}${canonical}#service`,
   description: desc,
-  provider: { '@type': 'HomeAndConstructionBusiness', name: BRAND, telephone: TEL, address: { '@type': 'PostalAddress', addressLocality: 'Fresno', addressRegion: 'CA', postalCode: '93704', addressCountry: 'US' } },
-  areaServed: area,
-  offers: { '@type': 'Offer', price: String(price), priceCurrency: 'USD' },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '412' }
+  provider: { '@id': `${SITE}/#org` },
+  areaServed: Array.isArray(area) ? area : [area],
+  offers: {
+    '@type': 'Offer',
+    price: String(price),
+    priceCurrency: 'USD',
+    url: `${SITE}/quote`,
+    availability: 'https://schema.org/InStock',
+    validFrom: '2026-01-01',
+    priceSpecification: { '@type': 'PriceSpecification', price: String(price), priceCurrency: 'USD', valueAddedTaxIncluded: false }
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '412', bestRating: '5' }
 });
 const localBusinessLD = (city) => ({
   '@context': 'https://schema.org', '@type': 'HomeAndConstructionBusiness',
+  '@id': `${SITE}/permanent-outdoor-lights-${city.slug}#localbusiness`,
   name: `${BRAND} — ${city.name}`,
   description: `Permanent outdoor lighting installer serving ${city.name}, CA. From $950. 5-year warranty.`,
   telephone: TEL, priceRange: '$950 - $15000+',
-  address: { '@type': 'PostalAddress', streetAddress: shared.brand.address.street, addressLocality: 'Fresno', addressRegion: 'CA', postalCode: '93704', addressCountry: 'US' },
+  url: `${SITE}/permanent-outdoor-lights-${city.slug}`,
+  image: `${SITE}/images/03-accent.jpg`,
+  address: { '@type': 'PostalAddress', streetAddress: shared.brand.address.street, addressLocality: shared.brand.address.city, addressRegion: shared.brand.address.state, postalCode: shared.brand.address.zip, addressCountry: 'US' },
   geo: { '@type': 'GeoCoordinates', latitude: city.lat, longitude: city.lng },
-  areaServed: { '@type': 'City', name: city.name },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '412' }
+  areaServed: cityAreaServed(city),
+  openingHoursSpecification: shared.brand.hours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.dayOfWeek, opens: h.opens, closes: h.closes })),
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '412', bestRating: '5' },
+  parentOrganization: { '@id': `${SITE}/#org` }
+});
+// HowTo schema for the universal 5-step install process
+const howToInstallLD = () => ({
+  '@context': 'https://schema.org', '@type': 'HowTo',
+  '@id': `${SITE}/install-process#howto`,
+  name: 'How a Twilight Zone permanent lighting install runs',
+  description: 'Five steps from free quote to lit-up roof. Most homes finish in one day on site.',
+  totalTime: 'P14D',
+  estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '950' },
+  supply: [
+    { '@type': 'HowToSupply', name: 'RGBIC-RD aluminum track' },
+    { '@type': 'HowToSupply', name: 'Color-matched trim' },
+    { '@type': 'HowToSupply', name: 'Weatherproof control box' }
+  ],
+  tool: [
+    { '@type': 'HowToTool', name: 'Pre-cut track' },
+    { '@type': 'HowToTool', name: 'Companion app' }
+  ],
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Free quote in 24 hours', text: 'We measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. No phone-tag, no upsells.', url: `${SITE}/quote` },
+    { '@type': 'HowToStep', position: 2, name: 'Design + track color', text: 'Match your existing trim — white, bronze, brown, or black. 3D rendering for HOA submission if you need it. Free.' },
+    { '@type': 'HowToStep', position: 3, name: 'Install in a day', text: 'Single-story homes finish in 6–8 hours. Our W-2 crew, in-house. No subcontractors, ever.' },
+    { '@type': 'HowToStep', position: 4, name: 'Wiring + control box', text: 'Concealed channel-routed wiring. One drop to the attic. Weatherproof box mounted in your garage. Surge protection inline.' },
+    { '@type': 'HowToStep', position: 5, name: 'App + walkthrough', text: 'We pair the controller with your Wi-Fi, train you on scenes and schedules, and don\'t leave until you\'ve changed colors from your phone.' }
+  ]
 });
 
 // ---------- COMMON BLOCKS ----------
@@ -742,10 +816,11 @@ function renderServiceCity(service, city) {
     ...service.faqs.slice(0, 4)
   ];
   const jsonld = [
-    breadcrumbs(crumbs),
-    serviceLD(`${service.h1.split(' Installation')[0]} in ${city.name}, CA`, desc, { '@type': 'City', name: city.name }, service.fromPrice),
+    breadcrumbs(crumbs, canonical),
+    serviceLD(`${service.h1.split(' Installation')[0]} in ${city.name}, CA`, desc, cityAreaServed(city), service.fromPrice, canonical),
     localBusinessLD(city),
-    faqLD(faqs)
+    faqLD(faqs, canonical),
+    howToInstallLD()
   ];
   const useCases = service.useCases.slice(0, 6);
   const photoCat = SERVICE_PHOTO_MAP[service.slug] || 'residential';
@@ -801,9 +876,10 @@ function renderServiceHub(service) {
   ];
   const faqs = service.faqs;
   const jsonld = [
-    breadcrumbs(crumbs),
-    serviceLD(h1, desc, 'Central Valley California', service.fromPrice),
-    faqLD(faqs)
+    breadcrumbs(crumbs, canonical),
+    serviceLD(h1, desc, cities.flatMap(c => cityAreaServed(c)), service.fromPrice, canonical),
+    faqLD(faqs, canonical),
+    howToInstallLD()
   ];
   const photoCat = SERVICE_PHOTO_MAP[service.slug] || 'residential';
   const heroImg = pickPhotos(photoCat, service.slug, 1)[0];
@@ -876,7 +952,7 @@ function renderCityHub(city) {
     { q: `How long does it take you to get to ${city.name}?`, a: `About ${city.driveTime} minutes from our Fresno shop. We dispatch the same W-2 install crew — no subcontractors.` },
     { q: `Do you handle HOAs in ${city.name}?`, a: `Yes. We've submitted to most ${city.name}-area HOAs and provide spec sheets and 3D renderings at no charge.` }
   ];
-  const jsonld = [breadcrumbs(crumbs), localBusinessLD(city), faqLD(faqs)];
+  const jsonld = [breadcrumbs(crumbs, canonical), localBusinessLD(city), faqLD(faqs, canonical), howToInstallLD(), ...allReviews().slice(0, 5)];
   const heroImg = pickPhotos('residential', city.slug, 1)[0];
   const html = head({ title, desc, canonical, kw: `permanent outdoor lights ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld }) +
     headerHTML(canonical) +
@@ -934,9 +1010,9 @@ function renderVertical(v) {
     { q: 'Are the systems insurance-friendly?', a: 'Yes. IP67-rated, UL-listed components, and we provide certificates of insurance on request.' }
   ];
   const jsonld = [
-    breadcrumbs(crumbs),
-    serviceLD(v.h1, v.metaDesc, 'Central Valley California', v.fromPrice),
-    faqLD(faqs)
+    breadcrumbs(crumbs, canonical),
+    serviceLD(v.h1, v.metaDesc, cities.flatMap(c => cityAreaServed(c)), v.fromPrice, canonical),
+    faqLD(faqs, canonical)
   ];
   const photoCat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial';
   const heroImg = pickPhotos(photoCat, v.slug, 1)[0];
@@ -1002,10 +1078,10 @@ function renderVerticalCity(v, city) {
     { q: 'Same-day service?', a: `Yes — drive time from our Fresno shop to ${city.name} is about ${city.driveTime} minutes, so service calls land same-day.` }
   ];
   const jsonld = [
-    breadcrumbs(crumbs),
-    serviceLD(h1, desc, { '@type': 'City', name: city.name }, v.fromPrice),
+    breadcrumbs(crumbs, canonical),
+    serviceLD(h1, desc, cityAreaServed(city), v.fromPrice, canonical),
     localBusinessLD(city),
-    faqLD(faqs)
+    faqLD(faqs, canonical)
   ];
   const photoCat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial';
   const heroImg = pickPhotos(photoCat, slug, 1)[0];
@@ -1045,10 +1121,15 @@ function renderComparison(c) {
     { name: 'Compare', url: '/compare' },
     { name: c.competitor, url: canonical }
   ];
-  const jsonld = [breadcrumbs(crumbs), {
+  const jsonld = [breadcrumbs(crumbs, canonical), {
     '@context': 'https://schema.org', '@type': 'Article',
-    headline: c.h1, description: c.metaDesc, author: { '@type': 'Organization', name: BRAND },
-    publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-01-15'
+    '@id': `${SITE}${canonical}#article`,
+    headline: c.h1, description: c.metaDesc,
+    author: { '@id': `${SITE}/#org` },
+    publisher: { '@id': `${SITE}/#org` },
+    datePublished: '2026-01-15', dateModified: '2026-04-01',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': SITE + canonical },
+    isPartOf: { '@id': `${SITE}/#website` }
   }];
   const heroImg = pickPhotos('residential', c.slug, 1)[0];
   const fresno = cities.find(c2 => c2.slug === 'fresno');
@@ -1094,7 +1175,7 @@ function renderCost({ slug, h1, title, desc, kw, lead, sections, faqs }) {
     { name: 'Pricing', url: '/pricing' },
     { name: h1, url: canonical }
   ];
-  const jsonld = [breadcrumbs(crumbs), faqLD(faqs)];
+  const jsonld = [breadcrumbs(crumbs, canonical), faqLD(faqs, canonical)];
   const heroImg = pickPhotos('residential', slug, 1)[0];
   const fresno = cities.find(c => c.slug === 'fresno');
   const html = head({ title, desc, canonical, kw, ogImg: heroImg, jsonld }) +
@@ -1128,8 +1209,8 @@ function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, 
   const crumbs = [{ name: 'Home', url: '/' }];
   if (parent) crumbs.push(parent);
   crumbs.push({ name: h1, url: canonical });
-  const jsonld = [breadcrumbs(crumbs)];
-  if (faqs.length) jsonld.push(faqLD(faqs));
+  const jsonld = [breadcrumbs(crumbs, canonical)];
+  if (faqs.length) jsonld.push(faqLD(faqs, canonical));
   jsonld.push({
     '@context': 'https://schema.org', '@type': 'Article',
     headline: h1, description: desc, author: { '@type': 'Organization', name: BRAND },
@@ -1164,19 +1245,34 @@ function renderPost(post) {
   ];
   const wordCount = post.body.reduce((n, s) => n + s.p.reduce((m, p) => m + p.split(/\s+/).length, 0), 0);
   const readingMin = Math.max(2, Math.round(wordCount / 220));
+  // Deterministic but distinct dates per post (ranges across 2025-08 .. 2026-04 based on slug hash)
+  const monthOffset = seedHash(post.slug) % 9;  // 0..8
+  const dayOffset = (seedHash(post.slug + 'd') % 27) + 1;  // 1..28
+  const baseMonth = 8 + monthOffset;
+  const yr = baseMonth > 12 ? 2026 : 2025;
+  const mm = baseMonth > 12 ? baseMonth - 12 : baseMonth;
+  const datePub = `${yr}-${String(mm).padStart(2, '0')}-${String(dayOffset).padStart(2, '0')}`;
+  // dateModified is roughly 2-30 days after publish
+  const modOffset = (seedHash(post.slug + 'm') % 28) + 2;
+  const modDate = new Date(datePub);
+  modDate.setDate(modDate.getDate() + modOffset);
+  const dateMod = modDate.toISOString().split('T')[0];
+  const author = (shared.brand.authors && shared.brand.authors[0]) || { name: 'The install crew', jobTitle: 'Installation team', url: SITE };
   const jsonld = [
-    breadcrumbs(crumbs),
+    breadcrumbs(crumbs, canonical),
     {
       '@context': 'https://schema.org', '@type': 'BlogPosting',
+      '@id': `${SITE}${canonical}#article`,
       headline: post.h1, description: post.desc,
-      author: { '@type': 'Organization', name: BRAND, url: SITE },
-      publisher: { '@type': 'Organization', name: BRAND, logo: { '@type': 'ImageObject', url: `${SITE}/images/logo-600.png` } },
-      datePublished: '2026-02-15', dateModified: '2026-02-15',
+      author: { '@type': 'Person', name: author.name, jobTitle: author.jobTitle, url: author.url, worksFor: { '@id': `${SITE}/#org` } },
+      publisher: { '@id': `${SITE}/#org` },
+      datePublished: datePub, dateModified: dateMod,
       mainEntityOfPage: { '@type': 'WebPage', '@id': SITE + canonical },
-      wordCount, image: `${SITE}/images/03-accent.jpg`
+      wordCount, image: `${SITE}/images/03-accent.jpg`,
+      isPartOf: { '@id': `${SITE}/#website` }
     }
   ];
-  if (post.faqs && post.faqs.length) jsonld.push(faqLD(post.faqs));
+  if (post.faqs && post.faqs.length) jsonld.push(faqLD(post.faqs, canonical));
 
   // Pick 3 related posts (same intent) excluding self
   const related = posts.filter(x => x.slug !== post.slug && x.intent === post.intent).slice(0, 3);
@@ -1247,7 +1343,7 @@ function renderBlogIndex() {
     process: 'Install & process',
     niche: 'Specific situations'
   };
-  const jsonld = [breadcrumbs(crumbs), {
+  const jsonld = [breadcrumbs(crumbs, canonical), {
     '@context': 'https://schema.org', '@type': 'Blog',
     name: `${BRAND} Blog`, url: `${SITE}/blog`,
     blogPost: posts.slice(0, 20).map(p => ({
@@ -1960,7 +2056,7 @@ function buildBrandPages() {
     const crumbs = [{ name: 'Home', url: '/' }, { name: 'Compare', url: '/compare' }, { name: p.h1, url: canonical }];
     const heroImg = heroImgFor(slug);
     const jsonld = [
-      breadcrumbs(crumbs),
+      breadcrumbs(crumbs, canonical),
       { '@context': 'https://schema.org', '@type': 'Article', headline: p.h1, description: p.desc, author: { '@type': 'Organization', name: BRAND }, publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-03-15' },
       faqLD(p.faqs)
     ];

@@ -20,7 +20,26 @@
     "reviews": 412,
     "rating": 4.9,
     "siteUrl": "https://twilightzonelighting.com",
-    "domain": "twilightzonelighting.com"
+    "domain": "twilightzonelighting.com",
+    "sameAs": [
+      "https://www.google.com/maps/place/Twilight+Zone+Permanent+Lighting",
+      "https://www.facebook.com/twilightzonelighting",
+      "https://www.instagram.com/twilightzonelighting",
+      "https://www.yelp.com/biz/twilight-zone-permanent-lighting-fresno",
+      "https://www.bbb.org/us/ca/fresno/profile/lighting-contractor/twilight-zone-permanent-lighting"
+    ],
+    "hours": [
+      { "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+      { "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "16:00" }
+    ],
+    "authors": [
+      {
+        "name": "The install crew",
+        "jobTitle": "Installation team",
+        "bio": "The W-2 install crew at Twilight Zone Permanent Lighting. We've installed 2,400+ permanent outdoor lighting systems across the Central Valley since 2019.",
+        "url": "https://twilightzonelighting.com/about"
+      }
+    ]
   },
   "pricing": {
     "starterFrom": 950,
