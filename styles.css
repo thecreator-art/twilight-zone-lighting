@@ -5474,3 +5474,61 @@ section.solutions { padding: 100px 0; }
 }
 .blog-card:hover .blog-card-img img { transform: scale(1.04); }
 .blog-card-body { padding: 18px 6px 0; }
+
+/* ============================================================
+   SCROLL-REVEAL via .is-in-view class (cross-browser fallback)
+   Works in every browser, including Safari < 18.
+   ============================================================ */
+.solutions, .scene, .reel, .process, .temp-section, .hidden-section,
+.app-features-section, .pricing, .calculator-section, .compare-section,
+.testimonials-section, .service-area, .faq, .next-steps {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.solutions.is-in-view, .scene.is-in-view, .reel.is-in-view, .process.is-in-view,
+.temp-section.is-in-view, .hidden-section.is-in-view, .app-features-section.is-in-view,
+.pricing.is-in-view, .calculator-section.is-in-view, .compare-section.is-in-view,
+.testimonials-section.is-in-view, .service-area.is-in-view, .faq.is-in-view,
+.next-steps.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sol-card, .reel-card, .proc-card, .afs-card, .tier, .t-card, .faq-item,
+.install-photo, .blog-card, .related-card {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sol-card.is-in-view, .reel-card.is-in-view, .proc-card.is-in-view, .afs-card.is-in-view,
+.tier.is-in-view, .t-card.is-in-view, .faq-item.is-in-view, .install-photo.is-in-view,
+.blog-card.is-in-view, .related-card.is-in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.section-head, .solutions-head, .scene-head, .process-head, .pricing-head,
+.reel-head, .afs-head, .compare-head, .testimonials-head, .sa-head, .faq-head {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.section-head.is-in-view, .solutions-head.is-in-view, .scene-head.is-in-view,
+.process-head.is-in-view, .pricing-head.is-in-view, .reel-head.is-in-view,
+.afs-head.is-in-view, .compare-head.is-in-view, .testimonials-head.is-in-view,
+.sa-head.is-in-view, .faq-head.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .solutions, .scene, .reel, .process, .temp-section, .hidden-section,
+  .app-features-section, .pricing, .calculator-section, .compare-section,
+  .testimonials-section, .service-area, .faq, .next-steps,
+  .sol-card, .reel-card, .proc-card, .afs-card, .tier, .t-card, .faq-item,
+  .install-photo, .blog-card, .related-card,
+  .section-head, .solutions-head, .scene-head, .process-head, .pricing-head,
+  .reel-head, .afs-head, .compare-head, .testimonials-head, .sa-head, .faq-head {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

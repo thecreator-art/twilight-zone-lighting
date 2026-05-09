@@ -809,3 +809,32 @@ if ('serviceWorker' in navigator) {
     c.addEventListener('mouseleave', () => sync(c.dataset.city, false));
   });
 })();
+
+// ---- SCROLL-REVEAL FALLBACK (works in all browsers, including Safari < 18) ----
+// Native animation-timeline: view() is gated by @supports in CSS; this JS handles
+// the rest. Adds .is-in-view class when section enters viewport.
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = document.querySelectorAll(
+    '.solutions, .scene, .reel, .process, .temp-section, .hidden-section, ' +
+    '.app-features-section, .pricing, .calculator-section, .compare-section, ' +
+    '.testimonials-section, .service-area, .faq, .next-steps, ' +
+    '.sol-card, .reel-card, .proc-card, .afs-card, .tier, .t-card, .faq-item, ' +
+    '.solutions-head, .scene-head, .process-head, .pricing-head, .reel-head, ' +
+    '.afs-head, .compare-head, .testimonials-head, .sa-head, .faq-head, ' +
+    '.section-head, .install-photo, .blog-card, .related-card'
+  );
+  if (!targets.length || !('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('is-in-view'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+  targets.forEach(el => io.observe(el));
+})();

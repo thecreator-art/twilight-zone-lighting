@@ -452,11 +452,16 @@ const cityRowBlock = (currentSlug) => `
 </section>`;
 
 const serviceRowBlock = (currentSlug) => `
-<section class="service-row container">
-  <h3>More Lighting Services</h3>
-  <div class="service-pills">
-    ${services.filter(s => s.slug !== currentSlug).slice(0, 10).map(s => `<a href="/${s.slug}" class="pill">${esc(s.h1.split(' Installation')[0].split(' in ')[0])}</a>`).join('')}
-  </div>
+<section class="solutions container">
+  ${sectionHead({ eyebrow: 'More services', h2: 'Other lighting', em: 'we install.', intro: 'Same crew, same warranty, same Jellyfish RGBIC-RD hardware.' })}
+  ${solutionsGrid(services.filter(s => s.slug !== currentSlug).slice(0, 8).map(s => ({
+    h: s.h1.split(' Installation')[0].split(' in ')[0],
+    p: s.lead.slice(0, 130),
+    img: s.image,
+    alt: s.imageAlt || s.h1,
+    href: `/${s.slug}`,
+    linkLabel: `From ${usd(s.fromPrice)}`
+  })))}
 </section>`;
 
 const guaranteeBlock = () => `
@@ -1588,9 +1593,7 @@ function buildUtility() {
     kicker: 'FAQ',
     lead: 'Everything we\'re asked, answered straight.',
     img: pickPhotos('residential', 'faq', 1)[0],
-    body: `<section class="container article-body">
-      ${sectionHead({ eyebrow: 'Frequently asked', h2: 'Plain-English answers,', em: `no asterisks.`, intro: `${shared.brand.installs}+ installs and ${shared.brand.reviews}+ reviews — these are the questions we hear most. If yours isn't here, call us at ${PHONE}.` })}
-    </section>`,
+    body: '',
     faqs: [
       { q: 'How much does permanent outdoor lighting cost?', a: `Starts at ${usd(shared.pricing.starterFrom)} for a Starter install. Most homes land ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}. Two-story estates ${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}+. Financing from ${usd(shared.pricing.standardMonthly)}/month at 0% APR.` },
       { q: 'How long does the install take?', a: 'Single-story homes finish in 6-8 hours. Two-story 1-2 days.' },
