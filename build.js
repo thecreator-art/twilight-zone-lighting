@@ -467,7 +467,7 @@ const ctaBlock = () => `
         <a href="tel:${TEL}">${PHONE}</a>
       </div>
     </div>
-    <form class="ns-form" aria-label="Request a free quote" action="mailto:${shared.brand.email}" method="post" enctype="text/plain">
+    <form class="ns-form" id="quoteForm" aria-label="Request a free quote" data-form-source="quote" novalidate>
       <div class="ns-field"><label>First Name</label><input type="text" name="firstName" placeholder="Jane" required autocomplete="given-name" /></div>
       <div class="ns-field"><label>Last Name</label><input type="text" name="lastName" placeholder="Smith" required autocomplete="family-name" /></div>
       <div class="ns-field"><label>Email</label><input type="email" name="email" placeholder="email@site.com" required autocomplete="email" /></div>
@@ -480,7 +480,16 @@ const ctaBlock = () => `
       </div>
       <p class="ns-fine">By submitting you agree to receive communication. 60-day money-back. $0 down.</p>
       <button type="submit" class="btn btn-white btn-block btn-lg" data-magnetic>Request quote</button>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
     </form>
+    <div class="ns-thanks" id="quoteThanks" hidden role="status" aria-live="polite">
+      <div class="ns-thanks-icon" aria-hidden="true">
+        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="27" stroke="currentColor" stroke-width="2"/><path d="M16 28l8 8 16-18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Quote request received.</h3>
+      <p>Rapheal will reach out within 24 hours with a written, fixed-price estimate. Check your email and texts. If you'd rather skip the wait, call <a href="tel:${TEL}"><strong>${esc(PHONE)}</strong></a> right now.</p>
+      <a href="tel:${TEL}" class="btn btn-primary">Call ${esc(PHONE)}</a>
+    </div>
   </div>
 </section>`;
 

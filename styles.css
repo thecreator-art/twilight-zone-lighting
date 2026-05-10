@@ -3959,6 +3959,64 @@ body { padding-top: 152px; }
 .faq-section h2 { margin: 0 auto 36px; }
 .faq-section .faq-list { text-align: left; }
 
+/* Honeypot — visible to bots that fill every input, hidden from humans */
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* In-page lead thanks state */
+.ns-thanks {
+  text-align: center;
+  padding: 36px 28px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.02));
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: 16px;
+  animation: nsThanksIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.ns-thanks-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  color: #22c55e;
+  filter: drop-shadow(0 0 16px rgba(34, 197, 94, 0.45));
+}
+.ns-thanks-icon svg {
+  width: 100%;
+  height: 100%;
+  animation: nsCheckPop 0.7s cubic-bezier(0.2, 1.4, 0.2, 1) both 0.2s;
+}
+.ns-thanks h3 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+}
+.ns-thanks p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 50ch;
+  margin: 0 auto 22px;
+}
+.ns-thanks p strong { color: #fff; }
+.ns-thanks p a { color: #c084fc; text-decoration: none; border-bottom: 1px solid rgba(192,132,252,0.4); }
+.ns-thanks .btn { margin-top: 6px; }
+@keyframes nsThanksIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes nsCheckPop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 /* TLDR / one-sentence answer callout for blog posts (AI/GEO citation bait) */
 .post-tldr {
   margin: 12px 0 36px;

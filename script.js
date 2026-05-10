@@ -408,27 +408,85 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   apply();
 })();
 
-// ---- FORM SUBMIT + CONFETTI ----
-const form = document.getElementById('quoteForm');
-form?.addEventListener('submit', e => {
-  e.preventDefault();
+// ---- LEAD FORM SUBMIT (real /api/lead → GHL webhook + confetti + in-page thanks) ----
+async function submitLead(form, opts = {}) {
   const btn = form.querySelector('button[type="submit"]');
-  const original = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-  setTimeout(() => {
-    btn.textContent = '✓ Quote received';
-    btn.style.background = '#22c55e';
-    btn.style.color = '#fff';
+  const originalLabel = btn ? btn.textContent : '';
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+  }
+
+  // Collect form fields
+  const data = {};
+  new FormData(form).forEach((v, k) => { data[k] = typeof v === 'string' ? v : ''; });
+  data.source = form.dataset.formSource || 'unknown';
+  data.page = window.location.pathname;
+  data.referrer = document.referrer || '';
+
+  let result;
+  try {
+    const resp = await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    result = await resp.json().catch(() => ({ ok: false }));
+    if (!resp.ok) result.ok = false;
+  } catch (err) {
+    result = { ok: false, error: 'network' };
+  }
+
+  if (result && result.ok) {
+    if (btn) {
+      btn.textContent = '✓ Got it!';
+      btn.style.background = '#22c55e';
+      btn.style.color = '#fff';
+    }
     fireConfetti();
-    setTimeout(() => {
-      form.reset();
+    // GA4 / GTM hook (fires only if dataLayer exists)
+    if (window.dataLayer) window.dataLayer.push({ event: 'lead_submitted', form_source: data.source });
+
+    // In-page thanks state
+    if (opts.thanksId) {
+      const thanks = document.getElementById(opts.thanksId);
+      if (thanks) {
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } else if (btn) {
+      // Inline: just show success on the button for a few seconds, then reset
+      setTimeout(() => {
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 4000);
+    }
+  } else {
+    if (btn) {
       btn.disabled = false;
-      btn.textContent = original;
-      btn.style.background = '';
-      btn.style.color = '';
-    }, 3000);
-  }, 800);
+      btn.textContent = originalLabel;
+    }
+    // Soft inline error — give them the phone fallback
+    let err = form.querySelector('.form-error');
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'form-error';
+      err.setAttribute('role', 'alert');
+      err.style.cssText = 'color:#fca5a5;font-size:14px;margin-top:10px';
+      form.appendChild(err);
+    }
+    err.innerHTML = 'Something hiccupped on our end. Try again, or call <a href="tel:+15593732220" style="color:#fff;text-decoration:underline">(559) 373-2220</a>.';
+  }
+}
+
+const quoteForm = document.getElementById('quoteForm');
+quoteForm?.addEventListener('submit', e => {
+  e.preventDefault();
+  submitLead(quoteForm, { thanksId: 'quoteThanks' });
 });
 
 // ---- CONFETTI ----
@@ -718,23 +776,7 @@ function fireConfetti() {
   if (!form) return;
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const btn = form.querySelector('.hf-submit');
-    const original = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    setTimeout(() => {
-      btn.textContent = '✓ Got it!';
-      btn.style.background = '#22c55e';
-      btn.style.color = '#fff';
-      fireConfetti();
-      setTimeout(() => {
-        form.reset();
-        btn.disabled = false;
-        btn.textContent = original;
-        btn.style.background = '';
-        btn.style.color = '';
-      }, 3000);
-    }, 600);
+    submitLead(form);
   });
 })();
 

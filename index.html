@@ -257,7 +257,7 @@
     </h1>
     <p class="hero-est">Fresno's <strong>permanent outdoor lights</strong> — also known as <strong>outdoor lights permanent</strong> or just permanent out door lights. Christmas, holiday, accent &amp; security. From $950. Installed in a day.</p>
 
-    <form class="hero-form" id="heroForm" aria-label="Quick quote">
+    <form class="hero-form" id="heroForm" aria-label="Quick quote" data-form-source="hero" novalidate>
       <div class="hf-fields">
         <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name" />
         <input type="tel" name="phone" placeholder="Phone" required autocomplete="tel" />
@@ -265,6 +265,7 @@
         <button type="submit" class="hf-submit" data-magnetic>Get my quote</button>
       </div>
       <p class="hf-fine">24-hour response · No spam · No pressure</p>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
     </form>
 
     <div class="hero-actions">
@@ -925,7 +926,7 @@
       </div>
     </div>
 
-    <form class="ns-form" id="quoteForm" aria-label="Request a free quote">
+    <form class="ns-form" id="quoteForm" aria-label="Request a free quote" data-form-source="quote" novalidate>
       <div class="ns-field"><label for="firstName">First Name</label><input id="firstName" type="text" name="firstName" placeholder="Jane" required autocomplete="given-name" /></div>
       <div class="ns-field"><label for="lastName">Last Name</label><input id="lastName" type="text" name="lastName" placeholder="Smith" required autocomplete="family-name" /></div>
       <div class="ns-field"><label for="email">Email</label><input id="email" type="email" name="email" placeholder="email@site.com" required autocomplete="email" /></div>
@@ -938,7 +939,16 @@
       </div>
       <p class="ns-fine">By submitting you agree to receive communication. 60-day money-back. $0 down.</p>
       <button type="submit" class="btn btn-white btn-block btn-lg" data-magnetic>Request quote</button>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
     </form>
+    <div class="ns-thanks" id="quoteThanks" hidden role="status" aria-live="polite">
+      <div class="ns-thanks-icon" aria-hidden="true">
+        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="27" stroke="currentColor" stroke-width="2"/><path d="M16 28l8 8 16-18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Quote request received.</h3>
+      <p>Rapheal will reach out within 24 hours with a written, fixed-price estimate. Check your email and texts. If you'd rather skip the wait, call <a href="tel:+15593732220"><strong>(559) 373-2220</strong></a> right now.</p>
+      <a href="tel:+15593732220" class="btn btn-primary">Call (559) 373-2220</a>
+    </div>
   </div>
 </section>
 
