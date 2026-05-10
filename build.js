@@ -1159,9 +1159,18 @@ function renderVertical(v) {
 function renderVerticalCity(v, city) {
   const slug = `${v.slug}-${city.slug}`;
   const baseName = v.h1.split(' Installation')[0].split(' in ')[0];
+  // Strip the long " Permanent Lighting" suffix from titles to keep under 60 chars
+  const baseShort = baseName.replace(/ Permanent Lighting$/i, '').replace(/ Lighting$/i, '');
   const h1 = `${baseName} in ${city.name}, CA`;
-  const title = `${baseName} ${city.name} CA | Commercial | ${BRAND}`;
-  const desc = `${baseName} for ${city.name} businesses. ${v.lead} From ${usd(v.fromPrice)}. Multi-property accounts. Same-day service.`;
+  // Title aims for 50-60 chars: "Church Lighting Fresno CA | $1,200+ | Twilight Zone"
+  const title = `${baseShort} ${city.name} CA | ${usd(v.fromPrice)}+ | ${BRAND.split(' ')[0]} ${BRAND.split(' ')[1]}`;
+  // Description aims for 140-160 chars
+  const wordBoundaryCut = (s, max) => {
+    if (s.length <= max) return s;
+    const cut = s.slice(0, max);
+    return cut.slice(0, cut.lastIndexOf(' '));
+  };
+  const desc = `${baseName} in ${city.name}, CA from ${usd(v.fromPrice)}. ${wordBoundaryCut(v.lead.split('.')[0], 70)}. Same-day service. Free quote.`;
   const canonical = `/${slug}`;
   const crumbs = [
     { name: 'Home', url: '/' },
