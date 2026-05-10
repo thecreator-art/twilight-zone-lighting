@@ -83,7 +83,7 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
     url: SITE + '/',
     name: BRAND,
     publisher: { '@id': `${SITE}/#org` },
-    creator: { '@id': 'https://vaultio.com/#org' },
+    creator: { '@id': 'https://vaultio.co/#org' },
     potentialAction: {
       '@type': 'SearchAction',
       target: { '@type': 'EntryPoint', urlTemplate: `${SITE}/blog?q={search_term_string}` },
@@ -91,9 +91,9 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
     }
   }, {
     '@type': 'Organization',
-    '@id': 'https://vaultio.com/#org',
+    '@id': 'https://vaultio.co/#org',
     name: 'Vaultio',
-    url: 'https://vaultio.com/',
+    url: 'https://vaultio.co/',
     description: 'Web design and digital marketing studio'
   }, {
     '@type': 'Organization',
@@ -129,7 +129,7 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
 <meta name="description" content="${esc(desc)}" />
 ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <meta name="author" content="${esc(BRAND)}" />
-<meta name="generator" content="Vaultio · vaultio.com" />
+<meta name="generator" content="Vaultio · vaultio.co" />
 <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
 <link rel="canonical" href="${SITE}${canonical}" />
 <meta name="geo.region" content="US-CA" />
@@ -1817,6 +1817,9 @@ function buildUtility() {
         <li><a href="/process">/process</a> — five-step install process from quote to walkthrough</li>
         <li><a href="/blog">/blog</a> — 60 plain-English explainer articles</li>
       </ul>
+
+      <h2>Site credits</h2>
+      <p>Site design, build, and digital marketing by <a href="https://vaultio.co" rel="external">Vaultio</a> — a web design and digital marketing studio specializing in home-services SEO. Engineered and shipped on Vercel.</p>
     </section>`
   }));
   // /compare hub
