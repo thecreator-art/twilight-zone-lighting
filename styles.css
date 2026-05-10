@@ -714,7 +714,7 @@ em {
 .solutions-intro strong { color: #fff; font-weight: 600; }
 .sol-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
 }
 .sol-card {
@@ -3201,6 +3201,32 @@ em {
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: var(--bg-elev);
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 720px) {
+  .compare-table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    position: relative;
+  }
+  .compare-table-wrap::after {
+    content: '';
+    position: sticky;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 32px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.55));
+    display: block;
+  }
+  .compare-table {
+    min-width: 560px;
+    font-size: 0.86rem;
+  }
+  .compare-table thead th { padding: 14px 10px; font-size: 0.62rem; letter-spacing: 0.12em; }
+  .compare-table tbody td { padding: 12px 10px; font-size: 0.84rem; }
+  .compare-table tbody td.ct-feat { padding-left: 14px; font-size: 0.84rem; }
 }
 .compare-table {
   width: 100%;
@@ -4368,6 +4394,63 @@ a.pill:hover {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.02em;
+}
+
+/* Fact-grid: full-sentence stats with a leading number callout */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.fact-card {
+  position: relative;
+  padding: 28px 26px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.4s var(--ease, ease), border-color 0.3s, box-shadow 0.4s;
+}
+.fact-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(192, 132, 252, 0.45);
+  box-shadow: 0 12px 36px rgba(168, 85, 247, 0.18);
+}
+.fact-card strong {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 400;
+  color: #d8b4fe;
+  letter-spacing: -0.02em;
+}
+.fact-card span {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+.fact-card.fact-card-quote {
+  justify-content: center;
+}
+.fact-card.fact-card-quote span {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.4;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.fact-card.fact-card-quote::before {
+  content: '"';
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+  color: rgba(192, 132, 252, 0.45);
+  font-style: italic;
 }
 
 /* Reviews */
