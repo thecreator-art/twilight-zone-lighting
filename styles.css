@@ -1095,6 +1095,7 @@ em {
   overflow: hidden;
   aspect-ratio: 16 / 11;
   background: #000;
+  --temp: 50%;
 }
 .temp-pic {
   position: absolute;
@@ -1102,18 +1103,50 @@ em {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: opacity;
-  animation: tempXfade 9s ease-in-out infinite alternate;
 }
-.temp-pic-cool { z-index: 1; animation-delay: 0s; }
-.temp-pic-warm { z-index: 2; animation-delay: -4.5s; }
-@keyframes tempXfade {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+/* Cool image is the base layer (full coverage). */
+.temp-pic-cool { z-index: 1; }
+/* Warm image overlays via clip-path; only shows the slice from --temp to right edge. */
+.temp-pic-warm {
+  z-index: 2;
+  clip-path: inset(0 0 0 var(--temp));
+  -webkit-clip-path: inset(0 0 0 var(--temp));
+  transition: clip-path 0.18s ease-out, -webkit-clip-path 0.18s ease-out;
+}
+/* Vertical divider line that tracks the split boundary so the user sees both halves */
+.temp-photo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--temp);
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.35));
+  box-shadow: 0 0 14px rgba(255,255,255,0.4);
+  z-index: 3;
+  pointer-events: none;
+  transition: left 0.18s ease-out;
+}
+.temp-photo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: var(--temp);
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  margin-top: -18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5), 0 0 0 4px rgba(255,255,255,0.18);
+  z-index: 4;
+  pointer-events: none;
+  transition: left 0.18s ease-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .temp-pic { animation: none; }
-  .temp-pic-warm { opacity: 0; }
+  .temp-pic-warm,
+  .temp-photo::after,
+  .temp-photo::before { transition: none; }
 }
 .temp-image { position: relative; }
 .temp-slider {

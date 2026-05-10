@@ -1688,11 +1688,11 @@ function buildUtility() {
     lead: 'Every lighting service we offer, all in one place.',
     body: `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Residential', h2: 'Lighting for', em: 'every reason.', intro: 'One install, every holiday, every architectural mode. App-controlled. 5-year warranty.' })}
-      ${solutionsGrid(services.map(s => { const n = s.h1.split(' Installation')[0].split(' in ')[0]; return { h: n, p: s.lead.slice(0, 130), img: s.image, alt: s.imageAlt || s.h1, href: `/${s.slug}`, linkLabel: `Explore ${n.toLowerCase()} — from ${usd(s.fromPrice)}` }; }))}
+      ${solutionsGrid(services.map((s, i) => { const n = s.h1.split(' Installation')[0].split(' in ')[0]; const cat = SERVICE_PHOTO_MAP[s.slug] || 'residential'; const pool = ASSETS[cat] || ASSETS.residential; const img = pool[i % pool.length]; return { h: n, p: s.lead.slice(0, 130), img, alt: `${n} install by Twilight Zone Permanent Lighting`, href: `/${s.slug}`, linkLabel: `Explore ${n.toLowerCase()} — from ${usd(s.fromPrice)}` }; }))}
     </section>
     <section class="solutions container">
       ${sectionHead({ eyebrow: 'Commercial', h2: 'Built for', em: 'business operators.', intro: 'Multi-property accounts, single-invoice billing, same-day SLA service across the Central Valley.' })}
-      ${solutionsGrid(verticals.map(v => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; return { h: n, p: v.lead.slice(0, 130), img: v.image, alt: v.imageAlt || v.h1, href: `/${v.slug}`, linkLabel: `Explore ${n.toLowerCase()} commercial install — from ${usd(v.fromPrice)}` }; }))}
+      ${solutionsGrid(verticals.map((v, i) => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; const cat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial'; const pool = ASSETS[cat] || ASSETS.commercial; const img = pool[i % pool.length]; return { h: n, p: v.lead.slice(0, 130), img, alt: `${n} commercial install by Twilight Zone`, href: `/${v.slug}`, linkLabel: `Explore ${n.toLowerCase()} commercial install — from ${usd(v.fromPrice)}` }; }))}
     </section>`
   }));
   // /service-areas hub
@@ -1706,11 +1706,11 @@ function buildUtility() {
     lead: 'Locally installed across 12 cities and 4 counties in California\'s Central Valley.',
     body: `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Service areas', h2: 'Locally installed across', em: 'the Central Valley.', intro: '12 cities, 4 counties, one in-house W-2 crew. Same-day response across Fresno County.' })}
-      ${solutionsGrid(cities.map(c => ({
+      ${solutionsGrid(cities.map((c, i) => ({
         h: `${c.name}, CA`,
         p: (c.intro || '').slice(0, 140),
-        img: '/images/03-accent.jpg',
-        alt: `${c.name} permanent outdoor lighting`,
+        img: ASSETS.residential[i % ASSETS.residential.length],
+        alt: `Permanent outdoor lighting installs in ${c.name}, CA by Twilight Zone`,
         href: `/permanent-outdoor-lights-${c.slug}`,
         linkLabel: `${c.driveTime} min from Fresno`
       })))}
@@ -1727,7 +1727,7 @@ function buildUtility() {
     lead: 'Multi-property accounts. Same-day SLA service. Single-invoice billing.',
     body: `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Commercial verticals', h2: 'Lighting that', em: 'works your business.', intro: 'Restaurants, hotels, storefronts, HOAs, churches, dealerships, schools, offices, and event venues — same hardware, vertical-specific design.' })}
-      ${solutionsGrid(verticals.map(v => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; return { h: n, p: v.lead.slice(0, 140), img: v.image, alt: v.imageAlt || v.h1, href: `/${v.slug}`, linkLabel: `${n} commercial install — from ${usd(v.fromPrice)}` }; }))}
+      ${solutionsGrid(verticals.map((v, i) => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; const cat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial'; const pool = ASSETS[cat] || ASSETS.commercial; const img = pool[(i + 3) % pool.length]; return { h: n, p: v.lead.slice(0, 140), img, alt: `${n} permanent lighting install`, href: `/${v.slug}`, linkLabel: `${n} commercial install — from ${usd(v.fromPrice)}` }; }))}
     </section>`
   }));
   // /llms — visible AI/LLM info page (FAQPage-schema'd for direct AI extraction)
@@ -1828,7 +1828,7 @@ function buildUtility() {
       </ul>
 
       <h2>Site credits</h2>
-      <p>Site design, build, and digital marketing by <a href="https://vaultio.co" rel="external">Vaultio</a> — a web design and digital marketing studio specializing in home-services SEO. Engineered and shipped on Vercel.</p>
+      <p>Site design, build, and digital marketing by <a href="https://vaultio.co" rel="external">Vaultio</a> — a web design and digital marketing studio specializing in home-services SEO.</p>
     </section>`
   }));
   // /compare hub

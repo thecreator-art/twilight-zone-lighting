@@ -148,40 +148,59 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => nav.classList.remove('open'));
 });
 
-// ---- TEMPERATURE SLIDER (auto-oscillating thumb; photos crossfade via CSS) ----
+// ---- TEMPERATURE SLIDER (drives clip-path split between cool/warm photos) ----
 (function() {
   const tempRange = document.getElementById('tempRange');
   if (!tempRange) return;
+  const photo = document.querySelector('.temp-photo');
+  if (!photo) return;
 
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (REDUCED) return;
+
+  function applyValue(v) {
+    // Slider 0 → cool (warm hidden). Slider 100 → warm (warm fully shown).
+    // CSS --temp is the LEFT edge of the warm image's clip; 100% = warm clipped completely.
+    const pct = Math.max(0, Math.min(100, Number(v)));
+    photo.style.setProperty('--temp', (100 - pct) + '%');
+    tempRange.value = pct;
+  }
+
+  // Initial state: start fully warm (matches the "Warm for relaxation" lead phrase), then auto-sweep
+  applyValue(100);
 
   let userInteracting = false;
   let resumeTimer = null;
-  let intervalId = null;
-  const startEpoch = performance.now();
-  const PERIOD = 9000;
+  let rafId = null;
+  let startEpoch = null;
+  const PERIOD = 11000; // 11s per full cycle — slow + smooth, like a sun moving
 
-  function tick() {
-    const t = ((performance.now() - startEpoch) % PERIOD) / PERIOD;
-    const v = 50 - Math.cos(t * Math.PI * 2) * 50;
-    tempRange.value = v;
+  function tick(now) {
+    if (startEpoch === null) startEpoch = now;
+    const t = ((now - startEpoch) % PERIOD) / PERIOD;
+    // Smooth eased oscillation starting at 100 (warm) → 0 (cool) → 100
+    const v = 50 + Math.cos(t * Math.PI * 2) * 50;
+    applyValue(v);
+    rafId = requestAnimationFrame(tick);
   }
 
   function start() {
-    if (intervalId) return;
-    intervalId = setInterval(tick, 60);
+    if (REDUCED) return;
+    if (rafId) return;
+    startEpoch = null;
+    rafId = requestAnimationFrame(tick);
   }
   function stop() {
-    if (intervalId) { clearInterval(intervalId); intervalId = null; }
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
   }
 
-  tempRange.addEventListener('mousedown', () => { userInteracting = true; stop(); });
-  tempRange.addEventListener('touchstart', () => { userInteracting = true; stop(); }, { passive: true });
+  tempRange.addEventListener('pointerdown', () => { userInteracting = true; stop(); });
   tempRange.addEventListener('input', () => {
     if (userInteracting) {
+      applyValue(tempRange.value);
       clearTimeout(resumeTimer);
       resumeTimer = setTimeout(() => { userInteracting = false; start(); }, 4000);
+    } else {
+      applyValue(tempRange.value);
     }
   });
 
