@@ -585,16 +585,20 @@ const techSpecsBlock = () => `
 // ============================================================
 // ASSET REGISTRY — real install photos by category
 // ============================================================
+// Helper: build an array path list from a count + folder + prefix + extension
+const range = (n, folder, prefix, ext, start = 1) => Array.from({ length: n }, (_, i) => `/images/work/${folder}/${prefix}${start + i}.${ext}`);
+
 const ASSETS = {
-  residential: ['/images/work/gameday/g1.jpg','/images/work/gameday/g3.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g9.jpg','/images/work/gameday/g11.jpg','/images/work/gameday/g12.jpg','/images/03-accent.jpg','/images/04-holiday.jpg','/images/02-security.jpg'],
-  gameday:     ['/images/work/gameday/g1.jpg','/images/work/gameday/g2.jpg','/images/work/gameday/g3.jpg','/images/work/gameday/g4.jpg','/images/work/gameday/g5.jpg','/images/work/gameday/g6.jpg','/images/work/gameday/g7.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g9.jpg','/images/work/gameday/g10.jpg','/images/work/gameday/g11.jpg','/images/work/gameday/g12.jpg'],
-  holiday:     ['/images/04-holiday.jpg','/images/work/gameday/g3.jpg','/images/work/gameday/g11.jpg','/images/work/gameday/g4.jpg','/images/work/gameday/g7.jpg','/images/work/gameday/g10.jpg'],
-  accent:      ['/images/03-accent.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g12.jpg','/images/work/gameday/g6.jpg','/images/work/gameday/g9.jpg'],
-  security:    ['/images/02-security.jpg','/images/work/gameday/g5.jpg','/images/work/gameday/g8.jpg','/images/work/gameday/g11.jpg'],
-  restaurant:  ['/images/work/restaurant/r1.jpg','/images/work/restaurant/r2.jpg','/images/work/restaurant/r3.jpg','/images/work/restaurant/r4.jpg'],
-  entertainment:['/images/work/entertainment/e1.jpg','/images/work/entertainment/e2.jpg','/images/work/entertainment/e3.jpg','/images/work/entertainment/e4.jpg'],
-  municipal:   ['/images/work/municipal/m1.jpg','/images/work/municipal/m2.jpg','/images/work/municipal/m3.jpg','/images/work/municipal/m4.jpg','/images/work/municipal/m5.jpg','/images/work/municipal/m6.jpg'],
-  commercial:  ['/images/work/restaurant/r1.jpg','/images/work/entertainment/e2.jpg','/images/work/municipal/m1.jpg','/images/work/restaurant/r3.jpg','/images/work/entertainment/e4.jpg','/images/work/municipal/m4.jpg']
+  // Residential pulls from a wide pool: accent + game-day + holiday/security legacy
+  residential:  [...range(16, 'accent', 'a', 'avif'), ...range(12, 'gameday', 'g', 'jpg'), ...range(11, 'restaurant', 'r', '', 1).map((p, i) => i < 4 ? `/images/work/restaurant/r${i+1}.jpg` : `/images/work/restaurant/r${i+1}.avif`)],
+  gameday:      range(12, 'gameday', 'g', 'jpg'),
+  holiday:      [...range(12, 'gameday', 'g', 'jpg'), ...range(16, 'accent', 'a', 'avif')],
+  accent:       range(16, 'accent', 'a', 'avif'),
+  security:     range(16, 'security', 's', 'avif'),
+  restaurant:   [...range(4, 'restaurant', 'r', 'jpg'), ...range(7, 'restaurant', 'r', 'avif', 5)],
+  entertainment:[...range(4, 'entertainment', 'e', 'jpg'), ...range(16, 'entertainment', 'e', 'avif', 5)],
+  municipal:    [...range(6, 'municipal', 'm', 'jpg'), ...range(16, 'municipal', 'm', 'avif', 7)],
+  commercial:   [...range(4, 'restaurant', 'r', 'jpg'), ...range(7, 'restaurant', 'r', 'avif', 5), ...range(16, 'entertainment', 'e', 'avif', 5), ...range(16, 'municipal', 'm', 'avif', 7), ...range(16, 'security', 's', 'avif')]
 };
 
 // Map each service slug → photo category
