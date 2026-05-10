@@ -83,11 +83,18 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
     url: SITE + '/',
     name: BRAND,
     publisher: { '@id': `${SITE}/#org` },
+    creator: { '@id': 'https://vaultio.com/#org' },
     potentialAction: {
       '@type': 'SearchAction',
       target: { '@type': 'EntryPoint', urlTemplate: `${SITE}/blog?q={search_term_string}` },
       'query-input': 'required name=search_term_string'
     }
+  }, {
+    '@type': 'Organization',
+    '@id': 'https://vaultio.com/#org',
+    name: 'Vaultio',
+    url: 'https://vaultio.com/',
+    description: 'Web design and digital marketing studio'
   }, {
     '@type': 'Organization',
     '@id': `${SITE}/#org`,
@@ -122,6 +129,7 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
 <meta name="description" content="${esc(desc)}" />
 ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <meta name="author" content="${esc(BRAND)}" />
+<meta name="generator" content="Vaultio · vaultio.com" />
 <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
 <link rel="canonical" href="${SITE}${canonical}" />
 <meta name="geo.region" content="US-CA" />
@@ -360,9 +368,10 @@ function splitH1(h1, override) {
 const heroBlock = ({ kicker, h1, h1Lines, lead, ctaPrice, img }) => {
   const [l1, l2, l3] = splitH1(h1, h1Lines);
   const heroImg = (img || '/images/03-accent.jpg').replace(/^images\//, '/images/');
-  // If the source is a JPG that has an AVIF sibling generated, use <picture> with AVIF source
+  // Use <picture>+AVIF only if the .avif sibling actually exists on disk
   const avifSource = heroImg.replace(/\.jpg$/i, '.avif');
-  const usePicture = heroImg !== avifSource;
+  const avifDiskPath = path.join(ROOT, avifSource.replace(/^\//, ''));
+  const usePicture = heroImg !== avifSource && fs.existsSync(avifDiskPath);
   const heroMedia = usePicture
     ? `<picture><source srcset="${avifSource}" type="image/avif" /><img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" /></picture>`
     : `<img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" />`;
