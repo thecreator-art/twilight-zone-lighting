@@ -13,7 +13,6 @@
       "zip": "93722"
     },
     "geo": { "lat": 36.8094, "lng": -119.8821 },
-    "license": "1234567",
     "founded": "2019",
     "employees": 12,
     "installs": 2400,
@@ -21,13 +20,7 @@
     "rating": 4.9,
     "siteUrl": "https://twilightzonelighting.com",
     "domain": "twilightzonelighting.com",
-    "sameAs": [
-      "https://www.google.com/maps/place/Twilight+Zone+Permanent+Lighting",
-      "https://www.facebook.com/twilightzonelighting",
-      "https://www.instagram.com/twilightzonelighting",
-      "https://www.yelp.com/biz/twilight-zone-permanent-lighting-fresno",
-      "https://www.bbb.org/us/ca/fresno/profile/lighting-contractor/twilight-zone-permanent-lighting"
-    ],
+    "sameAs": [],
     "hours": [
       { "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
       { "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "16:00" }

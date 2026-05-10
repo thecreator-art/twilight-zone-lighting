@@ -234,7 +234,7 @@ const footerHTML = () => `
       <div class="foot-col"><h5>Company</h5><ul><li><a href="/pricing">Pricing</a></li><li><a href="/quote">Free quote</a></li><li><a href="/faq">FAQ</a></li><li><a href="/sitemap">Sitemap</a></li><li><a href="/llms">AI &amp; LLM info</a></li></ul></div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 ${esc(BRAND)} · Fresno, CA · Lic. #${shared.brand.license} · Bonded · Insured</span>
+      <span>© 2026 ${esc(BRAND)} · Fresno, CA · Bonded · Insured</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/warranty">Warranty</a></span>
     </div>
   </div>
@@ -360,10 +360,16 @@ function splitH1(h1, override) {
 const heroBlock = ({ kicker, h1, h1Lines, lead, ctaPrice, img }) => {
   const [l1, l2, l3] = splitH1(h1, h1Lines);
   const heroImg = (img || '/images/03-accent.jpg').replace(/^images\//, '/images/');
+  // If the source is a JPG that has an AVIF sibling generated, use <picture> with AVIF source
+  const avifSource = heroImg.replace(/\.jpg$/i, '.avif');
+  const usePicture = heroImg !== avifSource;
+  const heroMedia = usePicture
+    ? `<picture><source srcset="${avifSource}" type="image/avif" /><img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" /></picture>`
+    : `<img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" />`;
   return `
 <section class="hero hero-sub" id="top" aria-label="Page hero">
   <div class="hero-media">
-    <img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" />
+    ${heroMedia}
     <div class="hero-vignette"></div>
     <div class="hero-grain"></div>
     <div class="hero-glow"></div>
@@ -1034,7 +1040,7 @@ function renderCityHub(city) {
           </span>
           Call <a href="tel:${TEL}" itemprop="telephone">${esc(PHONE)}</a> ·
           <a href="mailto:${shared.brand.email}" itemprop="email">${esc(shared.brand.email)}</a> ·
-          Lic. #${esc(shared.brand.license)} · Bonded · Insured.
+          Bonded · Insured.
         </p>
       </aside>
       <p class="muted">Also searched as: ${city.name} permanent outdoor lights, outdoor lights permanent ${city.name}, permanent out door lights ${city.name}, permanent exterior house lighting ${city.name}, ${city.name} christmas lighting company.</p>
@@ -1383,7 +1389,8 @@ function renderPost(post) {
     heroBlock({ kicker: `${post.kicker} · ${readingMin} min read`, h1: post.h1, lead: post.lead, img: heroImg }) +
     trustBar() +
     `<article class="post-body container">
-       <p class="post-byline">By the install crew at ${esc(BRAND)} · Updated ${new Date('2026-02-15').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+       <p class="post-byline"><time datetime="${dateMod}">Updated ${new Date(dateMod).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time> · By ${esc(author.name)} at ${esc(BRAND)}</p>
+       <aside class="post-tldr" aria-label="Quick answer"><strong>The short answer:</strong> ${esc(post.lead)}</aside>
        ${post.body.map((s, i) => {
          const sectionHTML = `<section class="post-section"><h2>${esc(s.h)}</h2>${s.p.map(p => `<p>${esc(p)}</p>`).join('')}</section>`;
          if (i === pulledIdx) {
@@ -1766,7 +1773,7 @@ function buildUtility() {
         <dt>Phone</dt><dd><a href="tel:${TEL}">${PHONE}</a></dd>
         <dt>Email</dt><dd><a href="mailto:${shared.brand.email}">${shared.brand.email}</a></dd>
         <dt>Address</dt><dd>${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}</dd>
-        <dt>License</dt><dd>${shared.brand.license} (bonded, insured)</dd>
+        <dt>Status</dt><dd>Bonded, insured, in-house W-2 install crew</dd>
         <dt>Service area</dt><dd>60-mile radius of Fresno, CA — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman</dd>
         <dt>Founded</dt><dd>${shared.brand.founded}</dd>
         <dt>Rating</dt><dd>${shared.brand.rating}★ on Google · ${shared.brand.reviews}+ reviews</dd>
@@ -1909,7 +1916,7 @@ function buildUtility() {
       { q: 'Can it do Halloween, July 4th, etc?', a: 'Yes. 200+ presets covering every holiday. Auto-schedule by date.' },
       { q: 'Does it work with Alexa, Google, Control4, Elan?', a: 'Yes — all four. Plus app control with 16 million colors and 200+ patterns.' },
       { q: 'Do you serve outside Fresno?', a: `Yes — Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman, and across Madera, Tulare, Kings, and San Luis Obispo counties.` },
-      { q: 'Are you a real Jellyfish dealer?', a: 'Yes. Authorized Jellyfish Lighting dealer for the Fresno area. California Lic. #1234567. Bonded. Insured.' },
+      { q: 'Are you a real Jellyfish dealer?', a: 'Yes. Authorized Jellyfish Lighting dealer for the Fresno area. Bonded. Insured. In-house W-2 install crew — no subcontractors.' },
       { q: 'Do you finance?', a: '0% APR for 12 months. $0 down. Soft credit pull, decision in 60 seconds.' }
     ]
   }));
@@ -2051,7 +2058,7 @@ function buildNeighborhoods() {
           <h2>What ${esc(n)} homes typically run</h2>
           <p>Most ${esc(n)} single-story homes land Standard tier (${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}). Two-story homes Premium tier (${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}). Tract starter homes can come in at Starter (${usd(shared.pricing.starterFrom)}).</p>
           <h2>Why local matters</h2>
-          <p>If something goes sideways in year four, you call us — not a 1-800 number. W-2 crew, in-house, California Lic. #${shared.brand.license}.</p>
+          <p>If something goes sideways in year four, you call us — not a 1-800 number. W-2 crew, in-house, bonded, insured.</p>
         </section>` +
         installPhotoGrid({ category: 'residential', seed, kicker: `${n} portfolio`, h2: 'Recent', em: `${n} installs.` }) +
         `<section class="solutions container">
@@ -2486,7 +2493,7 @@ This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Goo
 - **Phone:** ${PHONE} (call or text)
 - **Email:** ${shared.brand.email}
 - **Address:** ${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}
-- **License #:** ${shared.brand.license} (bonded, insured)
+- **Status:** Bonded, insured, in-house W-2 install crew (no subcontractors)
 - **Service radius:** 60 miles of Fresno, CA
 - **Founded:** ${shared.brand.founded}
 - **Installs completed:** ${shared.brand.installs}+
@@ -2592,7 +2599,7 @@ This is the deep-content companion to [llms.txt](${SITE}/llms.txt). It includes 
 - **Headquarters:** ${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}
 - **Phone:** ${PHONE}
 - **Email:** ${shared.brand.email}
-- **License:** ${shared.brand.license}
+- **Status:** Bonded, insured, in-house W-2 install crew
 - **Rating:** ${shared.brand.rating}★ from ${shared.brand.reviews}+ Google reviews
 
 ## Hardware specifications

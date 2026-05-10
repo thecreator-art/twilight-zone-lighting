@@ -9,7 +9,7 @@ This is the deep-content companion to [llms.txt](https://twilightzonelighting.co
 - **Headquarters:** 4120 W Regency Ave, Fresno, CA 93722
 - **Phone:** (559) 373-2220
 - **Email:** hello@twilightzonelighting.com
-- **License:** 1234567
+- **Status:** Bonded, insured, in-house W-2 install crew
 - **Rating:** 4.9★ from 412+ Google reviews
 
 ## Hardware specifications

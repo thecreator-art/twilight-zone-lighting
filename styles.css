@@ -3201,32 +3201,80 @@ em {
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: var(--bg-elev);
-  -webkit-overflow-scrolling: touch;
 }
+/* Mobile: collapse the 3-col table into a card stack — every row is a tile
+   with a feature label on top and Ours-vs-Theirs in a side-by-side mini-grid. */
 @media (max-width: 720px) {
-  .compare-table-wrap {
-    overflow-x: auto;
-    border-radius: 14px;
-    position: relative;
+  .compare-table-wrap { border-radius: 16px; padding: 8px; }
+  .compare-table { display: block; min-width: 0; }
+  .compare-table thead { display: none; }
+  .compare-table tbody { display: block; }
+  .compare-table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "feat feat" "ours theirs";
+    gap: 8px;
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
   }
-  .compare-table-wrap::after {
-    content: '';
-    position: sticky;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 32px;
-    pointer-events: none;
-    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.55));
+  .compare-table tbody tr:last-child { border-bottom: none; }
+  .compare-table tbody tr:hover { background: transparent; }
+  .compare-table tbody td {
     display: block;
+    border: none;
+    padding: 0;
+    text-align: left;
+    font-size: 0.92rem;
+    line-height: 1.35;
   }
-  .compare-table {
-    min-width: 560px;
+  .compare-table tbody td.ct-feat {
+    grid-area: feat;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.55);
+    padding: 0 0 4px;
+  }
+  .compare-table tbody td.ct-ours {
+    grid-area: ours;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(168, 85, 247, 0.18), rgba(168, 85, 247, 0.06));
+    border-radius: 10px;
+    padding: 10px 8px;
+    color: var(--purple-200, #d8b4fe);
+    font-weight: 700;
     font-size: 0.86rem;
   }
-  .compare-table thead th { padding: 14px 10px; font-size: 0.62rem; letter-spacing: 0.12em; }
-  .compare-table tbody td { padding: 12px 10px; font-size: 0.84rem; }
-  .compare-table tbody td.ct-feat { padding-left: 14px; font-size: 0.84rem; }
+  .compare-table tbody td:not(.ct-feat):not(.ct-ours) {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 10px 8px;
+    font-size: 0.84rem;
+    color: var(--text-soft);
+  }
+  .compare-table tbody td.ct-ours::before {
+    content: 'Twilight Zone';
+    display: block;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(192, 132, 252, 0.85);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .compare-table tbody td:not(.ct-feat):not(.ct-ours)::before {
+    content: 'Annual service';
+    display: block;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
 }
 .compare-table {
   width: 100%;
@@ -3459,8 +3507,6 @@ em {
   .tb-grid { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; }
   .pc-popular { transform: none; }
-  .compare-table-wrap { overflow-x: auto; }
-  .compare-table { min-width: 600px; }
   .about-stats { grid-template-columns: repeat(2, 1fr); }
   .sa-neighborhoods { padding: 20px; }
   .calc-toggle { grid-template-columns: 1fr; }
@@ -3638,10 +3684,7 @@ body { padding-top: 152px; }
   .calc-output { padding: 24px 22px; }
   .calc-out-price { font-size: clamp(1.8rem, 7vw, 2.6rem); }
 
-  /* Compare table */
-  .compare-table { min-width: 540px; font-size: 0.82rem; }
-  .compare-table thead th { padding: 14px 10px; font-size: 0.62rem; }
-  .compare-table tbody td { padding: 12px 10px; }
+  /* Compare table mobile rules live in the dedicated block above (line ~3206). */
 
   /* Commercial */
   .commercial-hero { margin: 16px 12px; min-height: 480px; border-radius: 22px; }
@@ -3882,6 +3925,25 @@ body { padding-top: 152px; }
 .faq-section { text-align: center; }
 .faq-section h2 { margin: 0 auto 36px; }
 .faq-section .faq-list { text-align: left; }
+
+/* TLDR / one-sentence answer callout for blog posts (AI/GEO citation bait) */
+.post-tldr {
+  margin: 12px 0 36px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(168, 85, 247, 0.02));
+  border-left: 3px solid rgba(192, 132, 252, 0.7);
+  border-radius: 8px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+}
+.post-tldr strong {
+  display: inline-block;
+  margin-right: 8px;
+  font-weight: 700;
+  color: #d8b4fe;
+  letter-spacing: 0.01em;
+}
 
 /* NAP block on city hubs — visible business contact for local SEO */
 .nap-block {
