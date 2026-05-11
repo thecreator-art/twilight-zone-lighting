@@ -367,14 +367,22 @@ function splitH1(h1, override) {
 
 const heroBlock = ({ kicker, h1, h1Lines, lead, ctaPrice, img }) => {
   const [l1, l2, l3] = splitH1(h1, h1Lines);
-  const heroImg = (img || '/images/03-accent.jpg').replace(/^images\//, '/images/');
-  // Use <picture>+AVIF only if the .avif sibling actually exists on disk
-  const avifSource = heroImg.replace(/\.jpg$/i, '.avif');
-  const avifDiskPath = path.join(ROOT, avifSource.replace(/^\//, ''));
-  const usePicture = heroImg !== avifSource && fs.existsSync(avifDiskPath);
-  const heroMedia = usePicture
-    ? `<picture><source srcset="${avifSource}" type="image/avif" /><img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" /></picture>`
-    : `<img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" />`;
+  const heroImgRaw = (img || '/images/03-accent.jpg').replace(/^images\//, '/images/');
+  // Normalize: prefer the JPG path as the <img src> fallback; AVIF goes in <source>
+  const isAvif = /\.avif$/i.test(heroImgRaw);
+  const jpgPath = isAvif ? heroImgRaw.replace(/\.avif$/i, '.jpg') : heroImgRaw;
+  const avifPath = isAvif ? heroImgRaw : heroImgRaw.replace(/\.jpg$/i, '.avif');
+  const jpgExists = fs.existsSync(path.join(ROOT, jpgPath.replace(/^\//, '')));
+  const avifExists = fs.existsSync(path.join(ROOT, avifPath.replace(/^\//, '')));
+  let heroMedia;
+  if (avifExists && jpgExists) {
+    heroMedia = `<picture><source srcset="${avifPath}" type="image/avif" /><img class="ken-burns" src="${jpgPath}" alt="${esc(h1)}" loading="eager" fetchpriority="high" /></picture>`;
+  } else {
+    // Whichever format exists — fall back to original ref if both missing
+    const finalSrc = jpgExists ? jpgPath : (avifExists ? avifPath : heroImgRaw);
+    heroMedia = `<img class="ken-burns" src="${finalSrc}" alt="${esc(h1)}" loading="eager" fetchpriority="high" />`;
+  }
+  const heroImg = jpgExists ? jpgPath : heroImgRaw;
   return `
 <section class="hero hero-sub" id="top" aria-label="Page hero">
   <div class="hero-media">
@@ -424,7 +432,7 @@ const solutionsGrid = (cards) => `
 <div class="sol-grid">
   ${cards.map(c => `
     <article class="sol-card">
-      <div class="sol-image"><img src="${(c.img || '/images/03-accent.jpg').replace(/^images\//, '/images/')}" alt="${esc(c.alt || c.h)}" loading="lazy" /></div>
+      <div class="sol-image">${picTag((c.img || '/images/03-accent.jpg').replace(/^images\//, '/images/'), c.alt || c.h, 'loading="lazy"')}</div>
       <div class="sol-body">
         <h3>${esc(c.h)}</h3>
         <p>${esc(c.p)}</p>
@@ -696,6 +704,28 @@ function cityServiceUnique(service, city) {
   return paras.map(p => `<p>${p}</p>`).join('\n');
 }
 
+// Always emit a <picture> wrapper when an AVIF/JPG pair exists on disk, so older browsers
+// (and corporate Edge/Chrome builds that mishandle AVIF) get a guaranteed-renderable fallback.
+// `src` can be either .avif or .jpg — we figure out the sibling.
+function picTag(src, alt = '', attrs = '') {
+  if (!src) return '';
+  const isAvif = /\.avif$/i.test(src);
+  const isJpg = /\.(jpe?g)$/i.test(src);
+  const avif = isAvif ? src : (isJpg ? src.replace(/\.(jpe?g)$/i, '.avif') : null);
+  const jpg = isJpg ? src : (isAvif ? src.replace(/\.avif$/i, '.jpg') : null);
+  const avifDisk = avif ? path.join(ROOT, avif.replace(/^\//, '')) : null;
+  const jpgDisk = jpg ? path.join(ROOT, jpg.replace(/^\//, '')) : null;
+  const hasAvif = avifDisk && fs.existsSync(avifDisk);
+  const hasJpg = jpgDisk && fs.existsSync(jpgDisk);
+  // Both formats: progressive enhancement via <picture>
+  if (hasAvif && hasJpg) {
+    return `<picture><source srcset="${avif}" type="image/avif" /><img src="${jpg}" alt="${esc(alt)}" ${attrs} /></picture>`;
+  }
+  // Only one format available — emit a plain img to whichever exists
+  const finalSrc = hasJpg ? jpg : (hasAvif ? avif : src);
+  return `<img src="${finalSrc}" alt="${esc(alt)}" ${attrs} />`;
+}
+
 function pickPhotos(category, seed, count) {
   const pool = (ASSETS[category] && ASSETS[category].length) ? ASSETS[category] : ASSETS.residential;
   const start = seedHash(seed) % pool.length;
@@ -718,7 +748,7 @@ const testimonialBlock = (city, photoOverride) => {
 <section class="testimonial-section" aria-label="Customer testimonial">
   <div class="container testimonial-grid">
     <div class="testimonial-photo">
-      <img src="${photo}" alt="Permanent outdoor lighting install in ${esc(city.name)}, CA" loading="lazy" />
+      ${picTag(photo, `Permanent outdoor lighting install in ${city.name}, CA`, 'loading="lazy"')}
       <div class="testimonial-photo-glow"></div>
     </div>
     <div class="testimonial-content">
@@ -791,12 +821,12 @@ const installPhotoGrid = ({ category, seed, kicker = 'Real installs', h2 = 'Ours
 <section class="container install-grid-section" aria-label="Install gallery">
   ${sectionHead({ eyebrow: kicker, h2, em, intro: intro || `${shared.brand.installs}+ installs across the Central Valley. Same crew. Same warranty. Same hardware.` })}
   <div class="install-grid">
-    <figure class="install-photo install-photo-large"><img src="${pics[0]}" alt="${esc(altFor(0))}" loading="lazy" decoding="async" width="800" height="600" /></figure>
-    <figure class="install-photo"><img src="${pics[1]}" alt="${esc(altFor(1))}" loading="lazy" decoding="async" width="400" height="300" /></figure>
-    <figure class="install-photo"><img src="${pics[2]}" alt="${esc(altFor(2))}" loading="lazy" decoding="async" width="400" height="300" /></figure>
-    <figure class="install-photo"><img src="${pics[3]}" alt="${esc(altFor(3))}" loading="lazy" decoding="async" width="400" height="300" /></figure>
-    <figure class="install-photo install-photo-wide"><img src="${pics[4]}" alt="${esc(altFor(4))}" loading="lazy" decoding="async" width="800" height="300" /></figure>
-    <figure class="install-photo"><img src="${pics[5]}" alt="${esc(altFor(5))}" loading="lazy" decoding="async" width="400" height="300" /></figure>
+    <figure class="install-photo install-photo-large">${picTag(pics[0], altFor(0), 'loading="lazy" decoding="async" width="800" height="600"')}</figure>
+    <figure class="install-photo">${picTag(pics[1], altFor(1), 'loading="lazy" decoding="async" width="400" height="300"')}</figure>
+    <figure class="install-photo">${picTag(pics[2], altFor(2), 'loading="lazy" decoding="async" width="400" height="300"')}</figure>
+    <figure class="install-photo">${picTag(pics[3], altFor(3), 'loading="lazy" decoding="async" width="400" height="300"')}</figure>
+    <figure class="install-photo install-photo-wide">${picTag(pics[4], altFor(4), 'loading="lazy" decoding="async" width="800" height="300"')}</figure>
+    <figure class="install-photo">${picTag(pics[5], altFor(5), 'loading="lazy" decoding="async" width="400" height="300"')}</figure>
   </div>
 </section>`;
 };
@@ -842,11 +872,11 @@ const compareVisualBlock = (c) => `
   <div class="compare-visual-grid">
     <div class="cv-card cv-card-us">
       <div class="cv-badge cv-badge-us">${esc(BRAND.split(' ')[0])} ${esc(BRAND.split(' ')[1])}</div>
-      <img src="${pickPhotos('residential', c.slug, 1)[0]}" alt="${esc(BRAND)} install" loading="lazy" />
+      ${picTag(pickPhotos('residential', c.slug, 1)[0], `${BRAND} install`, 'loading="lazy"')}
     </div>
     <div class="cv-card cv-card-them">
       <div class="cv-badge cv-badge-them">${esc(c.competitor)}</div>
-      <img src="${pickPhotos('residential', c.slug + 'b', 1)[0]}" alt="${esc(c.competitor)}" loading="lazy" />
+      ${picTag(pickPhotos('residential', c.slug + 'b', 1)[0], c.competitor, 'loading="lazy"')}
     </div>
   </div>
 </section>`;
@@ -1437,7 +1467,7 @@ function renderPost(post) {
            const rIntentSlugs = posts.filter(x => x.intent === rIntent).map(x => x.slug);
            const rIdx = (rIntentSlugs.indexOf(r.slug) % (blogImageCounts[rIntent] || 1)) + 1;
            const rImg = `/images/blog/${rIntent}/${blogPrefixes[rIntent] || 'i'}${rIdx}.jpg`;
-           return `<a href="/blog/${r.slug}" class="related-card"><figure class="related-card-img"><img src="${rImg}" alt="${esc(r.h1)}" loading="lazy" decoding="async" /></figure><div class="related-card-body"><div class="related-kicker">${esc(r.kicker)}</div><h3>${esc(r.h1)}</h3><p>${esc(r.lead.slice(0, 110))}</p></div></a>`;
+           return `<a href="/blog/${r.slug}" class="related-card"><figure class="related-card-img">${picTag(rImg, r.h1, 'loading="lazy" decoding="async"')}</figure><div class="related-card-body"><div class="related-kicker">${esc(r.kicker)}</div><h3>${esc(r.h1)}</h3><p>${esc(r.lead.slice(0, 110))}</p></div></a>`;
          }).join('')}
        </div>
      </section>` : '') +
@@ -1498,7 +1528,7 @@ function renderBlogIndex() {
           ${list.map((p, idx) => {
             const imgIdx = (idx % (blogImageCounts[intent] || 1)) + 1;
             const img = `/images/blog/${intent}/${blogPrefixes[intent] || 'i'}${imgIdx}.jpg`;
-            return `<a href="/blog/${p.slug}" class="blog-card"><figure class="blog-card-img"><img src="${img}" alt="${esc(p.h1)}" loading="lazy" decoding="async" /></figure><div class="blog-card-body"><div class="blog-card-kicker">${esc(p.kicker)}</div><h3>${esc(p.h1)}</h3><p>${esc(p.lead.slice(0, 130))}</p></div></a>`;
+            return `<a href="/blog/${p.slug}" class="blog-card"><figure class="blog-card-img">${picTag(img, p.h1, 'loading="lazy" decoding="async"')}</figure><div class="blog-card-body"><div class="blog-card-kicker">${esc(p.kicker)}</div><h3>${esc(p.h1)}</h3><p>${esc(p.lead.slice(0, 130))}</p></div></a>`;
           }).join('')}
         </div>
       </section>`;
@@ -2327,7 +2357,7 @@ function buildGalleries() {
       body: `<section class="container gallery-grid">
         ${sectionHead({ eyebrow: g.h1.replace(' Gallery', ''), h2: 'Lit. Photographed.', em: 'Yours next.', intro: `Real installs from our ${shared.brand.installs}+ portfolio.` })}
         <div class="gallery-photos">
-          ${pics.map((p, i) => `<figure class="gallery-photo${i === 0 ? ' gallery-photo-feature' : ''}"><img src="${p}" alt="${esc(g.h1)} — install ${i + 1}" loading="${i < 3 ? 'eager' : 'lazy'}" /></figure>`).join('')}
+          ${pics.map((p, i) => `<figure class="gallery-photo${i === 0 ? ' gallery-photo-feature' : ''}">${picTag(p, `${g.h1} — install ${i + 1}`, `loading="${i < 3 ? 'eager' : 'lazy'}"`)}</figure>`).join('')}
         </div>
       </section>
       <section class="container article-body">
