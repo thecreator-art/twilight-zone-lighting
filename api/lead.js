@@ -7,7 +7,7 @@
 
 export const config = { runtime: 'edge' };
 
-const ORIGIN_ALLOW = ['https://twilightzonelighting.com', 'https://www.twilightzonelighting.com'];
+const ORIGIN_ALLOW = ['https://twilightzonepermanentlighting.com', 'https://www.twilightzonepermanentlighting.com'];
 
 const json = (status, body) =>
   new Response(JSON.stringify(body), {

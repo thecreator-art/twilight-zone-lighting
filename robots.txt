@@ -42,4 +42,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://twilightzonelighting.com/sitemap.xml
+Sitemap: https://twilightzonepermanentlighting.com/sitemap.xml

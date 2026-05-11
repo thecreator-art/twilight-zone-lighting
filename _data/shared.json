@@ -18,8 +18,8 @@
     "installs": 2400,
     "reviews": 412,
     "rating": 4.9,
-    "siteUrl": "https://twilightzonelighting.com",
-    "domain": "twilightzonelighting.com",
+    "siteUrl": "https://twilightzonepermanentlighting.com",
+    "domain": "twilightzonepermanentlighting.com",
     "sameAs": [],
     "hours": [
       { "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
@@ -30,7 +30,7 @@
         "name": "Rapheal Samarin",
         "jobTitle": "Owner & Lead Installer",
         "bio": "Rapheal Samarin is the owner of Twilight Zone Permanent Lighting and leads every install personally. He has installed permanent outdoor lighting on 2,400+ Central Valley homes since founding the company in 2019.",
-        "url": "https://twilightzonelighting.com/about"
+        "url": "https://twilightzonepermanentlighting.com/about"
       }
     ]
   },
