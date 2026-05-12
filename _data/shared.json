@@ -46,7 +46,7 @@
     "financingMonths": 12
   },
   "guarantees": [
-    { "title": "60-day refund", "desc": "Pulled and refunded in full. No fine print." },
+    { "title": "7-day refund", "desc": "Pulled and refunded in full. No fine print." },
     { "title": "5-year warranty", "desc": "Track + LEDs covered five years. Workmanship too." },
     { "title": "$0 down", "desc": "From $89/month at 0% APR." },
     { "title": "Locally installed", "desc": "Lic. #1234567. Bonded. Insured." }

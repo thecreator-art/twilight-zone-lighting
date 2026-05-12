@@ -188,10 +188,10 @@ const headerHTML = (cur = '') => `
 <div class="ann-bar" role="banner">
   <div class="ann-track">
     <span><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
-    <span><i class="ann-pulse"></i> 60-DAY MONEY-BACK · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
+    <span><i class="ann-pulse"></i> 7-DAY REFUND · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
     <span><i class="ann-pulse"></i> FRESNO · CLOVIS · MADERA · VISALIA · HANFORD · SELMA · SANGER</span>
     <span aria-hidden="true"><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
-    <span aria-hidden="true"><i class="ann-pulse"></i> 60-DAY MONEY-BACK · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
+    <span aria-hidden="true"><i class="ann-pulse"></i> 7-DAY REFUND · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
     <span aria-hidden="true"><i class="ann-pulse"></i> FRESNO · CLOVIS · MADERA · VISALIA · HANFORD · SELMA · SANGER</span>
   </div>
 </div>
@@ -368,21 +368,16 @@ function splitH1(h1, override) {
 const heroBlock = ({ kicker, h1, h1Lines, lead, ctaPrice, img }) => {
   const [l1, l2, l3] = splitH1(h1, h1Lines);
   const heroImgRaw = (img || '/images/03-accent.jpg').replace(/^images\//, '/images/');
-  // Normalize: prefer the JPG path as the <img src> fallback; AVIF goes in <source>
-  const isAvif = /\.avif$/i.test(heroImgRaw);
-  const jpgPath = isAvif ? heroImgRaw.replace(/\.avif$/i, '.jpg') : heroImgRaw;
-  const avifPath = isAvif ? heroImgRaw : heroImgRaw.replace(/\.jpg$/i, '.avif');
-  const jpgExists = fs.existsSync(path.join(ROOT, jpgPath.replace(/^\//, '')));
-  const avifExists = fs.existsSync(path.join(ROOT, avifPath.replace(/^\//, '')));
-  let heroMedia;
-  if (avifExists && jpgExists) {
-    heroMedia = `<picture><source srcset="${avifPath}" type="image/avif" /><img class="ken-burns" src="${jpgPath}" alt="${esc(h1)}" loading="eager" fetchpriority="high" /></picture>`;
-  } else {
-    // Whichever format exists — fall back to original ref if both missing
-    const finalSrc = jpgExists ? jpgPath : (avifExists ? avifPath : heroImgRaw);
-    heroMedia = `<img class="ken-burns" src="${finalSrc}" alt="${esc(h1)}" loading="eager" fetchpriority="high" />`;
+  // Always prefer the JPG version — sips-encoded AVIF can fail silently in Chrome / Windows
+  // without falling back to the <img> child of <picture>. Plain JPG renders everywhere.
+  let heroImg = heroImgRaw;
+  if (/\.avif$/i.test(heroImgRaw)) {
+    const jpgCandidate = heroImgRaw.replace(/\.avif$/i, '.jpg');
+    if (fs.existsSync(path.join(ROOT, jpgCandidate.replace(/^\//, '')))) {
+      heroImg = jpgCandidate;
+    }
   }
-  const heroImg = jpgExists ? jpgPath : heroImgRaw;
+  const heroMedia = `<img class="ken-burns" src="${heroImg}" alt="${esc(h1)}" loading="eager" fetchpriority="high" />`;
   return `
 <section class="hero hero-sub" id="top" aria-label="Page hero">
   <div class="hero-media">
@@ -486,7 +481,7 @@ const ctaBlock = () => `
         <div class="ns-field"><label>State</label><input type="text" name="state" placeholder="CA" required autocomplete="address-level1" value="CA" /></div>
         <div class="ns-field"><label>Zip</label><input type="text" name="zip" placeholder="93704" required autocomplete="postal-code" /></div>
       </div>
-      <p class="ns-fine">By submitting you agree to receive communication. 60-day money-back. $0 down.</p>
+      <p class="ns-fine">By submitting you agree to receive communication. 7-day refund. $0 down.</p>
       <button type="submit" class="btn btn-white btn-block btn-lg" data-magnetic>Request quote</button>
       <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
     </form>
@@ -511,10 +506,7 @@ const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${
     </header>
     <div class="sa-layout">
       <div class="sa-map" aria-label="Service area map">
-        <picture>
-          <source srcset="/images/coverage-map.avif" type="image/avif" />
-          <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
-        </picture>
+        <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting service coverage across Fresno, Madera, Tulare, and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
         <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <a href="${urlPattern('fresno')}" data-pin="fresno" class="sa-hot sa-hot-hq"><ellipse cx="525" cy="495" rx="115" ry="52" /><title>Fresno (HQ)</title></a>
           <a href="${urlPattern('madera')}" data-pin="madera" class="sa-hot"><ellipse cx="218" cy="195" rx="78" ry="35" /><title>Madera</title></a>
@@ -704,25 +696,22 @@ function cityServiceUnique(service, city) {
   return paras.map(p => `<p>${p}</p>`).join('\n');
 }
 
-// Always emit a <picture> wrapper when an AVIF/JPG pair exists on disk, so older browsers
-// (and corporate Edge/Chrome builds that mishandle AVIF) get a guaranteed-renderable fallback.
-// `src` can be either .avif or .jpg — we figure out the sibling.
+// Emit a plain <img> pointing at the JPG version of the image.
+// We previously wrapped in <picture> with an AVIF <source>, but sips-encoded AVIFs
+// trigger silent decode failures on some Chrome / Windows builds where the browser
+// does NOT fall back to the <img> child — it just renders blank. Stripping the AVIF
+// source guarantees consistent rendering everywhere. Bandwidth cost is acceptable
+// because images are properly lazy-loaded and cached.
 function picTag(src, alt = '', attrs = '') {
   if (!src) return '';
-  const isAvif = /\.avif$/i.test(src);
-  const isJpg = /\.(jpe?g)$/i.test(src);
-  const avif = isAvif ? src : (isJpg ? src.replace(/\.(jpe?g)$/i, '.avif') : null);
-  const jpg = isJpg ? src : (isAvif ? src.replace(/\.avif$/i, '.jpg') : null);
-  const avifDisk = avif ? path.join(ROOT, avif.replace(/^\//, '')) : null;
-  const jpgDisk = jpg ? path.join(ROOT, jpg.replace(/^\//, '')) : null;
-  const hasAvif = avifDisk && fs.existsSync(avifDisk);
-  const hasJpg = jpgDisk && fs.existsSync(jpgDisk);
-  // Both formats: progressive enhancement via <picture>
-  if (hasAvif && hasJpg) {
-    return `<picture><source srcset="${avif}" type="image/avif" /><img src="${jpg}" alt="${esc(alt)}" ${attrs} /></picture>`;
+  // Always prefer JPG; if input is .avif, swap to .jpg sibling if it exists on disk.
+  let finalSrc = src;
+  if (/\.avif$/i.test(src)) {
+    const jpgCandidate = src.replace(/\.avif$/i, '.jpg');
+    if (fs.existsSync(path.join(ROOT, jpgCandidate.replace(/^\//, '')))) {
+      finalSrc = jpgCandidate;
+    }
   }
-  // Only one format available — emit a plain img to whichever exists
-  const finalSrc = hasJpg ? jpg : (hasAvif ? avif : src);
   return `<img src="${finalSrc}" alt="${esc(alt)}" ${attrs} />`;
 }
 
@@ -1614,7 +1603,7 @@ function buildCostPages() {
       { h: 'Quick price ranges', body: [`Starter (single facade, ~30 ft): from ${usd(shared.pricing.starterFrom)}.`, `Standard (full front + sides, ~80 ft, single story): from ${usd(shared.pricing.standardFrom)}.`, `Premium (full perimeter, two-story): from ${usd(shared.pricing.premiumFrom)}.`, `Estate (multi-zone, complex rooflines): from ${usd(shared.pricing.estateFrom)}.`],
         table: { headers: ['Tier', 'Coverage', 'From'], rows: [['Starter', '~30 ft single facade', usd(shared.pricing.starterFrom)], ['Standard', '~80 ft single story', usd(shared.pricing.standardFrom)], ['Premium', 'Two-story full perimeter', usd(shared.pricing.premiumFrom)], ['Estate', 'Multi-zone complex', usd(shared.pricing.estateFrom) + '+']] } },
       { h: 'What drives the price', body: ['Linear feet of track is the biggest driver. Two-story stories add 30-40% for ladder time. Custom track color (bronze, brown) adds $200-$400. Smart-home integration (Control4, Elan) adds $300-$600.'] },
-      { h: 'What\'s included', body: ['Genuine Jellyfish RGBIC-RD aluminum track. IP67 weather-rated LEDs. Color-matched to your trim. Concealed wiring. Weatherproof control box. App setup and walkthrough. 5-year track warranty. 5-year LED warranty. 60-day money-back guarantee.'] },
+      { h: 'What\'s included', body: ['Genuine Jellyfish RGBIC-RD aluminum track. IP67 weather-rated LEDs. Color-matched to your trim. Concealed wiring. Weatherproof control box. App setup and walkthrough. 5-year track warranty. 5-year LED warranty. 7-day refund guarantee.'] },
       { h: 'Financing', body: [`0% APR for 12 months. Starter ~${usd(shared.pricing.starterMonthly)}/mo. Standard ~${usd(shared.pricing.standardMonthly)}/mo. Premium ~${usd(shared.pricing.premiumMonthly)}/mo. $0 down. Soft credit pull, decision in 60 seconds.`] }
     ],
     faqs: baseFaqs
@@ -1629,7 +1618,7 @@ function buildCostPages() {
     lead: `Pricing for ${c.name} homes specifically — based on actual ${c.name} installs we've completed across ${c.neighborhoods.slice(0, 3).join(', ')}.`,
     sections: [
       { h: `${c.name} price ranges (typical homes)`, body: [`Most ${c.name} single-story homes (1,800-2,400 sq ft) land Standard tier: ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}.`, `Two-story homes in ${c.neighborhoods[0]} and ${c.neighborhoods[1]} typically Premium tier: ${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}.`, `Tract starter homes: ${usd(shared.pricing.starterFrom)}-${usd(shared.pricing.standardFrom)}.`] },
-      { h: 'What\'s the same as our master pricing', body: ['Same RGBIC-RD hardware. Same 5-year warranty. Same 60-day money-back. Same financing terms (0% APR, 12 months).'] },
+      { h: 'What\'s the same as our master pricing', body: ['Same RGBIC-RD hardware. Same 5-year warranty. Same 7-day refund. Same financing terms (0% APR, 12 months).'] },
       { h: `${c.name}-specific notes`, body: [`Drive time from our Fresno shop is about ${c.driveTime} minutes — no travel surcharge inside Fresno County.`, `${c.name} summer highs of ${c.climate.summerHigh}°F are well within our IP67/-40°F-to-140°F operating envelope.`, c.popularUseCase ? `Most-requested in ${c.name}: ${c.popularUseCase}` : ''].filter(Boolean) }
     ],
     faqs: baseFaqs
@@ -1679,12 +1668,12 @@ function buildGuides() {
     { slug: 'guide-rgbic-vs-rgb', h1: 'RGBIC vs RGB: The Difference for Outdoor Lights', desc: 'RGBIC vs RGB explained — pixel control, gradient smoothness, pattern variety. Why RGBIC matters for permanent lights.', kw: 'rgbic vs rgb', kicker: 'Tech guide' },
     { slug: 'guide-hoa-approval', h1: 'How to Get HOA Approval for Permanent Lighting', desc: 'Step-by-step HOA submission for permanent outdoor lighting in Fresno County. Spec sheets, renderings, and language that wins.', kw: 'hoa permanent lighting approval', kicker: 'Process guide' },
     { slug: 'guide-installation-process', h1: 'Permanent Lighting Installation: What to Expect', desc: 'Day-of installation walkthrough — site prep, track install, wiring, control box, app setup, walkthrough.', kw: 'permanent lighting installation process', kicker: 'Process guide' },
-    { slug: 'guide-warranty-explained', h1: 'Permanent Lighting Warranty: What\'s Actually Covered', desc: '5-year track warranty, 5-year LED warranty, 5-year workmanship, 60-day money-back. Plain-English coverage.', kw: 'permanent lighting warranty', kicker: 'Buyer guide' },
+    { slug: 'guide-warranty-explained', h1: 'Permanent Lighting Warranty: What\'s Actually Covered', desc: '5-year track warranty, 5-year LED warranty, 5-year workmanship, 7-day refund. Plain-English coverage.', kw: 'permanent lighting warranty', kicker: 'Buyer guide' },
     { slug: 'guide-app-control', h1: 'Permanent Lighting App: 200+ Patterns Explained', desc: 'Full walkthrough of the app — schedules, scenes, music sync, holiday auto-mode, smart-home integration.', kw: 'permanent lighting app', kicker: 'Owner guide' },
     { slug: 'guide-smart-home', h1: 'Permanent Lighting + Control4, Elan, Alexa, Google', desc: 'Smart home integration for permanent outdoor lighting — Control4, Nice Elan, Alexa, Google Home setup.', kw: 'permanent lighting smart home', kicker: 'Tech guide' },
     { slug: 'guide-led-track-types', h1: 'Permanent Lighting Track Types: Which Profile You Want', desc: 'Square channel vs RD profile vs J-channel — track shapes for permanent outdoor lighting compared.', kw: 'permanent lighting track types', kicker: 'Tech guide' },
     { slug: 'guide-cleaning-care', h1: 'Permanent Lighting Care & Cleaning', desc: 'How to keep permanent outdoor lighting clean and looking new — annual maintenance, tree-sap removal, dust.', kw: 'permanent lighting maintenance', kicker: 'Owner guide' },
-    { slug: 'guide-removal-process', h1: 'Permanent Lighting Removal & Refund Process', desc: 'How our 60-day money-back guarantee actually works — what we pull, what we patch, how the refund flows.', kw: 'permanent lighting refund', kicker: 'Process guide' }
+    { slug: 'guide-removal-process', h1: 'Permanent Lighting Removal & Refund Process', desc: 'How our 7-day refund guarantee actually works — what we pull, what we patch, how the refund flows.', kw: 'permanent lighting refund', kicker: 'Process guide' }
   ];
   guides.forEach(g => out.push(renderArticle({
     slug: g.slug, h1: g.h1,
@@ -1706,7 +1695,7 @@ function buildGuides() {
     </section>`,
     faqs: [
       { q: 'How long does install take?', a: 'Single-story homes 6-8 hours. Two-story 1-2 days.' },
-      { q: 'What\'s the warranty?', a: `5-year warranty on track, LEDs, and workmanship. Plus 60-day money-back guarantee.` },
+      { q: 'What\'s the warranty?', a: `5-year warranty on track, LEDs, and workmanship. Plus 7-day refund guarantee.` },
       { q: 'How much does it cost?', a: `Starts at ${usd(shared.pricing.starterFrom)}. Most homes ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}. Financing from ${usd(shared.pricing.standardMonthly)}/month.` }
     ]
   })));
@@ -1774,7 +1763,7 @@ function buildUtility() {
     { q: 'How much does permanent outdoor lighting cost in Fresno?', a: `Pricing starts at $${shared.pricing.starterFrom} for a Starter front-accent install. Most single-story Fresno homes range $${shared.pricing.standardFrom.toLocaleString()}-$${shared.pricing.premiumFrom.toLocaleString()}. Two-story homes typically run $${shared.pricing.premiumFrom.toLocaleString()}-$9,000. Estate and commercial installs start at $${shared.pricing.estateFrom.toLocaleString()}. Financing from $${shared.pricing.standardMonthly}/month at ${shared.pricing.financingApr}% APR for ${shared.pricing.financingMonths} months.` },
     { q: 'How long does a permanent outdoor lighting install take?', a: 'Most residential installs complete in a single day (6-8 hours). Two-story homes take 1-2 days. The W-2 in-house crew arrives at 8 AM and finishes by sunset on most single-story builds.' },
     { q: 'Are permanent outdoor lights visible during the day?', a: 'No. The aluminum track is color-matched to your trim — white, bronze, brown, or black — and tucked under the eave. Invisible from the curb during daylight.' },
-    { q: 'What is the warranty on Twilight Zone permanent lighting?', a: 'Lifetime on track. 5 years on LEDs and workmanship. 60-day money-back guarantee. If you are not satisfied within 60 days, every fixture is pulled and 100% refunded.' },
+    { q: 'What is the warranty on Twilight Zone permanent lighting?', a: 'Lifetime on track. 5 years on LEDs and workmanship. 7-day refund guarantee. If you are not satisfied within 7 days, every fixture is pulled and 100% refunded.' },
     { q: 'Will permanent outdoor lights raise my electric bill?', a: 'Negligibly. Roughly the same draw as a single ceiling fan. Most customers see $3-$8/month added.' },
     { q: 'Can I control the lights from my phone?', a: `Yes. The companion app (iOS and Android) controls 16 million colors, ${shared.tech.patterns}+ patterns, scheduling, zoning, and music sync. Compatible with ${shared.tech.appCompat.join(', ')}.` },
     { q: 'Is permanent lighting cheaper than annual Christmas-light service?', a: `Over 10 years, yes. A Standard install at $${shared.pricing.standardFrom.toLocaleString()} vs typical Fresno Christmas-light services at $800-$1,800/year ($8,000-$18,000 over 10 years).` },
@@ -1837,7 +1826,7 @@ function buildUtility() {
         <dt>Installs completed</dt><dd>${shared.brand.installs}+</dd>
         <dt>Hardware</dt><dd>Jellyfish RGBIC-RD aluminum track · ${shared.tech.weatherRating} · ${shared.tech.tempRange} · ${shared.tech.lifespan} · ${shared.tech.colors} colors · ${shared.tech.patterns}+ patterns</dd>
         <dt>Smart home</dt><dd>${shared.tech.appCompat.join(', ')}</dd>
-        <dt>Warranty</dt><dd>Lifetime on track · 5 years on LEDs and workmanship · 60-day money-back</dd>
+        <dt>Warranty</dt><dd>Lifetime on track · 5 years on LEDs and workmanship · 7-DAY REFUND</dd>
       </dl>
 
       <h2>Pricing (canonical)</h2>
@@ -1897,7 +1886,7 @@ function buildUtility() {
     body: statsCounters([
       { num: usd(shared.pricing.starterFrom), lab: 'Starter from' },
       { num: '0% APR', lab: '12-month financing' },
-      { num: '60-day', lab: 'Money-back' },
+      { num: '7-day', lab: 'Money-back' },
       { num: '5-year', lab: 'Warranty' }
     ]) +
     `<section class="container price-tiers">
@@ -1917,7 +1906,7 @@ function buildUtility() {
     slug: 'quote',
     h1: 'Get a Free Quote',
     title: `Free Quote | Permanent Outdoor Lighting | ${BRAND}`,
-    desc: 'Free on-site estimate within 24 hours. Written, fixed pricing on the spot. From $950. 0% APR financing. 60-day money-back.',
+    desc: 'Free on-site estimate within 24 hours. Written, fixed pricing on the spot. From $950. 0% APR financing. 7-day refund.',
     kw: 'permanent outdoor lighting quote',
     kicker: 'Free Quote',
     lead: 'Real quote in 24 hours. No phone-tag, no upsells, no surprises.',
@@ -1969,7 +1958,7 @@ function buildUtility() {
       { q: 'How much does permanent outdoor lighting cost?', a: `Starts at ${usd(shared.pricing.starterFrom)} for a Starter install. Most homes land ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}. Two-story estates ${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}+. Financing from ${usd(shared.pricing.standardMonthly)}/month at 0% APR.` },
       { q: 'How long does the install take?', a: 'Single-story homes finish in 6-8 hours. Two-story 1-2 days.' },
       { q: 'Are the lights visible during the day?', a: 'No. The aluminum track is color-matched to your trim and tucks under the eave. Essentially invisible from the curb.' },
-      { q: 'What\'s the warranty?', a: `5-year warranty on track, LEDs, and workmanship. Plus our 60-day money-back guarantee.` },
+      { q: 'What\'s the warranty?', a: `5-year warranty on track, LEDs, and workmanship. Plus our 7-day refund guarantee.` },
       { q: 'Will the lights survive Fresno summers?', a: 'Yes. IP67 weather-rated, tested -40°F to 140°F. Engineered for 115°F+ Fresno summers.' },
       { q: 'Is permanent lighting HOA-approved?', a: 'Almost always. Most Fresno-area HOAs approve us on first submission. We provide spec sheets and 3D renderings at no charge.' },
       { q: 'Do you damage the roof or fascia?', a: 'No. Aluminum track is anchored with stainless screws into the soffit substructure — same anchoring as gutters. No damage to siding, stucco, shingles, or trim.' },
@@ -2039,13 +2028,13 @@ function buildUtility() {
     slug: 'warranty',
     h1: '5-Year Warranty',
     title: `5-Year Warranty | ${BRAND}`,
-    desc: '5-year warranty on the aluminum track. 5 years on LEDs. 5 years on workmanship. 60-day money-back guarantee.',
+    desc: '5-year warranty on the aluminum track. 5 years on LEDs. 5 years on workmanship. 7-day refund guarantee.',
     kw: 'permanent lighting warranty', kicker: 'Warranty', lead: 'Track, LEDs, workmanship — all five years. Money back for sixty days.',
     body: `<section class="container"><h2>What's covered</h2><ul>
       <li><strong>Aluminum track:</strong> 5-year warranty — replaced at no cost if it fails.</li>
       <li><strong>LEDs:</strong> 5-year manufacturer warranty.</li>
       <li><strong>Workmanship:</strong> 5 years on our install.</li>
-      <li><strong>60-day money-back:</strong> Pulled and refunded in full. No fine print.</li>
+      <li><strong>7-day refund:</strong> Pulled and refunded in full. No fine print.</li>
     </ul></section>`
   }));
   out.push(renderArticle({
@@ -2178,7 +2167,7 @@ function buildBrandPages() {
         'Gemstone Permanent Lights is a Canadian-rooted permanent outdoor lighting brand with strong dealer presence in the Mountain West and parts of the Central Valley. The system uses individually-controlled RGBIC LEDs in a track that runs under the eave or along architectural trim.',
         'Where Gemstone visually differs: the track profile sits slightly more visible during the day than the Jellyfish RGBIC-RD aluminum channel we install, which color-matches your trim and tucks tighter under the soffit. Whether that matters is a curb-appeal question — both systems essentially disappear from forty feet away, but inspection from the driveway tells a different story.',
         'On the technology side, Gemstone is a current-generation system with a competent app and 100+ presets. Jellyfish RGBIC-RD has slightly finer pixel pitch (better gradients), 200+ presets, and integrates with Control4 and Nice Elan. For homeowners with a smart home, that integration is the deciding factor.',
-        'Honest summary: if Gemstone has a great local installer near you, it is a real option. In Fresno, we install Jellyfish, full 5-year warranty, 5-year LED, 60-day money-back. Pick whichever you can hold accountable in year four.'
+        'Honest summary: if Gemstone has a great local installer near you, it is a real option. In Fresno, we install Jellyfish, full 5-year warranty, 5-year LED, 7-day refund. Pick whichever you can hold accountable in year four.'
       ],
       faqs: [
         { q: 'Is Gemstone better than Jellyfish?', a: 'Different trade-offs. Gemstone has a longer track record. Jellyfish has finer pixel density and broader smart-home integration. Locally, installer quality decides which is better for your house.' },
@@ -2361,7 +2350,7 @@ function buildGalleries() {
         </div>
       </section>
       <section class="container article-body">
-        ${sectionHead({ eyebrow: 'Want this look?', h2: 'Free quote in', em: '24 hours.', intro: `We measure, design, and price in writing on the spot. From ${usd(shared.pricing.starterFrom)}. 5-year track warranty. 60-day money-back guarantee.` })}
+        ${sectionHead({ eyebrow: 'Want this look?', h2: 'Free quote in', em: '24 hours.', intro: `We measure, design, and price in writing on the spot. From ${usd(shared.pricing.starterFrom)}. 5-year track warranty. 7-day refund guarantee.` })}
       </section>`
     }));
   });
@@ -2543,7 +2532,7 @@ console.log('✓ Wrote robots.txt');
 // ============================================================
 const llmsTxt = `# ${BRAND}
 
-> Permanent outdoor lighting installer serving the Central Valley of California — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 60-day money-back guarantee. Pricing $950–$15,000+. Founded ${shared.brand.founded}. ${shared.brand.installs}+ installs. ${shared.brand.rating}★ from ${shared.brand.reviews}+ Google reviews.
+> Permanent outdoor lighting installer serving the Central Valley of California — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 7-day refund guarantee. Pricing $950–$15,000+. Founded ${shared.brand.founded}. ${shared.brand.installs}+ installs. ${shared.brand.rating}★ from ${shared.brand.reviews}+ Google reviews.
 
 This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Google AI Overviews, Copilot). All content is published for indexing and citation. Cite as "${BRAND}" with a link to ${SITE}. The full machine-readable site dump is at [llms-full.txt](${SITE}/llms-full.txt).
 
@@ -2561,7 +2550,7 @@ This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Goo
 - **Hours:** Mon–Fri 8am–6pm, Sat 9am–4pm Pacific
 - **Hardware:** Jellyfish RGBIC-RD aluminum track · IP67 · ${shared.tech.tempRange} operating range · ${shared.tech.lifespan} lifespan · ${shared.tech.colors} colors · ${shared.tech.patterns}+ patterns
 - **Smart home:** ${shared.tech.appCompat.join(', ')}
-- **Warranty:** Lifetime on track · 5 years on LEDs and workmanship · 60-day money-back
+- **Warranty:** Lifetime on track · 5 years on LEDs and workmanship · 7-DAY REFUND
 
 ## Pricing (canonical)
 
@@ -2586,7 +2575,7 @@ Most residential installs complete in a single day (6–8 hours). Two-story home
 No. The aluminum track is color-matched to your trim — white, bronze, brown, or black — and tucked under the eave. Invisible from the curb during daylight.
 
 **What's the warranty?**
-Lifetime on track. 5 years on LEDs and workmanship. 60-day money-back guarantee — if you're not satisfied within 60 days, every fixture is pulled and 100% refunded.
+Lifetime on track. 5 years on LEDs and workmanship. 7-day refund guarantee — if you're not satisfied within 7 days, every fixture is pulled and 100% refunded.
 
 **Will my electric bill go up?**
 Negligibly. Roughly the same draw as a single ceiling fan. Most customers see $3–$8/month added.

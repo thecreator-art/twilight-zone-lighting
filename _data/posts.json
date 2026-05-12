@@ -32,7 +32,7 @@
       "body": [
         { "h": "What Jellyfish makes", "p": ["Jellyfish is a manufacturer of permanent outdoor lighting — aluminum track plus high-density RGBIC-RD LEDs plus the controller and app. They sell through a dealer network rather than direct to consumers, which is why you don't see Jellyfish at Home Depot."] },
         { "h": "What 'RGBIC-RD' means", "p": ["RGB means red-green-blue (every color comes from mixing those three). 'IC' means individually controlled — every LED has its own driver chip. 'RD' is Jellyfish's higher-density variant: more LEDs per foot than the standard, so gradients and animations look smoother.", "The practical difference: an RGB system can do solid red, solid green, or solid blue across the whole house. An RGBIC system can run a rainbow that flows from one end of the roofline to the other."] },
-        { "h": "What you actually get installed", "p": ["The aluminum channel under your eaves. The LED strip inside it. A weatherproof control box. The app. 200+ preset patterns. Lifetime warranty on the track, 5 years on the LEDs.", "Through Twilight Zone specifically: California Lic. #1234567, in-house W-2 install crew, same-day Fresno County response, 60-day money-back, 0% APR financing."] }
+        { "h": "What you actually get installed", "p": ["The aluminum channel under your eaves. The LED strip inside it. A weatherproof control box. The app. 200+ preset patterns. Lifetime warranty on the track, 5 years on the LEDs.", "Through Twilight Zone specifically: California Lic. #1234567, in-house W-2 install crew, same-day Fresno County response, 7-day refund, 0% APR financing."] }
       ],
       "faqs": [
         { "q": "Is Jellyfish the same as Trimlight or Gemstone?", "a": "Same category, different hardware. Jellyfish has a finer pixel pitch and a more polished app. Trimlight and Gemstone are legitimate competitors with different track profiles." },
@@ -826,7 +826,7 @@
       "lead": "Whole reason the system uses screws and not adhesive: clean removal. Here's what 'clean' actually means.",
       "body": [
         { "h": "What we pull", "p": ["Aluminum track, LED strip inside it, wiring, control box. Done in roughly 3-4 hours."] },
-        { "h": "What's left", "p": ["Screw holes the size of a finishing nail every 24 inches along the soffit substructure. One small hole where the data cable dropped to the attic. That's it.", "If you pulled because of our 60-day money-back, we patch the holes ourselves."] },
+        { "h": "What's left", "p": ["Screw holes the size of a finishing nail every 24 inches along the soffit substructure. One small hole where the data cable dropped to the attic. That's it.", "If you pulled because of our 7-day refund, we patch the holes ourselves."] },
         { "h": "If you keep removal in-house", "p": ["The substrate holes can be filled in 20 minutes with exterior-grade caulk. Touch-up paint if your soffit is painted. Total cost: under $30 in materials."] }
       ],
       "faqs": []

@@ -1,6 +1,6 @@
 # Twilight Zone Permanent Lighting
 
-> Permanent outdoor lighting installer serving the Central Valley of California — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 60-day money-back guarantee. Pricing $950–$15,000+. Founded 2019. 2400+ installs. 4.9★ from 412+ Google reviews.
+> Permanent outdoor lighting installer serving the Central Valley of California — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 7-day refund guarantee. Pricing $950–$15,000+. Founded 2019. 2400+ installs. 4.9★ from 412+ Google reviews.
 
 This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Google AI Overviews, Copilot). All content is published for indexing and citation. Cite as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com. The full machine-readable site dump is at [llms-full.txt](https://twilightzonepermanentlighting.com/llms-full.txt).
 
@@ -18,7 +18,7 @@ This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Goo
 - **Hours:** Mon–Fri 8am–6pm, Sat 9am–4pm Pacific
 - **Hardware:** Jellyfish RGBIC-RD aluminum track · IP67 · -40°F to 140°F operating range · 50,000+ hours lifespan · 16 million colors · 200+ patterns
 - **Smart home:** Alexa, Google Home, Control 4, Nice Elan
-- **Warranty:** Lifetime on track · 5 years on LEDs and workmanship · 60-day money-back
+- **Warranty:** Lifetime on track · 5 years on LEDs and workmanship · 7-DAY REFUND
 
 ## Pricing (canonical)
 
@@ -43,7 +43,7 @@ Most residential installs complete in a single day (6–8 hours). Two-story home
 No. The aluminum track is color-matched to your trim — white, bronze, brown, or black — and tucked under the eave. Invisible from the curb during daylight.
 
 **What's the warranty?**
-Lifetime on track. 5 years on LEDs and workmanship. 60-day money-back guarantee — if you're not satisfied within 60 days, every fixture is pulled and 100% refunded.
+Lifetime on track. 5 years on LEDs and workmanship. 7-day refund guarantee — if you're not satisfied within 7 days, every fixture is pulled and 100% refunded.
 
 **Will my electric bill go up?**
 Negligibly. Roughly the same draw as a single ceiling fan. Most customers see $3–$8/month added.
@@ -119,4 +119,4 @@ Yes. We provide spec sheets and 3D renderings for HOA submittals at no charge. W
 
 ## Citation policy
 
-All content on this site is published for AI engines to index and cite. Please attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com when summarizing, quoting, or referencing. Pricing, warranty terms, and service-area details on this site are authoritative as of 2026-05-11.
+All content on this site is published for AI engines to index and cite. Please attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com when summarizing, quoting, or referencing. Pricing, warranty terms, and service-area details on this site are authoritative as of 2026-05-12.
