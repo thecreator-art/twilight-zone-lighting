@@ -7,12 +7,12 @@
     "phoneShort": "559.373.2220",
     "email": "hello@twilightzonelighting.com",
     "address": {
-      "street": "4120 W Regency Ave",
-      "city": "Fresno",
+      "street": "755 N Peach Ave, Ste C16",
+      "city": "Clovis",
       "state": "CA",
-      "zip": "93722"
+      "zip": "93611"
     },
-    "geo": { "lat": 36.8094, "lng": -119.8821 },
+    "geo": { "lat": 36.8252, "lng": -119.7029 },
     "founded": "2019",
     "employees": 12,
     "installs": 2400,
