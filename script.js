@@ -408,7 +408,9 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   apply();
 })();
 
-// ---- LEAD FORM SUBMIT (real /api/lead → GHL webhook + confetti + in-page thanks) ----
+// ---- LEAD FORM SUBMIT (posts directly to Web3Forms + confetti + in-page thanks) ----
+const WEB3FORMS_ACCESS_KEY = 'f5778338-9a6d-4c6c-be5c-ba7c88980649';
+
 async function submitLead(form, opts = {}) {
   const btn = form.querySelector('button[type="submit"]');
   const originalLabel = btn ? btn.textContent : '';
@@ -420,19 +422,64 @@ async function submitLead(form, opts = {}) {
   // Collect form fields
   const data = {};
   new FormData(form).forEach((v, k) => { data[k] = typeof v === 'string' ? v : ''; });
-  data.source = form.dataset.formSource || 'unknown';
-  data.page = window.location.pathname;
-  data.referrer = document.referrer || '';
+
+  // Honeypot: bots fill "company" — silent-succeed so they don't retry
+  if ((data.company || '').trim() !== '') {
+    if (btn) { btn.textContent = '✓ Got it!'; btn.disabled = false; }
+    if (opts.thanksId) {
+      const thanks = document.getElementById(opts.thanksId);
+      if (thanks) { form.hidden = true; thanks.hidden = false; }
+    }
+    return;
+  }
+
+  // Basic phone sanity — 7+ digits
+  if (((data.phone || '').replace(/\D/g, '').length) < 7) {
+    if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+    let err = form.querySelector('.form-error');
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'form-error';
+      err.setAttribute('role', 'alert');
+      err.style.cssText = 'color:#fca5a5;font-size:14px;margin-top:10px';
+      form.appendChild(err);
+    }
+    err.textContent = 'Please enter a valid phone number.';
+    return;
+  }
+
+  const source = form.dataset.formSource || 'unknown';
+  const page = window.location.pathname;
+
+  // Web3Forms payload — free plan is client-side POST only
+  const payload = {
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: `New ${source === 'hero' ? 'quick quote' : 'quote request'} from ${data.firstName || 'a visitor'} — Twilight Zone`,
+    from_name: 'Twilight Zone Lead Form',
+    // Named fields — Web3Forms will include these in the email body
+    firstName: data.firstName || '',
+    lastName: data.lastName || '',
+    email: data.email || '',
+    phone: data.phone || '',
+    address: data.address || '',
+    city: data.city || '',
+    state: data.state || 'CA',
+    zip: data.zip || '',
+    source,
+    page,
+    referrer: document.referrer || '',
+    submittedAt: new Date().toISOString()
+  };
 
   let result;
   try {
-    const resp = await fetch('/api/lead', {
+    const resp = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(data)
+      headers: { 'content-type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify(payload)
     });
-    result = await resp.json().catch(() => ({ ok: false }));
-    if (!resp.ok) result.ok = false;
+    result = await resp.json().catch(() => ({ success: false }));
+    result.ok = resp.ok && result.success === true;
   } catch (err) {
     result = { ok: false, error: 'network' };
   }
