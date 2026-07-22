@@ -452,11 +452,14 @@ async function submitLead(form, opts = {}) {
   const page = window.location.pathname;
 
   // Web3Forms payload — client-side POST.
-  // Subject line + sender name are configured in the Web3Forms dashboard
-  // (Email Configuration → Sender Name + Email Subject). Do NOT set them here
-  // or they will override the dashboard values.
+  // subject + from_name are set here (in code, not in dashboard) so the subject
+  // can be dynamic — inject the customer's first name so the client can see
+  // who the lead is at a glance in their inbox.
+  const leadName = (data.firstName || 'Visitor').toString().trim() || 'Visitor';
   const payload = {
     access_key: WEB3FORMS_ACCESS_KEY,
+    from_name: 'Vaultio',
+    subject: `New Lead from ${leadName} - Twilight Zone`,
     // Named fields — Web3Forms will include these in the email body
     firstName: data.firstName || '',
     lastName: data.lastName || '',
