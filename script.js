@@ -451,11 +451,12 @@ async function submitLead(form, opts = {}) {
   const source = form.dataset.formSource || 'unknown';
   const page = window.location.pathname;
 
-  // Web3Forms payload — free plan is client-side POST only
+  // Web3Forms payload — client-side POST.
+  // Subject line + sender name are configured in the Web3Forms dashboard
+  // (Email Configuration → Sender Name + Email Subject). Do NOT set them here
+  // or they will override the dashboard values.
   const payload = {
     access_key: WEB3FORMS_ACCESS_KEY,
-    subject: `New ${source === 'hero' ? 'quick quote' : 'quote request'} from ${data.firstName || 'a visitor'} — Twilight Zone`,
-    from_name: 'Twilight Zone Lead Form',
     // Named fields — Web3Forms will include these in the email body
     firstName: data.firstName || '',
     lastName: data.lastName || '',
