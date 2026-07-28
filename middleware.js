@@ -16,8 +16,15 @@
 // ============================================================
 
 export const config = {
-  // Everything EXCEPT the Vaultio logo, so the page can render its own image.
-  matcher: '/((?!vaultio-mark\\.png$).*)',
+  // Everything EXCEPT:
+  //   vaultio-mark.png — so the maintenance page can render its own logo
+  //   sw.js            — CRITICAL. Returning visitors have the old service
+  //                      worker installed, which serves the homepage from
+  //                      cache and never reaches the network. If this path
+  //                      were intercepted the browser would download the 503
+  //                      HTML instead of the self-destruct script, and the
+  //                      stale site would be served forever.
+  matcher: '/((?!vaultio-mark\\.png$|sw\\.js$).*)',
 };
 
 const HTML = `<!doctype html>
