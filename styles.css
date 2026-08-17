@@ -5602,64 +5602,98 @@ section.solutions { padding: 100px 0; }
   align-items: start;
   margin-top: 48px;
 }
+/* Coverage map — pure SVG, projected from each city's lat/lng at build time.
+   No raster image, so it stays sharp at any size and new cities appear automatically. */
 .sa-map {
   position: relative;
+  margin: 0;
   border-radius: var(--radius-lg, 18px);
   overflow: hidden;
-  background: #000;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(168,85,247,0.08);
-  aspect-ratio: 1448 / 1086;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(168, 85, 247, 0.07), transparent 70%),
+    #07070b;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(168, 85, 247, 0.06);
 }
-.sa-map-img {
-  width: 100%; height: 100%;
+.sa-map-svg {
   display: block;
-  object-fit: cover;
-  user-select: none;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 780;
+}
+.sa-node { cursor: pointer; outline: none; }
+.sa-node-glow {
+  opacity: 0.16;
+  transition: opacity 0.3s ease;
+}
+.sa-node-dot {
+  transition: r 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+  opacity: 0.92;
+}
+.sa-node-label {
+  fill: rgba(255, 255, 255, 0.82);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.75);
+  stroke-width: 3px;
+  stroke-linejoin: round;
   pointer-events: none;
+  transition: fill 0.25s ease;
 }
-/* SVG overlay sits exactly on top of the image. Browser scales SVG
-   coordinates to match the image's rendered size — clicks ALWAYS
-   land on the right pixel. */
-.sa-map-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  pointer-events: none; /* let image show through; only ellipses are clickable */
+.sa-node:hover .sa-node-glow,
+.sa-node:focus .sa-node-glow,
+.sa-node.is-active .sa-node-glow { opacity: 0.4; }
+.sa-node:hover .sa-node-dot,
+.sa-node:focus .sa-node-dot,
+.sa-node.is-active .sa-node-dot { opacity: 1; }
+.sa-node:hover .sa-node-label,
+.sa-node:focus .sa-node-label { fill: #fff; }
+/* HQ ring pulses so the home base always reads as the anchor of the network */
+.sa-node-ring {
+  opacity: 0.55;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: saHqPulse 2.8s ease-in-out infinite;
 }
-.sa-hot {
-  cursor: pointer;
-  pointer-events: auto;
-  outline: none;
+@keyframes saHqPulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%      { opacity: 0.7;  transform: scale(1.18); }
 }
-.sa-hot ellipse {
-  fill: transparent;
-  stroke: transparent;
-  stroke-width: 0;
-  transition: fill 0.25s, stroke 0.25s, stroke-width 0.25s, filter 0.25s;
+.sa-legend {
+  list-style: none;
+  margin: 0;
+  padding: 14px 18px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.3);
 }
-.sa-hot:hover ellipse,
-.sa-hot:focus ellipse,
-.sa-hot.is-active ellipse {
-  fill: rgba(168, 85, 247, 0.18);
-  stroke: rgba(168, 85, 247, 0.85);
-  stroke-width: 4;
-  filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.7));
+.sa-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.62);
+  white-space: nowrap;
 }
-.sa-hot-hq ellipse {
-  /* HQ pulses softly so it's always visible as the anchor */
-  animation: hqRingPulse 2.6s ease-in-out infinite;
+.sa-legend li em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.38);
+  font-variant-numeric: tabular-nums;
 }
-@keyframes hqRingPulse {
-  0%, 100% { stroke: rgba(168, 85, 247, 0.25); stroke-width: 2; fill: rgba(168, 85, 247, 0.04); }
-  50%      { stroke: rgba(168, 85, 247, 0.6);  stroke-width: 3; fill: rgba(168, 85, 247, 0.10); }
+.sa-key-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
 }
-.sa-hot-hq:hover ellipse,
-.sa-hot-hq.is-active ellipse {
-  fill: rgba(168, 85, 247, 0.22);
-  stroke: rgba(168, 85, 247, 0.95);
-  stroke-width: 5;
-  filter: drop-shadow(0 0 22px rgba(168, 85, 247, 0.8));
-  animation: none;
+@media (prefers-reduced-motion: reduce) {
+  .sa-node-ring { animation: none; }
 }
 
 .sa-list {
@@ -5670,7 +5704,7 @@ section.solutions { padding: 100px 0; }
   /* Cap to map height so list never overshoots the map visually */
   max-height: 100%;
 }
-.sa-county h5 {
+.sa-region h5 {
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -5678,7 +5712,7 @@ section.solutions { padding: 100px 0; }
   margin: 0 0 6px;
   font-weight: 600;
 }
-.sa-county ul {
+.sa-region ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -5688,13 +5722,13 @@ section.solutions { padding: 100px 0; }
   column-gap: 18px;
 }
 /* The first county block (Fresno) has 9 cities — split into 2 columns to compact */
-.sa-list .sa-county:first-child ul {
+.sa-list .sa-region:first-child ul {
   grid-template-columns: 1fr 1fr;
   column-gap: 16px;
 }
-.sa-county li { border-bottom: 1px solid rgba(255,255,255,0.05); }
-.sa-county li:last-child { border-bottom: none; }
-.sa-county li a {
+.sa-region li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sa-region li:last-child { border-bottom: none; }
+.sa-region li a {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -5704,7 +5738,7 @@ section.solutions { padding: 100px 0; }
   transition: all 0.2s;
   gap: 8px;
 }
-.sa-county li a:hover, .sa-county li a.is-active {
+.sa-region li a:hover, .sa-region li a.is-active {
   color: #fff;
   padding-left: 10px;
   background: linear-gradient(90deg, rgba(168,85,247,0.08), transparent);
@@ -5718,7 +5752,7 @@ section.solutions { padding: 100px 0; }
 }
 .sa-meta { white-space: nowrap; }
 @media (max-width: 720px) {
-  .sa-list .sa-county:first-child ul { grid-template-columns: 1fr; }
+  .sa-list .sa-region:first-child ul { grid-template-columns: 1fr; }
 }
 .sa-meta {
   font-size: 11px;
@@ -5831,7 +5865,7 @@ section.solutions { padding: 100px 0; }
 
   /* Service-area map: already stacks via earlier rule. Make it tight. */
   .sa-layout { gap: 24px; }
-  .sa-list .sa-county:first-child ul { grid-template-columns: 1fr; }
+  .sa-list .sa-region:first-child ul { grid-template-columns: 1fr; }
 
   /* General mobile body padding to keep content from kissing edges */
   .container { padding: 0 20px; }

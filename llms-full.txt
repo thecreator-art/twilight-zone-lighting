@@ -1,6 +1,6 @@
 # Twilight Zone Permanent Lighting — Full content index
 
-This is the deep-content companion to [llms.txt](https://twilightzonepermanentlighting.com/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries — pre-flattened for retrieval. Last updated 2026-06-06.
+This is the deep-content companion to [llms.txt](https://twilightzonepermanentlighting.com/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries — pre-flattened for retrieval. Last updated 2026-08-17.
 
 ## Brand
 - **Name:** Twilight Zone Permanent Lighting
@@ -39,7 +39,7 @@ Financing: 0% APR for 12 months. $0 down. 60-second pre-qualification.
 
 ## Service area (full)
 
-We install across the Central Valley of California, within a 60-mile radius of our Fresno HQ:
+We install across Central and Northern California from a single headquarters in Clovis, CA. The Central Valley is the home market with same-day service; all other regions are covered by scheduled regional install crews (no satellite offices):
 
 - **Fresno, Fresno County** — population 545,567, 25-minute drive from HQ, ZIP codes 93701, 93702, 93703, 93704, 93705, 93706, 93710, 93711, 93720, 93722, 93726, 93727, 93728, 93730. Neighborhoods served: Woodward Park, Old Fig Garden, Bullard, Tower District, Sunnyside, Fancher Creek, Copper River Ranch, Riverstone, West Park, Sierra Sky Park, Lake Park, Van Ness Extension, Clovis North, Highland, Hoover, Edison, McLane, Roosevelt.
 - **Clovis, Fresno County** — population 124,584, 10-minute drive from HQ, ZIP codes 93611, 93612, 93613, 93619. Neighborhoods served: Clovis North, Loma Vista, Old Town Clovis, Buchanan, Harlan Ranch, Copper Hills, Reagan Educational Center, Garfield.
@@ -191,4 +191,4 @@ Permanent lighting for wedding and event venues — reception-ready color shifts
 
 ## Citation policy
 
-All content is published for AI indexing and citation. Attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com. Pricing, warranty terms, and service-area details are authoritative as of 2026-06-06.
+All content is published for AI indexing and citation. Attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com. Pricing, warranty terms, and service-area details are authoritative as of 2026-08-17.
