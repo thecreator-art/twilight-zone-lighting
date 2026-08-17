@@ -11,7 +11,7 @@ This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Goo
 - **Email:** hello@twilightzonelighting.com
 - **Address:** 755 N Peach Ave, Ste C16, Clovis, CA 93611
 - **Status:** Bonded, insured, in-house W-2 install crew (no subcontractors)
-- **Service regions:** Central Valley (HQ and same-day service: Central Valley)
+- **Service regions:** Central Valley · Northern San Joaquin Valley · Sacramento Metro · East Bay · South Bay · San Francisco & Peninsula (HQ and same-day service: Central Valley)
 - **Founded:** 2019
 - **Installs completed:** 2400+
 - **Reviews:** 4.9★ on Google · 412+ reviews
@@ -85,7 +85,7 @@ Yes. We provide spec sheets and 3D renderings for HOA submittals at no charge. W
 - [Christmas String Lights](https://twilightzonepermanentlighting.com/string-lights-installation): From $950 — Christmas string lights installed permanently — no more annual setup, no more storage, no more ladders.
 - [Year-Round Permanent Lighting](https://twilightzonepermanentlighting.com/year-round-lighting): From $950 — Year-round permanent lighting that auto-rotates between Christmas red-and-green, Halloween orange-and-purple, July 4th red-white-and-blue, warm-white accent, and cool-white security.
 
-## Cities served (12)
+## Cities served (50)
 
 
 ### Central Valley
@@ -102,6 +102,59 @@ Yes. We provide spec sheets and 3D renderings for HOA submittals at no charge. W
 - [Parlier, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-parlier): Population 15,000, 35-min drive from HQ, ZIPs 93648
 - [Fowler, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-fowler): Population 7,000, 25-min drive from HQ, ZIPs 93625
 - [Kerman, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-kerman): Population 16,000, 25-min drive from HQ, ZIPs 93630
+
+### Northern San Joaquin Valley
+
+- [Stockton, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-stockton): Population 320,804, served by the Northern San Joaquin Valley crew, ZIPs 95202, 95203, 95204, 95205, 95206, 95207, 95209, 95210, 95212, 95215, 95219
+- [Modesto, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-modesto): Population 218,464, served by the Northern San Joaquin Valley crew, ZIPs 95350, 95351, 95352, 95353, 95354, 95355, 95356, 95357, 95358
+- [Merced, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-merced): Population 86,333, served by the Northern San Joaquin Valley crew, ZIPs 95340, 95341, 95343, 95344, 95348
+- [Turlock, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-turlock): Population 72,740, served by the Northern San Joaquin Valley crew, ZIPs 95380, 95381, 95382
+- [Manteca, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-manteca): Population 83,498, served by the Northern San Joaquin Valley crew, ZIPs 95336, 95337
+- [Lodi, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-lodi): Population 66,348, served by the Northern San Joaquin Valley crew, ZIPs 95240, 95241, 95242, 95258
+- [Ceres, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-ceres): Population 49,302, served by the Northern San Joaquin Valley crew, ZIPs 95307
+
+### Sacramento Metro
+
+- [Sacramento, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-sacramento): Population 524,943, served by the Sacramento Metro crew, ZIPs 95814, 95815, 95816, 95817, 95818, 95819, 95820, 95821, 95822, 95823, 95824, 95825, 95826, 95831
+- [Elk Grove, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-elk-grove): Population 176,124, served by the Sacramento Metro crew, ZIPs 95624, 95757, 95758, 95759
+- [Roseville, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-roseville): Population 147,773, served by the Sacramento Metro crew, ZIPs 95661, 95678, 95747
+- [Folsom, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-folsom): Population 80,454, served by the Sacramento Metro crew, ZIPs 95630, 95671, 95763
+- [Rocklin, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-rocklin): Population 71,601, served by the Sacramento Metro crew, ZIPs 95677, 95765
+- [Citrus Heights, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-citrus-heights): Population 87,583, served by the Sacramento Metro crew, ZIPs 95610, 95611, 95621
+- [Rancho Cordova, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-rancho-cordova): Population 79,332, served by the Sacramento Metro crew, ZIPs 95655, 95670, 95741, 95742
+- [Davis, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-davis): Population 66,850, served by the Sacramento Metro crew, ZIPs 95616, 95617, 95618
+- [El Dorado Hills, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-el-dorado-hills): Population 45,982, served by the Sacramento Metro crew, ZIPs 95762
+
+### East Bay
+
+- [Oakland, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-oakland): Population 436,504, served by the East Bay crew, ZIPs 94601, 94602, 94603, 94605, 94606, 94607, 94608, 94609, 94610, 94611, 94612, 94618, 94619, 94621
+- [Fremont, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-fremont): Population 230,504, served by the East Bay crew, ZIPs 94536, 94537, 94538, 94539, 94540, 94555
+- [Pleasanton, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-pleasanton): Population 79,871, served by the East Bay crew, ZIPs 94566, 94588
+- [Livermore, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-livermore): Population 87,955, served by the East Bay crew, ZIPs 94550, 94551
+- [Dublin, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-dublin): Population 72,589, served by the East Bay crew, ZIPs 94568
+- [Walnut Creek, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-walnut-creek): Population 70,127, served by the East Bay crew, ZIPs 94595, 94596, 94597, 94598
+- [San Ramon, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-san-ramon): Population 84,605, served by the East Bay crew, ZIPs 94582, 94583
+
+### South Bay
+
+- [San Jose, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-san-jose): Population 969,655, served by the South Bay crew, ZIPs 95110, 95112, 95116, 95118, 95120, 95122, 95124, 95125, 95126, 95128, 95132, 95136
+- [Santa Clara, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-santa-clara): Population 127,647, served by the South Bay crew, ZIPs 95050, 95051, 95052, 95053, 95054, 95055, 95056
+- [Sunnyvale, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-sunnyvale): Population 155,805, served by the South Bay crew, ZIPs 94083, 94085, 94086, 94087, 94088, 94089
+- [Cupertino, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-cupertino): Population 60,381, served by the South Bay crew, ZIPs 95014, 95015
+- [Mountain View, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-mountain-view): Population 82,376, served by the South Bay crew, ZIPs 94035, 94039, 94040, 94041, 94042, 94043
+- [Palo Alto, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-palo-alto): Population 68,572, served by the South Bay crew, ZIPs 94301, 94302, 94303, 94304, 94305, 94306
+- [Milpitas, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-milpitas): Population 80,273, served by the South Bay crew, ZIPs 95035, 95036
+- [Campbell, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-campbell): Population 42,726, served by the South Bay crew, ZIPs 95008, 95009, 95011
+- [Los Gatos, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-los-gatos): Population 33,529, served by the South Bay crew, ZIPs 95030, 95031, 95032, 95033
+- [Morgan Hill, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-morgan-hill): Population 45,952, served by the South Bay crew, ZIPs 95037, 95038
+
+### San Francisco & Peninsula
+
+- [San Francisco, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-san-francisco): Population 808,988, served by the San Francisco & Peninsula crew, ZIPs 94102, 94103, 94105, 94107, 94108, 94109, 94110, 94114, 94115, 94116, 94117, 94118, 94121, 94122
+- [San Mateo, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-san-mateo): Population 105,661, served by the San Francisco & Peninsula crew, ZIPs 94401, 94402, 94403, 94404, 94405, 94406, 94407, 94408, 94409, 94497
+- [Redwood City, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-redwood-city): Population 84,292, served by the San Francisco & Peninsula crew, ZIPs 94059, 94061, 94062, 94063, 94064, 94065
+- [Burlingame, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-burlingame): Population 31,386, served by the San Francisco & Peninsula crew, ZIPs 94010, 94011
+- [Menlo Park, CA](https://twilightzonepermanentlighting.com/permanent-outdoor-lights-menlo-park): Population 33,780, served by the San Francisco & Peninsula crew, ZIPs 94025, 94026
 
 ## Comparisons
 

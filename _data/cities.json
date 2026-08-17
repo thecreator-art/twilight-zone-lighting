@@ -4,13 +4,63 @@
     "slug": "fresno",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93701", "93702", "93703", "93704", "93705", "93706", "93710", "93711", "93720", "93722", "93726", "93727", "93728", "93730"],
+    "zips": [
+      "93701",
+      "93702",
+      "93703",
+      "93704",
+      "93705",
+      "93706",
+      "93710",
+      "93711",
+      "93720",
+      "93722",
+      "93726",
+      "93727",
+      "93728",
+      "93730"
+    ],
     "zipRange": "93701–93730",
     "population": 545567,
     "households": 168000,
-    "neighborhoods": ["Woodward Park", "Old Fig Garden", "Bullard", "Tower District", "Sunnyside", "Fancher Creek", "Copper River Ranch", "Riverstone", "West Park", "Sierra Sky Park", "Lake Park", "Van Ness Extension", "Clovis North", "Highland", "Hoover", "Edison", "McLane", "Roosevelt"],
-    "neighborhoodsTop": ["Woodward Park", "Old Fig Garden", "Bullard", "Tower District", "Sunnyside", "Riverstone", "Copper River Ranch", "Fancher Creek"],
-    "schools": ["Fresno State Bulldogs", "Bullard High Knights", "Clovis North Broncos", "Edison High Tigers", "Fresno High Warriors", "Roosevelt High Rough Riders"],
+    "neighborhoods": [
+      "Woodward Park",
+      "Old Fig Garden",
+      "Bullard",
+      "Tower District",
+      "Sunnyside",
+      "Fancher Creek",
+      "Copper River Ranch",
+      "Riverstone",
+      "West Park",
+      "Sierra Sky Park",
+      "Lake Park",
+      "Van Ness Extension",
+      "Clovis North",
+      "Highland",
+      "Hoover",
+      "Edison",
+      "McLane",
+      "Roosevelt"
+    ],
+    "neighborhoodsTop": [
+      "Woodward Park",
+      "Old Fig Garden",
+      "Bullard",
+      "Tower District",
+      "Sunnyside",
+      "Riverstone",
+      "Copper River Ranch",
+      "Fancher Creek"
+    ],
+    "schools": [
+      "Fresno State Bulldogs",
+      "Bullard High Knights",
+      "Clovis North Broncos",
+      "Edison High Tigers",
+      "Fresno High Warriors",
+      "Roosevelt High Rough Riders"
+    ],
     "climate": {
       "summerHigh": 115,
       "winterLow": 28,
@@ -20,25 +70,59 @@
     "drive": "Headquarters",
     "lat": 36.7378,
     "lng": -119.7871,
-    "hoasServed": ["Granville Homes", "Woodward Lake HOA", "Copper River Ranch HOA", "Fancher Creek HOA", "Old Fig Garden Property Owners"],
+    "hoasServed": [
+      "Granville Homes",
+      "Woodward Lake HOA",
+      "Copper River Ranch HOA",
+      "Fancher Creek HOA",
+      "Old Fig Garden Property Owners"
+    ],
     "testimonialCity": "Woodward Park",
     "testimonialName": "Jessica M.",
     "testimonialQuote": "I absolutely love our lights. The app is awesome and installation was perfect. Amazing customer service. Definitely went above and beyond.",
     "intro": "Fresno is the heart of the Central Valley and Twilight Zone's home base. We've installed permanent outdoor lights on more Fresno homes than any other zip code — from single-story ranches in Sunnyside to two-story custom estates in Woodward Park.",
-    "popular": "Most-requested in Fresno: warm-white architectural accent year-round, with Christmas red-and-green and Bulldogs red-and-blue auto-scheduled by date and game-day."
+    "popular": "Most-requested in Fresno: warm-white architectural accent year-round, with Christmas red-and-green and Bulldogs red-and-blue auto-scheduled by date and game-day.",
+    "region": "Central Valley",
+    "driveMinutes": 25
   },
   "clovis": {
     "name": "Clovis",
     "slug": "clovis",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93611", "93612", "93613", "93619"],
+    "zips": [
+      "93611",
+      "93612",
+      "93613",
+      "93619"
+    ],
     "zipRange": "93611–93619",
     "population": 124584,
     "households": 39000,
-    "neighborhoods": ["Clovis North", "Loma Vista", "Old Town Clovis", "Buchanan", "Harlan Ranch", "Copper Hills", "Reagan Educational Center", "Garfield"],
-    "neighborhoodsTop": ["Clovis North", "Harlan Ranch", "Loma Vista", "Buchanan", "Old Town Clovis"],
-    "schools": ["Clovis North Broncos", "Buchanan Bears", "Clovis West Golden Eagles", "Clovis East Timberwolves", "Clovis High Cougars"],
+    "neighborhoods": [
+      "Clovis North",
+      "Loma Vista",
+      "Old Town Clovis",
+      "Buchanan",
+      "Harlan Ranch",
+      "Copper Hills",
+      "Reagan Educational Center",
+      "Garfield"
+    ],
+    "neighborhoodsTop": [
+      "Clovis North",
+      "Harlan Ranch",
+      "Loma Vista",
+      "Buchanan",
+      "Old Town Clovis"
+    ],
+    "schools": [
+      "Clovis North Broncos",
+      "Buchanan Bears",
+      "Clovis West Golden Eagles",
+      "Clovis East Timberwolves",
+      "Clovis High Cougars"
+    ],
     "climate": {
       "summerHigh": 110,
       "winterLow": 30,
@@ -48,25 +132,52 @@
     "drive": "10 minutes from Fresno HQ",
     "lat": 36.8252,
     "lng": -119.7029,
-    "hoasServed": ["Harlan Ranch HOA", "Copper Hills HOA", "Reagan Educational Center HOA", "Clovis North Master Association"],
+    "hoasServed": [
+      "Harlan Ranch HOA",
+      "Copper Hills HOA",
+      "Reagan Educational Center HOA",
+      "Clovis North Master Association"
+    ],
     "testimonialCity": "Clovis",
     "testimonialName": "Ricardo V.",
     "testimonialQuote": "We've really enjoyed our Twilight Zone Christmas Lighting. Love the daily Accent and Game Day features. Kids have fun creating custom patterns.",
     "intro": "Clovis is one of California's fastest-growing cities and Twilight Zone's #2 install market. New construction in Loma Vista and Harlan Ranch frequently includes permanent lighting from day one.",
-    "popular": "Most-requested in Clovis: full-perimeter installs on new construction homes, with Buchanan Bears blue-and-gold or Clovis North Broncos colors auto-scheduled for Friday game nights."
+    "popular": "Most-requested in Clovis: full-perimeter installs on new construction homes, with Buchanan Bears blue-and-gold or Clovis North Broncos colors auto-scheduled for Friday game nights.",
+    "region": "Central Valley",
+    "driveMinutes": 10
   },
   "madera": {
     "name": "Madera",
     "slug": "madera",
     "state": "CA",
     "county": "Madera County",
-    "zips": ["93636", "93637", "93638", "93639"],
+    "zips": [
+      "93636",
+      "93637",
+      "93638",
+      "93639"
+    ],
     "zipRange": "93636–93639",
     "population": 67000,
     "households": 19000,
-    "neighborhoods": ["Madera Ranchos", "Tesoro Viejo", "Sumner Hill", "Riverstone Madera", "Old Madera Town"],
-    "neighborhoodsTop": ["Tesoro Viejo", "Madera Ranchos", "Sumner Hill", "Riverstone Madera"],
-    "schools": ["Madera South Stallions", "Madera High Coyotes", "Liberty High Hawks"],
+    "neighborhoods": [
+      "Madera Ranchos",
+      "Tesoro Viejo",
+      "Sumner Hill",
+      "Riverstone Madera",
+      "Old Madera Town"
+    ],
+    "neighborhoodsTop": [
+      "Tesoro Viejo",
+      "Madera Ranchos",
+      "Sumner Hill",
+      "Riverstone Madera"
+    ],
+    "schools": [
+      "Madera South Stallions",
+      "Madera High Coyotes",
+      "Liberty High Hawks"
+    ],
     "climate": {
       "summerHigh": 113,
       "winterLow": 30,
@@ -76,25 +187,52 @@
     "drive": "25 minutes from Fresno HQ",
     "lat": 36.9613,
     "lng": -120.0607,
-    "hoasServed": ["Tesoro Viejo HOA", "Sumner Hill Master Association", "Riverstone HOA"],
+    "hoasServed": [
+      "Tesoro Viejo HOA",
+      "Sumner Hill Master Association",
+      "Riverstone HOA"
+    ],
     "testimonialCity": "Madera",
     "testimonialName": "Murray H.",
     "testimonialQuote": "Installed under the eaves a year ago and love them. Just added Landscape in the yard, and Patio Lights over the pool. Best toy I've ever owned.",
     "intro": "Madera homes — especially in master-planned communities like Tesoro Viejo and Riverstone — favor architectural permanent lighting that shows off the modern designs year-round.",
-    "popular": "Most-requested in Madera: warm-white architectural accent for new-build estates and full-property landscape integration in Tesoro Viejo."
+    "popular": "Most-requested in Madera: warm-white architectural accent for new-build estates and full-property landscape integration in Tesoro Viejo.",
+    "region": "Central Valley",
+    "driveMinutes": 25
   },
   "visalia": {
     "name": "Visalia",
     "slug": "visalia",
     "state": "CA",
     "county": "Tulare County",
-    "zips": ["93277", "93291", "93292"],
+    "zips": [
+      "93277",
+      "93291",
+      "93292"
+    ],
     "zipRange": "93277–93292",
     "population": 142000,
     "households": 44000,
-    "neighborhoods": ["South Visalia", "Mountain View", "Northwest Visalia", "Mooney's Grove", "Riverway Sports Park", "Downtown Visalia"],
-    "neighborhoodsTop": ["South Visalia", "Mountain View", "Northwest Visalia", "Mooney's Grove"],
-    "schools": ["Redwood High Rangers", "Mt. Whitney High Pioneers", "Golden West Trailblazers", "El Diamante Miners"],
+    "neighborhoods": [
+      "South Visalia",
+      "Mountain View",
+      "Northwest Visalia",
+      "Mooney's Grove",
+      "Riverway Sports Park",
+      "Downtown Visalia"
+    ],
+    "neighborhoodsTop": [
+      "South Visalia",
+      "Mountain View",
+      "Northwest Visalia",
+      "Mooney's Grove"
+    ],
+    "schools": [
+      "Redwood High Rangers",
+      "Mt. Whitney High Pioneers",
+      "Golden West Trailblazers",
+      "El Diamante Miners"
+    ],
     "climate": {
       "summerHigh": 112,
       "winterLow": 32,
@@ -104,25 +242,46 @@
     "drive": "55 minutes from Fresno HQ",
     "lat": 36.3302,
     "lng": -119.2921,
-    "hoasServed": ["Mooney's Grove HOA", "Riverway HOA", "Mountain View HOA"],
+    "hoasServed": [
+      "Mooney's Grove HOA",
+      "Riverway HOA",
+      "Mountain View HOA"
+    ],
     "testimonialCity": "Visalia",
     "testimonialName": "Sarah P.",
     "testimonialQuote": "If anyone is looking for a year-round lighting system, call Twilight Zone. Best investment we've made. 5-star service, no hidden fees.",
     "intro": "Visalia is the largest city in Tulare County and our southern install hub. Visalia winters bring heavy tule fog that defeats string lights — permanent track shines through it.",
-    "popular": "Most-requested in Visalia: cool-white security lighting for rural property and Redwood Rangers cardinal-and-gold game-day for school spirit."
+    "popular": "Most-requested in Visalia: cool-white security lighting for rural property and Redwood Rangers cardinal-and-gold game-day for school spirit.",
+    "region": "Central Valley",
+    "driveMinutes": 55
   },
   "hanford": {
     "name": "Hanford",
     "slug": "hanford",
     "state": "CA",
     "county": "Kings County",
-    "zips": ["93230"],
+    "zips": [
+      "93230"
+    ],
     "zipRange": "93230",
     "population": 58000,
     "households": 18000,
-    "neighborhoods": ["Hanford East", "Hanford West", "North Hanford", "Downtown Hanford"],
-    "neighborhoodsTop": ["Hanford East", "Hanford West", "North Hanford"],
-    "schools": ["Hanford High Bullpups", "Hanford West Huskies", "Sierra Pacific High Golden Bears"],
+    "neighborhoods": [
+      "Hanford East",
+      "Hanford West",
+      "North Hanford",
+      "Downtown Hanford"
+    ],
+    "neighborhoodsTop": [
+      "Hanford East",
+      "Hanford West",
+      "North Hanford"
+    ],
+    "schools": [
+      "Hanford High Bullpups",
+      "Hanford West Huskies",
+      "Sierra Pacific High Golden Bears"
+    ],
     "climate": {
       "summerHigh": 110,
       "winterLow": 31,
@@ -132,25 +291,44 @@
     "drive": "50 minutes from Fresno HQ",
     "lat": 36.3274,
     "lng": -119.6457,
-    "hoasServed": ["Hanford East Property Association", "North Hanford HOA"],
+    "hoasServed": [
+      "Hanford East Property Association",
+      "North Hanford HOA"
+    ],
     "testimonialCity": "Hanford",
     "testimonialName": "David K.",
     "testimonialQuote": "Was skeptical about the invisible-by-day part. I was wrong. You literally cannot see them unless you're 6 feet away looking up. At night? Movie set.",
     "intro": "Hanford is the seat of Kings County and Twilight Zone's southwestern service hub. We serve residential and commercial properties from Hanford East to Downtown.",
-    "popular": "Most-requested in Hanford: holiday-rotation packages and Hanford Bullpups red-and-blue for game day weekends."
+    "popular": "Most-requested in Hanford: holiday-rotation packages and Hanford Bullpups red-and-blue for game day weekends.",
+    "region": "Central Valley",
+    "driveMinutes": 50
   },
   "sanger": {
     "name": "Sanger",
     "slug": "sanger",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93657"],
+    "zips": [
+      "93657"
+    ],
     "zipRange": "93657",
     "population": 25000,
     "households": 8000,
-    "neighborhoods": ["Sanger Ranch", "Reedley View", "Old Sanger", "Sanger Heights"],
-    "neighborhoodsTop": ["Sanger Ranch", "Sanger Heights", "Reedley View"],
-    "schools": ["Sanger High Apaches", "Sanger Academy"],
+    "neighborhoods": [
+      "Sanger Ranch",
+      "Reedley View",
+      "Old Sanger",
+      "Sanger Heights"
+    ],
+    "neighborhoodsTop": [
+      "Sanger Ranch",
+      "Sanger Heights",
+      "Reedley View"
+    ],
+    "schools": [
+      "Sanger High Apaches",
+      "Sanger Academy"
+    ],
     "climate": {
       "summerHigh": 113,
       "winterLow": 30,
@@ -158,27 +336,45 @@
       "notes": "Sanger sits at the foothills entrance to the Sierra. Slightly cooler evenings than central Fresno."
     },
     "drive": "30 minutes from Fresno HQ",
-    "lat": 36.7080,
-    "lng": -119.5560,
-    "hoasServed": ["Sanger Ranch HOA"],
+    "lat": 36.708,
+    "lng": -119.556,
+    "hoasServed": [
+      "Sanger Ranch HOA"
+    ],
     "testimonialCity": "Sanger",
     "testimonialName": "Travis H.",
     "testimonialQuote": "Best part: I'll never put up Christmas lights again. Second-best: Bulldogs red and blue every Saturday. Third-best: my wife thinks I'm a hero now.",
     "intro": "Sanger is Twilight Zone's foothills service market. We've served homes from Sanger Heights down to the Old Town district.",
-    "popular": "Most-requested in Sanger: full Halloween-into-Christmas seasonal rotation packages."
+    "popular": "Most-requested in Sanger: full Halloween-into-Christmas seasonal rotation packages.",
+    "region": "Central Valley",
+    "driveMinutes": 30
   },
   "selma": {
     "name": "Selma",
     "slug": "selma",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93662"],
+    "zips": [
+      "93662"
+    ],
     "zipRange": "93662",
     "population": 24000,
     "households": 7500,
-    "neighborhoods": ["West Selma", "East Selma", "Selma North", "Downtown Selma"],
-    "neighborhoodsTop": ["West Selma", "East Selma", "Selma North"],
-    "schools": ["Selma High Bears", "Sierra Vista Bobcats"],
+    "neighborhoods": [
+      "West Selma",
+      "East Selma",
+      "Selma North",
+      "Downtown Selma"
+    ],
+    "neighborhoodsTop": [
+      "West Selma",
+      "East Selma",
+      "Selma North"
+    ],
+    "schools": [
+      "Selma High Bears",
+      "Sierra Vista Bobcats"
+    ],
     "climate": {
       "summerHigh": 112,
       "winterLow": 31,
@@ -188,25 +384,42 @@
     "drive": "20 minutes from Fresno HQ",
     "lat": 36.5708,
     "lng": -119.6121,
-    "hoasServed": ["Selma North HOA"],
+    "hoasServed": [
+      "Selma North HOA"
+    ],
     "testimonialCity": "Selma",
     "testimonialName": "Amanda L.",
     "testimonialQuote": "Quoted me $4,200 less than the competitor and the install quality is noticeably better. They actually showed up on time, finished in one day.",
     "intro": "Selma is Twilight Zone's southern Fresno County market. Most installs here are residential single-story ranches with full-perimeter holiday rotation.",
-    "popular": "Most-requested in Selma: Christmas auto-schedule from November 15 through January 5 and Selma Bears black-and-gold for football season."
+    "popular": "Most-requested in Selma: Christmas auto-schedule from November 15 through January 5 and Selma Bears black-and-gold for football season.",
+    "region": "Central Valley",
+    "driveMinutes": 20
   },
   "reedley": {
     "name": "Reedley",
     "slug": "reedley",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93654"],
+    "zips": [
+      "93654"
+    ],
     "zipRange": "93654",
     "population": 25000,
     "households": 7800,
-    "neighborhoods": ["Reedley Heights", "Old Reedley", "North Reedley"],
-    "neighborhoodsTop": ["Reedley Heights", "Old Reedley", "North Reedley"],
-    "schools": ["Reedley High Pirates", "Immanuel High Eagles"],
+    "neighborhoods": [
+      "Reedley Heights",
+      "Old Reedley",
+      "North Reedley"
+    ],
+    "neighborhoodsTop": [
+      "Reedley Heights",
+      "Old Reedley",
+      "North Reedley"
+    ],
+    "schools": [
+      "Reedley High Pirates",
+      "Immanuel High Eagles"
+    ],
     "climate": {
       "summerHigh": 112,
       "winterLow": 30,
@@ -216,25 +429,40 @@
     "drive": "40 minutes from Fresno HQ",
     "lat": 36.5963,
     "lng": -119.4502,
-    "hoasServed": ["Reedley Heights HOA"],
+    "hoasServed": [
+      "Reedley Heights HOA"
+    ],
     "testimonialCity": "Reedley",
     "testimonialName": "Ricardo V.",
     "testimonialQuote": "Never stepping on a ladder again. Worth every dollar.",
     "intro": "Reedley is Twilight Zone's southeastern foothills market. River-adjacent homes especially benefit from permanent lighting that doesn't require seasonal removal.",
-    "popular": "Most-requested in Reedley: warm-white architectural accent year-round and Reedley Pirates red-and-black for game weekends."
+    "popular": "Most-requested in Reedley: warm-white architectural accent year-round and Reedley Pirates red-and-black for game weekends.",
+    "region": "Central Valley",
+    "driveMinutes": 40
   },
   "kingsburg": {
     "name": "Kingsburg",
     "slug": "kingsburg",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93631"],
+    "zips": [
+      "93631"
+    ],
     "zipRange": "93631",
     "population": 12000,
     "households": 3800,
-    "neighborhoods": ["Kingsburg Heights", "Old Town Kingsburg", "Sierra View"],
-    "neighborhoodsTop": ["Kingsburg Heights", "Old Town Kingsburg"],
-    "schools": ["Kingsburg High Vikings"],
+    "neighborhoods": [
+      "Kingsburg Heights",
+      "Old Town Kingsburg",
+      "Sierra View"
+    ],
+    "neighborhoodsTop": [
+      "Kingsburg Heights",
+      "Old Town Kingsburg"
+    ],
+    "schools": [
+      "Kingsburg High Vikings"
+    ],
     "climate": {
       "summerHigh": 112,
       "winterLow": 30,
@@ -243,26 +471,39 @@
     },
     "drive": "35 minutes from Fresno HQ",
     "lat": 36.5135,
-    "lng": -119.5540,
+    "lng": -119.554,
     "hoasServed": [],
     "testimonialCity": "Kingsburg",
     "testimonialName": "Travis H.",
     "testimonialQuote": "Auto-scheduled holiday rotation is genius. We never touch it.",
     "intro": "Kingsburg is Twilight Zone's southernmost Fresno County market. Mostly residential installs in Heights and Old Town districts.",
-    "popular": "Most-requested in Kingsburg: holiday rotation auto-schedule and Kingsburg Vikings purple-and-gold."
+    "popular": "Most-requested in Kingsburg: holiday rotation auto-schedule and Kingsburg Vikings purple-and-gold.",
+    "region": "Central Valley",
+    "driveMinutes": 35
   },
   "parlier": {
     "name": "Parlier",
     "slug": "parlier",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93648"],
+    "zips": [
+      "93648"
+    ],
     "zipRange": "93648",
     "population": 15000,
     "households": 4500,
-    "neighborhoods": ["Parlier East", "Parlier West", "Old Parlier"],
-    "neighborhoodsTop": ["Parlier East", "Parlier West"],
-    "schools": ["Parlier High Panthers"],
+    "neighborhoods": [
+      "Parlier East",
+      "Parlier West",
+      "Old Parlier"
+    ],
+    "neighborhoodsTop": [
+      "Parlier East",
+      "Parlier West"
+    ],
+    "schools": [
+      "Parlier High Panthers"
+    ],
     "climate": {
       "summerHigh": 112,
       "winterLow": 30,
@@ -277,20 +518,31 @@
     "testimonialName": "David K.",
     "testimonialQuote": "Fresno-area family business that actually shows up. Great work.",
     "intro": "Parlier is Twilight Zone's smaller-town Fresno County service market.",
-    "popular": "Most-requested in Parlier: warm-white architectural accent year-round."
+    "popular": "Most-requested in Parlier: warm-white architectural accent year-round.",
+    "region": "Central Valley",
+    "driveMinutes": 35
   },
   "fowler": {
     "name": "Fowler",
     "slug": "fowler",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93625"],
+    "zips": [
+      "93625"
+    ],
     "zipRange": "93625",
     "population": 7000,
     "households": 2200,
-    "neighborhoods": ["Fowler Heights", "Old Fowler"],
-    "neighborhoodsTop": ["Fowler Heights"],
-    "schools": ["Fowler High Redcats"],
+    "neighborhoods": [
+      "Fowler Heights",
+      "Old Fowler"
+    ],
+    "neighborhoodsTop": [
+      "Fowler Heights"
+    ],
+    "schools": [
+      "Fowler High Redcats"
+    ],
     "climate": {
       "summerHigh": 112,
       "winterLow": 30,
@@ -305,20 +557,33 @@
     "testimonialName": "Sarah P.",
     "testimonialQuote": "Drove from Fresno to install our place. Best in the Valley.",
     "intro": "Fowler is Twilight Zone's smaller service market between Fresno and Selma.",
-    "popular": "Most-requested in Fowler: residential single-story permanent lighting with holiday rotation."
+    "popular": "Most-requested in Fowler: residential single-story permanent lighting with holiday rotation.",
+    "region": "Central Valley",
+    "driveMinutes": 25
   },
   "kerman": {
     "name": "Kerman",
     "slug": "kerman",
     "state": "CA",
     "county": "Fresno County",
-    "zips": ["93630"],
+    "zips": [
+      "93630"
+    ],
     "zipRange": "93630",
     "population": 16000,
     "households": 4800,
-    "neighborhoods": ["Kerman East", "Kerman West", "Old Kerman"],
-    "neighborhoodsTop": ["Kerman East", "Kerman West"],
-    "schools": ["Kerman High Lions"],
+    "neighborhoods": [
+      "Kerman East",
+      "Kerman West",
+      "Old Kerman"
+    ],
+    "neighborhoodsTop": [
+      "Kerman East",
+      "Kerman West"
+    ],
+    "schools": [
+      "Kerman High Lions"
+    ],
     "climate": {
       "summerHigh": 113,
       "winterLow": 30,
@@ -333,6 +598,2587 @@
     "testimonialName": "Murray H.",
     "testimonialQuote": "Pro install team showed up on time, got it done in a day. Highly recommend.",
     "intro": "Kerman is Twilight Zone's western Fresno County service area.",
-    "popular": "Most-requested in Kerman: residential permanent lighting with seasonal auto-schedules."
+    "popular": "Most-requested in Kerman: residential permanent lighting with seasonal auto-schedules.",
+    "region": "Central Valley",
+    "driveMinutes": 25
+  },
+  "sacramento": {
+    "name": "Sacramento",
+    "slug": "sacramento",
+    "state": "CA",
+    "county": "Sacramento County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95814",
+      "95815",
+      "95816",
+      "95817",
+      "95818",
+      "95819",
+      "95820",
+      "95821",
+      "95822",
+      "95823",
+      "95824",
+      "95825",
+      "95826",
+      "95831"
+    ],
+    "zipRange": "95814-95831",
+    "population": 524943,
+    "households": 194000,
+    "neighborhoods": [
+      "Land Park",
+      "South Land Park",
+      "Curtis Park",
+      "East Sacramento",
+      "Fabulous Forties",
+      "Midtown",
+      "Downtown",
+      "Boulevard Park",
+      "River Park",
+      "Sierra Oaks",
+      "Pocket-Greenhaven",
+      "Tahoe Park",
+      "Oak Park",
+      "Elmhurst",
+      "North Natomas",
+      "Natomas Park"
+    ],
+    "neighborhoodsTop": [
+      "East Sacramento",
+      "Fabulous Forties",
+      "Land Park",
+      "Sierra Oaks",
+      "River Park",
+      "Curtis Park",
+      "Pocket-Greenhaven"
+    ],
+    "schools": [
+      "Sacramento State Hornets",
+      "C.K. McClatchy High Lions",
+      "Christian Brothers High Falcons",
+      "Hiram Johnson High Warriors",
+      "Luther Burbank High Titans",
+      "Sacramento High School Dragons"
+    ],
+    "climate": {
+      "summerHigh": 104,
+      "winterLow": 39,
+      "rainfall": 18,
+      "notes": "Summer afternoons cook until the Delta breeze pushes up the river after dark, then December buries the same streets in dense tule fog. That swing from 105-degree fascia heat to weeks of condensing damp is why the run has to be sealed IP67 in anodized aluminum rated -40F to 140F, not a seasonal clip-on strand."
+    },
+    "driveMinutes": 170,
+    "lat": 38.5816,
+    "lng": -121.4944,
+    "communities": [
+      "Natomas Park",
+      "Westlake",
+      "Regency Park",
+      "Riverlake",
+      "Delta Shores"
+    ],
+    "intro": "Within a mile of the State Capitol you'll find Boulevard Park Victorians, Midtown Craftsman bungalows and the 1930s Tudors of the Fabulous Forties; push south and Land Park turns into mid-century ranches under eighty-year-old elms. Steep gables, deep eaves and heavy canopy make ladder work here a genuine problem, which is exactly the case for permanent lighting run on a single fascia-mounted aluminum track.",
+    "popular": "Sac State Hornet green-and-gold and Kings purple are the obvious programmable scenes downtown, and the Fabulous Forties' December walk-through draws thousands every year. A warm-white architectural baseline the other eleven months keeps older East Sac and Land Park elevations from looking seasonal."
+  },
+  "elk-grove": {
+    "name": "Elk Grove",
+    "slug": "elk-grove",
+    "state": "CA",
+    "county": "Sacramento County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95624",
+      "95757",
+      "95758",
+      "95759"
+    ],
+    "zipRange": "95624-95759",
+    "population": 176124,
+    "households": 57000,
+    "neighborhoods": [
+      "Laguna West",
+      "Laguna Creek",
+      "Laguna Ridge",
+      "Stonelake",
+      "Sheldon",
+      "East Franklin",
+      "Camden Passage",
+      "Madeira",
+      "Madeira Ranch",
+      "Poppy Ridge",
+      "Lakeside",
+      "Old Town Elk Grove",
+      "Laguna Vista",
+      "Tributary Pointe",
+      "Franklin Reserve"
+    ],
+    "neighborhoodsTop": [
+      "Sheldon",
+      "Laguna West",
+      "Stonelake",
+      "Camden Passage",
+      "Laguna Ridge",
+      "Madeira Ranch",
+      "Lakeside"
+    ],
+    "schools": [
+      "Elk Grove High Thundering Herd",
+      "Pleasant Grove High Eagles",
+      "Franklin High Wildcats",
+      "Laguna Creek High Cardinals",
+      "Monterey Trail High Mustangs",
+      "Cosumnes Oaks High Wolfpack"
+    ],
+    "climate": {
+      "summerHigh": 102,
+      "winterLow": 38,
+      "rainfall": 17,
+      "notes": "Sitting on open valley floor closer to the Delta, Elk Grove catches the evening breeze earlier than Sacramento but also sits in the thickest of the winter tule fog inversions. Weeks of saturated air off Laguna Creek mean every diode and splice needs true IP67 sealing, not just weatherproofing at the end caps."
+    },
+    "driveMinutes": 155,
+    "lat": 38.4088,
+    "lng": -121.3716,
+    "communities": [
+      "Laguna West",
+      "Stonelake",
+      "Laguna Ridge",
+      "Camden Passage",
+      "Madeira"
+    ],
+    "intro": "Elk Grove is the county's new-build capital: Laguna West's lakefront cul-de-sacs, Stonelake's trail-wrapped tracts, and the Laguna Ridge and Madeira subdivisions still filling in around District56. Most of this housing stock is 1995-or-newer stucco with long, simple two-story rooflines and active architectural committees. That geometry is close to ideal for permanent lighting, since one clean track line reads sharply across a wide front elevation.",
+    "popular": "HOA architectural boards here far prefer one discreet, permanently mounted track to November staple guns and roof clips. Blue-and-gold Elk Grove Thundering Herd Friday nights get color use, and in a city this culturally mixed, Diwali and Lunar New Year scenes see as much programming as Christmas does."
+  },
+  "roseville": {
+    "name": "Roseville",
+    "slug": "roseville",
+    "state": "CA",
+    "county": "Placer County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95661",
+      "95678",
+      "95747"
+    ],
+    "zipRange": "95661-95747",
+    "population": 147773,
+    "households": 56800,
+    "neighborhoods": [
+      "Old Town Roseville",
+      "Vernon Street District",
+      "Roseville Heights",
+      "Sierra Gardens",
+      "Diamond Oaks",
+      "Maidu",
+      "Woodcreek Oaks",
+      "Highland Reserve",
+      "Stoneridge",
+      "Blue Oaks",
+      "Fiddyment Farm",
+      "Westpark",
+      "Crocker Ranch",
+      "Quail Glen",
+      "Morgan Creek",
+      "Sun City Roseville"
+    ],
+    "neighborhoodsTop": [
+      "Morgan Creek",
+      "Westpark",
+      "Crocker Ranch",
+      "Highland Reserve",
+      "Fiddyment Farm",
+      "Blue Oaks",
+      "Sun City Roseville"
+    ],
+    "schools": [
+      "Roseville High Tigers",
+      "Woodcreek High Timberwolves",
+      "Oakmont High Vikings",
+      "Cooley Middle School",
+      "Buljan Middle School"
+    ],
+    "climate": {
+      "summerHigh": 103,
+      "winterLow": 38,
+      "rainfall": 23,
+      "notes": "Roseville runs wetter than Sacramento at roughly 23 inches a year and still sits on the valley floor, so the same December tule fog settles in here. What separates the west side is exposure: the long, unshaded west-facing fascia runs off Blue Oaks and Fiddyment take full afternoon sun through months of triple digits. UV-stable lenses and anodized aluminum track hold color on those elevations where painted vinyl chalks out."
+    },
+    "driveMinutes": 190,
+    "lat": 38.7521,
+    "lng": -121.288,
+    "communities": [
+      "Sun City Roseville",
+      "Westpark",
+      "Fiddyment Farm",
+      "Morgan Creek",
+      "Highland Reserve"
+    ],
+    "intro": "Roseville splits cleanly in two. East of the tracks you get 1940s-to-70s bungalows and ranches around Old Town, Vernon Street and Roseville Heights; west of Fiddyment Road the city becomes Westpark, Crocker Ranch and Fiddyment Farm, wide-fronted two-story stucco on flat lots off Blue Oaks Boulevard. Those long, uninterrupted fascia runs are exactly what permanent lighting was designed around.",
+    "popular": "Tiger orange-and-black for Roseville High and Timberwolf colors for Woodcreek both run hard on fall Fridays. On the west side, where whole streets share three or four builder elevations, a consistent warm-white trim line is often what a house uses to stand out the other nine months."
+  },
+  "folsom": {
+    "name": "Folsom",
+    "slug": "folsom",
+    "state": "CA",
+    "county": "Sacramento County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95630",
+      "95671",
+      "95763"
+    ],
+    "zipRange": "95630-95763",
+    "population": 80454,
+    "households": 29900,
+    "neighborhoods": [
+      "Historic Folsom",
+      "Sutter Street District",
+      "Broadstone",
+      "American River Canyon",
+      "American River Canyon North",
+      "Willow Springs",
+      "Briggs Ranch",
+      "Empire Ranch",
+      "Prairie Oaks Ranch",
+      "Natoma Station",
+      "Lexington Hills",
+      "Los Cerros",
+      "Folsom Heights",
+      "Russell Ranch",
+      "Folsom Ranch"
+    ],
+    "neighborhoodsTop": [
+      "American River Canyon",
+      "American River Canyon North",
+      "Empire Ranch",
+      "Willow Springs",
+      "Prairie Oaks Ranch",
+      "Broadstone",
+      "Lexington Hills"
+    ],
+    "schools": [
+      "Folsom High Bulldogs",
+      "Vista del Lago High Eagles",
+      "Folsom Lake College Falcons",
+      "Folsom Middle School",
+      "Sutter Middle School"
+    ],
+    "climate": {
+      "summerHigh": 103,
+      "winterLow": 38,
+      "rainfall": 24,
+      "notes": "Air draining down the American River canyon keeps Folsom evenings breezier than the valley floor, and afternoon sun bouncing off bare granite and Lake Natoma raises the effective UV load on west-facing elevations. Aluminum track lag-mounted into fascia takes that wind loading without the sag and pull-out that ends seasonal clip installs."
+    },
+    "driveMinutes": 185,
+    "lat": 38.678,
+    "lng": -121.1761,
+    "communities": [
+      "Broadstone",
+      "Empire Ranch",
+      "Willow Springs",
+      "American River Canyon",
+      "Folsom Ranch"
+    ],
+    "intro": "Folsom climbs from the Sutter Street historic district up granite bluffs above Lake Natoma, and the housing tracks the terrain: 1990s Broadstone two-stories, custom homes along the American River Canyon rim, golf-course lots in Empire Ranch and Prairie Oaks Ranch. Canyon-facing homes take punishing western sun on steep multi-gable rooflines, which makes a permanently installed, UV-stable track far more sensible than an annual trip up a bluff-edge roof.",
+    "popular": "Bulldog green-and-gold is close to a civic uniform here every fall. Folsom also decorates hard in December, particularly through Broadstone and Empire Ranch, so programmable scenes that shift from Halloween to Christmas to Fourth of July over the lake are the practical draw."
+  },
+  "rocklin": {
+    "name": "Rocklin",
+    "slug": "rocklin",
+    "state": "CA",
+    "county": "Placer County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95677",
+      "95765"
+    ],
+    "zipRange": "95677-95765",
+    "population": 71601,
+    "households": 25300,
+    "neighborhoods": [
+      "Stanford Ranch",
+      "Stanford Village",
+      "Whitney Oaks",
+      "Whitney Ranch",
+      "Sunset Whitney",
+      "Springfield at Whitney Oaks",
+      "Clover Valley",
+      "Secret Ravine",
+      "Sierra Bluffs",
+      "Sierra Meadows",
+      "Rockridge",
+      "Spring Valley",
+      "Old Town Rocklin",
+      "Quarry District"
+    ],
+    "neighborhoodsTop": [
+      "Whitney Oaks",
+      "Clover Valley",
+      "Whitney Ranch",
+      "Stanford Ranch",
+      "Secret Ravine",
+      "Springfield at Whitney Oaks"
+    ],
+    "schools": [
+      "Rocklin High Thunder",
+      "Whitney High Wildcats",
+      "Sierra College Wolverines",
+      "William Jessup University Warriors",
+      "Granite Oaks Middle School"
+    ],
+    "climate": {
+      "summerHigh": 103,
+      "winterLow": 37,
+      "rainfall": 25,
+      "notes": "Rocklin sits against the first foothill rise, running a degree or two hotter than Sacramento in July and dropping below freezing more January nights than the valley floor does. Components specified across a -40F to 140F operating range absorb that spread, and a sealed channel keeps blue oak litter and quarry grit out of the run."
+    },
+    "driveMinutes": 195,
+    "lat": 38.7907,
+    "lng": -121.2358,
+    "communities": [
+      "Stanford Ranch",
+      "Whitney Oaks",
+      "Whitney Ranch",
+      "Springfield at Whitney Oaks",
+      "Sunset Whitney"
+    ],
+    "intro": "Rocklin was built on granite, literally, around the old quarries that are now Quarry Park, and its neighborhoods sit on rolling oak-studded ground rather than flat valley floor. Stanford Ranch's 1990s tracts, Whitney Oaks' golf-course customs, Whitney Ranch's newer elevations and Sunset Whitney's shaded older streets all share sloped lots and multi-level rooflines, which is the practical argument for setting a permanent track once and never climbing again.",
+    "popular": "Rocklin High Thunder and Whitney Wildcat colors both go up on front elevations through football season. With Sierra College and William Jessup University both in town, May graduation lighting is a genuine second season here in a way it isn't elsewhere in the metro."
+  },
+  "citrus-heights": {
+    "name": "Citrus Heights",
+    "slug": "citrus-heights",
+    "state": "CA",
+    "county": "Sacramento County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95610",
+      "95611",
+      "95621"
+    ],
+    "zipRange": "95610-95621",
+    "population": 87583,
+    "households": 35000,
+    "neighborhoods": [
+      "Birdcage Heights",
+      "Arcade Creek",
+      "Sunrise Ranch",
+      "Park Oaks",
+      "Sylvan Old Auburn Road",
+      "Northwest Citrus Heights",
+      "Rusch Park",
+      "Stock Ranch",
+      "CHANT",
+      "CHASEN",
+      "SOAR",
+      "Sunrise Oaks",
+      "Mariposa",
+      "Auburn Oaks"
+    ],
+    "neighborhoodsTop": [
+      "Birdcage Heights",
+      "Sunrise Ranch",
+      "Sylvan Old Auburn Road",
+      "Arcade Creek",
+      "Park Oaks",
+      "Stock Ranch"
+    ],
+    "schools": [
+      "Mesa Verde High Mavericks",
+      "San Juan High Spartans",
+      "Sylvan Middle School",
+      "Louis Pasteur Fundamental Middle School"
+    ],
+    "climate": {
+      "summerHigh": 103,
+      "winterLow": 38,
+      "rainfall": 21,
+      "notes": "Citrus Heights sits squarely in the winter tule fog belt, where north-facing eaves can hold near-saturated air for weeks without ever fully drying between storms. Sealing rated IP67 at every diode and connector, rather than only at the terminations, is what carries a run through a Sacramento Valley January intact."
+    },
+    "driveMinutes": 180,
+    "lat": 38.7071,
+    "lng": -121.2811,
+    "communities": [
+      "Birdcage Heights",
+      "Sunrise Ranch",
+      "Stock Ranch",
+      "Park Oaks"
+    ],
+    "intro": "Citrus Heights built out fast in the 1960s and 70s around the old Birdcage Walk mall, and it shows: Birdcage Heights, Arcade Creek, Sunrise Ranch and the Sylvan Old Auburn Road pocket are dominated by single-story ranches on quarter-acre lots. Low, single-plane rooflines are the simplest permanent-lighting geometry there is, and the generous original eaves tuck the track out of sight from the street entirely.",
+    "popular": "In a city where whole blocks share one ranch elevation, a crisp year-round warm-white eave line is what separates a house at resale. Mesa Verde Maverick and San Juan Spartan colors handle the fall Friday nights, and the flat single-story roofs make full-perimeter coverage affordable."
+  },
+  "rancho-cordova": {
+    "name": "Rancho Cordova",
+    "slug": "rancho-cordova",
+    "state": "CA",
+    "county": "Sacramento County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95655",
+      "95670",
+      "95741",
+      "95742"
+    ],
+    "zipRange": "95655-95742",
+    "population": 79332,
+    "households": 29400,
+    "neighborhoods": [
+      "Anatolia",
+      "Sunridge Park",
+      "Kavala Ranch",
+      "Montelena",
+      "Rio del Oro",
+      "Villages of Zinfandel",
+      "Cresleigh Ranch",
+      "Mather",
+      "Mather Village",
+      "Cordova Meadows",
+      "Lincoln Village",
+      "Larchmont Riviera",
+      "White Rock",
+      "South White Rock",
+      "Brookside",
+      "Countryside"
+    ],
+    "neighborhoodsTop": [
+      "Anatolia",
+      "Kavala Ranch",
+      "Sunridge Park",
+      "Montelena",
+      "Villages of Zinfandel",
+      "Mather Village"
+    ],
+    "schools": [
+      "Cordova High Lancers",
+      "Folsom Lake College Rancho Cordova Center",
+      "Mitchell Middle School",
+      "Rancho Cordova Elementary School"
+    ],
+    "climate": {
+      "summerHigh": 104,
+      "winterLow": 38,
+      "rainfall": 19,
+      "notes": "The open ground east toward Mather gives Rancho Cordova far less mature tree shade than the older river neighborhoods, so fascia surfaces bake all afternoon and radiate heat well past sunset. Extruded aluminum sheds that load where sealed plastic housings soften, and the -40F to 140F range covers the January fog nights at the other end."
+    },
+    "driveMinutes": 172,
+    "lat": 38.5891,
+    "lng": -121.3027,
+    "communities": [
+      "Anatolia",
+      "Sunridge Park",
+      "Kavala Ranch",
+      "Montelena",
+      "Rio del Oro"
+    ],
+    "intro": "Rancho Cordova runs the full arc from 1950s Aerojet-era ranch tracts in Cordova Meadows and Larchmont Riviera to the Sunrise Douglas master plans east of Sunrise Boulevard, where Anatolia, Kavala Ranch and Montelena went up on open ground. The new side has tall, flat stucco elevations with almost no canopy in front of them, so a permanent light line reads from the street; the older ranches take a single clean eave run.",
+    "popular": "Holiday decorating on the Anatolia and Sunridge side has turned into an unofficial neighborhood competition, which is where programmable multi-scene systems earn their keep. Cordova High Lancer game nights and Fourth of July around the Mather Sports Complex give the color channels the rest of their year."
+  },
+  "davis": {
+    "name": "Davis",
+    "slug": "davis",
+    "state": "CA",
+    "county": "Yolo County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95616",
+      "95617",
+      "95618"
+    ],
+    "zipRange": "95616-95618",
+    "population": 66850,
+    "households": 26100,
+    "neighborhoods": [
+      "Old North Davis",
+      "Old East Davis",
+      "Downtown Davis",
+      "Central Davis",
+      "North Davis",
+      "South Davis",
+      "West Davis",
+      "East Davis",
+      "Village Homes",
+      "Mace Ranch",
+      "Wildhorse",
+      "Stonegate",
+      "Aggie Village",
+      "Lake Alhambra Estates",
+      "Evergreen",
+      "Covell Park"
+    ],
+    "neighborhoodsTop": [
+      "Stonegate",
+      "Wildhorse",
+      "Lake Alhambra Estates",
+      "Mace Ranch",
+      "Old North Davis",
+      "Village Homes"
+    ],
+    "schools": [
+      "Davis Senior High Blue Devils",
+      "UC Davis Aggies",
+      "Harper Junior High Huskies",
+      "Holmes Junior High Patriots",
+      "Da Vinci Charter Academy Dinosaurs"
+    ],
+    "climate": {
+      "summerHigh": 102,
+      "winterLow": 38,
+      "rainfall": 19,
+      "notes": "Davis takes the Delta wind funneled straight across the Yolo Bypass, then the fog that rises off the same flooded bypass all winter. Wind-driven agricultural grit is abrasive on anything exposed, so a low-profile aluminum channel that sheds debris holds up far better here than clip-mounted strands hanging free of the fascia."
+    },
+    "driveMinutes": 185,
+    "lat": 38.5449,
+    "lng": -121.7405,
+    "communities": [
+      "Village Homes",
+      "Mace Ranch",
+      "Wildhorse",
+      "Stonegate",
+      "Lake Alhambra Estates"
+    ],
+    "intro": "Davis reads nothing like the rest of the region. Old North and Old East hold Craftsman bungalows on tree-tunnel streets, Village Homes remains the country's best-known passive-solar subdivision, and Mace Ranch and Wildhorse fill out the east side with 1990s two-stories. Rooflines are modest, single-story is common, and with UC Davis on the west edge, low-glare permanent lighting that respects the town's dark-sky habits is the right specification.",
+    "popular": "Aggie blue-and-gold on football and basketball weekends and Picnic Day in April are the natural scenes. Davis wrote solar orientation into its subdivision code, so low-draw LED on an astronomical timer suits the local standard."
+  },
+  "el-dorado-hills": {
+    "name": "El Dorado Hills",
+    "slug": "el-dorado-hills",
+    "state": "CA",
+    "county": "El Dorado County",
+    "region": "Sacramento Metro",
+    "zips": [
+      "95762"
+    ],
+    "zipRange": "95762",
+    "population": 45982,
+    "households": 16400,
+    "neighborhoods": [
+      "Serrano",
+      "The Promontory",
+      "Blackstone",
+      "Governors Village",
+      "Ridgeview Village",
+      "Stonebriar",
+      "Crown Village",
+      "Highland View",
+      "Park Village",
+      "Woodridge",
+      "Valley View",
+      "Bass Lake Hills",
+      "Marble Valley",
+      "Lake Forest",
+      "Francisco Oaks",
+      "El Dorado Hills Town Center"
+    ],
+    "neighborhoodsTop": [
+      "Serrano",
+      "The Promontory",
+      "Blackstone",
+      "Stonebriar",
+      "Francisco Oaks",
+      "Ridgeview Village",
+      "Crown Village"
+    ],
+    "schools": [
+      "Oak Ridge High Trojans",
+      "Rolling Hills Middle School",
+      "Marina Village Middle School"
+    ],
+    "climate": {
+      "summerHigh": 99,
+      "winterLow": 36,
+      "rainfall": 30,
+      "notes": "Between roughly 500 and 1,200 feet, El Dorado Hills sits above most of the valley fog and trades it for stronger UV, occasional foothill thunderstorms and hard overnight freezes. Fixtures need the full -40F to 140F range and true IP67 housings to come through a wet, freezing January on an exposed west-facing gable."
+    },
+    "driveMinutes": 195,
+    "lat": 38.6857,
+    "lng": -121.0822,
+    "communities": [
+      "Serrano",
+      "Blackstone",
+      "The Promontory",
+      "Ridgeview Village",
+      "Marble Valley"
+    ],
+    "intro": "El Dorado Hills is hillside custom country. Serrano's gated Sierra-view lots, The Promontory, Blackstone and the older Governors Village streets all step up from Folsom Lake toward the Highway 50 foothills, and the elevations here run two and three stories over steep driveways. Stacked gables at that height make annual light-hanging genuinely dangerous, which is the strongest case in the region for a permanently installed system.",
+    "popular": "Oak Ridge Trojan red-and-black runs deep here every fall. Hillside elevations of this height reward a restrained year-round fixture line, so most homes hold a subtle warm white eleven months of the year and save saturated color for December and the Fourth of July."
+  },
+  "stockton": {
+    "name": "Stockton",
+    "slug": "stockton",
+    "state": "CA",
+    "county": "San Joaquin County",
+    "region": "Northern San Joaquin Valley",
+    "zips": [
+      "95202",
+      "95203",
+      "95204",
+      "95205",
+      "95206",
+      "95207",
+      "95209",
+      "95210",
+      "95212",
+      "95215",
+      "95219"
+    ],
+    "zipRange": "95202-95219",
+    "population": 320804,
+    "households": 96000,
+    "neighborhoods": [
+      "Brookside",
+      "Spanos Park West",
+      "Spanos Park East",
+      "Lincoln Village West",
+      "Quail Lakes",
+      "Venetian Gardens",
+      "Morada",
+      "Miracle Mile",
+      "Victory Park",
+      "Magnolia District",
+      "Weston Ranch",
+      "Country Club",
+      "Bear Creek",
+      "Louis Park",
+      "Kentfield",
+      "Seaport District"
+    ],
+    "neighborhoodsTop": [
+      "Brookside",
+      "Spanos Park West",
+      "Lincoln Village West",
+      "Quail Lakes",
+      "Venetian Gardens",
+      "Morada",
+      "Victory Park"
+    ],
+    "schools": [
+      "Lincoln High Trojans",
+      "Stagg High Delta Kings",
+      "Edison High Vikings",
+      "St. Mary's High Rams",
+      "University of the Pacific Tigers",
+      "San Joaquin Delta College Mustangs"
+    ],
+    "climate": {
+      "summerHigh": 94,
+      "winterLow": 39,
+      "rainfall": 14,
+      "notes": "The afternoon Delta breeze off the Deep Water Channel keeps Stockton a few degrees cooler than inland Modesto, but it also carries brackish moisture onto waterfront rooflines, and dense tule fog soaks everything from December into February. That argues for IP67-sealed fixtures and anodized aluminum track that will not corrode at the connection points."
+    },
+    "driveMinutes": 125,
+    "lat": 37.9577,
+    "lng": -121.2908,
+    "communities": [
+      "Brookside",
+      "Spanos Park West",
+      "Lincoln Village West",
+      "Weston Ranch",
+      "Venetian Gardens"
+    ],
+    "intro": "Stockton's rooflines run the full range, from the 1920s Tudors and Craftsman bungalows lining the Miracle Mile near Victory Park to the two-story stucco tracts of Spanos Park West and the waterfront lots along Brookside's Fourteenmile Slough. Permanent outdoor lighting reads especially well on those Delta-facing gables and long second-story eaves, where seasonal ladder work over water is a genuine hassle.",
+    "popular": "Waterfront gables along Fourteenmile Slough and Lincoln Village West are the standout use case here, since docks and levee frontage make seasonal installs risky. University of the Pacific orange and black is a two-tap preset for anyone who wants the house to read Tiger colors on a game night."
+  },
+  "modesto": {
+    "name": "Modesto",
+    "slug": "modesto",
+    "state": "CA",
+    "county": "Stanislaus County",
+    "region": "Northern San Joaquin Valley",
+    "zips": [
+      "95350",
+      "95351",
+      "95352",
+      "95353",
+      "95354",
+      "95355",
+      "95356",
+      "95357",
+      "95358"
+    ],
+    "zipRange": "95350-95358",
+    "population": 218464,
+    "households": 76000,
+    "neighborhoods": [
+      "College Area",
+      "La Loma",
+      "Graceada Park",
+      "Sherwood Forest",
+      "Village One",
+      "Dry Creek",
+      "Sylvan",
+      "Del Rio",
+      "Downtown Modesto",
+      "Airport Neighborhood",
+      "Bret Harte",
+      "Rosewood",
+      "Creekside",
+      "Coffee-Briggsmore",
+      "Shackelford",
+      "Robertson Road"
+    ],
+    "neighborhoodsTop": [
+      "Village One",
+      "La Loma",
+      "College Area",
+      "Graceada Park",
+      "Sylvan",
+      "Del Rio",
+      "Sherwood Forest"
+    ],
+    "schools": [
+      "Modesto High Panthers",
+      "Downey High Knights",
+      "Beyer High Patriots",
+      "Enochs High Eagles",
+      "Central Catholic High Raiders",
+      "Modesto Junior College Pirates"
+    ],
+    "climate": {
+      "summerHigh": 95,
+      "winterLow": 38,
+      "rainfall": 13,
+      "notes": "Modesto gets the classic valley whipsaw: tule fog that can sit on the city for days in December and January, then a July that pushes well past 100 with almost no cloud cover. Fixtures rated for a -40F to 140F operating range and UV-stable lenses are what survive that swing without yellowing or condensation."
+    },
+    "driveMinutes": 95,
+    "lat": 37.6391,
+    "lng": -120.9969,
+    "communities": [
+      "Village One",
+      "Del Rio",
+      "Creekside",
+      "Sherwood Forest",
+      "Dry Creek"
+    ],
+    "intro": "Modesto splits neatly between old and new. There are the Craftsman and Tudor blocks around Graceada Park and the McHenry Mansion, and then the 1990s master-planned streets of Village One running out toward Sylvan. Both suit permanent lighting for different reasons: deep porch eaves on the older stock, and long uninterrupted two-story rooflines on the newer tracts that hold a clean track line.",
+    "popular": "June's Graffiti Summer cruise weekend effectively gives Modesto a second lighting holiday, and Modesto High and Downey colors are easy to save as a fall preset. On the tight HOA streets of Village One and Sylvan, a track that disappears in daylight is the practical alternative to strung lights."
+  },
+  "merced": {
+    "name": "Merced",
+    "slug": "merced",
+    "state": "CA",
+    "county": "Merced County",
+    "region": "Northern San Joaquin Valley",
+    "zips": [
+      "95340",
+      "95341",
+      "95343",
+      "95344",
+      "95348"
+    ],
+    "zipRange": "95340-95348",
+    "population": 86333,
+    "households": 27500,
+    "neighborhoods": [
+      "Bellevue Ranch",
+      "Bellevue Ranch Village",
+      "North Merced",
+      "South Merced",
+      "Downtown Merced",
+      "Applegate Park",
+      "Fahrens Park",
+      "Bear Creek",
+      "Merced Country Club",
+      "Loughborough",
+      "Franklin-Beachwood",
+      "Yosemite Avenue Corridor",
+      "Olive Avenue",
+      "Childs Avenue"
+    ],
+    "neighborhoodsTop": [
+      "Bellevue Ranch",
+      "Bellevue Ranch Village",
+      "North Merced",
+      "Merced Country Club",
+      "Fahrens Park",
+      "Applegate Park"
+    ],
+    "schools": [
+      "Merced High Bears",
+      "Golden Valley High Cougars",
+      "El Capitan High Gauchos",
+      "Buhach Colony High Thunder",
+      "Merced College Blue Devils",
+      "UC Merced Bobcats"
+    ],
+    "climate": {
+      "summerHigh": 96,
+      "winterLow": 38,
+      "rainfall": 12,
+      "notes": "Merced sits at the dry southern hinge of the valley fog belt, so winters bring thick ground fog and summers deliver relentless, cloudless UV load on south-facing fascia. Aluminum track and UV-stable lensing keep the diodes from shifting color, and IP67 sealing handles the overnight condensation that fog season leaves behind."
+    },
+    "driveMinutes": 55,
+    "lat": 37.3022,
+    "lng": -120.483,
+    "communities": [
+      "Bellevue Ranch",
+      "Bellevue Ranch Village",
+      "Merced Country Club",
+      "Fahrens Park"
+    ],
+    "intro": "Merced grew north toward UC Merced, and the housing stock shows it. Bellevue Ranch's stucco-and-tile two-stories sit a few miles from the 1920s bungalows ringing Applegate Park and its little zoo. Rooflines on the newer north-side tracts run long and uninterrupted, exactly the geometry permanent lighting was designed for, while the older cottages downtown take a tighter, trimmed line.",
+    "popular": "UC Merced Bobcat blue-and-gold makes an easy programmed game-day preset, and the tight HOA streets in Bellevue Ranch suit a permanent track that reads as trim in daylight. The long, low north-side rooflines are the kind of geometry that carries a soft warm-white eave and pathway scene year-round, not just holiday color."
+  },
+  "turlock": {
+    "name": "Turlock",
+    "slug": "turlock",
+    "state": "CA",
+    "county": "Stanislaus County",
+    "region": "Northern San Joaquin Valley",
+    "zips": [
+      "95380",
+      "95381",
+      "95382"
+    ],
+    "zipRange": "95380-95382",
+    "population": 72740,
+    "households": 23500,
+    "neighborhoods": [
+      "Northeast Turlock",
+      "East Turlock",
+      "North Turlock",
+      "West Turlock",
+      "South Turlock",
+      "Downtown Turlock",
+      "Country Club Estates",
+      "Turlock Golf & Country Club",
+      "Monte Vista",
+      "Northwest Triangle",
+      "Christoffersen Parkway",
+      "Geer Road Corridor",
+      "Crowell Road",
+      "Fulkerth Road"
+    ],
+    "neighborhoodsTop": [
+      "Northeast Turlock",
+      "East Turlock",
+      "Country Club Estates",
+      "Turlock Golf & Country Club",
+      "Christoffersen Parkway",
+      "North Turlock"
+    ],
+    "schools": [
+      "Turlock High Bulldogs",
+      "Pitman High Pride",
+      "Turlock Christian Eagles",
+      "Denair High Coyotes",
+      "Stanislaus State Warriors"
+    ],
+    "climate": {
+      "summerHigh": 95,
+      "winterLow": 37,
+      "rainfall": 11,
+      "notes": "Turlock is ringed by dairies and almond ground, so summer air carries fine agricultural dust while flood irrigation and winter tule fog push humidity right back up at night. A fully sealed IP67 channel keeps that grit and condensation out of the diode strip, and aluminum track sheds the 100-degree afternoon heat."
+    },
+    "driveMinutes": 75,
+    "lat": 37.4947,
+    "lng": -120.8466,
+    "communities": [
+      "Country Club Estates",
+      "Turlock Golf & Country Club",
+      "Northeast Turlock",
+      "Monte Vista",
+      "Christoffersen Parkway"
+    ],
+    "intro": "Anchored by Stanislaus State and surrounded by dairy and almond ground, Turlock keeps its highest curb appeal on the east side: custom homes off Christoffersen Parkway and the older estates ringing the Turlock Golf & Country Club. Those wide single-story spans and deep stucco eaves hold a permanent lighting track cleanly, and homes here tend to have the roofline length to make it worthwhile.",
+    "popular": "Turlock's Portuguese festa season and Stanislaus State Warrior colors are both easy to program well outside December. The city's wide, low-slung lots also lend themselves to soft year-round eave downlighting rather than a holiday-only run."
+  },
+  "manteca": {
+    "name": "Manteca",
+    "slug": "manteca",
+    "state": "CA",
+    "county": "San Joaquin County",
+    "region": "Northern San Joaquin Valley",
+    "zips": [
+      "95336",
+      "95337"
+    ],
+    "zipRange": "95336-95337",
+    "population": 83498,
+    "households": 25500,
+    "neighborhoods": [
+      "Woodbridge",
+      "Del Webb at Woodbridge",
+      "Union Ranch",
+      "Oakwood Shores",
+      "Downtown Manteca",
+      "Spreckels Park",
+      "Woodward Park",
+      "Yosemite Avenue Corridor",
+      "Airport Way Corridor",
+      "Lathrop Road Corridor",
+      "Manteca Golf Course",
+      "Orchard Valley",
+      "Powers Tract",
+      "Louise Avenue Corridor"
+    ],
+    "neighborhoodsTop": [
+      "Oakwood Shores",
+      "Union Ranch",
+      "Woodbridge",
+      "Del Webb at Woodbridge",
+      "Woodward Park",
+      "Manteca Golf Course"
+    ],
+    "schools": [
+      "Manteca High Buffaloes",
+      "East Union High Lancers",
+      "Sierra High Timberwolves",
+      "Lathrop High Spartans",
+      "San Joaquin Delta College Mustangs"
+    ],
+    "climate": {
+      "summerHigh": 95,
+      "winterLow": 38,
+      "rainfall": 13,
+      "notes": "Manteca sits close enough to the Delta gap that spring and summer afternoons bring real wind and blowing field dust across new subdivisions with young landscaping. Aluminum extrusion track handles both the wind load and the 100-degree heat sink, while IP67 sealing keeps dust out of the channel year after year."
+    },
+    "driveMinutes": 110,
+    "lat": 37.7974,
+    "lng": -121.2161,
+    "communities": [
+      "Del Webb at Woodbridge",
+      "Woodbridge",
+      "Union Ranch",
+      "Oakwood Shores",
+      "Spreckels Park"
+    ],
+    "intro": "Manteca is the fastest-changing address in this part of the valley. Del Webb's gated Woodbridge and the lake-ringed Mediterranean homes of Oakwood Shores went up almost entirely after 2000, and Union Ranch added larger production homes on the north side. That newer stucco fascia takes a permanent lighting track without the compromises older construction demands, while Spreckels Park keeps its 1950s ranches.",
+    "popular": "Heavy new-build HOA density and the October Pumpkin Fair make a warm year-round accent scene with programmed holiday color layered on top the natural fit here. For a 55-plus community like Del Webb at Woodbridge, the appeal is straightforward — a permanent system means no one has to get on a ladder in the first place."
+  },
+  "lodi": {
+    "name": "Lodi",
+    "slug": "lodi",
+    "state": "CA",
+    "county": "San Joaquin County",
+    "region": "Northern San Joaquin Valley",
+    "zips": [
+      "95240",
+      "95241",
+      "95242",
+      "95258"
+    ],
+    "zipRange": "95240-95258",
+    "population": 66348,
+    "households": 24500,
+    "neighborhoods": [
+      "Lodi Lake",
+      "Heritage District",
+      "Downtown Lodi",
+      "Century Meadows",
+      "Legacy Estates",
+      "Lakeshore Village",
+      "Sunwest",
+      "Vinewood",
+      "Woodbridge",
+      "Wine Country",
+      "River Meadows",
+      "Windwood",
+      "Kettleman Lane Corridor",
+      "Ham Lane Corridor"
+    ],
+    "neighborhoodsTop": [
+      "Lodi Lake",
+      "Century Meadows",
+      "Legacy Estates",
+      "Wine Country",
+      "Woodbridge",
+      "Heritage District"
+    ],
+    "schools": [
+      "Lodi High Flames",
+      "Tokay High Tigers",
+      "Liberty Ranch High Hawks",
+      "Galt High Warriors",
+      "San Joaquin Delta College Mustangs"
+    ],
+    "climate": {
+      "summerHigh": 94,
+      "winterLow": 38,
+      "rainfall": 18,
+      "notes": "Lodi catches noticeably more annual rain than Modesto or Merced, and the Mokelumne River corridor breeds some of the densest tule fog in San Joaquin County. Standing moisture in gutters and along fascia is the real durability test, so IP67-rated fixtures and sealed end caps matter more here than raw heat tolerance."
+    },
+    "driveMinutes": 140,
+    "lat": 38.1302,
+    "lng": -121.2724,
+    "communities": [
+      "Century Meadows",
+      "Legacy Estates",
+      "Lakeshore Village",
+      "Wine Country"
+    ],
+    "intro": "Lodi reads older than its neighbors. Craftsman and Queen Anne blocks sit near the Heritage District arch downtown, shaded streets run north to Lodi Lake and the Mokelumne, and vineyard-edge subdivisions like Century Meadows and Legacy Estates fill in the west side. Steep-pitched roofs on the historic stock and long ranch eaves in the newer tracts both take permanent lighting well.",
+    "popular": "Warm, year-round wine-country ambience is an easy look to dial in on the deep porches and rooflines around Lodi Lake, and it does not have to be limited to holiday color. The September Grape Festival and Lodi High Flames colors are two more scenes worth saving as presets."
+  },
+  "ceres": {
+    "name": "Ceres",
+    "slug": "ceres",
+    "state": "CA",
+    "county": "Stanislaus County",
+    "region": "Northern San Joaquin Valley",
+    "zips": [
+      "95307"
+    ],
+    "zipRange": "95307",
+    "population": 49302,
+    "households": 14500,
+    "neighborhoods": [
+      "Whitmore Ranch",
+      "Eastgate",
+      "Mayfield",
+      "Downtown Ceres",
+      "River Bluff",
+      "Smyrna Park",
+      "North Ceres",
+      "West Ceres",
+      "Central Ceres",
+      "Hatch Road Corridor",
+      "Mitchell Road Corridor",
+      "Service Road Corridor",
+      "Don Pedro Road",
+      "Faith Home Road"
+    ],
+    "neighborhoodsTop": [
+      "Whitmore Ranch",
+      "Eastgate",
+      "Mayfield",
+      "River Bluff",
+      "North Ceres",
+      "Smyrna Park"
+    ],
+    "schools": [
+      "Ceres High Bulldogs",
+      "Central Valley High Hawks",
+      "Hughson High Huskies",
+      "Modesto Christian Crusaders",
+      "Modesto Junior College Pirates"
+    ],
+    "climate": {
+      "summerHigh": 96,
+      "winterLow": 38,
+      "rainfall": 12,
+      "notes": "Sitting on the bluff above the Tuolumne, Ceres gets river-bottom fog that pools along the north edge of town on winter mornings and burns off late. Pair that with 100-degree summer afternoons and orchard dust, and the -40F to 140F operating range plus a sealed IP67 channel is the spec that actually lasts."
+    },
+    "driveMinutes": 85,
+    "lat": 37.5949,
+    "lng": -120.9577,
+    "communities": [
+      "Whitmore Ranch",
+      "Eastgate",
+      "Mayfield",
+      "River Bluff"
+    ],
+    "intro": "Ceres sits on the bluff above the Tuolumne just south of Modesto, and its newest streets, Whitmore Ranch, Eastgate and the Mayfield homes near River Bluff Regional Park, are almost all post-2000 stucco with clean two-story fascia. Older blocks in Central Ceres off Hatch Road run to modest 1950s ranches, where a single trimmed lighting line does far more than strung bulbs can.",
+    "popular": "Bulldog and Hawk game-day color and the downtown Street Faire in October are both straightforward programmed presets. The rest of the year, warm white on those twenty-plus-foot newer two-story fascias is the real selling point, since almost nobody wants that ladder."
+  },
+  "san-jose": {
+    "name": "San Jose",
+    "slug": "san-jose",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "95110",
+      "95112",
+      "95116",
+      "95118",
+      "95120",
+      "95122",
+      "95124",
+      "95125",
+      "95126",
+      "95128",
+      "95132",
+      "95136"
+    ],
+    "zipRange": "95110-95136",
+    "population": 969655,
+    "households": 330000,
+    "neighborhoods": [
+      "Willow Glen",
+      "Rose Garden",
+      "Naglee Park",
+      "Almaden Valley",
+      "Evergreen",
+      "Berryessa",
+      "Japantown",
+      "Downtown San Jose",
+      "Alum Rock",
+      "Cambrian Park",
+      "Blossom Valley",
+      "Santa Teresa",
+      "Silver Creek",
+      "Communications Hill",
+      "West San Jose",
+      "Alviso",
+      "Burbank",
+      "Edenvale"
+    ],
+    "neighborhoodsTop": [
+      "Almaden Valley",
+      "Willow Glen",
+      "Rose Garden",
+      "Silver Creek",
+      "Naglee Park",
+      "Communications Hill",
+      "Evergreen"
+    ],
+    "schools": [
+      "Bellarmine College Preparatory Bells",
+      "Willow Glen High Rams",
+      "Leland High Chargers",
+      "Pioneer High Mustangs",
+      "Archbishop Mitty Monarchs",
+      "San Jose State Spartans"
+    ],
+    "climate": {
+      "summerHigh": 85,
+      "winterLow": 42,
+      "rainfall": 15,
+      "notes": "The valley floor runs past 90 for stretches of July while winter mornings sit under tule fog that slides down from the Delta. That yearly swing is why fixtures need a genuine -40F to 140F operating range and IP67-sealed housings rather than seasonal-grade string light."
+    },
+    "driveMinutes": 155,
+    "lat": 37.3382,
+    "lng": -121.8863,
+    "communities": [
+      "Silver Creek Valley Country Club",
+      "The Villages Golf and Country Club",
+      "Communications Hill",
+      "Almaden Lake Village",
+      "River Oaks"
+    ],
+    "intro": "San Jose sprawls from the Almaden foothills to the Alviso marshes, and the housing stock changes as you cross it: 1920s Craftsman bungalows in Naglee Park, deep-eaved postwar ranches through Willow Glen and the Rose Garden, hillside customs above Silver Creek. Long, low rooflines and mature street trees make permanent outdoor lighting an easy fit, since the track hides in the fascia year-round.",
+    "popular": "Sharks teal and Spartan blue and gold both get their turn, and the same system carries from Diwali straight through Christmas — a stretch that Berryessa and Evergreen both mark on the calendar, which is why programmable color matters more here than a single warm white."
+  },
+  "santa-clara": {
+    "name": "Santa Clara",
+    "slug": "santa-clara",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "95050",
+      "95051",
+      "95052",
+      "95053",
+      "95054",
+      "95055",
+      "95056"
+    ],
+    "zipRange": "95050-95056",
+    "population": 127647,
+    "households": 48000,
+    "neighborhoods": [
+      "Old Quad",
+      "Rivermark",
+      "Killarney Farms",
+      "Forest Park",
+      "Bracher",
+      "Laurelwood",
+      "Ponderosa",
+      "Machado",
+      "Maywood",
+      "Fairway Glen",
+      "Northside",
+      "Pomeroy West",
+      "Westwood Oaks",
+      "Agnew",
+      "Central Park"
+    ],
+    "neighborhoodsTop": [
+      "Rivermark",
+      "Old Quad",
+      "Fairway Glen",
+      "Killarney Farms",
+      "Forest Park",
+      "Laurelwood",
+      "Westwood Oaks"
+    ],
+    "schools": [
+      "Santa Clara High Bruins",
+      "Adrian Wilcox High Chargers",
+      "Cabrillo Middle School Cougars",
+      "Mission College Saints",
+      "Santa Clara University Broncos"
+    ],
+    "climate": {
+      "summerHigh": 84,
+      "winterLow": 42,
+      "rainfall": 15,
+      "notes": "Afternoon bay breeze funnels in off the Alviso flats carrying enough moisture and salt inland to eat cheap hardware. Anodized aluminum track and IP67-sealed diodes shrug it off, where painted steel clips streak rust down a fascia board inside one wet season."
+    },
+    "driveMinutes": 160,
+    "lat": 37.3541,
+    "lng": -121.9552,
+    "communities": [
+      "Rivermark",
+      "Old Quad Historic District",
+      "Killarney Farms",
+      "Forest Park",
+      "Santa Clara Square"
+    ],
+    "intro": "Santa Clara stacks eras on top of each other: Victorian and Craftsman cottages in the Old Quad around the 1777 mission, flat 1950s ranch tracts through Killarney Farms and Bracher, then Rivermark's dense 2000s townhomes north of Tasman. Between Levi's Stadium Sundays and tight suburban lots, permanent lighting on aluminum track gives those very different rooflines one clean, consistent line.",
+    "popular": "49ers red and gold is the natural preset for Levi's Stadium Sundays, with Bronco red an easy second on the streets around the university. Rivermark's shared-facade townhomes would carry a block-wide line cleanly."
+  },
+  "sunnyvale": {
+    "name": "Sunnyvale",
+    "slug": "sunnyvale",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "94083",
+      "94085",
+      "94086",
+      "94087",
+      "94088",
+      "94089"
+    ],
+    "zipRange": "94083-94089",
+    "population": 155805,
+    "households": 59500,
+    "neighborhoods": [
+      "Cherry Chase",
+      "Ponderosa Park",
+      "Ortega Park",
+      "Birdland",
+      "Heritage District",
+      "Raynor Park",
+      "Washington Park",
+      "Braly Park",
+      "Cumberland South",
+      "Fair Oaks",
+      "Lakewood Village",
+      "Serra Park",
+      "Sunnyvale West",
+      "Encinal",
+      "De Anza Park",
+      "Las Palmas"
+    ],
+    "neighborhoodsTop": [
+      "Cherry Chase",
+      "Ponderosa Park",
+      "Serra Park",
+      "Raynor Park",
+      "Ortega Park",
+      "Birdland",
+      "Cumberland South"
+    ],
+    "schools": [
+      "Fremont High Firebirds",
+      "Homestead High Mustangs",
+      "The King's Academy Knights",
+      "Peterson Middle School Panthers",
+      "Foothill College Owls"
+    ],
+    "climate": {
+      "summerHigh": 82,
+      "winterLow": 42,
+      "rainfall": 15,
+      "notes": "Sunnyvale summers stay moderate because the bay breeze reliably arrives by late afternoon, but UV load on south-facing fascia is relentless from May through October. UV-stable lens material and aluminum channel keep a run from yellowing, sagging or going brittle at the clips."
+    },
+    "driveMinutes": 165,
+    "lat": 37.3688,
+    "lng": -122.0363,
+    "communities": [
+      "Cherry Chase",
+      "Ponderosa Park",
+      "Birdland",
+      "Lakewood Village",
+      "Heritage District"
+    ],
+    "intro": "Cherry Chase and Ponderosa Park still read like the orchard tracts they replaced — single-story 1950s and '60s ranches on flat lots, wide fascia boards, garage-forward frontages and almost no roof complexity. Downtown's Heritage District and the blocks off Murphy Avenue add older cottages and newer infill. That long uninterrupted eave is precisely what permanent outdoor lighting was designed for.",
+    "popular": "Firebird cardinal and white covers Friday nights at Fremont, and the calendar here runs long — Diwali through Lunar New Year through Christmas on one system. Low single-story rooflines also make front-elevation accent uplighting a natural add-on."
+  },
+  "cupertino": {
+    "name": "Cupertino",
+    "slug": "cupertino",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "95014",
+      "95015"
+    ],
+    "zipRange": "95014-95015",
+    "population": 60381,
+    "households": 21000,
+    "neighborhoods": [
+      "Monta Vista",
+      "Rancho Rinconada",
+      "Garden Gate",
+      "Fairgrove",
+      "Seven Springs",
+      "Oak Valley",
+      "Inspiration Heights",
+      "Creston-Pharlap",
+      "North Blaney",
+      "South Blaney",
+      "Portal Park",
+      "Jollyman",
+      "Regnart",
+      "Lincoln"
+    ],
+    "neighborhoodsTop": [
+      "Inspiration Heights",
+      "Monta Vista",
+      "Seven Springs",
+      "Oak Valley",
+      "Fairgrove",
+      "Regnart",
+      "Garden Gate"
+    ],
+    "schools": [
+      "Monta Vista High Matadors",
+      "Cupertino High Pioneers",
+      "Homestead High Mustangs",
+      "Lynbrook High Vikings",
+      "De Anza College Mountain Lions"
+    ],
+    "climate": {
+      "summerHigh": 85,
+      "winterLow": 41,
+      "rainfall": 19,
+      "notes": "Sitting against the foothills, Cupertino collects several more inches of rain each winter than the valley floor, and that runoff sheets straight off flat Eichler roofs onto the fascia below. IP67 sealing has to hold at every splice and connector here, not just at the fixture bodies."
+    },
+    "driveMinutes": 170,
+    "lat": 37.323,
+    "lng": -122.0322,
+    "communities": [
+      "Fairgrove",
+      "Rancho Rinconada",
+      "Seven Springs",
+      "Oak Valley",
+      "Monta Vista"
+    ],
+    "intro": "Cupertino climbs from the compact postwar flats of Rancho Rinconada up through Monta Vista to Inspiration Heights, where custom homes look down on Stevens Creek Reservoir and the Apple Park ring. Fairgrove's Eichler tract brings flat roofs and post-and-beam glass; the hillside customs bring steep gables and long fascia runs. Both take permanent lighting well, with entirely different mounting approaches.",
+    "popular": "Lunar New Year red and gold is as much a part of the calendar here as December white, and Matador purple and gold suits playoff weeks. On hillside elevations a warm 2700K wash defines gables against the dark ridge behind them."
+  },
+  "mountain-view": {
+    "name": "Mountain View",
+    "slug": "mountain-view",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "94035",
+      "94039",
+      "94040",
+      "94041",
+      "94042",
+      "94043"
+    ],
+    "zipRange": "94035-94043",
+    "population": 82376,
+    "households": 35000,
+    "neighborhoods": [
+      "Old Mountain View",
+      "Cuesta Park",
+      "Monta Loma",
+      "Waverly Park",
+      "Blossom Valley",
+      "Rex Manor",
+      "Sylvan Park",
+      "Whisman Station",
+      "North Whisman",
+      "Willowgate",
+      "Gemello",
+      "Martens-Carmelita",
+      "Slater",
+      "Wagon Wheel",
+      "Jackson Park",
+      "Shoreline West",
+      "St. Francis Acres"
+    ],
+    "neighborhoodsTop": [
+      "Waverly Park",
+      "Cuesta Park",
+      "Old Mountain View",
+      "Monta Loma",
+      "St. Francis Acres",
+      "Blossom Valley",
+      "Gemello"
+    ],
+    "schools": [
+      "Mountain View High Spartans",
+      "Los Altos High Eagles",
+      "St. Francis High Lancers",
+      "Foothill College Owls",
+      "De Anza College Mountain Lions"
+    ],
+    "climate": {
+      "summerHigh": 82,
+      "winterLow": 42,
+      "rainfall": 15,
+      "notes": "The marine layer pushes in over Shoreline most summer nights and burns off by mid-morning, so exterior fixtures cycle through condensation nearly every day. Sealed IP67 housings prevent the internal lens fogging that retires unsealed lights within a couple of seasons."
+    },
+    "driveMinutes": 170,
+    "lat": 37.3861,
+    "lng": -122.0839,
+    "communities": [
+      "The Crossings",
+      "Whisman Station",
+      "Monta Loma",
+      "Waverly Park",
+      "St. Francis Acres"
+    ],
+    "intro": "Between the Shoreline baylands and the streets south of El Camino, Mountain View holds one of the densest concentrations of Eichler homes anywhere — Monta Loma above all, block after block of flat roofs, tar-and-gravel decks and clerestory glass. Waverly Park and the Craftsman grid of Old Mountain View round it out. Low horizontal profiles like these suit permanent lighting that traces a roofline instead of fighting it.",
+    "popular": "On an Eichler's flat fascia, a year-round low-glow architectural setting suits the horizontal profile better than holiday color, with Spartan black and gold or Los Altos Eagle blue and gray held in reserve for game weeks."
+  },
+  "palo-alto": {
+    "name": "Palo Alto",
+    "slug": "palo-alto",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "94301",
+      "94302",
+      "94303",
+      "94304",
+      "94305",
+      "94306"
+    ],
+    "zipRange": "94301-94306",
+    "population": 68572,
+    "households": 26500,
+    "neighborhoods": [
+      "Old Palo Alto",
+      "Professorville",
+      "Crescent Park",
+      "Community Center",
+      "Downtown North",
+      "University South",
+      "College Terrace",
+      "Barron Park",
+      "Green Acres",
+      "Midtown",
+      "Palo Alto Hills",
+      "Southgate",
+      "Ventura",
+      "Duveneck/St. Francis",
+      "Greenmeadow",
+      "Fairmeadow",
+      "Evergreen Park"
+    ],
+    "neighborhoodsTop": [
+      "Old Palo Alto",
+      "Professorville",
+      "Crescent Park",
+      "Palo Alto Hills",
+      "Southgate",
+      "Duveneck/St. Francis",
+      "Community Center"
+    ],
+    "schools": [
+      "Palo Alto High Vikings",
+      "Henry M. Gunn High Titans",
+      "Castilleja School Gators",
+      "Stanford Cardinal"
+    ],
+    "climate": {
+      "summerHigh": 82,
+      "winterLow": 40,
+      "rainfall": 15,
+      "notes": "Cool damp nights off San Francisquito Creek and the baylands give way to dry 80s by afternoon, a daily moisture cycle that finds every unsealed connection. Aluminum track with gasketed IP67 fixtures is the difference between a run that lasts years and one that fails its second winter."
+    },
+    "driveMinutes": 180,
+    "lat": 37.4419,
+    "lng": -122.143,
+    "communities": [
+      "Greenmeadow",
+      "Fairmeadow",
+      "Palo Alto Hills",
+      "Barron Park",
+      "Crescent Park"
+    ],
+    "intro": "Old Palo Alto and Professorville hold Shingle-style and Craftsman houses under heritage oaks, while Greenmeadow and Fairmeadow preserve entire registered Eichler tracts a couple of miles south. Crescent Park runs to two-story Colonials near San Francisquito Creek. Permanent lighting appeals here because a low-profile fixture line reads as architectural trim by day, on streets where how a house looks is taken seriously.",
+    "popular": "Cardinal red on football Saturdays is the obvious use, with Viking green and white for Little Big Game week against Gunn. A warm dimmed white the rest of the year keeps the house reading as trim-lit rather than decorated."
+  },
+  "milpitas": {
+    "name": "Milpitas",
+    "slug": "milpitas",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "95035",
+      "95036"
+    ],
+    "zipRange": "95035-95036",
+    "population": 80273,
+    "households": 24000,
+    "neighborhoods": [
+      "Sunnyhills",
+      "Parktown",
+      "Midtown Milpitas",
+      "Summitpointe",
+      "Country Club",
+      "Cardoza Park",
+      "Sandalwood",
+      "Hall Memorial Park",
+      "Murphy Ranch",
+      "Dixon Landing",
+      "Great Mall District",
+      "Transit Area District",
+      "Calaveras Hills",
+      "McCarthy Ranch",
+      "Berryessa Creek"
+    ],
+    "neighborhoodsTop": [
+      "Summitpointe",
+      "Country Club",
+      "Murphy Ranch",
+      "Parktown",
+      "Calaveras Hills",
+      "Cardoza Park"
+    ],
+    "schools": [
+      "Milpitas High Trojans",
+      "Piedmont Hills High Pirates",
+      "Ohlone College Renegades",
+      "Mission College Saints",
+      "San Jose State Spartans"
+    ],
+    "climate": {
+      "summerHigh": 85,
+      "winterLow": 42,
+      "rainfall": 15,
+      "notes": "Spring wind comes down out of the Calaveras and Diablo foothills hard, and the salt ponds south of town put corrosive air on low-lying elevations. Marine-grade aluminum channel and IP67 housings are the baseline in Milpitas, not an upgrade."
+    },
+    "driveMinutes": 160,
+    "lat": 37.4323,
+    "lng": -121.8996,
+    "communities": [
+      "Sunnyhills",
+      "Summitpointe",
+      "Parktown",
+      "Cardoza Park",
+      "Murphy Ranch"
+    ],
+    "intro": "Milpitas runs from Sunnyhills — the integrated postwar subdivision built in 1955 — up to the Summitpointe customs on the Diablo Range slope, with Parktown and Cardoza Park ranches filling the middle. Homes on that east-side grade look out across the whole South Bay, and a permanent lighting run on those west-facing elevations reads from a long way down the valley floor.",
+    "popular": "Trojan blue and gold suits Friday nights, and the color calendar off Landess and Calaveras runs from Diwali through Lunar New Year without a hardware change. Above Parktown the grade does something extra: a low warm setting left running becomes ambient security lighting for the rest of the year."
+  },
+  "campbell": {
+    "name": "Campbell",
+    "slug": "campbell",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "95008",
+      "95009",
+      "95011"
+    ],
+    "zipRange": "95008-95011",
+    "population": 42726,
+    "households": 17500,
+    "neighborhoods": [
+      "Downtown Campbell",
+      "Orchard City",
+      "Pruneyard",
+      "San Tomas",
+      "Dry Creek",
+      "Winchester",
+      "East Campbell",
+      "West Campbell",
+      "Campbell Park",
+      "John D. Morgan Park",
+      "Hamilton Corridor",
+      "Rincon",
+      "Sunnyoaks",
+      "Pollard",
+      "Latimer",
+      "Bucknall"
+    ],
+    "neighborhoodsTop": [
+      "Downtown Campbell",
+      "San Tomas",
+      "Dry Creek",
+      "Pruneyard",
+      "Pollard",
+      "Bucknall"
+    ],
+    "schools": [
+      "Westmont High Warriors",
+      "Del Mar High Dons",
+      "Prospect High Panthers",
+      "Leigh High Longhorns",
+      "West Valley College Vikings"
+    ],
+    "climate": {
+      "summerHigh": 87,
+      "winterLow": 41,
+      "rainfall": 17,
+      "notes": "Campbell sits far enough from the bay to run a few degrees hotter than Sunnyvale through July, and attic-adjacent fascia surfaces climb well above ambient in the afternoon. Fixtures rated to 140F hold their output; consumer-grade LEDs dim and shift color under that load."
+    },
+    "driveMinutes": 160,
+    "lat": 37.2872,
+    "lng": -121.95,
+    "communities": [
+      "Downtown Campbell",
+      "San Tomas",
+      "Dry Creek",
+      "Pruneyard District",
+      "Orchard City"
+    ],
+    "intro": "Campbell keeps its Orchard City bones — bungalows and small ranches on the grid around Campbell Avenue, the old water tower and the Ainsley House downtown, then larger San Tomas and Dry Creek homes out toward Los Gatos Creek. Lots are compact and rooflines are simple, low and single-story, which is about the easiest case there is for permanent outdoor lighting.",
+    "popular": "Westmont Warrior red and black covers game nights, and with lots this tight one lit house would set the tone for the whole block. Downtown's holiday season draws heavy foot traffic into the neighborhoods just north of Campbell Avenue."
+  },
+  "los-gatos": {
+    "name": "Los Gatos",
+    "slug": "los-gatos",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "95030",
+      "95031",
+      "95032",
+      "95033"
+    ],
+    "zipRange": "95030-95033",
+    "population": 33529,
+    "households": 13500,
+    "neighborhoods": [
+      "Almond Grove",
+      "Broadway Historic District",
+      "University-Edelen",
+      "Downtown Los Gatos",
+      "Glenridge",
+      "La Rinconada",
+      "Belgatos",
+      "Blossom Manor",
+      "Shannon Valley Ranch",
+      "Kennedy Road",
+      "Chemeketa Park",
+      "Redwood Estates",
+      "Aldercroft Heights",
+      "Oak Meadow"
+    ],
+    "neighborhoodsTop": [
+      "Almond Grove",
+      "Broadway Historic District",
+      "Belgatos",
+      "La Rinconada",
+      "University-Edelen",
+      "Kennedy Road"
+    ],
+    "schools": [
+      "Los Gatos High Wildcats",
+      "Saratoga High Falcons",
+      "Leigh High Longhorns",
+      "The Harker School Eagles",
+      "West Valley College Vikings"
+    ],
+    "climate": {
+      "summerHigh": 89,
+      "winterLow": 39,
+      "rainfall": 26,
+      "notes": "Backed hard against the Santa Cruz Mountains, Los Gatos catches close to double the valley's annual rain, and canyon runoff plus redwood debris load the eaves all winter. IP67 sealing and aluminum track that sheds needles instead of trapping them matter more here than anywhere on the flat."
+    },
+    "driveMinutes": 165,
+    "lat": 37.2358,
+    "lng": -121.9624,
+    "communities": [
+      "La Rinconada",
+      "Belgatos",
+      "Shannon Valley Ranch",
+      "Chemeketa Park",
+      "Redwood Estates"
+    ],
+    "intro": "Almond Grove's Victorians sit a few blocks off Santa Cruz Avenue, Belgatos and the Kennedy Road customs climb the ridge behind them, and over Highway 17 the Chemeketa Park and Redwood Estates cabins sit under full redwood canopy. Steep hillside rooflines are miserable to light seasonally and ideal to light permanently: the track goes up once, and the gables stay defined all winter.",
+    "popular": "Wildcat orange and black runs deep on Friday nights. On unlit canyon roads like Belgatos and Kennedy, a low warm year-round setting doubles as driveway and address visibility."
+  },
+  "morgan-hill": {
+    "name": "Morgan Hill",
+    "slug": "morgan-hill",
+    "state": "CA",
+    "county": "Santa Clara County",
+    "region": "South Bay",
+    "zips": [
+      "95037",
+      "95038"
+    ],
+    "zipRange": "95037-95038",
+    "population": 45952,
+    "households": 15000,
+    "neighborhoods": [
+      "Downtown Morgan Hill",
+      "Jackson Oaks",
+      "Holiday Lake Estates",
+      "Paradise Valley",
+      "El Toro",
+      "Madrone",
+      "Cochrane",
+      "Butterfield",
+      "Barrett",
+      "Nordstrom",
+      "Tennant",
+      "Monterey Road Corridor",
+      "Coyote Valley",
+      "Llagas"
+    ],
+    "neighborhoodsTop": [
+      "Jackson Oaks",
+      "Paradise Valley",
+      "Holiday Lake Estates",
+      "El Toro",
+      "Cochrane",
+      "Downtown Morgan Hill"
+    ],
+    "schools": [
+      "Live Oak High Acorns",
+      "Ann Sobrato High Bulldogs",
+      "Christopher High Cougars",
+      "Gilroy High Mustangs",
+      "Gavilan College Rams"
+    ],
+    "climate": {
+      "summerHigh": 92,
+      "winterLow": 38,
+      "rainfall": 20,
+      "notes": "South valley heat pushes into the mid-90s through August while winter mornings drop into the 30s under tule fog off Anderson Lake, a swing that can exceed 50 degrees in a single day. The -40F to 140F operating range and the expansion tolerance built into aluminum track exist for exactly this."
+    },
+    "driveMinutes": 140,
+    "lat": 37.1305,
+    "lng": -121.6544,
+    "communities": [
+      "Jackson Oaks",
+      "Holiday Lake Estates",
+      "Paradise Valley",
+      "Madrone",
+      "Cochrane"
+    ],
+    "intro": "El Toro's peak anchors every view in Morgan Hill, with the housing spread out below it: Jackson Oaks on the east slope, newer Cochrane and Butterfield tracts toward the vineyard-side shopping centers, older cottages along Monterey Road downtown. The newer construction runs to generous stucco eaves and tile roofs, which permanent lighting follows cleanly without the fascia damage seasonal clips leave behind.",
+    "popular": "Acorn green and gold for Live Oak Friday nights, and between Mushroom Mardi Gras and the downtown holiday stretch, a Monterey Road home has reason to run color well past December."
+  },
+  "san-francisco": {
+    "name": "San Francisco",
+    "slug": "san-francisco",
+    "state": "CA",
+    "county": "San Francisco County",
+    "region": "San Francisco & Peninsula",
+    "zips": [
+      "94102",
+      "94103",
+      "94105",
+      "94107",
+      "94108",
+      "94109",
+      "94110",
+      "94114",
+      "94115",
+      "94116",
+      "94117",
+      "94118",
+      "94121",
+      "94122"
+    ],
+    "zipRange": "94102-94122",
+    "population": 808988,
+    "households": 360000,
+    "neighborhoods": [
+      "Pacific Heights",
+      "Presidio Heights",
+      "Sea Cliff",
+      "St. Francis Wood",
+      "Forest Hill",
+      "Noe Valley",
+      "Bernal Heights",
+      "Cole Valley",
+      "Inner Sunset",
+      "Outer Sunset",
+      "Richmond District",
+      "Marina District",
+      "Cow Hollow",
+      "Russian Hill",
+      "Nob Hill",
+      "Potrero Hill",
+      "Glen Park",
+      "West Portal"
+    ],
+    "neighborhoodsTop": [
+      "Pacific Heights",
+      "Presidio Heights",
+      "Sea Cliff",
+      "St. Francis Wood",
+      "Forest Hill",
+      "Noe Valley",
+      "Cow Hollow",
+      "Russian Hill"
+    ],
+    "schools": [
+      "Lowell High Cardinals",
+      "Saint Ignatius College Prep Wildcats",
+      "Sacred Heart Cathedral Fightin' Irish",
+      "Abraham Lincoln High Mustangs",
+      "University of San Francisco Dons",
+      "San Francisco State Gators"
+    ],
+    "climate": {
+      "summerHigh": 72,
+      "winterLow": 46,
+      "rainfall": 23,
+      "notes": "San Francisco trades temperature swings for constant marine layer and ocean salt air, and the fog rolling in over the Sunset and Richmond keeps fascia boards damp most nights. That makes IP67-sealed diodes and anodized aluminum track the deciding factors here, since corrosion, not heat, is what kills exposed fixtures on this peninsula."
+    },
+    "driveMinutes": 195,
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "communities": [
+      "Mission Bay",
+      "Parkmerced",
+      "St. Francis Wood",
+      "Diamond Heights",
+      "Treasure Island"
+    ],
+    "intro": "San Francisco's housing stock has no equal: bay-windowed Victorians and Edwardian rowhouses running shoulder to shoulder through Noe Valley and the Inner Sunset, mansion facades in Pacific Heights and Sea Cliff, tile-roofed Mediterraneans in St. Francis Wood below Mount Davidson. The rooflines vary as much as the facades — flat parapet runs through the dense eastern blocks and the Sunset and Richmond rowhouse grids, pitched composition and clay tile up in St. Francis Wood, Forest Hill and Sea Cliff — and permanent lighting traces either edge without ever touching the historic trim.",
+    "popular": "Giants orange and black is the obvious setting through baseball season and well past it, and the same track can hold red and gold for Lunar New Year in February without anyone climbing a ladder. Through the foggy December stretch, plain warm white on a parapet line reads far better from the sidewalk than staple-gunned strings."
+  },
+  "san-mateo": {
+    "name": "San Mateo",
+    "slug": "san-mateo",
+    "state": "CA",
+    "county": "San Mateo County",
+    "region": "San Francisco & Peninsula",
+    "zips": [
+      "94401",
+      "94402",
+      "94403",
+      "94404",
+      "94405",
+      "94406",
+      "94407",
+      "94408",
+      "94409",
+      "94497"
+    ],
+    "zipRange": "94401-94497",
+    "population": 105661,
+    "households": 39600,
+    "neighborhoods": [
+      "San Mateo Park",
+      "Baywood",
+      "Aragon",
+      "Hayward Park",
+      "Sugarloaf",
+      "Bay Meadows",
+      "Hillsdale",
+      "Laurelwood",
+      "Beresford",
+      "Shoreview",
+      "Mariner's Island",
+      "Fiesta Gardens",
+      "Sunnybrae",
+      "North Central",
+      "Parkside",
+      "Downtown San Mateo"
+    ],
+    "neighborhoodsTop": [
+      "San Mateo Park",
+      "Baywood",
+      "Aragon",
+      "Sugarloaf",
+      "Hayward Park",
+      "Bay Meadows",
+      "Laurelwood"
+    ],
+    "schools": [
+      "Hillsdale High Knights",
+      "Aragon High Dons",
+      "San Mateo High Bearcats",
+      "Junipero Serra High Padres",
+      "College of San Mateo Bulldogs"
+    ],
+    "climate": {
+      "summerHigh": 80,
+      "winterLow": 42,
+      "rainfall": 20,
+      "notes": "Fog funnels through the San Bruno gap and settles over San Mateo most summer mornings, then burns off to warm, dry afternoons — a daily condensation-and-heat cycle. Sealed IP67 housings handle the moisture, and out near Mariner's Island and Coyote Point the brackish bay air makes powder-coated aluminum track the only sensible mounting choice."
+    },
+    "driveMinutes": 180,
+    "lat": 37.563,
+    "lng": -122.3255,
+    "communities": [
+      "Bay Meadows",
+      "Mariner's Island",
+      "Fiesta Gardens",
+      "San Mateo Park",
+      "Laurelwood"
+    ],
+    "intro": "Between Coyote Point and the Highlands, San Mateo layers eras: 1920s Spanish and Tudor estates in San Mateo Park and Baywood, wide postwar ranches through Laurelwood and Beresford, and new rowhomes rising on the old Bay Meadows racetrack. The long fascia lines on those ranches and the crisp parapets at Bay Meadows both take permanent lighting cleanly.",
+    "popular": "Bay Meadows and Mariner's Island carry tight HOA design standards, so a single uniform warm-white setting that stays up year-round is typically the most straightforward submission. The same system can switch to Hillsdale Knights or Aragon Dons colors for a few hours on a fall Friday night and revert on schedule."
+  },
+  "redwood-city": {
+    "name": "Redwood City",
+    "slug": "redwood-city",
+    "state": "CA",
+    "county": "San Mateo County",
+    "region": "San Francisco & Peninsula",
+    "zips": [
+      "94059",
+      "94061",
+      "94062",
+      "94063",
+      "94064",
+      "94065"
+    ],
+    "zipRange": "94059-94065",
+    "population": 84292,
+    "households": 31200,
+    "neighborhoods": [
+      "Redwood Shores",
+      "Emerald Hills",
+      "Farm Hill",
+      "Woodside Plaza",
+      "Mount Carmel",
+      "Roosevelt",
+      "Centennial",
+      "Friendly Acres",
+      "Palm Park",
+      "Edgewood Park",
+      "Stambaugh-Heller",
+      "Canyon",
+      "Oak Knoll Manor",
+      "Eagle Hill",
+      "Downtown Redwood City",
+      "Redwood Village"
+    ],
+    "neighborhoodsTop": [
+      "Emerald Hills",
+      "Farm Hill",
+      "Mount Carmel",
+      "Redwood Shores",
+      "Woodside Plaza",
+      "Edgewood Park",
+      "Canyon"
+    ],
+    "schools": [
+      "Sequoia High Ravens",
+      "Woodside High Wildcats",
+      "Cañada College Colts",
+      "Menlo-Atherton High Bears",
+      "Carlmont High Scots"
+    ],
+    "climate": {
+      "summerHigh": 82,
+      "winterLow": 42,
+      "rainfall": 19,
+      "notes": "Redwood City earns its \"Climate Best by Government Test\" motto by sitting in a fog shadow, which means more clear sky and a heavier annual UV load on south-facing fascia than the coast sees. UV-stable lensing matters here, and out on the Redwood Shores lagoons the brackish air adds a corrosion factor most inland systems never face."
+    },
+    "driveMinutes": 175,
+    "lat": 37.4852,
+    "lng": -122.2364,
+    "communities": [
+      "Redwood Shores",
+      "Sandpiper",
+      "Woodside Plaza",
+      "Emerald Hills",
+      "Farm Hill Estates"
+    ],
+    "intro": "Redwood City climbs from the Bay to the ridge, and the housing climbs with it: 1950s Woodside Plaza ranches, bungalows around Sequoia High, custom hillside homes in Emerald Hills and Farm Hill, and lagoon-front townhomes at Redwood Shores. Under that Courthouse Square arch reading Climate Best by Government Test, homes get enough clear-sky evenings to make year-round roofline lighting worth the aluminum.",
+    "popular": "Redwood Shores homes back onto the lagoons, so a lagoon-facing run reads twice — once on the house, once on the water — which is why a soft year-round color setting suits waterfront homes rather than a December-only one. Up in Emerald Hills and Farm Hill, the long hillside rooflines are the natural piece to light for Hometown Holidays."
+  },
+  "burlingame": {
+    "name": "Burlingame",
+    "slug": "burlingame",
+    "state": "CA",
+    "county": "San Mateo County",
+    "region": "San Francisco & Peninsula",
+    "zips": [
+      "94010",
+      "94011"
+    ],
+    "zipRange": "94010-94011",
+    "population": 31386,
+    "households": 12900,
+    "neighborhoods": [
+      "Burlingame Park",
+      "Burlingame Terrace",
+      "Burlingables",
+      "Easton Addition",
+      "Ray Park",
+      "Mills Estate",
+      "Burlingame Hills",
+      "Lyon-Hoag",
+      "Victoria Park",
+      "Broadway District",
+      "Burlingame Avenue District",
+      "Bayside",
+      "Trousdale",
+      "Oak Grove"
+    ],
+    "neighborhoodsTop": [
+      "Burlingame Park",
+      "Easton Addition",
+      "Burlingame Hills",
+      "Mills Estate",
+      "Ray Park",
+      "Burlingame Terrace"
+    ],
+    "schools": [
+      "Burlingame High Panthers",
+      "Mercy High Bears",
+      "Mills High Vikings"
+    ],
+    "climate": {
+      "summerHigh": 77,
+      "winterLow": 43,
+      "rainfall": 21,
+      "notes": "Burlingame sits between the Bay and the Skyline ridge, so it catches both salt-laden bayside wind off the Anza shoreline and cool overnight fog dripping through the eucalyptus. Marine-grade anodized aluminum channel and IP67 sealing are what keep a system intact here; standard steel hardware pits within a few seasons this close to the water."
+    },
+    "driveMinutes": 185,
+    "lat": 37.5841,
+    "lng": -122.3661,
+    "communities": [
+      "Mills Estate",
+      "Burlingame Park",
+      "Easton Addition",
+      "Ray Park",
+      "Victoria Park"
+    ],
+    "intro": "Burlingame grew up under its eucalyptus canopy, and the city still protects the trees: 1920s Mediterraneans and Craftsman bungalows in Burlingame Park and the Easton Addition, tidy postwar ranches up in Ray Park and Mills Estate. Deep eaves and heavy foliage swallow ground-level fixtures, which is why a fascia-mounted permanent system carries the load on the blocks off Burlingame Avenue and Broadway.",
+    "popular": "Halloween is a genuine event on the Easton Addition and Burlingame Park streets, and a programmed system can hold orange for the full week leading up to it rather than a single night. The same track handles Burlingame High Panthers colors on home-game nights and a canopy-friendly warm white the rest of the year."
+  },
+  "menlo-park": {
+    "name": "Menlo Park",
+    "slug": "menlo-park",
+    "state": "CA",
+    "county": "San Mateo County",
+    "region": "San Francisco & Peninsula",
+    "zips": [
+      "94025",
+      "94026"
+    ],
+    "zipRange": "94025-94026",
+    "population": 33780,
+    "households": 13300,
+    "neighborhoods": [
+      "Allied Arts",
+      "Felton Gables",
+      "Linfield Oaks",
+      "Central Menlo",
+      "Sharon Heights",
+      "Sharon Park",
+      "Stanford Hills",
+      "Vintage Oaks",
+      "The Willows",
+      "Suburban Park",
+      "Lorelei Manor",
+      "Flood Triangle",
+      "Belle Haven",
+      "Menlo Oaks",
+      "Park Forest"
+    ],
+    "neighborhoodsTop": [
+      "Allied Arts",
+      "Felton Gables",
+      "Central Menlo",
+      "Sharon Heights",
+      "Stanford Hills",
+      "Linfield Oaks",
+      "Vintage Oaks"
+    ],
+    "schools": [
+      "Menlo-Atherton High Bears",
+      "Hillview Middle School",
+      "Oak Knoll Elementary",
+      "Menlo School Knights",
+      "Sacred Heart Prep Gators",
+      "Menlo College Oaks"
+    ],
+    "climate": {
+      "summerHigh": 84,
+      "winterLow": 40,
+      "rainfall": 17,
+      "notes": "Coastal fog usually stalls against the Santa Cruz Mountains before it reaches Menlo Park, leaving hot, high-UV summer afternoons and clear radiative-cooling nights that drop close to frost. A system rated -40F to 140F rides that daily swing without the track expanding away from its fasteners, and UV-stable lensing keeps flat Eichler fascia runs from yellowing."
+    },
+    "driveMinutes": 172,
+    "lat": 37.453,
+    "lng": -122.1817,
+    "communities": [
+      "Sharon Heights",
+      "Sharon Park",
+      "Vintage Oaks",
+      "Suburban Park",
+      "Felton Gables"
+    ],
+    "intro": "Menlo Park runs from Eichler flat-tops in Lorelei Manor and Suburban Park, through the oak-shaded Allied Arts bungalows near Santa Cruz Avenue, out to hillside contemporaries in Sharon Heights above the golf course. Flat and low-slope rooflines dominate — awkward for ladders and seasonal staples, ideal for a low-profile aluminum track that disappears against the fascia in daylight.",
+    "popular": "A programmed roofline can hold Cardinal red through a fall Saturday and revert on its own, without anyone touching a ladder between home games. On the Eichler streets, the year-round setting is the real draw: a thin warm-white line along a flat roof edge suits mid-century architecture far better than swagged bulbs."
+  },
+  "oakland": {
+    "name": "Oakland",
+    "slug": "oakland",
+    "state": "CA",
+    "county": "Alameda County",
+    "region": "East Bay",
+    "zips": [
+      "94601",
+      "94602",
+      "94603",
+      "94605",
+      "94606",
+      "94607",
+      "94608",
+      "94609",
+      "94610",
+      "94611",
+      "94612",
+      "94618",
+      "94619",
+      "94621"
+    ],
+    "zipRange": "94601-94621",
+    "population": 436504,
+    "households": 168000,
+    "neighborhoods": [
+      "Rockridge",
+      "Montclair",
+      "Temescal",
+      "Piedmont Avenue",
+      "Grand Lake",
+      "Adams Point",
+      "Lakeshore",
+      "Glenview",
+      "Dimond District",
+      "Crocker Highlands",
+      "Oakmore",
+      "Trestle Glen",
+      "Sequoyah Hills",
+      "Laurel",
+      "Redwood Heights",
+      "Jack London Square"
+    ],
+    "neighborhoodsTop": [
+      "Crocker Highlands",
+      "Montclair",
+      "Rockridge",
+      "Oakmore",
+      "Trestle Glen",
+      "Sequoyah Hills",
+      "Glenview"
+    ],
+    "schools": [
+      "Oakland Technical High Bulldogs",
+      "Skyline High Titans",
+      "Bishop O'Dowd High Dragons",
+      "Head-Royce School Jayhawks",
+      "Oakland High Wildcats",
+      "Laney College Eagles"
+    ],
+    "climate": {
+      "summerHigh": 80,
+      "winterLow": 44,
+      "rainfall": 23,
+      "notes": "Fog off the Bay and salt-laden marine air work on anything mounted to a roofline, hardest in the flats near the estuary. Anodized aluminum track and IP67-sealed diodes hold up where painted steel clips corrode within a season or two."
+    },
+    "driveMinutes": 185,
+    "lat": 37.8044,
+    "lng": -122.2712,
+    "communities": [
+      "Brooklyn Basin",
+      "Oak Knoll",
+      "Hiller Highlands",
+      "Sequoyah Hills",
+      "Ridgemont"
+    ],
+    "intro": "Oakland's housing stock swings hard block to block: brown-shingle Craftsman in Rockridge, 1920s Mediterranean and Tudor revivals ringing Lake Merritt through Crocker Highlands and Trestle Glen, and steep custom homes climbing toward Montclair. Deep eaves and broken rooflines are exactly where permanent lighting earns its keep, because ladder work on a slope facing Grizzly Peak is nobody's idea of a December afternoon.",
+    "popular": "Warm-white architectural runs suit the shingle and stucco facades here, echoing the Necklace of Lights around Lake Merritt. Programmable scenes cover Oakland Tech and Bishop O'Dowd colors on Friday nights and can hold red straight through Lunar New Year."
+  },
+  "fremont": {
+    "name": "Fremont",
+    "slug": "fremont",
+    "state": "CA",
+    "county": "Alameda County",
+    "region": "East Bay",
+    "zips": [
+      "94536",
+      "94537",
+      "94538",
+      "94539",
+      "94540",
+      "94555"
+    ],
+    "zipRange": "94536-94555",
+    "population": 230504,
+    "households": 77500,
+    "neighborhoods": [
+      "Mission San Jose",
+      "Niles",
+      "Centerville",
+      "Irvington",
+      "Warm Springs",
+      "Ardenwood",
+      "Glenmoor",
+      "Sundale",
+      "Cameron Hills",
+      "Weibel",
+      "Vineyards-Avalon",
+      "Parkmont",
+      "Brookvale",
+      "Northgate",
+      "Grimmer",
+      "Cherry-Guardino"
+    ],
+    "neighborhoodsTop": [
+      "Mission San Jose",
+      "Weibel",
+      "Cameron Hills",
+      "Vineyards-Avalon",
+      "Ardenwood",
+      "Niles",
+      "Glenmoor"
+    ],
+    "schools": [
+      "Mission San Jose High Warriors",
+      "Irvington High Vikings",
+      "American High Eagles",
+      "Washington High Huskies",
+      "John F. Kennedy High Titans",
+      "Ohlone College Renegades"
+    ],
+    "climate": {
+      "summerHigh": 85,
+      "winterLow": 41,
+      "rainfall": 16,
+      "notes": "The bay breeze crossing the Coyote Hills salt marshes carries enough moisture and salt to pit cheap hardware in Ardenwood, while the Mission San Jose foothills bake through late summer. IP67 sealing paired with UV-stable lensing covers both ends of that spread."
+    },
+    "driveMinutes": 170,
+    "lat": 37.5485,
+    "lng": -121.9886,
+    "communities": [
+      "Glenmoor Gardens",
+      "Ardenwood Forest",
+      "Metro Crossing",
+      "Vineyards-Avalon",
+      "Northgate"
+    ],
+    "intro": "Fremont is really five old towns stitched together: Niles under its canyon, Centerville, Irvington, Warm Springs, and Mission San Jose climbing toward Mission Peak. Housing runs from 1950s Glenmoor and Sundale ranch tracts to Warm Springs townhome rows and custom hillside builds above Weibel. Those long, low ranch fascia lines take a permanent lighting track cleanly, in one uninterrupted run.",
+    "popular": "Diwali is the anchor here, and it is a weeks-long festival rather than a single night, which is exactly where a fixed track beats seasonal staple-ups. The same system programs Mission San Jose and Irvington colors for game nights through the rest of the fall."
+  },
+  "pleasanton": {
+    "name": "Pleasanton",
+    "slug": "pleasanton",
+    "state": "CA",
+    "county": "Alameda County",
+    "region": "East Bay",
+    "zips": [
+      "94566",
+      "94588"
+    ],
+    "zipRange": "94566-94588",
+    "population": 79871,
+    "households": 28900,
+    "neighborhoods": [
+      "Downtown Pleasanton",
+      "Ruby Hill",
+      "Vintage Hills",
+      "Val Vista",
+      "Birdland",
+      "Foothill Knolls",
+      "Kottinger Ranch",
+      "Golden Eagle",
+      "Grey Eagle Estates",
+      "Bridle Creek",
+      "Laguna Oaks",
+      "Castlewood",
+      "Stoneridge",
+      "Pleasanton Meadows",
+      "Valley Trails",
+      "Mission Park"
+    ],
+    "neighborhoodsTop": [
+      "Ruby Hill",
+      "Kottinger Ranch",
+      "Golden Eagle",
+      "Grey Eagle Estates",
+      "Castlewood",
+      "Laguna Oaks",
+      "Bridle Creek"
+    ],
+    "schools": [
+      "Amador Valley High Dons",
+      "Foothill High Falcons",
+      "Harvest Park Middle Patriots",
+      "Pleasanton Middle Panthers"
+    ],
+    "climate": {
+      "summerHigh": 92,
+      "winterLow": 38,
+      "rainfall": 16,
+      "notes": "Amador Valley afternoons push past 95F on the hottest stretches before the delta breeze arrives after sunset, then winter mornings drop into the 30s under valley fog. A -40F to 140F operating range absorbs that swing without lens clouding or seal fatigue."
+    },
+    "driveMinutes": 165,
+    "lat": 37.6624,
+    "lng": -121.8747,
+    "communities": [
+      "Ruby Hill",
+      "Kottinger Ranch",
+      "Bridle Creek",
+      "Laguna Oaks",
+      "Castlewood",
+      "Grey Eagle Estates"
+    ],
+    "intro": "Pleasanton stretches from the Victorian storefronts along Main Street out to Ruby Hill's vineyard estates and the gated custom lots at Kottinger Ranch and Grey Eagle. The bulk of the city, though, is 1980s-through-2000s two-story production housing in Vintage Hills, Val Vista and Birdland, where stucco gables and tile roofs give permanent lighting a clean, symmetrical fascia line to follow.",
+    "popular": "Amador Valley Dons and Foothill Falcons split this town, and either set of colors saves as a one-tap scene for fall Fridays. In HOA-dense tracts like Ruby Hill and Bridle Creek, the same track can sit on a single restrained warm-white the other ten months and never change appearance."
+  },
+  "livermore": {
+    "name": "Livermore",
+    "slug": "livermore",
+    "state": "CA",
+    "county": "Alameda County",
+    "region": "East Bay",
+    "zips": [
+      "94550",
+      "94551"
+    ],
+    "zipRange": "94550-94551",
+    "population": 87955,
+    "households": 30500,
+    "neighborhoods": [
+      "Downtown Livermore",
+      "Old North Livermore",
+      "Springtown",
+      "Sunset East",
+      "Sunset West",
+      "Portola",
+      "Vineyard",
+      "Windmill Springs",
+      "Rhonewood",
+      "Granada",
+      "Junction Avenue",
+      "Proud Country",
+      "Mocho Park",
+      "Alden Lane",
+      "Crane Ridge",
+      "South Livermore Valley"
+    ],
+    "neighborhoodsTop": [
+      "South Livermore Valley",
+      "Crane Ridge",
+      "Old North Livermore",
+      "Vineyard",
+      "Windmill Springs",
+      "Alden Lane",
+      "Proud Country"
+    ],
+    "schools": [
+      "Livermore High Cowboys",
+      "Granada High Matadors",
+      "Mendenhall Middle Mustangs",
+      "East Avenue Middle Dolphins",
+      "Las Positas College Hawks"
+    ],
+    "climate": {
+      "summerHigh": 95,
+      "winterLow": 38,
+      "rainfall": 15,
+      "notes": "The Altamont wind gap gives Livermore the most sustained afternoon wind in the Bay Area, layered over high summer UV. Fascia-fastened aluminum track handles that wind load, and IP67-sealed modules keep out the blowing valley grit that follows it."
+    },
+    "driveMinutes": 155,
+    "lat": 37.6819,
+    "lng": -121.768,
+    "communities": [
+      "Windmill Springs",
+      "Crane Ridge",
+      "Springtown",
+      "Sunset East",
+      "Alden Lane"
+    ],
+    "intro": "Livermore sits at the wind gap where the Altamont drops into the valley, and its housing reads in three eras: Victorians and bungalows through Old North Livermore, the sprawling Springtown and Sunset East ranch tracts, and newer wine-country customs south along the Vineyard Avenue corridor. Those wide single-story fascia runs accept a continuous permanent lighting line without the pitch breaks hillside builds force.",
+    "popular": "Livermore High Cowboys and Granada Matadors colors are both easy to program as a saved scene, and the downtown harvest season suits amber and warm-white across the long stretch from crush through the holidays."
+  },
+  "dublin": {
+    "name": "Dublin",
+    "slug": "dublin",
+    "state": "CA",
+    "county": "Alameda County",
+    "region": "East Bay",
+    "zips": [
+      "94568"
+    ],
+    "zipRange": "94568",
+    "population": 72589,
+    "households": 24800,
+    "neighborhoods": [
+      "Dublin Ranch",
+      "Jordan Ranch",
+      "Positano",
+      "Schaefer Ranch",
+      "Wallis Ranch",
+      "Tassajara Hills",
+      "Boulevard",
+      "Silvera Ranch",
+      "Fallon Village",
+      "Downtown Dublin",
+      "West Dublin",
+      "Amador Lakes",
+      "Heritage Park",
+      "Dublin Hills",
+      "Sorrento at Dublin Ranch",
+      "Emerald Park"
+    ],
+    "neighborhoodsTop": [
+      "Schaefer Ranch",
+      "Wallis Ranch",
+      "Positano",
+      "Jordan Ranch",
+      "Dublin Ranch",
+      "Tassajara Hills",
+      "Silvera Ranch"
+    ],
+    "schools": [
+      "Dublin High Gaels",
+      "Emerald High Aerouants",
+      "Fallon Middle Falcons",
+      "Wells Middle Roadrunners"
+    ],
+    "climate": {
+      "summerHigh": 93,
+      "winterLow": 38,
+      "rainfall": 16,
+      "notes": "Dublin sits in the I-580 gap, so hot Tri-Valley afternoons hand off to a strong evening delta breeze funneling in from the west. Powder-coated aluminum track and IP67 housings shrug off both the temperature swing and the wind-driven dust that rides with it."
+    },
+    "driveMinutes": 168,
+    "lat": 37.7022,
+    "lng": -121.9358,
+    "communities": [
+      "Dublin Ranch",
+      "Wallis Ranch",
+      "Schaefer Ranch",
+      "Jordan Ranch",
+      "Positano",
+      "Boulevard"
+    ],
+    "intro": "Nearly everything east of the Iron Horse Trail in Dublin went up after 2000 — Dublin Ranch, Positano, Jordan Ranch and Wallis Ranch, with Schaefer Ranch tucked against the western hills. Uniform stucco elevations, tile roofs and tight HOA lots mean permanent lighting reads as an intentional architectural line rather than an add-on, and new-construction fascia is straight enough to keep installs simple.",
+    "popular": "Gaels green programs cleanly for Dublin High Friday nights, and Emerald High's green, blue and white save just as easily as a second scene. Because HOA rules across Dublin Ranch and Wallis Ranch discourage staple-and-hook seasonal work, a hidden track running white year-round and switching to holiday color on a schedule is the practical fit."
+  },
+  "walnut-creek": {
+    "name": "Walnut Creek",
+    "slug": "walnut-creek",
+    "state": "CA",
+    "county": "Contra Costa County",
+    "region": "East Bay",
+    "zips": [
+      "94595",
+      "94596",
+      "94597",
+      "94598"
+    ],
+    "zipRange": "94595-94598",
+    "population": 70127,
+    "households": 32600,
+    "neighborhoods": [
+      "Rossmoor",
+      "Northgate",
+      "Saranap",
+      "Walnut Heights",
+      "Downtown Walnut Creek",
+      "Parkmead",
+      "Lakewood",
+      "Woodlands",
+      "Larkey",
+      "Ygnacio Valley",
+      "Shadelands",
+      "Tice Valley",
+      "Rudgear Estates",
+      "Indian Valley",
+      "Castle Hill",
+      "San Miguel"
+    ],
+    "neighborhoodsTop": [
+      "Northgate",
+      "Rudgear Estates",
+      "Saranap",
+      "Walnut Heights",
+      "Tice Valley",
+      "Parkmead",
+      "Castle Hill"
+    ],
+    "schools": [
+      "Las Lomas High Knights",
+      "Northgate High Broncos"
+    ],
+    "climate": {
+      "summerHigh": 92,
+      "winterLow": 39,
+      "rainfall": 22,
+      "notes": "Summers on the Diablo foothills run hot and dry with long hours of direct sun, then tule fog settles across the valley floor on winter mornings and lingers past sunrise. UV-stable lensing resists the yellowing that relentless summer sun causes, and sealed modules ignore months of overnight condensation."
+    },
+    "driveMinutes": 185,
+    "lat": 37.9101,
+    "lng": -122.0652,
+    "communities": [
+      "Rossmoor",
+      "Northgate",
+      "Rudgear Estates",
+      "Saranap",
+      "Woodlands"
+    ],
+    "intro": "Between Mount Diablo's western foot and the Iron Horse Trail, Walnut Creek mixes mid-century ranches through Parkmead and Walnut Heights, oak-shaded customs in Northgate and Rudgear Estates, and Rossmoor's dense single-level villas. Mature valley oaks make plug-in seasonal lighting a genuine hassle here; a permanent roofline system stays above the canopy and out of the yearly ladder-and-gutter-clip routine.",
+    "popular": "Las Lomas Knights and Northgate Broncos colors save as one-tap scenes for fall Fridays. Rossmoor's single-story rooflines suit a single warm-white setting that never needs a ladder, and full-color programming can be scheduled to match the downtown holiday season."
+  },
+  "san-ramon": {
+    "name": "San Ramon",
+    "slug": "san-ramon",
+    "state": "CA",
+    "county": "Contra Costa County",
+    "region": "East Bay",
+    "zips": [
+      "94582",
+      "94583"
+    ],
+    "zipRange": "94582-94583",
+    "population": 84605,
+    "households": 29300,
+    "neighborhoods": [
+      "Dougherty Valley",
+      "Windemere",
+      "Gale Ranch",
+      "Canyon Lakes",
+      "Twin Creeks",
+      "Bollinger Canyon",
+      "Crow Canyon Country Club",
+      "Henry Ranch",
+      "Norris Canyon Estates",
+      "San Ramon Village",
+      "Westside San Ramon",
+      "Deerwood",
+      "Promontory",
+      "Bent Creek",
+      "The Preserve",
+      "Old Ranch"
+    ],
+    "neighborhoodsTop": [
+      "Norris Canyon Estates",
+      "Henry Ranch",
+      "Canyon Lakes",
+      "Windemere",
+      "Gale Ranch",
+      "Crow Canyon Country Club",
+      "Bent Creek"
+    ],
+    "schools": [
+      "California High Grizzlies",
+      "Dougherty Valley High Wildcats"
+    ],
+    "climate": {
+      "summerHigh": 93,
+      "winterLow": 39,
+      "rainfall": 19,
+      "notes": "Dougherty Valley's exposed ridgelines catch full-day UV and then the evening wind funneling down from the Tassajara hills. Fixtures rated -40F to 140F, seated in aluminum track, stay fastened and stay optically clear through that daily whipsaw."
+    },
+    "driveMinutes": 175,
+    "lat": 37.7799,
+    "lng": -121.978,
+    "communities": [
+      "Dougherty Valley",
+      "Gale Ranch",
+      "Windemere",
+      "Norris Canyon Estates",
+      "Canyon Lakes",
+      "Henry Ranch"
+    ],
+    "intro": "San Ramon splits cleanly in two: the older westside around San Ramon Village and Twin Creeks, and Dougherty Valley, where Gale Ranch and Windemere stair-step thousands of two- and three-story homes up toward the Tassajara ridgeline. Those tall, articulated stucco elevations are difficult and genuinely unsafe to hang seasonally, which is precisely the problem permanent lighting was built to solve.",
+    "popular": "Dougherty Valley Wildcats and Cal High Grizzlies game-day colors make an easy programmed scene. In Norris Canyon Estates and Canyon Lakes, where uniform holiday displays are the neighborhood norm, a fixed system can hold an entire street to the same color and brightness."
   }
 }

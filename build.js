@@ -42,6 +42,25 @@ const cities = Object.values(_citiesRaw).map(c => ({
   popularUseCase: c.popular || ''
 })).map(c => ({ ...c, driveTime: c.driveMinutes }));
 
+// Build-time assertion: a ZIP may belong to exactly one city record. Two city pages
+// targeting the same ZIP is both factually wrong and guaranteed keyword cannibalization.
+(() => {
+  const owner = new Map();
+  const collisions = [];
+  for (const c of cities) {
+    for (const z of (c.zips || [])) {
+      if (owner.has(z) && owner.get(z) !== c.slug) {
+        collisions.push(`${z}: ${owner.get(z)} vs ${c.slug}`);
+      } else {
+        owner.set(z, c.slug);
+      }
+    }
+  }
+  if (collisions.length) {
+    throw new Error('Duplicate ZIP assignment across city records:\n  ' + collisions.join('\n  '));
+  }
+})();
+
 const isHomeMarket = c => (c.region || HOME_REGION) === HOME_REGION;
 
 const regionsInUse = () =>
@@ -2113,7 +2132,7 @@ function buildUtility() {
     ]) +
     `<section class="container review-grid">
       ${sectionHead({ eyebrow: 'In their words', h2: 'Real homeowners,', em: 'real reviews.' })}
-      <div class="review-cards">${cities.slice(0, 9).map(c => `<div class="review-card"><div class="stars">★★★★★</div><p>"${esc(c.testimonialQuote)}"</p><cite>— ${esc(c.testimonialName)}, ${esc(c.name)}</cite></div>`).join('')}</div>
+      <div class="review-cards">${cities.filter(c => c.testimonialQuote).slice(0, 9).map(c => `<div class="review-card"><div class="stars">★★★★★</div><p>"${esc(c.testimonialQuote)}"</p><cite>— ${esc(c.testimonialName)}, ${esc(c.name)}</cite></div>`).join('')}</div>
     </section>` +
     installPhotoGrid({ category: 'residential', seed: 'reviews', kicker: 'The work behind the reviews', h2: 'Real installs.', em: 'Real homes.' })
   }));
