@@ -63,6 +63,14 @@ const cities = Object.values(_citiesRaw).map(c => ({
 
 const isHomeMarket = c => (c.region || HOME_REGION) === HOME_REGION;
 
+// Commercial vertical x city pages are deliberately limited to the top cities — 9 verticals
+// x 50 cities would be 450 near-identical pages and a textbook doorway pattern. The coverage
+// map on vertical pages must therefore fall back to the city hub for any city that has no
+// vertical-specific page, or it emits links to URLs that were never generated.
+const TOP_CITY_SLUGS = new Set(Object.values(_citiesRaw).slice(0, 6).map(c => c.slug));
+const verticalCityUrl = (vSlug) => (slug) =>
+  TOP_CITY_SLUGS.has(slug) ? `/${vSlug}-${slug}` : `/permanent-outdoor-lights-${slug}`;
+
 const regionsInUse = () =>
   REGION_ORDER.filter(r => cities.some(c => c.region === r));
 
@@ -187,7 +195,25 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
     image: `${SITE}/images/logo-600.png`,
     sameAs: shared.brand.sameAs || [],
     aggregateRating: { '@type': 'AggregateRating', ratingValue: String(shared.brand.rating), reviewCount: String(shared.brand.reviews), bestRating: '5' },
-    contactPoint: { '@type': 'ContactPoint', telephone: TEL, contactType: 'customer service', areaServed: 'US-CA', availableLanguage: ['English', 'Spanish'] }
+    contactPoint: { '@type': 'ContactPoint', telephone: TEL, contactType: 'customer service', areaServed: 'US-CA', availableLanguage: ['English', 'Spanish'] },
+    // Full service footprint on the canonical Organization entity. Regions are modelled as
+    // AdministrativeArea and every city as a City with its own @id, so AI engines and
+    // Google resolve the whole footprint from the root entity rather than having to crawl
+    // 50 separate city pages to work out where the business operates.
+    areaServed: [
+      ...regionsInUse().map(r => ({
+        '@type': 'AdministrativeArea',
+        name: r,
+        '@id': `${SITE}/#region-${slugify(r)}`,
+      })),
+      ...cities.map(c => ({
+        '@type': 'City',
+        name: c.name,
+        '@id': `${SITE}/#city-${c.slug}`,
+        containedInPlace: { '@type': 'AdministrativeArea', name: c.county },
+        url: `${SITE}/permanent-outdoor-lights-${c.slug}`,
+      })),
+    ]
   }, ...jsonld];
   return `<!DOCTYPE html>
 <html lang="en">
@@ -258,10 +284,10 @@ const headerHTML = (cur = '') => `
   <div class="ann-track">
     <span><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
     <span><i class="ann-pulse"></i> 7-DAY REFUND · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
-    <span><i class="ann-pulse"></i> FRESNO · CLOVIS · MADERA · VISALIA · HANFORD · SELMA · SANGER</span>
+    <span><i class="ann-pulse"></i> FRESNO · CLOVIS · SACRAMENTO · SAN JOSE · SAN FRANCISCO · OAKLAND · MODESTO · STOCKTON</span>
     <span aria-hidden="true"><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
     <span aria-hidden="true"><i class="ann-pulse"></i> 7-DAY REFUND · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
-    <span aria-hidden="true"><i class="ann-pulse"></i> FRESNO · CLOVIS · MADERA · VISALIA · HANFORD · SELMA · SANGER</span>
+    <span aria-hidden="true"><i class="ann-pulse"></i> FRESNO · CLOVIS · SACRAMENTO · SAN JOSE · SAN FRANCISCO · OAKLAND · MODESTO · STOCKTON</span>
   </div>
 </div>
 <header class="nav" id="nav">
@@ -797,14 +823,35 @@ function cityServiceUnique(service, city) {
     paras.push(`${ucTitle ? esc(ucTitle) + ' is the most-requested use case here. ' + esc(ucDesc) + ' ' : ''}Same crew handles every job from quote to walkthrough. ${dispatchLine(city)} ${zipCount ? `Coverage spans every ${esc(city.name)} ZIP — ${(city.zips || []).slice(0, 5).join(', ')}${zipCount > 5 ? ', and more' : ''}.` : ''} Pricing for a ${esc(city.name)} install starts at ${fromPrice} for the front facade and scales by linear footage.`);
   } else if (variant === 1) {
     paras.push(`Two things ${esc(city.name)} homes do to permanent lighting that nobody warns you about: ${summerHi ? `summers crest ${summerHi}°F and bake any non-IP67-rated chip` : 'long sun hours degrade consumer-grade chips'}, and ${winterLo ? `tule fog drops nighttime humidity onto fixtures` : 'the dust season pushes particulate into anything with an open seam'}. The Jellyfish RGBIC-RD track we install is rated -40°F to 140°F, sealed IP67, and warrantied 5 years on LEDs and lifetime on the track itself.`);
-    paras.push(`${esc(svcShort)} on a ${esc(city.name)} home is usually a one-day install — the W-2 crew arrives at 8 AM, the wiring drops cleanly through one attic penetration, and you're cycling colors from the app by sunset. We've installed across ${nb(0)}, ${nb(1)}, and ${nb(2)}${popK ? `, with the ${popK} ${esc(city.name)} households roughly evenly split between single-story tract homes and two-story custom builds` : ''}. ${ucTitle ? `Most ${esc(city.name)} owners start with ${esc(ucTitle.toLowerCase())}; ${esc(ucDesc.toLowerCase())}` : ''}`);
+    paras.push(`${esc(svcShort)} on a ${esc(city.name)} home is usually a one-day install — the W-2 crew arrives at 8 AM, the wiring drops cleanly through one attic penetration, and you're cycling colors from the app by sunset. ${isHomeMarket(city) ? `We've installed across ${nb(0)}, ${nb(1)}, and ${nb(2)}` : `Coverage runs across ${nb(0)}, ${nb(1)}, and ${nb(2)}`}${popK ? `, with the ${popK} ${esc(city.name)} households roughly evenly split between single-story tract homes and two-story custom builds` : ''}. ${ucTitle ? `Most ${esc(city.name)} owners start with ${esc(ucTitle.toLowerCase())}; ${esc(ucDesc.toLowerCase())}` : ''}`);
   } else if (variant === 2) {
     paras.push(`The reason permanent lighting works in ${esc(city.name)} where seasonal Christmas-light services don't is math. A typical ${esc(city.name)} install/teardown service runs $800–$1,800 a year — over a decade that's $8,000–$18,000 versus a ${fromPrice} permanent install once. ${summerHi ? `${summerHi}°F summers also mean you need lighting that doesn't sag or yellow under year-round UV` : 'Year-round UV exposure means consumer string lights yellow and sag within a single season'}, which is why we use commercial-grade aluminum track instead of plastic clip channels.`);
-    paras.push(`${esc(city.name)} ${esc(svcShort.toLowerCase())} installs typically run between $${(service.fromPrice / 1000).toFixed(1)}K (single-story front facade) and $${((service.fromPrice * 6) / 1000).toFixed(1)}K (full perimeter, two-story, multi-zone). HOA submittal packages — spec sheets, 3D renderings, color samples — are included free for any submission you need. ${nb(0)}, ${nb(1)}, and ${nb(2)} owners have run the program through their HOAs without amendment. ${ucTitle ? `${esc(ucTitle)} is a common ${esc(city.name)} configuration: ${esc(ucDesc)}` : ''}`);
+    paras.push(`${esc(city.name)} ${esc(svcShort.toLowerCase())} installs typically run between $${(service.fromPrice / 1000).toFixed(1)}K (single-story front facade) and $${((service.fromPrice * 6) / 1000).toFixed(1)}K (full perimeter, two-story, multi-zone). HOA submittal packages — spec sheets, 3D renderings, color samples — are included free for any submission you need. ${isHomeMarket(city) ? `${nb(0)}, ${nb(1)}, and ${nb(2)} owners have run the program through their HOAs without amendment.` : `${nb(0)}, ${nb(1)}, and ${nb(2)} all sit under active architectural review, so the submittal package matters as much as the hardware.`} ${ucTitle ? `${esc(ucTitle)} is a common ${esc(city.name)} configuration: ${esc(ucDesc)}` : ''}`);
   } else {
     paras.push(`Architecturally, ${esc(city.name)} runs the gamut: ${nb(0)} stucco ranchers, ${nb(1)} two-story Mediterranean builds, and the older bungalows around ${nb(2)} with deep porch overhangs. ${esc(svcShort)} reads differently on each — a tract single-story takes ~80 linear feet of track on the front facade, while a custom build with multiple roof planes can need 200+ feet across three to five independent zones.`);
     paras.push(`We design every ${esc(city.name)} job around what the home actually needs, not a flat per-foot price. The free on-site quote includes measurement, ladder-access check, written pricing on the spot, and a 3D render of the lit-up facade if your HOA wants one. Being ${dispatchLine(city, { short: true })} means a tight feedback loop on warranty and service. ${ucTitle ? `${esc(ucTitle)}: ${esc(ucDesc)}` : `Pricing starts at ${fromPrice} for the front facade and scales with the size of the home.`}`);
   }
+  // Two additional paragraphs sourced from per-city fields that are genuinely distinct —
+  // climate.notes is uniquely written for each city, and communities/schools are real local
+  // entities. Without these, matrix pages ran ~26% unique body content across 650 URLs,
+  // which is the profile Google's Helpful Content system demotes.
+  const climateNote = city.climate && city.climate.notes;
+  if (climateNote) {
+    paras.push(`<strong>What ${esc(city.name)} weather does to a run of track.</strong> ${esc(climateNote)} That is the whole argument for anodized aluminum channel over the clip-on strands a seasonal service hangs each November${winterLo ? `, and it is why the ${esc(city.name)} spec sheet assumes lows around ${winterLo}°F rather than a generic mild-climate rating` : ''}.`);
+  }
+
+  const comms = (city.communities || []).filter(Boolean);
+  const schoolsList = (city.schools || []).filter(Boolean);
+  if (comms.length || schoolsList.length) {
+    const commsBit = comms.length
+      ? `${esc(svcShort)} quotes in ${esc(city.name)} most often come from ${comms.slice(0, 3).map(esc).join(', ')} and the surrounding ${esc(city.county || 'county')} neighborhoods, where elevations repeat across a street and a clean trim line is what separates one facade from the next. `
+      : '';
+    const schoolBit = schoolsList.length
+      ? `For game-day and school-spirit scenes, ${esc(city.name)} programs ${esc(schoolsList[0])}${schoolsList[1] ? ` and ${esc(schoolsList[1])}` : ''} colors on a schedule so the house switches itself over on game nights without anyone touching the app.`
+      : '';
+    paras.push(commsBit + schoolBit);
+  }
+
   return paras.map(p => `<p>${p}</p>`).join('\n');
 }
 
@@ -1283,7 +1330,7 @@ function renderVertical(v) {
     techSpecsBlock() +
     processTimelineBlock({ kicker: 'Commercial install', h2: 'How a', em: 'commercial install runs.', intro: 'Two to five business days for most builds. Multi-property contracts get dedicated account management.' }) +
     coverageMapBlock({
-      urlPattern: (slug) => `/${v.slug}-${slug}`,
+      urlPattern: verticalCityUrl(v.slug),
       eyebrow: 'By city',
       h2: `${baseName} across`,
       em: 'the Central Valley.'
@@ -1659,7 +1706,7 @@ matrixServices.forEach(s => cities.forEach(c => pages.push(renderServiceCity(s, 
 verticals.forEach(v => pages.push(renderVertical(v)));
 
 // 5. Vertical × top-6 cities = 54
-const topCities = cities.slice(0, 6);
+const topCities = cities.filter(c => TOP_CITY_SLUGS.has(c.slug));
 verticals.forEach(v => topCities.forEach(c => pages.push(renderVerticalCity(v, c))));
 
 // 6. Comparison pages (12)
@@ -1838,23 +1885,39 @@ function buildUtility() {
   // /service-areas hub
   out.push(renderArticle({
     slug: 'service-areas',
-    h1: 'Service Areas: Central Valley California',
-    title: `Service Areas | Fresno · Clovis · Madera · Visalia | ${BRAND}`,
-    desc: 'Permanent outdoor lighting installation across Fresno County, Madera County, Tulare County, Kings County, and San Luis Obispo County.',
-    kw: 'permanent outdoor lighting service area',
+    h1: 'Service Areas: Central & Northern California',
+    title: `Service Areas | Fresno · Sacramento · Bay Area | ${BRAND}`,
+    desc: `Permanent outdoor lighting installation across ${cities.length} cities in Central and Northern California — the Central Valley, Sacramento Metro, San Francisco Peninsula, South Bay, and East Bay.`,
+    kw: 'permanent outdoor lighting service area california',
     kicker: 'Coverage',
-    lead: 'Locally installed across 12 cities and 4 counties in California\'s Central Valley.',
-    body: `<section class="solutions container">
-      ${sectionHead({ eyebrow: 'Service areas', h2: 'Locally installed across', em: 'the Central Valley.', intro: '12 cities, 4 counties, one in-house W-2 crew. Same-day response across Fresno County.' })}
-      ${solutionsGrid(cities.map((c, i) => ({
+    lead: `Locally installed across ${cities.length} cities, from the Central Valley home base to Sacramento and the Bay Area.`,
+    body: coverageMapBlock({
+      eyebrow: 'Coverage map',
+      h2: 'Every city we',
+      em: 'install in.',
+    }) +
+    regionsInUse().map((r, ri) => {
+      const list = citiesInRegion(r);
+      const home = r === HOME_REGION;
+      return `<section class="solutions container">
+      ${sectionHead({
+        eyebrow: home ? 'Home market' : 'Expansion region',
+        h2: r + ' —',
+        em: `${list.length} ${list.length === 1 ? 'city' : 'cities'}.`,
+        intro: home
+          ? `Our home market. Headquarters in Clovis, same-day quotes and service across all ${list.length} cities.`
+          : `Covered by our ${r} install crew on scheduled routes — the same W-2 installers and the same RGBIC-RD hardware we run in the Central Valley.`,
+      })}
+      ${solutionsGrid(list.map((c, i) => ({
         h: `${c.name}, CA`,
         p: (c.intro || '').slice(0, 140),
-        img: ASSETS.residential[i % ASSETS.residential.length],
-        alt: `Permanent outdoor lighting installs in ${c.name}, CA by Twilight Zone`,
+        img: ASSETS.residential[(i + ri * 3) % ASSETS.residential.length],
+        alt: `Permanent outdoor lighting in ${c.name}, CA by Twilight Zone`,
         href: `/permanent-outdoor-lights-${c.slug}`,
-        linkLabel: `${c.driveTime} min from Fresno`
+        linkLabel: home ? `${c.driveMinutes} min from HQ` : `${c.county}`,
       })))}
-    </section>`
+    </section>`;
+    }).join('')
   }));
   // /commercial hub
   out.push(renderArticle({
@@ -2845,8 +2908,55 @@ console.log('✓ Wrote llms-full.txt');
       '<section class="service-area" aria-label="Service area map">',
       '<section class="service-area" id="service-area" aria-label="Service area map">'
     );
-  fs.writeFileSync(homepagePath, home.slice(0, i) + block + home.slice(end + CLOSE.length));
-  console.log('✓ Synced homepage coverage map');
+  let next = home.slice(0, i) + block + home.slice(end + CLOSE.length);
+
+  // The homepage also carries its own hand-written JSON-LD. Its areaServed array listed
+  // only 8 Central Valley cities, so the canonical entity on the site's most-linked page
+  // would under-report the footprint. Rewrite it from cities.json on every build.
+  const areaServed = [
+    ...regionsInUse().map(r => ({
+      '@type': 'AdministrativeArea',
+      name: r,
+      '@id': `${SITE}/#region-${slugify(r)}`,
+    })),
+    ...cities.map(c => ({
+      '@type': 'City',
+      name: c.name,
+      '@id': `${SITE}/#city-${c.slug}`,
+      containedInPlace: { '@type': 'AdministrativeArea', name: c.county },
+      url: `${SITE}/permanent-outdoor-lights-${c.slug}`,
+    })),
+  ];
+  let patchedSchema = 0;
+  next = next.replace(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+    (full, body) => {
+      let parsed;
+      try { parsed = JSON.parse(body); } catch { return full; }
+      const graph = Array.isArray(parsed['@graph']) ? parsed['@graph'] : [parsed];
+      let touched = false;
+      graph.forEach(node => {
+        if (!node || !node.areaServed) return;
+        // Arrays (Organization/LocalBusiness) get the full city+region footprint.
+        // Single-object areaServed (e.g. the Service node, previously scoped to
+        // "Central Valley, California") gets the region list so it stops under-reporting.
+        node.areaServed = Array.isArray(node.areaServed)
+          ? areaServed
+          : regionsInUse().map(r => ({
+              '@type': 'AdministrativeArea',
+              name: `${r}, California`,
+              '@id': `${SITE}/#region-${slugify(r)}`,
+            }));
+        touched = true;
+      });
+      if (!touched) return full;
+      patchedSchema++;
+      return `<script type="application/ld+json">\n${JSON.stringify(parsed, null, 2)}\n</script>`;
+    }
+  );
+
+  fs.writeFileSync(homepagePath, next);
+  console.log(`✓ Synced homepage coverage map${patchedSchema ? ` + areaServed schema (${areaServed.length} entries)` : ''}`);
 })();
 
 console.log(`\nTotal: ${written + 1} pages (including homepage)`);
