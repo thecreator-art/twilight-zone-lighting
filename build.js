@@ -593,66 +593,43 @@ const ctaBlock = () => `
 
 // Reusable coverage map block — mirrors homepage map section, with hrefs parameterized
 // to whatever URL pattern the consuming page wants (e.g. /{servicePrefix}-{city.slug}).
-// Coverage map — projected from each city's real lat/lng rather than hardcoded pixel
-// coordinates over a static JPG. Scales to any geography: add a city to cities.json and
-// it lands in the right place automatically. No image dependency.
-const REGION_COLOR = {
-  'Central Valley': '#c084fc',
-  'Northern San Joaquin Valley': '#a78bfa',
-  'Sacramento Metro': '#60a5fa',
-  'East Bay': '#34d399',
-  'South Bay': '#fbbf24',
-  'San Francisco & Peninsula': '#f472b6',
+// Coverage map — the branded Central Valley asset is the "home base" visual (it is a
+// designed brand asset with hand-placed hotspots), and the Northern California expansion
+// regions sit alongside it as a linked list. Keeps the visual identity consistent while
+// still surfacing all 50 cities for users and crawlers.
+const CV_PINS = {
+  fresno:    { cx: 525,  cy: 495, rx: 115, ry: 52, hq: true },
+  madera:    { cx: 218,  cy: 195, rx: 78,  ry: 35 },
+  clovis:    { cx: 585,  cy: 298, rx: 75,  ry: 35 },
+  sanger:    { cx: 799,  cy: 375, rx: 75,  ry: 35 },
+  reedley:   { cx: 982,  cy: 478, rx: 78,  ry: 35 },
+  kerman:    { cx: 241,  cy: 522, rx: 78,  ry: 35 },
+  fowler:    { cx: 698,  cy: 578, rx: 78,  ry: 35 },
+  selma:     { cx: 855,  cy: 652, rx: 75,  ry: 35 },
+  parlier:   { cx: 1110, cy: 652, rx: 75,  ry: 35 },
+  kingsburg: { cx: 960,  cy: 752, rx: 78,  ry: 35 },
+  hanford:   { cx: 735,  cy: 888, rx: 78,  ry: 35 },
+  visalia:   { cx: 1200, cy: 893, rx: 78,  ry: 35 },
 };
-const regionColor = r => REGION_COLOR[r] || '#c084fc';
 
 const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${slug}`, eyebrow = 'Service areas', h2 = 'Locally installed across', em = 'Central & Northern California.' } = {}) => {
-  const pts = cities.filter(c => typeof c.lat === 'number' && typeof c.lng === 'number');
-  const VB_W = 1000, VB_H = 780, PAD = 78;
-  const lats = pts.map(c => c.lat), lngs = pts.map(c => c.lng);
-  const minLat = Math.min(...lats), maxLat = Math.max(...lats);
-  const minLng = Math.min(...lngs), maxLng = Math.max(...lngs);
-  // Longitude degrees shrink toward the poles — scale by cos(midLat) so the map is not
-  // horizontally stretched. (Equirectangular projection, fine at this scale.)
-  const kx = Math.cos(((minLat + maxLat) / 2) * Math.PI / 180);
-  const dataW = Math.max((maxLng - minLng) * kx, 0.0001);
-  const dataH = Math.max(maxLat - minLat, 0.0001);
-  const scale = Math.min((VB_W - 2 * PAD) / dataW, (VB_H - 2 * PAD) / dataH);
-  const offX = (VB_W - dataW * scale) / 2;
-  const offY = (VB_H - dataH * scale) / 2;
-  const px = c => +(offX + (c.lng - minLng) * kx * scale).toFixed(1);
-  const py = c => +(offY + (maxLat - c.lat) * scale).toFixed(1);
-  const radius = c => +Math.min(13, Math.max(4.5, 4 + Math.sqrt(c.population || 10000) / 130)).toFixed(1);
-  // Only label the big ones — 50 dots with 50 labels is unreadable.
-  const labelled = c => (c.population || 0) >= 95000 || c.slug === 'clovis' || c.slug === 'fresno';
+  const byName = {};
+  cities.forEach(c => { byName[c.slug] = c; });
 
-  const nodes = pts
-    .slice()
-    .sort((a, b) => (a.population || 0) - (b.population || 0))
-    .map(c => {
-      const x = px(c), y = py(c), r = radius(c), col = regionColor(c.region);
-      const hq = c.slug === 'clovis';
-      return `<a href="${urlPattern(c.slug)}" class="sa-node${hq ? ' sa-node-hq' : ''}" data-city="${c.slug}" data-region="${esc(c.region)}">
-        <title>${esc(c.name)}, CA${hq ? ' — headquarters' : ` — ${esc(c.region)}`}</title>
-        <circle class="sa-node-glow" cx="${x}" cy="${y}" r="${(r * 2.6).toFixed(1)}" fill="${col}" />
-        <circle class="sa-node-dot" cx="${x}" cy="${y}" r="${r}" fill="${col}" />
-        ${hq ? `<circle class="sa-node-ring" cx="${x}" cy="${y}" r="${(r + 7).toFixed(1)}" fill="none" stroke="${col}" stroke-width="1.6" />` : ''}
-        ${labelled(c) ? `<text class="sa-node-label" x="${x}" y="${(y - r - 9).toFixed(1)}" text-anchor="middle">${esc(c.name)}</text>` : ''}
-      </a>`;
-    })
-    .join('\n        ');
+  const hotspots = Object.entries(CV_PINS)
+    .filter(([slug]) => byName[slug])
+    .map(([slug, p]) => `<a href="${urlPattern(slug)}" data-pin="${slug}" class="sa-hot${p.hq ? ' sa-hot-hq' : ''}"><ellipse cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}" /><title>${esc(byName[slug].name)}${p.hq ? ' (HQ)' : ''}</title></a>`)
+    .join('\n          ');
 
-  const legend = regionsInUse().map(r =>
-    `<li><span class="sa-key-dot" style="background:${regionColor(r)}"></span>${esc(r)} <em>${citiesInRegion(r).length}</em></li>`
-  ).join('');
-
-  const list = regionsInUse().map(r => `
-        <div class="sa-region">
-          <h5><span class="sa-key-dot" style="background:${regionColor(r)}"></span>${esc(r)}</h5>
+  const regionBlock = (r, extended) => `
+        <div class="sa-region${extended ? ' sa-region-ext' : ''}">
+          <h5>${esc(r)}${extended ? '' : ' · Home base'} <em>${citiesInRegion(r).length}</em></h5>
           <ul>
             ${citiesInRegion(r).map(c => `<li><a href="${urlPattern(c.slug)}" data-city="${c.slug}"><span class="sa-name">${esc(c.name)}</span><span class="sa-meta">${c.slug === 'clovis' ? 'HQ · ' : ''}${esc(c.zipRange || (c.zips || [])[0] || '')}</span></a></li>`).join('')}
           </ul>
-        </div>`).join('');
+        </div>`;
+
+  const extendedRegions = regionsInUse().filter(r => r !== HOME_REGION);
 
   return `
 <section class="service-area" aria-label="Service area map">
@@ -662,21 +639,16 @@ const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${
     </header>
     <div class="sa-layout">
       <figure class="sa-map">
-        <svg class="sa-map-svg" viewBox="0 0 ${VB_W} ${VB_H}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Twilight Zone Permanent Lighting service coverage across ${pts.length} Central and Northern California cities">
-          <defs>
-            <radialGradient id="saGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.18" />
-              <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-          <rect x="0" y="0" width="${VB_W}" height="${VB_H}" fill="url(#saGlow)" />
-          <g class="sa-nodes">
-        ${nodes}
-          </g>
+        <img class="sa-map-img" src="/images/coverage-map.jpg" alt="Twilight Zone Permanent Lighting home-base coverage across Fresno, Madera, Tulare and Kings counties" width="1448" height="1086" loading="lazy" decoding="async" />
+        <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          ${hotspots}
         </svg>
-        <ul class="sa-legend">${legend}</ul>
+        <figcaption class="sa-map-cap"><strong>Home base</strong> — ${HOME_REGION}. Fresno-area headquarters in Clovis — same-day quotes and service.</figcaption>
       </figure>
-      <div class="sa-list">${list}
+      <div class="sa-list">
+        ${regionBlock(HOME_REGION, false)}
+        ${extendedRegions.length ? `<div class="sa-ext-head"><span>Extended service areas</span><em>${extendedRegions.reduce((n, r) => n + citiesInRegion(r).length, 0)} cities</em></div>` : ''}
+        ${extendedRegions.map(r => regionBlock(r, true)).join('')}
       </div>
     </div>
   </div>
