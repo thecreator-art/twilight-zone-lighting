@@ -6050,3 +6050,55 @@ section.solutions { padding: 100px 0; }
     transition: none !important;
   }
 }
+
+/* ============================================================
+   JOBBER WORK-REQUEST EMBED (/quote only)
+   ============================================================
+   Jobber ships its own light-themed stylesheet from CloudFront, so the form is
+   given a light card to sit on rather than being forced dark — fighting a
+   third-party stylesheet with !important overrides breaks every time they ship
+   a change. The card is styled to look intentional against the dark page. */
+.jobber-block { padding: 64px 0; }
+.jobber-embed-wrap {
+  background: #fbfbfd;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(18px, 3vw, 38px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 60px rgba(168, 85, 247, 0.07);
+  overflow: hidden;
+  color: #1a1a1a;
+  /* Jobber's form is fluid; keep it from stretching to an unreadable line length. */
+  max-width: 860px;
+  margin: 0 auto;
+}
+/* Keep the embed from blowing out narrow viewports if Jobber sets fixed widths. */
+.jobber-embed-wrap img,
+.jobber-embed-wrap iframe,
+.jobber-embed-wrap input,
+.jobber-embed-wrap select,
+.jobber-embed-wrap textarea { max-width: 100%; }
+/* Jobber injects the iframe at an inline height:40px and only grows it once its
+   own resize postMessage lands. If that handshake is slow or blocked, the form
+   collapses to an unusable sliver. min-height wins over their inline height when
+   theirs is smaller, and loses to it once they set a real (larger) value — so the
+   form is always usable and correctly sized either way. */
+.jobber-embed-wrap iframe {
+  width: 100%;
+  border: 0;
+  display: block;
+  min-height: 680px;
+}
+@media (max-width: 720px) {
+  .jobber-embed-wrap iframe { min-height: 860px; }
+}
+.jobber-noscript {
+  max-width: 860px;
+  margin: 18px auto 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-soft, rgba(255,255,255,0.7));
+}
+.jobber-noscript a { color: #c084fc; }
+@media (max-width: 720px) {
+  .jobber-block { padding: 44px 0; }
+}

@@ -612,6 +612,21 @@ const CV_PINS = {
   visalia:   { cx: 1200, cy: 893, rx: 78,  ry: 35 },
 };
 
+// Jobber work-request embed. Submissions land directly in the client's Jobber account
+// (their job pipeline), not in the Web3Forms inbox — see notes in the commit message.
+// Deliberately scoped to /quote only: the CloudFront CSS + JS are third-party render
+// blockers and there is no reason to pay that cost on the other 922 pages.
+const jobberFormBlock = () => `
+<section class="container jobber-block" id="request-form" aria-label="Request a quote">
+  ${sectionHead({ eyebrow: 'Request a quote', h2: 'Tell us about', em: 'your property.', intro: 'Goes straight to our scheduling system. Most on-site estimates are booked within 24 hours.' })}
+  <div class="jobber-embed-wrap">
+    <div id="67dba942-3be2-48ca-80e1-48396e492a26-2106619"></div>
+    <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
+    <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="67dba942-3be2-48ca-80e1-48396e492a26-2106619" form_url="https://clienthub.getjobber.com/client_hubs/67dba942-3be2-48ca-80e1-48396e492a26/public/work_request/embedded_work_request_form?form_id=2106619"></script>
+  </div>
+  <noscript><p class="jobber-noscript">This form needs JavaScript. Call <a href="tel:${TEL}">${esc(PHONE)}</a> or email <a href="mailto:${shared.brand.email}">${esc(shared.brand.email)}</a> and we'll get you scheduled.</p></noscript>
+</section>`;
+
 const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${slug}`, eyebrow = 'Service areas', h2 = 'Locally installed across', em = 'Central & Northern California.' } = {}) => {
   const byName = {};
   cities.forEach(c => { byName[c.slug] = c; });
@@ -2058,7 +2073,8 @@ function buildUtility() {
     kicker: 'Free Quote',
     lead: 'Real quote in 24 hours. No phone-tag, no upsells, no surprises.',
     img: pickPhotos('residential', 'quote', 1)[0],
-    body: `<section class="container quote-form-block">
+    body: jobberFormBlock() +
+    `<section class="container quote-form-block">
       ${sectionHead({ eyebrow: 'Three ways to start', h2: 'Pick whichever', em: 'is easiest.', intro: 'Most quotes are scheduled within 24 hours. We measure, design, and write the price on the spot.' })}
       <div class="quote-options">
         <a href="tel:${TEL}" class="quote-option">
@@ -2073,11 +2089,11 @@ function buildUtility() {
           <p class="quote-option-cta">${shared.brand.email}</p>
           <p class="quote-option-detail">Reply within one business hour</p>
         </a>
-        <a href="/" class="quote-option">
+        <a href="#request-form" class="quote-option">
           <div class="quote-option-num">3</div>
-          <h3>Quick form</h3>
-          <p class="quote-option-cta">Homepage form →</p>
-          <p class="quote-option-detail">Name, phone, ZIP. 30 seconds.</p>
+          <h3>Request form</h3>
+          <p class="quote-option-cta">Fill it out here →</p>
+          <p class="quote-option-detail">Property details straight into scheduling.</p>
         </a>
       </div>
     </section>` +
