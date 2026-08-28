@@ -950,3 +950,84 @@ if ('serviceWorker' in navigator) {
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
   targets.forEach(el => io.observe(el));
 })();
+
+// ---- JOBBER WORK-REQUEST EMBED (deferred) ----
+// The embed sits on every page, so loading its CloudFront stylesheet + script eagerly
+// would put a third-party render-blocking dependency in front of 900+ pages. The goal
+// is simply to get it off the critical path — not to defer it indefinitely.
+//
+// Deliberately NOT relying on IntersectionObserver alone: its callbacks are throttled
+// or suppressed in some embedded/automation contexts and by some privacy extensions,
+// and a form that silently never loads is far worse than one loaded a second early.
+// Whichever trigger fires first wins; load() is idempotent.
+//
+// Safe to inject dynamically: the snippet reads config from document.currentScript
+// (set correctly for dynamically-created classic scripts), and uses neither
+// document.write nor DOMContentLoaded — both verified against the served file.
+(function () {
+  const wrap = document.querySelector('.jobber-embed-wrap[data-jobber-src]');
+  if (!wrap) return;
+
+  let started = false;
+  function load() {
+    if (started) return;
+    started = true;
+    cleanup();
+
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.media = 'screen';
+    css.href = wrap.dataset.jobberCss;
+    document.head.appendChild(css);
+
+    const s = document.createElement('script');
+    s.src = wrap.dataset.jobberSrc;
+    // The snippet reads these two off document.currentScript.
+    s.setAttribute('clienthub_id', wrap.dataset.jobberClienthub);
+    s.setAttribute('form_url', wrap.dataset.jobberForm);
+    s.onerror = function () {
+      wrap.insertAdjacentHTML('beforeend',
+        '<p class="jobber-fallback">The request form could not load. Call ' +
+        '<a href="tel:+15593732220">(559) 373-2220</a> or email ' +
+        '<a href="mailto:hello@twilightzonelighting.com">hello@twilightzonelighting.com</a>' +
+        " and we'll get you scheduled.</p>");
+    };
+    document.body.appendChild(s);
+  }
+
+  let io = null;
+  let timer = null;
+  function cleanup() {
+    if (io) { io.disconnect(); io = null; }
+    if (timer) { clearTimeout(timer); timer = null; }
+    window.removeEventListener('scroll', onFirstInteract);
+    window.removeEventListener('pointerdown', onFirstInteract);
+    window.removeEventListener('keydown', onFirstInteract);
+    window.removeEventListener('hashchange', onHash);
+  }
+  function onFirstInteract() { load(); }
+  function onHash() { if (location.hash === '#quote') load(); }
+
+  // 1. Preferred: load as the form approaches the viewport.
+  if ('IntersectionObserver' in window) {
+    io = new IntersectionObserver(function (entries) {
+      for (const e of entries) if (e.isIntersecting) { load(); return; }
+    }, { rootMargin: '800px' });
+    io.observe(wrap);
+  }
+
+  // 2. Any real interaction means the visit is engaged — stop waiting.
+  window.addEventListener('scroll', onFirstInteract, { once: true, passive: true });
+  window.addEventListener('pointerdown', onFirstInteract, { once: true, passive: true });
+  window.addEventListener('keydown', onFirstInteract, { once: true });
+
+  // 3. Someone deep-linking to the form should never wait.
+  if (location.hash === '#quote') load();
+  window.addEventListener('hashchange', onHash);
+
+  // 4. Backstop: load shortly after the page settles, so the form exists even for a
+  //    visitor who never scrolls and even where IntersectionObserver never fires.
+  function armBackstop() { timer = setTimeout(load, 2500); }
+  if (document.readyState === 'complete') armBackstop();
+  else window.addEventListener('load', armBackstop, { once: true });
+})();

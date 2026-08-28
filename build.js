@@ -565,28 +565,15 @@ const ctaBlock = () => `
         <a href="tel:${TEL}">${PHONE}</a>
       </div>
     </div>
-    <form class="ns-form" id="quoteForm" aria-label="Request a free quote" data-form-source="quote" novalidate>
-      <div class="ns-field"><label>First Name</label><input type="text" name="firstName" placeholder="Jane" required autocomplete="given-name" /></div>
-      <div class="ns-field"><label>Last Name</label><input type="text" name="lastName" placeholder="Smith" required autocomplete="family-name" /></div>
-      <div class="ns-field"><label>Email</label><input type="email" name="email" placeholder="email@site.com" required autocomplete="email" /></div>
-      <div class="ns-field"><label>Phone</label><input type="tel" name="phone" placeholder="123-456-7890" required autocomplete="tel" /></div>
-      <div class="ns-field"><label>Street Address</label><input type="text" name="address" placeholder="123 Main Ave" required autocomplete="street-address" /></div>
-      <div class="ns-field-row">
-        <div class="ns-field"><label>City</label><input type="text" name="city" placeholder="Fresno" required autocomplete="address-level2" /></div>
-        <div class="ns-field"><label>State</label><input type="text" name="state" placeholder="CA" required autocomplete="address-level1" value="CA" /></div>
-        <div class="ns-field"><label>Zip</label><input type="text" name="zip" placeholder="93704" required autocomplete="postal-code" /></div>
+    <div class="ns-form-slot">
+      <div class="jobber-embed-wrap"
+           data-jobber-clienthub="67dba942-3be2-48ca-80e1-48396e492a26-2106619"
+           data-jobber-css="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css"
+           data-jobber-src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js"
+           data-jobber-form="https://clienthub.getjobber.com/client_hubs/67dba942-3be2-48ca-80e1-48396e492a26/public/work_request/embedded_work_request_form?form_id=2106619">
+        <div id="67dba942-3be2-48ca-80e1-48396e492a26-2106619"></div>
       </div>
-      <p class="ns-fine">By submitting you agree to receive communication. 7-day refund. $0 down.</p>
-      <button type="submit" class="btn btn-white btn-block btn-lg" data-magnetic>Request quote</button>
-      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
-    </form>
-    <div class="ns-thanks" id="quoteThanks" hidden role="status" aria-live="polite">
-      <div class="ns-thanks-icon" aria-hidden="true">
-        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="27" stroke="currentColor" stroke-width="2"/><path d="M16 28l8 8 16-18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h3>Quote request received.</h3>
-      <p>Rapheal will reach out within 24 hours with a written, fixed-price estimate. Check your email and texts. If you'd rather skip the wait, call <a href="tel:${TEL}"><strong>${esc(PHONE)}</strong></a> right now.</p>
-      <a href="tel:${TEL}" class="btn btn-primary">Call ${esc(PHONE)}</a>
+      <noscript><p class="jobber-noscript">This form needs JavaScript. Call <a href="tel:${TEL}">${esc(PHONE)}</a> or email <a href="mailto:${shared.brand.email}">${esc(shared.brand.email)}</a> and we'll get you scheduled.</p></noscript>
     </div>
   </div>
 </section>`;
@@ -611,21 +598,6 @@ const CV_PINS = {
   hanford:   { cx: 735,  cy: 888, rx: 78,  ry: 35 },
   visalia:   { cx: 1200, cy: 893, rx: 78,  ry: 35 },
 };
-
-// Jobber work-request embed. Submissions land directly in the client's Jobber account
-// (their job pipeline), not in the Web3Forms inbox — see notes in the commit message.
-// Deliberately scoped to /quote only: the CloudFront CSS + JS are third-party render
-// blockers and there is no reason to pay that cost on the other 922 pages.
-const jobberFormBlock = () => `
-<section class="container jobber-block" id="request-form" aria-label="Request a quote">
-  ${sectionHead({ eyebrow: 'Request a quote', h2: 'Tell us about', em: 'your property.', intro: 'Goes straight to our scheduling system. Most on-site estimates are booked within 24 hours.' })}
-  <div class="jobber-embed-wrap">
-    <div id="67dba942-3be2-48ca-80e1-48396e492a26-2106619"></div>
-    <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
-    <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="67dba942-3be2-48ca-80e1-48396e492a26-2106619" form_url="https://clienthub.getjobber.com/client_hubs/67dba942-3be2-48ca-80e1-48396e492a26/public/work_request/embedded_work_request_form?form_id=2106619"></script>
-  </div>
-  <noscript><p class="jobber-noscript">This form needs JavaScript. Call <a href="tel:${TEL}">${esc(PHONE)}</a> or email <a href="mailto:${shared.brand.email}">${esc(shared.brand.email)}</a> and we'll get you scheduled.</p></noscript>
-</section>`;
 
 const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${slug}`, eyebrow = 'Service areas', h2 = 'Locally installed across', em = 'Central & Northern California.' } = {}) => {
   const byName = {};
@@ -2073,8 +2045,7 @@ function buildUtility() {
     kicker: 'Free Quote',
     lead: 'Real quote in 24 hours. No phone-tag, no upsells, no surprises.',
     img: pickPhotos('residential', 'quote', 1)[0],
-    body: jobberFormBlock() +
-    `<section class="container quote-form-block">
+    body: `<section class="container quote-form-block">
       ${sectionHead({ eyebrow: 'Three ways to start', h2: 'Pick whichever', em: 'is easiest.', intro: 'Most quotes are scheduled within 24 hours. We measure, design, and write the price on the spot.' })}
       <div class="quote-options">
         <a href="tel:${TEL}" class="quote-option">
@@ -2089,7 +2060,7 @@ function buildUtility() {
           <p class="quote-option-cta">${shared.brand.email}</p>
           <p class="quote-option-detail">Reply within one business hour</p>
         </a>
-        <a href="#request-form" class="quote-option">
+        <a href="#quote" class="quote-option">
           <div class="quote-option-num">3</div>
           <h3>Request form</h3>
           <p class="quote-option-cta">Fill it out here →</p>
