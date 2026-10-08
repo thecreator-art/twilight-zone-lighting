@@ -304,6 +304,14 @@ const REVIEWS_PROFILE_URL = 'https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6';
       const [okMail, okCrm] = await Promise.all([w3, api]);
 
       if (okMail || okCrm) {
+        // Hand off to /lights/thank-you, which fires the Pixel Lead once (and is usable as a URL conversion).
+        // If sessionStorage is unavailable, fire Lead here and fall back to the inline success state.
+        let handedOff = false;
+        try {
+          sessionStorage.setItem('tz_lead', JSON.stringify({ first, eventId, src: 'meta-lp-' + slot, timeline: lead.timeline, fired: 0 }));
+          handedOff = true;
+        } catch (x) { /* storage blocked */ }
+        if (handedOff) { location.assign('/lights/thank-you'); return; }
         if (window.fbq) fbq('track', 'Lead', { content_name: 'meta-lp-' + slot, timeline: lead.timeline }, { eventID: eventId });
         const who = $('.lf-who', done); if (who) who.textContent = first ? ', ' + first : '';
         form.hidden = true; done.hidden = false;
@@ -311,7 +319,7 @@ const REVIEWS_PROFILE_URL = 'https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6';
         Object.keys(forms).forEach(k => { if (k !== slot) forms[k].card.classList.add('is-sibling-done'); });
       } else {
         go.disabled = false; go.firstElementChild.textContent = label;
-        showErr('Something went wrong sending your request. Please call <a href="tel:+15593732220">(559) 373-2220</a> and we’ll get you scheduled.');
+        showErr('Something went wrong sending your request. Please call <a href="tel:+15592037700">(559) 203-7700</a> and we’ll get you scheduled.');
       }
     });
   });

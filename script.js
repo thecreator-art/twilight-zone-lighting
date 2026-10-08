@@ -532,7 +532,7 @@ async function submitLead(form, opts = {}) {
       err.style.cssText = 'color:#fca5a5;font-size:14px;margin-top:10px';
       form.appendChild(err);
     }
-    err.innerHTML = 'Something hiccupped on our end. Try again, or call <a href="tel:+15593732220" style="color:#fff;text-decoration:underline">(559) 373-2220</a>.';
+    err.innerHTML = 'Something hiccupped on our end. Try again, or call <a href="tel:+15592037700" style="color:#fff;text-decoration:underline">(559) 203-7700</a>.';
   }
 }
 
@@ -990,7 +990,7 @@ if ('serviceWorker' in navigator) {
     s.onerror = function () {
       wrap.insertAdjacentHTML('beforeend',
         '<p class="jobber-fallback">The request form could not load. Call ' +
-        '<a href="tel:+15593732220">(559) 373-2220</a> or email ' +
+        '<a href="tel:+15592037700">(559) 203-7700</a> or email ' +
         '<a href="mailto:hello@twilightzonelighting.com">hello@twilightzonelighting.com</a>' +
         " and we'll get you scheduled.</p>");
     };
