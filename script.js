@@ -497,6 +497,8 @@ async function submitLead(form, opts = {}) {
     fireConfetti();
     // GA4 / GTM hook (fires only if dataLayer exists)
     if (window.dataLayer) window.dataLayer.push({ event: 'lead_submitted', form_source: data.source });
+    // Meta Pixel — standard Lead event so ad delivery can optimize for real submissions.
+    if (window.fbq) window.fbq('track', 'Lead', { content_name: data.source || 'form' });
 
     // In-page thanks state
     if (opts.thanksId) {
@@ -1031,3 +1033,12 @@ if ('serviceWorker' in navigator) {
   if (document.readyState === 'complete') armBackstop();
   else window.addEventListener('load', armBackstop, { once: true });
 })();
+
+
+// ---- META PIXEL: tap-to-call = Contact ----
+// Phone calls are a primary conversion for a home-services business, and most paid traffic
+// is mobile. Delegated so it covers every tel: link, including ones injected later.
+document.addEventListener('click', function (e) {
+  const a = e.target.closest && e.target.closest('a[href^="tel:"]');
+  if (a && window.fbq) window.fbq('track', 'Contact', { content_name: a.dataset.cta || 'phone' });
+}, { capture: true });

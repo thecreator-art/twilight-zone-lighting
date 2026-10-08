@@ -125,6 +125,29 @@ const writePage = (urlPath, html) => {
 // Inlined to eliminate render-blocking on first visit. Full styles.css loads async.
 const CRITICAL_CSS = `*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}body{margin:0;background:#050505;color:#fff;font-family:Inter,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}img,video{max-width:100%;display:block}a{color:inherit;text-decoration:none}.container{max-width:1280px;margin:0 auto;padding:0 24px}.header-stack{position:fixed;top:0;left:0;right:0;z-index:100}.ann-bar{background:#050505;color:#fff;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;white-space:nowrap}.ann-track{display:flex;gap:48px;animation:annScroll 40s linear infinite;padding-left:100%;width:max-content}@keyframes annScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}.ann-pulse{display:inline-block;width:6px;height:6px;background:#c084fc;border-radius:999px;margin-right:10px;vertical-align:middle;animation:pulse 1.5s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.nav{background:rgba(5,5,5,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1280px;margin:0 auto;gap:24px}.brand-logo{height:42px;width:auto}.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.75);transition:color .2s}.nav-phone{color:#c084fc !important;font-weight:600}.nav-cta{display:flex;align-items:center;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .25s cubic-bezier(.2,.8,.2,1);text-decoration:none}.btn-primary{background:linear-gradient(135deg,#a855f7,#6366f1);color:#fff;box-shadow:0 4px 16px rgba(168,85,247,.3)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(168,85,247,.4)}.btn-text{background:transparent;color:rgba(255,255,255,.85);padding:12px 16px}.hamburger{display:none;background:transparent;border:0;width:32px;height:32px;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:0}.hamburger span{display:block;height:2px;background:#fff;border-radius:1px;transition:all .25s}.hero{position:relative;min-height:calc(100vh - 132px);display:flex;flex-direction:column;justify-content:center;padding:60px 0;overflow:hidden;background:#000}.hero.hero-sub{min-height:78vh;padding:80px 0 56px}.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}.ken-burns{width:110%;height:110%;object-fit:cover;position:absolute;inset:-5% 0 0 -5%;filter:brightness(.5) saturate(1.1) contrast(1.05);animation:kenBurns 24s ease-in-out infinite alternate;will-change:transform}@keyframes kenBurns{0%{transform:scale(1.05)}100%{transform:scale(1.18) translate(-2%,-3%)}}.hero-vignette{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,transparent 25%,transparent 55%,rgba(0,0,0,.95) 100%),radial-gradient(ellipse at 70% 30%,rgba(168,85,247,.22),transparent 60%);pointer-events:none}.hero-content{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 24px;width:100%}.hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#c084fc;margin-bottom:22px}.hero-title{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,6vw,76px);line-height:1.05;font-weight:400;letter-spacing:-.02em;margin:0 0 22px;color:#fff;display:flex;flex-direction:column;gap:0}.hero-title span{display:block;opacity:0;transform:translateY(20px);animation:heroLineIn .8s cubic-bezier(.2,.8,.2,1) forwards}.hero-title .hero-line-1{animation-delay:.4s}.hero-title .hero-line-2{animation-delay:.6s}.hero-title .hero-line-3{animation-delay:.8s}@keyframes heroLineIn{to{opacity:1;transform:translateY(0)}}.hero-title em{font-style:italic;background:linear-gradient(135deg,#c084fc,#6366f1);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-est{font-size:clamp(17px,1.4vw,21px);line-height:1.55;color:rgba(255,255,255,.82);max-width:720px;margin:0 0 32px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.hero-foot{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);max-width:720px}.hero-foot-item .num{font-family:'Instrument Serif',Georgia,serif;font-size:36px;font-weight:400;color:#c084fc;line-height:1}.hero-foot-item .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px}@media (max-width:980px){.nav-links,.nav-cta .btn{display:none}.hamburger{display:flex}.hero-foot{grid-template-columns:repeat(2,1fr);gap:16px}}`;
 
+// Meta Pixel. Base code from Events Manager with one addition: visitors sending a Global
+// Privacy Control signal go into Meta's Limited Data Use mode — Meta's documented way to
+// honor a California opt-out of "sharing". The <noscript> fallback sits at the top of
+// <body> instead of in <head>, where an <img> is invalid and makes the parser close <head>
+// early for no-JS visitors.
+const META_PIXEL_ID = '1453802126623020';
+const META_PIXEL_HEAD = `<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+if (navigator.globalPrivacyControl) fbq('dataProcessingOptions', ['LDU'], 1, 1000);
+fbq('init', '${META_PIXEL_ID}');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->`;
+const META_PIXEL_NOSCRIPT = `<!-- Meta Pixel (no-JS) --><noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${META_PIXEL_ID}&amp;ev=PageView&amp;noscript=1" /></noscript><!-- End Meta Pixel (no-JS) -->`;
+
 // Build a single @graph-linked JSON-LD block from multiple schema objects
 // so Google sees the entities as connected, not free-floating.
 function buildGraph(jsonld, canonical) {
@@ -260,8 +283,10 @@ ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/styles.css"></noscript>
 ${buildGraph(jsonld, canonical)}
+${META_PIXEL_HEAD}
 </head>
-<body>`;
+<body>
+${META_PIXEL_NOSCRIPT}`;
 };
 
 // Active-link helper: marks current section in nav
@@ -2198,7 +2223,7 @@ function buildUtility() {
   out.push(renderArticle({
     slug: 'privacy', h1: 'Privacy Policy', title: `Privacy Policy | ${BRAND}`,
     desc: 'How we collect, use, and protect your data.', kw: 'privacy policy', kicker: 'Legal', lead: 'Plain-English privacy policy.',
-    body: `<section class="container article-body"><h2>What we collect</h2><p>Name, address, phone, and email when you request a quote. Cookies for anonymized analytics. That's it.</p><h2>How we use it</h2><p>To respond to quotes and service calls. We never sell or share customer data.</p><h2>Contact</h2><p>Questions: <a href="mailto:${shared.brand.email}">${shared.brand.email}</a></p></section>`
+    body: `<section class="container article-body"><p><em>Updated October 2026.</em></p><h2>What we collect</h2><p>Your name, address, phone, and email when you request a quote. This site also uses the Meta Pixel, a tool from Meta (Facebook and Instagram) that records the pages you visit and actions such as tapping to call or requesting a quote.</p><h2>How we use it</h2><p>Your contact details are used to respond to quotes and service calls. We never sell them. Pixel data is shared with Meta so we can measure our ads and show them to people likely to be interested — under California law, that counts as “sharing” personal information for advertising.</p><h2>Your choices</h2><p>If your browser sends a Global Privacy Control signal, we automatically restrict what Meta may do with that data. You can also manage how Meta uses your activity in your <a href="https://www.facebook.com/adpreferences" rel="noopener">Meta ad preferences</a>. To access or delete the contact information we hold about you, email us.</p><h2>Contact</h2><p>Questions: <a href="mailto:${shared.brand.email}">${shared.brand.email}</a></p></section>`
   }));
   out.push(renderArticle({
     slug: 'terms', h1: 'Terms of Service', title: `Terms of Service | ${BRAND}`,
@@ -2917,5 +2942,23 @@ console.log('✓ Wrote llms-full.txt');
   fs.writeFileSync(homepagePath, next);
   console.log(`✓ Synced homepage coverage map${patchedSchema ? ` + areaServed schema (${areaServed.length} entries)` : ''}`);
 })();
+
+// index.html and 404.html are hand-maintained, so they never pass through head(). Keep the
+// Pixel in them in lockstep with the generated pages: strip any previous copy, re-insert.
+['index.html', '404.html'].forEach(file => {
+  const p = path.join(ROOT, file);
+  if (!fs.existsSync(p)) return;
+  let html = fs.readFileSync(p, 'utf8')
+    .replace(/<!-- Meta Pixel Code -->[\s\S]*?<!-- End Meta Pixel Code -->\n?/g, '')
+    .replace(/<!-- Meta Pixel \(no-JS\) -->[\s\S]*?<!-- End Meta Pixel \(no-JS\) -->\n?/g, '');
+  if (!html.includes('</head>') || !/<body[^>]*>/.test(html)) {
+    console.warn(`! ${file}: no </head> or <body> — Meta Pixel NOT synced`);
+    return;
+  }
+  html = html.replace('</head>', `${META_PIXEL_HEAD}\n</head>`)
+             .replace(/<body[^>]*>/, m => `${m}\n${META_PIXEL_NOSCRIPT}`);
+  fs.writeFileSync(p, html);
+  console.log(`✓ Synced Meta Pixel into ${file}`);
+});
 
 console.log(`\nTotal: ${written + 1} pages (including homepage)`);
