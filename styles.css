@@ -6086,10 +6086,26 @@ section.solutions { padding: 100px 0; }
   width: 100%;
   border: 0;
   display: block;
-  min-height: 680px;
+  /* Floors measured from the live form (step 1, by iframe width): 488px wide → 894px,
+     375 → 938, 320 → 981, 288 → 1026; client-side validation errors add ~70px. Jobber
+     posts a bogus 40px on load and does not re-post on reflow, so without a real floor
+     the form becomes a box you scroll inside — the bottom fields and the Next button
+     disappear below the fold of the iframe. Larger posted heights (e.g. step 2) still
+     win, because an inline height above the min-height applies normally. */
+  min-height: 980px;
 }
 @media (max-width: 720px) {
-  .jobber-embed-wrap iframe { min-height: 860px; }
+  /* Less card padding on phones — Jobber pads its own form, and every pixel of width
+     shortens it. */
+  .jobber-embed-wrap { padding: 12px; }
+  .jobber-embed-wrap iframe { min-height: 1040px; }
+}
+/* Measured with validation errors showing: iframe 309px wide → 1070px, 254px → 1174px. */
+@media (max-width: 480px) {
+  .jobber-embed-wrap iframe { min-height: 1110px; }
+}
+@media (max-width: 360px) {
+  .jobber-embed-wrap iframe { min-height: 1190px; }
 }
 .jobber-noscript {
   max-width: 860px;

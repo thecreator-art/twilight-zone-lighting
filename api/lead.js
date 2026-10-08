@@ -1,6 +1,7 @@
 // Vercel serverless function — lead form proxy.
 // Browser POSTs JSON to /api/lead. Function validates, drops bot submissions,
-// and forwards the payload to LEAD_WEBHOOK_URL (set in Vercel env vars — point at GHL).
+// and forwards the payload to LEAD_WEBHOOK_URL (set in Vercel env vars — a Zapier/Make webhook that creates
+// the client + request in Jobber and can send the Meta Conversions API Lead event).
 //
 // Required env var: LEAD_WEBHOOK_URL (the GHL webhook URL or any HTTPS endpoint that accepts JSON)
 // Optional env var: LEAD_WEBHOOK_AUTH ("Bearer xxx" if your webhook requires auth)
@@ -56,6 +57,19 @@ export default async function handler(req) {
     city: (payload.city || '').toString().trim().slice(0, 80),
     state: (payload.state || 'CA').toString().trim().slice(0, 16),
     zip: (payload.zip || '').toString().trim().slice(0, 16),
+    name: (payload.name || '').toString().trim().slice(0, 120),
+    timeline: (payload.timeline || '').toString().trim().slice(0, 60),
+    // ad attribution — lets the CRM side (and a Conversions API step) tie the lead back to the Meta ad
+    utm_source: (payload.utm_source || '').toString().slice(0, 200),
+    utm_medium: (payload.utm_medium || '').toString().slice(0, 200),
+    utm_campaign: (payload.utm_campaign || '').toString().slice(0, 200),
+    utm_content: (payload.utm_content || '').toString().slice(0, 200),
+    utm_term: (payload.utm_term || '').toString().slice(0, 200),
+    fbclid: (payload.fbclid || '').toString().slice(0, 300),
+    fbp: (payload.fbp || '').toString().slice(0, 200),
+    fbc: (payload.fbc || '').toString().slice(0, 400),
+    // same id the browser Pixel sent with its Lead event — use it as event_id in CAPI to de-duplicate
+    eventId: (payload.eventId || '').toString().slice(0, 80),
     page: (payload.page || '').toString().slice(0, 200),
     referrer: (payload.referrer || '').toString().slice(0, 200),
     userAgent: req.headers.get('user-agent') || '',

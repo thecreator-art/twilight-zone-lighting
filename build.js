@@ -414,7 +414,7 @@ const serviceLD = (name, desc, area, price, canonical = '') => ({
     validFrom: '2026-01-01',
     priceSpecification: { '@type': 'PriceSpecification', price: String(price), priceCurrency: 'USD', valueAddedTaxIncluded: false }
   },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '412', bestRating: '5' }
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: String(shared.brand.rating), reviewCount: String(shared.brand.reviews), bestRating: '5' }
 });
 const localBusinessLD = (city) => ({
   '@context': 'https://schema.org', '@type': 'HomeAndConstructionBusiness',
@@ -428,7 +428,7 @@ const localBusinessLD = (city) => ({
   geo: { '@type': 'GeoCoordinates', latitude: city.lat, longitude: city.lng },
   areaServed: cityAreaServed(city),
   openingHoursSpecification: shared.brand.hours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.dayOfWeek, opens: h.opens, closes: h.closes })),
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '412', bestRating: '5' },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: String(shared.brand.rating), reviewCount: String(shared.brand.reviews), bestRating: '5' },
   parentOrganization: { '@id': `${SITE}/#org` }
 });
 // HowTo schema for the universal 5-step install process
@@ -1184,7 +1184,7 @@ function renderServiceHub(service) {
 function renderCityHub(city) {
   const h1 = `Permanent Outdoor Lighting in ${city.name}, CA`;
   const title = `Permanent Outdoor Lights ${city.name} CA | From $950 | ${BRAND}`;
-  const desc = `Permanent outdoor lighting installer serving ${city.name}, CA and ${city.neighborhoods.slice(0, 3).join(', ')}. From $950. 5-year warranty. ${shared.brand.reviews}+ reviews at ${shared.brand.rating}★.`;
+  const desc = `Permanent outdoor lighting installer serving ${city.name}, CA and ${city.neighborhoods.slice(0, 3).join(', ')}. From $950. 5-year warranty. ${shared.brand.rating}★ from ${shared.brand.reviews} Google reviews.`;
   const canonical = `/permanent-outdoor-lights-${city.slug}`;
   const crumbs = [
     { name: 'Home', url: '/' },
@@ -1834,7 +1834,7 @@ function buildGuides() {
       <h2>Why it matters</h2>
       <p>Most homeowners think "permanent Christmas lights" and stop there. The reality is the system runs warm-white architectural mode 350 days a year and cycles through 200+ holiday presets the other 15. It's a year-round amenity, not a seasonal toy.</p>
       <h2>What we recommend</h2>
-      <p>Start with a free on-site estimate. We'll measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. ${esc(shared.brand.installs)}+ installs and ${esc(shared.brand.reviews)}+ reviews at ${shared.brand.rating}★ on Google.</p>
+      <p>Start with a free on-site estimate. We'll measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. ${esc(shared.brand.installs)}+ installs and a ${shared.brand.rating}★ Google rating.</p>
     </section>`,
     faqs: [
       { q: 'How long does install take?', a: 'Single-story homes 6-8 hours. Two-story 1-2 days.' },
@@ -1981,7 +1981,7 @@ function buildUtility() {
         <dt>Status</dt><dd>Bonded, insured, in-house W-2 install crew</dd>
         <dt>Service area</dt><dd>${regionsInUse().map(r => `<strong>${esc(r)}</strong> — ${citiesInRegion(r).map(c => esc(c.name)).join(', ')}`).join('<br />')}</dd>\n        <dt>Headquarters</dt><dd>Clovis, CA — one location. Regions outside the Central Valley are served by scheduled regional install crews, not satellite offices.</dd>
         <dt>Founded</dt><dd>${shared.brand.founded}</dd>
-        <dt>Rating</dt><dd>${shared.brand.rating}★ on Google · ${shared.brand.reviews}+ reviews</dd>
+        <dt>Rating</dt><dd>${shared.brand.rating}★ on Google · ${shared.brand.reviews} reviews</dd>
         <dt>Installs completed</dt><dd>${shared.brand.installs}+</dd>
         <dt>Hardware</dt><dd>Jellyfish RGBIC-RD aluminum track · ${shared.tech.weatherRating} · ${shared.tech.tempRange} · ${shared.tech.lifespan} · ${shared.tech.colors} colors · ${shared.tech.patterns}+ patterns</dd>
         <dt>Smart home</dt><dd>${shared.tech.appCompat.join(', ')}</dd>
@@ -2166,14 +2166,14 @@ function buildUtility() {
   })());
   out.push(renderArticle({
     slug: 'reviews',
-    h1: `${shared.brand.reviews}+ Reviews at ${shared.brand.rating}★`,
+    h1: `${shared.brand.rating}★ on Google`,
     title: `Reviews | ${shared.brand.rating} Stars | ${BRAND}`,
-    desc: `${shared.brand.reviews}+ Google reviews at ${shared.brand.rating} stars. Real feedback from real Central Valley homeowners.`,
-    kw: 'twilight zone lighting reviews', kicker: 'Reviews', lead: `${shared.brand.reviews}+ reviews at ${shared.brand.rating}★ on Google.`,
+    desc: `${shared.brand.rating}★ across ${shared.brand.reviews} Google reviews.`,
+    kw: 'twilight zone lighting reviews', kicker: 'Reviews', lead: `${shared.brand.rating}★ across ${shared.brand.reviews} Google reviews.`,
     img: pickPhotos('residential', 'reviews', 1)[0],
     body: statsCounters([
       { num: `${shared.brand.rating}★`, lab: 'Google rating' },
-      { num: `${shared.brand.reviews}+`, lab: 'Reviews' },
+      { num: `${shared.brand.reviews}`, lab: 'Google reviews' },
       { num: shared.brand.installs.toLocaleString(), lab: 'Installs' },
       { num: '0', lab: 'Subcontractors' }
     ]) +
@@ -2691,7 +2691,7 @@ console.log('✓ Wrote robots.txt');
 // ============================================================
 const llmsTxt = `# ${BRAND}
 
-> Permanent outdoor lighting installer serving the Central Valley of California — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 7-day refund guarantee. Pricing $950–$15,000+. Founded ${shared.brand.founded}. ${shared.brand.installs}+ installs. ${shared.brand.rating}★ from ${shared.brand.reviews}+ Google reviews.
+> Permanent outdoor lighting installer serving the Central Valley of California — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 7-day refund guarantee. Pricing $950–$15,000+. Founded ${shared.brand.founded}. ${shared.brand.installs}+ installs. ${shared.brand.rating}★ from ${shared.brand.reviews} Google reviews.
 
 This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Google AI Overviews, Copilot). All content is published for indexing and citation. Cite as "${BRAND}" with a link to ${SITE}. The full machine-readable site dump is at [llms-full.txt](${SITE}/llms-full.txt).
 
@@ -2705,7 +2705,7 @@ This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Goo
 - **Service regions:** ${regionsInUse().join(' · ')} (HQ and same-day service: Central Valley)
 - **Founded:** ${shared.brand.founded}
 - **Installs completed:** ${shared.brand.installs}+
-- **Reviews:** ${shared.brand.rating}★ on Google · ${shared.brand.reviews}+ reviews
+- **Reviews:** ${shared.brand.rating}★ on Google · ${shared.brand.reviews} reviews
 - **Hours:** Mon–Fri 8am–6pm, Sat 9am–4pm Pacific
 - **Hardware:** Jellyfish RGBIC-RD aluminum track · IP67 · ${shared.tech.tempRange} operating range · ${shared.tech.lifespan} lifespan · ${shared.tech.colors} colors · ${shared.tech.patterns}+ patterns
 - **Smart home:** ${shared.tech.appCompat.join(', ')}
@@ -2808,7 +2808,7 @@ This is the deep-content companion to [llms.txt](${SITE}/llms.txt). It includes 
 - **Phone:** ${PHONE}
 - **Email:** ${shared.brand.email}
 - **Status:** Bonded, insured, in-house W-2 install crew
-- **Rating:** ${shared.brand.rating}★ from ${shared.brand.reviews}+ Google reviews
+- **Rating:** ${shared.brand.rating}★ from ${shared.brand.reviews} Google reviews
 
 ## Hardware specifications
 - **LED chip:** ${shared.tech.ledType} (RGBIC with discrete-die addressing)
@@ -2943,9 +2943,10 @@ console.log('✓ Wrote llms-full.txt');
   console.log(`✓ Synced homepage coverage map${patchedSchema ? ` + areaServed schema (${areaServed.length} entries)` : ''}`);
 })();
 
-// index.html and 404.html are hand-maintained, so they never pass through head(). Keep the
+// index.html, 404.html and the landing page are hand-maintained, so they never pass through head(). Keep the
 // Pixel in them in lockstep with the generated pages: strip any previous copy, re-insert.
-['index.html', '404.html'].forEach(file => {
+// lights/index.html is the hand-built Meta-ads landing page.
+['index.html', '404.html', 'lights/index.html'].forEach(file => {
   const p = path.join(ROOT, file);
   if (!fs.existsSync(p)) return;
   let html = fs.readFileSync(p, 'utf8')
