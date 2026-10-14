@@ -163,6 +163,33 @@ section.s{padding:64px 0}
 }
 @media (max-width:359px){.opts.three{grid-template-columns:1fr 1fr}.chips li{font-size:13px;padding:8px}}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}.dock{transition:none}}
+/* multi-step application */
+.prog{margin-bottom:4px}
+.bar{height:8px;border-radius:100px;background:#ececf2;overflow:hidden}
+.bar i{display:block;height:100%;width:6%;border-radius:inherit;background:linear-gradient(90deg,#a855f7,#6366f1,#22c55e);background-size:200% 100%;transition:width .5s var(--ease)}
+.pmsg{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font:600 13px/1.2 var(--sans)}
+.pm{color:#6d28d9}.pn{color:#8a8a96;font-weight:500;white-space:nowrap}
+.step{display:grid;gap:14px;animation:stepIn .38s var(--ease)}
+@keyframes stepIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.qh{display:block;width:100%;margin:6px 0 4px;padding:0;font:400 27px/1.15 var(--serif);color:#141414;outline:0}
+.opts.big{gap:10px}
+.opts.big span{min-height:62px;font-size:17px;border-radius:14px}
+.opts.stack{grid-template-columns:1fr}
+.opts.big input:checked+span{animation:pop .28s var(--ease)}
+@keyframes pop{50%{transform:scale(1.04)}}
+.af textarea{width:100%;padding:12px 14px;border:1.5px solid #dedee6;border-radius:12px;background:#fff;color:#111;font:500 16px/1.4 var(--sans);resize:vertical}
+.af textarea:focus{outline:0;border-color:#a855f7;box-shadow:0 0 0 4px rgba(168,85,247,.16)}
+.up{position:relative;display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 14px;border:1.5px dashed #c9b6f2;border-radius:14px;background:#faf5ff;color:#4c1d95;cursor:pointer}
+.up input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.up .ic{width:22px;height:22px;color:#7c3aed}
+.up-t{display:grid;gap:2px;min-width:0}
+.up-t b{font:700 15px/1.2 var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-t i{font:500 12.5px/1.2 var(--sans);font-style:normal;color:#6b6b76}
+.up.has{border-style:solid;border-color:#22c55e;background:#f0fdf4;color:#166534}
+.up input:focus-visible~.up-t b{text-decoration:underline}
+.back{justify-self:start;margin-top:2px;min-height:44px;padding:0 4px;border:0;background:none;color:#6b6b76;font:600 14px/1 var(--sans);cursor:pointer}
+.err-top{margin-top:4px}
+@media (prefers-reduced-motion:reduce){.step,.opts.big input:checked+span{animation:none}.bar i{transition:none}}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -223,35 +250,41 @@ fbq('track', 'PageView');
   <div class="h-form" id="apply">
     <div class="card">
       <h2>Apply in <em>60 seconds</em></h2>
-      <p class="micro"><span><svg class="ic"><use href="#i-check"/></svg>No resume needed</span><span><svg class="ic"><use href="#i-check"/></svg>Paid training</span></p>
+      <p class="micro"><span><svg class="ic"><use href="#i-check"/></svg>Resume optional</span><span><svg class="ic"><use href="#i-check"/></svg>Paid training</span></p>
       <form class="af" novalidate aria-label="Job application">
-        <label class="f"><span class="l">Full name</span><input name="name" type="text" autocomplete="name" required maxlength="80" enterkeyhint="next"></label>
-        <div class="two">
-          <label class="f"><span class="l">Phone</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="32" enterkeyhint="next"></label>
-          <label class="f"><span class="l">City</span><input name="city" type="text" autocomplete="address-level2" required maxlength="80" enterkeyhint="next"></label>
+        <div class="prog"><div class="bar" aria-hidden="true"><i></i></div><p class="pmsg" aria-live="polite"><span class="pm">Let's get you hired 👋</span><span class="pn">Step 1 of 11</span></p></div>
+
+        <div class="step" data-step="contact">
+          <label class="f"><span class="l">Full name</span><input name="name" type="text" autocomplete="name" required maxlength="80" enterkeyhint="next"></label>
+          <div class="two">
+            <label class="f"><span class="l">Phone</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="32" enterkeyhint="next"></label>
+            <label class="f"><span class="l">City</span><input name="city" type="text" autocomplete="address-level2" required maxlength="80" enterkeyhint="next"></label>
+          </div>
+          <label class="f"><span class="l">Email</span><input name="email" type="email" inputmode="email" autocomplete="email" required maxlength="200" enterkeyhint="go"></label>
+          <button class="btn btn-grad next" type="button"><span>Next: 9 quick taps</span><svg class="ic"><use href="#i-arrow"/></svg></button>
         </div>
-        <label class="f"><span class="l">Email <i>(optional)</i></span><input name="email" type="email" inputmode="email" autocomplete="email" maxlength="200" enterkeyhint="done"></label>
-        <fieldset data-q="hours">
-          <legend class="l">Can you work 40+ hours a week?</legend>
-          <div class="opts"><label><input type="radio" name="hours" value="Yes"><span>Yes</span></label><label><input type="radio" name="hours" value="No"><span>No</span></label></div>
-        </fieldset>
-        <fieldset data-q="heights">
-          <legend class="l">Comfortable on ladders and roofs?</legend>
-          <div class="opts"><label><input type="radio" name="heights" value="Yes"><span>Yes</span></label><label><input type="radio" name="heights" value="No"><span>No</span></label></div>
-        </fieldset>
-        <fieldset data-q="start">
-          <legend class="l">When can you start?</legend>
-          <div class="opts three"><label><input type="radio" name="start" value="Right away"><span>Right away</span></label><label><input type="radio" name="start" value="Within 2 weeks"><span>2 weeks</span></label><label><input type="radio" name="start" value="Just looking"><span>Just looking</span></label></div>
-        </fieldset>
-        <fieldset data-q="experience">
-          <legend class="l">Experience</legend>
-          <div class="opts three"><label><input type="radio" name="experience" value="None, ready to learn"><span>None yet</span></label><label><input type="radio" name="experience" value="Construction / trades"><span>Trades</span></label><label><input type="radio" name="experience" value="Lighting / electrical"><span>Lighting</span></label></div>
-        </fieldset>
-        <label class="age" data-q="age"><input type="checkbox" name="adult" value="Yes">I'm 18 or older</label>
-        <div class="hp" aria-hidden="true"><label>Company<input name="company" type="text" tabindex="-1" autocomplete="off"></label></div>
-        <p class="err" role="alert" hidden></p>
-        <button class="btn btn-grad" type="submit"><span>Apply now</span><svg class="ic"><use href="#i-arrow"/></svg></button>
-        <p class="fine">By applying, you agree we may contact you by call, text or email about this job. Msg &amp; data rates may apply. <a href="/privacy" target="_blank" rel="noopener">Privacy</a></p>
+
+        <fieldset class="step q" data-q="hours" hidden><legend class="qh" tabindex="-1">Can you work 40+ hours a week?</legend><div class="opts big"><label><input type="radio" name="hours" value="Yes"><span>👍 Yes</span></label><label><input type="radio" name="hours" value="No"><span>No</span></label></div></fieldset>
+        <fieldset class="step q" data-q="heights" hidden><legend class="qh" tabindex="-1">Comfortable on ladders and roofs?</legend><div class="opts big"><label><input type="radio" name="heights" value="Yes"><span>👍 Yes</span></label><label><input type="radio" name="heights" value="No"><span>No</span></label></div></fieldset>
+        <fieldset class="step q" data-q="lift" hidden><legend class="qh" tabindex="-1">Can you lift 50+ lbs?</legend><div class="opts big"><label><input type="radio" name="lift" value="Yes"><span>💪 Yes</span></label><label><input type="radio" name="lift" value="No"><span>No</span></label></div></fieldset>
+        <fieldset class="step q" data-q="license" hidden><legend class="qh" tabindex="-1">Do you have a valid driver's license?</legend><div class="opts big"><label><input type="radio" name="license" value="Yes"><span>🚗 Yes</span></label><label><input type="radio" name="license" value="No"><span>No</span></label></div></fieldset>
+        <fieldset class="step q" data-q="outdoors" hidden><legend class="qh" tabindex="-1">Comfortable working outdoors?</legend><div class="opts big"><label><input type="radio" name="outdoors" value="Yes"><span>☀️ Yes</span></label><label><input type="radio" name="outdoors" value="No"><span>No</span></label></div></fieldset>
+        <fieldset class="step q" data-q="feet" hidden><legend class="qh" tabindex="-1">Can you be on your feet all day?</legend><div class="opts big"><label><input type="radio" name="feet" value="Yes"><span>👟 Yes</span></label><label><input type="radio" name="feet" value="No"><span>No</span></label></div></fieldset>
+        <fieldset class="step q" data-q="experience" hidden><legend class="qh" tabindex="-1">Any experience with other trades?</legend><div class="opts big stack"><label><input type="radio" name="experience" value="None yet, ready to learn"><span>None yet, ready to learn</span></label><label><input type="radio" name="experience" value="Construction / roofing"><span>Construction / roofing</span></label><label><input type="radio" name="experience" value="Electrical / lighting"><span>Electrical / lighting</span></label><label><input type="radio" name="experience" value="Another trade"><span>Another trade</span></label></div></fieldset>
+        <fieldset class="step q" data-q="start" hidden><legend class="qh" tabindex="-1">When can you start?</legend><div class="opts big stack"><label><input type="radio" name="start" value="Right away"><span>🔥 Right away</span></label><label><input type="radio" name="start" value="Within 2 weeks"><span>Within 2 weeks</span></label><label><input type="radio" name="start" value="Just looking"><span>Just looking</span></label></div></fieldset>
+        <fieldset class="step q" data-q="adult" hidden><legend class="qh" tabindex="-1">Are you 18 or older?</legend><div class="opts big"><label><input type="radio" name="adult" value="Yes"><span>Yes</span></label><label><input type="radio" name="adult" value="No"><span>No</span></label></div></fieldset>
+
+        <div class="step" data-step="final" hidden>
+          <p class="qh" tabindex="-1">Last step! Tell us about you 🏁</p>
+          <label class="f"><span class="l">Who you are <i>(optional)</i></span><textarea name="notes" rows="4" maxlength="1500" placeholder="Past jobs, what you're good at, why you'd crush it…"></textarea></label>
+          <label class="up"><input type="file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.heic"><svg class="ic" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><span class="up-t"><b>Upload your resume</b><i>Optional, gets you a faster response</i></span></label>
+          <div class="hp" aria-hidden="true"><label>Company<input name="company" type="text" tabindex="-1" autocomplete="off"></label></div>
+          <p class="err" role="alert" hidden></p>
+          <button class="btn btn-grad" type="submit"><span>Submit my application</span><svg class="ic"><use href="#i-arrow"/></svg></button>
+          <p class="fine">By applying, you agree we may contact you by call, text or email about this job. Msg &amp; data rates may apply. <a href="/privacy" target="_blank" rel="noopener">Privacy</a></p>
+        </div>
+        <p class="err err-top" role="alert" hidden></p>
+        <button class="back" type="button" hidden>← Back</button>
       </form>
     </div>
   </div>
@@ -305,7 +338,7 @@ fbq('track', 'PageView');
     <p class="eyebrow">How it works</p>
     <h2 class="t" id="how-h">Three steps to <em class="g">your first paycheck.</em></h2>
     <ol class="steps">
-      <li><div><b>Apply in 60 seconds</b><span>No resume needed.</span></div></li>
+      <li><div><b>Apply in 60 seconds</b><span>Resume optional.</span></div></li>
       <li><div><b>Quick call with our team</b><span>We'll reach out to talk about the job.</span></div></li>
       <li><div><b>Start paid training</b><span>Then get out on installs.</span></div></li>
     </ol>
@@ -339,81 +372,135 @@ fbq('track', 'PageView');
   'use strict';
   var d = document, W = window;
   var W3_KEY = 'f5778338-9a6d-4c6c-be5c-ba7c88980649';
-  var form = d.querySelector('form.af'), card = d.getElementById('apply'), err = form.querySelector('.err'), go = form.querySelector('button[type=submit]');
+  var MAX_FILE = 5 * 1024 * 1024;
+  var form = d.querySelector('form.af'), card = d.getElementById('apply');
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var qs = new URLSearchParams(location.search);
+  var track = function (ev, p) { if (W.fbq) fbq('trackCustom', ev, p || {}); };
 
   // Apply buttons → the form
   d.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a.js-apply'); if (!a) return;
     e.preventDefault();
-    var top = card.getBoundingClientRect().top + (W.pageYOffset || 0) - 12;
-    W.scrollTo({ top: Math.max(0, top), behavior: RM ? 'auto' : 'smooth' });
-    setTimeout(function () { try { form.elements.name.focus({ preventScroll: true }); } catch (x) {} }, RM ? 0 : 500);
+    W.scrollTo({ top: Math.max(0, card.getBoundingClientRect().top + W.pageYOffset - 12), behavior: RM ? 'auto' : 'smooth' });
+    setTimeout(function () { var i = steps[idx].querySelector('input, .qh'); try { i && i.focus({ preventScroll: true }); } catch (x) {} }, RM ? 0 : 500);
   });
-
-  // Calls from a hiring page are not customer Contacts — keep them out of the sales events.
+  // Hiring-page calls stay out of the customer Contact event
   d.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="tel:"]');
-    if (a && W.fbq) fbq('trackCustom', 'ApplicantCall', { cta: a.getAttribute('data-cta') || 'phone' });
+    if (a) track('ApplicantCall', { cta: a.getAttribute('data-cta') || 'phone' });
   }, true);
 
-  // First interaction with the form
+  /* ---------- steps ---------- */
+  var steps = [].slice.call(form.querySelectorAll('.step'));
+  var bar = form.querySelector('.bar i'), pm = form.querySelector('.pm'), pn = form.querySelector('.pn');
+  var back = form.querySelector('.back'), errTop = form.querySelector('.err-top');
+  var idx = 0, last = steps.length - 1;
+  var cheer = function (i) {
+    if (i === 0) return "Let's get you hired 👋";
+    if (i === last) return 'Last step! 🏁';
+    var p = i / last;
+    return p < .3 ? 'Nice, keep going ⚡' : p < .6 ? "You're flying 🔥" : p < .85 ? 'Almost there 💪' : 'One more tap 🙌';
+  };
+  function show(i, focus) {
+    idx = i;
+    steps.forEach(function (s, k) { s.hidden = k !== i; });
+    bar.style.width = Math.max(6, Math.round(i / last * 100)) + '%';
+    pm.textContent = cheer(i);
+    pn.textContent = 'Step ' + (i + 1) + ' of ' + steps.length;
+    back.hidden = i === 0;
+    errTop.hidden = true;
+    var r = card.getBoundingClientRect();
+    if (r.top < 0) W.scrollTo({ top: W.pageYOffset + r.top - 12, behavior: RM ? 'auto' : 'smooth' });
+    if (focus) { var t = steps[i].querySelector('.qh') || steps[i].querySelector('input'); try { t && t.focus({ preventScroll: true }); } catch (x) {} }
+  }
+  back.addEventListener('click', function () { if (idx > 0) show(idx - 1, true); });
+
+  var mark = function (el, bad) { if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); };
+  var val = function (n) { return (form.elements[n] && form.elements[n].value || '').trim(); };
   var started = false;
-  form.addEventListener('focusin', function () { if (!started) { started = true; if (W.fbq) fbq('trackCustom', 'ApplicationStart'); } });
+  form.addEventListener('focusin', function () { if (!started) { started = true; track('ApplicationStart'); } });
 
-  // Mobile dock: shown once past the hero, hidden while the form is on screen
-  var dock = d.querySelector('.dock');
-  function dockTick() {
-    var r = card.getBoundingClientRect(), vh = innerHeight;
-    var formOn = r.bottom > 0 && r.top < vh;
-    var foot = d.querySelector('.foot').getBoundingClientRect().top < vh;
-    var on = !formOn && !foot && innerWidth < 1024 && r.bottom < 0;
-    dock.classList.toggle('on', on);
-    if (on) { dock.removeAttribute('inert'); dock.removeAttribute('aria-hidden'); } else { dock.setAttribute('inert', ''); dock.setAttribute('aria-hidden', 'true'); }
+  // Step 1: contact
+  function contactOK() {
+    var f = form.elements, bad = [];
+    [['name', val('name').length >= 2], ['phone', val('phone').replace(/\D/g, '').length >= 10],
+     ['city', val('city').length >= 2], ['email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'))]]
+      .forEach(function (p) { mark(f[p[0]], !p[1]); if (!p[1]) bad.push(f[p[0]]); });
+    if (bad.length) { errTop.textContent = 'Please fill in the highlighted fields.'; errTop.hidden = false; try { bad[0].focus(); } catch (x) {} return false; }
+    return true;
   }
-  W.addEventListener('scroll', dockTick, { passive: true }); W.addEventListener('resize', dockTick); dockTick();
+  var contactDone = false;
+  form.querySelector('.next').addEventListener('click', function () {
+    if (!contactOK()) return;
+    if (!contactDone) { contactDone = true; track('ApplicationContact'); }
+    show(1, true);
+  });
+  steps[0].addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;
+    e.preventDefault();
+    var ins = [].slice.call(steps[0].querySelectorAll('input')), k = ins.indexOf(e.target);
+    if (k < ins.length - 1) ins[k + 1].focus(); else form.querySelector('.next').click();
+  });
+  form.addEventListener('input', function (e) { if (e.target.name) mark(e.target, false); errTop.hidden = true; });
 
-  // Video plays only while visible (rect check — no IntersectionObserver dependency)
-  var v = d.querySelector('.vid video');
-  if (v && !RM) {
-    var vTick = function () {
-      var r = v.getBoundingClientRect(), vis = r.bottom > 0 && r.top < innerHeight;
-      if (vis && v.paused) { v.preload = 'auto'; v.play().catch(function () {}); } else if (!vis && !v.paused) v.pause();
-    };
-    W.addEventListener('scroll', vTick, { passive: true }); vTick();
-  }
+  // Tap questions auto-advance
+  form.addEventListener('change', function (e) {
+    var fs = e.target.closest('fieldset.q'); if (!fs) return;
+    mark(fs, false);
+    var i = steps.indexOf(fs);
+    setTimeout(function () { if (idx === i) show(i + 1, true); }, RM ? 60 : 300);
+  });
 
-  function mark(el, bad) { if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
-  form.addEventListener('input', function () { err.hidden = true; });
-  form.addEventListener('change', function (e) { var fs = e.target.closest('fieldset, .age'); if (fs) mark(fs, false); });
+  // Resume picker
+  var file = form.elements.attachment, up = form.querySelector('.up'), upB = up.querySelector('b'), upI = up.querySelector('.up-t i');
+  file.addEventListener('change', function () {
+    var f = file.files && file.files[0];
+    if (!f) { up.classList.remove('has'); upB.textContent = 'Upload your resume'; upI.textContent = 'Optional, gets you a faster response'; return; }
+    if (f.size > MAX_FILE) { file.value = ''; up.classList.remove('has'); upB.textContent = 'File too big (max 5 MB)'; upI.textContent = 'Try a PDF or a photo of it'; return; }
+    up.classList.add('has'); upB.textContent = '✓ ' + f.name; upI.textContent = 'Tap to change';
+  });
 
+  /* ---------- submit ---------- */
+  var err = steps[last].querySelector('.err'), go = form.querySelector('button[type=submit]');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (go.disabled) return;
-    var f = form.elements, val = function (n) { return (f[n] && f[n].value || '').trim(); };
+    if (idx !== last) { if (idx === 0) form.querySelector('.next').click(); return; }
+    if (!contactOK()) { show(0, false); errTop.hidden = false; return; }
     var pick = function (n) { var c = form.querySelector('input[name="' + n + '"]:checked'); return c ? c.value : ''; };
-    var bad = [];
-    [['name', val('name').length >= 2], ['phone', val('phone').replace(/\D/g, '').length >= 10], ['city', val('city').length >= 2],
-     ['email', !val('email') || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'))]].forEach(function (p) { mark(f[p[0]], !p[1]); if (!p[1]) bad.push(f[p[0]]); });
-    ['hours', 'heights', 'start', 'experience'].forEach(function (q) { var fs = form.querySelector('[data-q="' + q + '"]'), ok = !!pick(q); mark(fs, !ok); if (!ok) bad.push(fs.querySelector('input')); });
-    var age = form.querySelector('[data-q="age"]'); mark(age, !f.adult.checked); if (!f.adult.checked) bad.push(f.adult);
-    if (bad.length) { err.textContent = 'Please fill in the highlighted fields.'; err.hidden = false; try { bad[0].focus(); } catch (x) {} return; }
+    var missing = steps.filter(function (s) { return s.classList.contains('q') && !pick(s.dataset.q); });
+    if (missing.length) { var mi = steps.indexOf(missing[0]); mark(missing[0], true); show(mi, true); return; }
     if (val('company')) { location.assign('/careers/thank-you'); return; } // bot trap
 
     var name = val('name'), first = name.split(/\s+/)[0];
-    var app = {
-      'Name': name, 'Phone': val('phone'), 'Email': val('email') || '(none)', 'City': val('city'),
-      '40+ hrs/week': pick('hours'), 'Ladders & roofs': pick('heights'), 'Can start': pick('start'), 'Experience': pick('experience'), '18+': 'Yes',
-      'Page': location.href.split('#')[0].slice(0, 300)
+    var fields = {
+      'Name': name, 'Phone': val('phone'), 'Email': val('email'), 'City': val('city'),
+      '40+ hrs/week': pick('hours'), 'Ladders & roofs': pick('heights'), 'Lift 50+ lbs': pick('lift'),
+      "Driver's license": pick('license'), 'Works outdoors': pick('outdoors'), 'On feet all day': pick('feet'),
+      'Trade experience': pick('experience'), 'Can start': pick('start'), '18+': pick('adult'),
+      'About them': val('notes') || '(left blank)', 'Page': location.href.split('#')[0].slice(0, 300)
     };
-    ['utm_source', 'utm_campaign', 'utm_content'].forEach(function (k) { if (qs.get(k)) app[k] = qs.get(k).slice(0, 200); });
-
+    ['utm_source', 'utm_campaign', 'utm_content'].forEach(function (k) { if (qs.get(k)) fields[k] = qs.get(k).slice(0, 200); });
+    var build = function (withFile) {
+      var fd = new FormData();
+      fd.append('access_key', W3_KEY);
+      fd.append('from_name', 'Vaultio');
+      fd.append('subject', 'New Applicant from ' + first + ' - Twilight Zone Hiring');
+      fd.append('replyto', val('email'));
+      Object.keys(fields).forEach(function (k) { fd.append(k, fields[k]); });
+      if (withFile) fd.append('attachment', file.files[0]);
+      else if (file.files && file.files[0]) fd.append('Resume', 'Attached file could not be uploaded (' + file.files[0].name + ') — ask them to email it.');
+      return fd;
+    };
+    var send = function (fd) {
+      return fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body: fd })
+        .then(function (r) { return r.json(); }).then(function (r) { return !!(r && r.success); }).catch(function () { return false; });
+    };
+    var hasFile = !!(file.files && file.files[0]);
     go.disabled = true; var label = go.firstElementChild.textContent; go.firstElementChild.textContent = 'Sending…';
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(Object.assign({ access_key: W3_KEY, from_name: 'Vaultio', subject: 'New Applicant from ' + first + ' - Twilight Zone Hiring' }, app))
-    }).then(function (r) { return r.json(); }).then(function (r) { return !!(r && r.success); }).catch(function () { return false; })
+    send(build(hasFile))
+      .then(function (ok) { return ok || !hasFile ? ok : send(build(false)); }) // never lose an applicant over the attachment
       .then(function (ok) {
         if (ok) {
           try { sessionStorage.setItem('tz_app', JSON.stringify({ first: first, fired: 0, eventId: 'app.' + Date.now().toString(36) })); } catch (x) {}
@@ -425,6 +512,25 @@ fbq('track', 'PageView');
         }
       });
   });
+
+  /* ---------- dock + video ---------- */
+  var dock = d.querySelector('.dock'), foot = d.querySelector('.foot');
+  function dockTick() {
+    var r = card.getBoundingClientRect(), vh = innerHeight;
+    var on = innerWidth < 1024 && r.bottom < 0 && foot.getBoundingClientRect().top > vh;
+    dock.classList.toggle('on', on);
+    if (on) { dock.removeAttribute('inert'); dock.removeAttribute('aria-hidden'); } else { dock.setAttribute('inert', ''); dock.setAttribute('aria-hidden', 'true'); }
+  }
+  W.addEventListener('scroll', dockTick, { passive: true }); W.addEventListener('resize', dockTick); dockTick();
+  var v = d.querySelector('.vid video');
+  if (v && !RM) {
+    var vTick = function () {
+      var r = v.getBoundingClientRect(), vis = r.bottom > 0 && r.top < innerHeight;
+      if (vis && v.paused) { v.preload = 'auto'; v.play().catch(function () {}); } else if (!vis && !v.paused) v.pause();
+    };
+    W.addEventListener('scroll', vTick, { passive: true }); vTick();
+  }
+  show(0, false);
 })();
 </script>
 </body>
