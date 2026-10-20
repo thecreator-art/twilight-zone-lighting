@@ -2788,6 +2788,41 @@ em {
   letter-spacing: 0.05em;
 }
 
+/* Hero quick form — 5 required fields on two rows (desktop), compact 2-col grid (phone) */
+.hero-form { max-width: 760px; }
+.hero-form .hf-fields {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-areas: "name name phone phone email email" "addr addr addr zip btn btn";
+  gap: 8px;
+  padding: 8px;
+  border-radius: 24px;
+}
+.hero-form .hf-name { grid-area: name; } .hero-form .hf-phone { grid-area: phone; } .hero-form .hf-email { grid-area: email; }
+.hero-form .hf-addr { grid-area: addr; } .hero-form .hf-zip { grid-area: zip; } .hero-form .hf-fields .hf-submit { grid-area: btn; }
+.hero-form .hf-fields input {
+  min-width: 0;
+  min-height: 50px;
+  padding: 0 16px;
+  font-size: 16px; /* 16px stops iOS zooming into the field */
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.hero-form .hf-fields input:focus { background: rgba(255, 255, 255, 0.12); border-color: var(--purple-400); box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.25); }
+.hero-form .hf-fields input[aria-invalid="true"] { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.25); }
+.hero-form .hf-fields .hf-submit { min-height: 50px; border-radius: 16px; }
+.hf-error { margin: 10px 0 0 12px; color: #fca5a5; font-size: 14px; }
+@media (max-width: 720px) {
+  .hero-form .hf-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: "name name" "phone zip" "email email" "addr addr" "btn btn";
+    gap: 6px;
+    padding: 8px;
+  }
+  .hero-form .hf-fields .hf-submit { width: 100%; min-height: 54px; font-size: 1rem; }
+}
+
 /* ============================================================
    TRUST BAND (RISK REVERSAL)
    ============================================================ */

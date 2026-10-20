@@ -827,8 +827,29 @@ function fireConfetti() {
 (function() {
   const form = document.getElementById('heroForm');
   if (!form) return;
+  // The form is novalidate (for custom styling), so every required field is checked here.
+  const rules = {
+    firstName: v => v.length >= 2,
+    phone: v => v.replace(/\D/g, '').length >= 10,
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v),
+    address: v => v.length >= 5,
+    zip: v => /^\d{5}$/.test(v)
+  };
+  const err = document.createElement('p');
+  err.className = 'hf-error'; err.setAttribute('role', 'alert'); err.hidden = true;
+  form.querySelector('.hf-fields').after(err);
+  form.addEventListener('input', e => { if (e.target.name in rules) e.target.removeAttribute('aria-invalid'); err.hidden = true; });
   form.addEventListener('submit', e => {
     e.preventDefault();
+    const bad = Object.keys(rules).map(n => form.elements[n]).filter(i => i && !rules[i.name](i.value.trim()));
+    Object.keys(rules).forEach(n => form.elements[n] && form.elements[n].removeAttribute('aria-invalid'));
+    if (bad.length) {
+      bad.forEach(i => i.setAttribute('aria-invalid', 'true'));
+      err.textContent = 'Please fill in all fields so we can get your quote to you.';
+      err.hidden = false;
+      bad[0].focus();
+      return;
+    }
     submitLead(form);
   });
 })();

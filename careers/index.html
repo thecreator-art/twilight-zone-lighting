@@ -190,6 +190,9 @@ section.s{padding:64px 0}
 .back{justify-self:start;margin-top:2px;min-height:44px;padding:0 4px;border:0;background:none;color:#6b6b76;font:600 14px/1 var(--sans);cursor:pointer}
 .err-top{margin-top:4px}
 @media (prefers-reduced-motion:reduce){.step,.opts.big input:checked+span{animation:none}.bar i{transition:none}}
+.two-zip{grid-template-columns:1.6fr 1fr}
+.up[aria-invalid=true]{border-color:#dc2626;background:#fef2f2;color:#b91c1c}
+.af textarea[aria-invalid=true]{border-color:#dc2626}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -250,7 +253,7 @@ fbq('track', 'PageView');
   <div class="h-form" id="apply">
     <div class="card">
       <h2>Apply in <em>60 seconds</em></h2>
-      <p class="micro"><span><svg class="ic"><use href="#i-check"/></svg>Resume optional</span><span><svg class="ic"><use href="#i-check"/></svg>Paid training</span></p>
+      <p class="micro"><span><svg class="ic"><use href="#i-check"/></svg>Takes 60 seconds</span><span><svg class="ic"><use href="#i-check"/></svg>Paid training</span></p>
       <form class="af" novalidate aria-label="Job application">
         <div class="prog"><div class="bar" aria-hidden="true"><i></i></div><p class="pmsg" aria-live="polite"><span class="pm">Let's get you hired 👋</span><span class="pn">Step 1 of 11</span></p></div>
 
@@ -258,9 +261,13 @@ fbq('track', 'PageView');
           <label class="f"><span class="l">Full name</span><input name="name" type="text" autocomplete="name" required maxlength="80" enterkeyhint="next"></label>
           <div class="two">
             <label class="f"><span class="l">Phone</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="32" enterkeyhint="next"></label>
-            <label class="f"><span class="l">City</span><input name="city" type="text" autocomplete="address-level2" required maxlength="80" enterkeyhint="next"></label>
+            <label class="f"><span class="l">Email</span><input name="email" type="email" inputmode="email" autocomplete="email" required maxlength="200" enterkeyhint="next"></label>
           </div>
-          <label class="f"><span class="l">Email</span><input name="email" type="email" inputmode="email" autocomplete="email" required maxlength="200" enterkeyhint="go"></label>
+          <label class="f"><span class="l">Street address</span><input name="address" type="text" autocomplete="street-address" required maxlength="200" enterkeyhint="next"></label>
+          <div class="two two-zip">
+            <label class="f"><span class="l">City</span><input name="city" type="text" autocomplete="address-level2" required maxlength="80" enterkeyhint="next"></label>
+            <label class="f"><span class="l">ZIP</span><input name="zip" type="text" inputmode="numeric" autocomplete="postal-code" required maxlength="5" pattern="[0-9]{5}" enterkeyhint="go"></label>
+          </div>
           <button class="btn btn-grad next" type="button"><span>Next: 9 quick taps</span><svg class="ic"><use href="#i-arrow"/></svg></button>
         </div>
 
@@ -276,8 +283,8 @@ fbq('track', 'PageView');
 
         <div class="step" data-step="final" hidden>
           <p class="qh" tabindex="-1">Last step! Tell us about you 🏁</p>
-          <label class="f"><span class="l">Who you are <i>(optional)</i></span><textarea name="notes" rows="4" maxlength="1500" placeholder="Past jobs, what you're good at, why you'd crush it…"></textarea></label>
-          <label class="up"><input type="file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.heic"><svg class="ic" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><span class="up-t"><b>Upload your resume</b><i>Optional, gets you a faster response</i></span></label>
+          <label class="f"><span class="l">Who you are</span><textarea name="notes" rows="4" maxlength="1500" required placeholder="Past jobs, what you're good at, why you'd crush it…"></textarea></label>
+          <label class="up"><input type="file" name="attachment" required accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.heic"><svg class="ic" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><span class="up-t"><b>Upload your resume</b><i>PDF, Word, or a photo of it</i></span></label>
           <div class="hp" aria-hidden="true"><label>Company<input name="company" type="text" tabindex="-1" autocomplete="off"></label></div>
           <p class="err" role="alert" hidden></p>
           <button class="btn btn-grad" type="submit"><span>Submit my application</span><svg class="ic"><use href="#i-arrow"/></svg></button>
@@ -338,7 +345,7 @@ fbq('track', 'PageView');
     <p class="eyebrow">How it works</p>
     <h2 class="t" id="how-h">Three steps to <em class="g">your first paycheck.</em></h2>
     <ol class="steps">
-      <li><div><b>Apply in 60 seconds</b><span>Resume optional.</span></div></li>
+      <li><div><b>Apply in 60 seconds</b><span>Snap a photo of your resume.</span></div></li>
       <li><div><b>Quick call with our team</b><span>We'll reach out to talk about the job.</span></div></li>
       <li><div><b>Start paid training</b><span>Then get out on installs.</span></div></li>
     </ol>
@@ -425,7 +432,8 @@ fbq('track', 'PageView');
   function contactOK() {
     var f = form.elements, bad = [];
     [['name', val('name').length >= 2], ['phone', val('phone').replace(/\D/g, '').length >= 10],
-     ['city', val('city').length >= 2], ['email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'))]]
+     ['email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'))], ['address', val('address').length >= 5],
+     ['city', val('city').length >= 2], ['zip', /^\d{5}$/.test(val('zip'))]]
       .forEach(function (p) { mark(f[p[0]], !p[1]); if (!p[1]) bad.push(f[p[0]]); });
     if (bad.length) { errTop.textContent = 'Please fill in the highlighted fields.'; errTop.hidden = false; try { bad[0].focus(); } catch (x) {} return false; }
     return true;
@@ -456,7 +464,7 @@ fbq('track', 'PageView');
   var file = form.elements.attachment, up = form.querySelector('.up'), upB = up.querySelector('b'), upI = up.querySelector('.up-t i');
   file.addEventListener('change', function () {
     var f = file.files && file.files[0];
-    if (!f) { up.classList.remove('has'); upB.textContent = 'Upload your resume'; upI.textContent = 'Optional, gets you a faster response'; return; }
+    if (!f) { up.classList.remove('has'); upB.textContent = 'Upload your resume'; upI.textContent = 'PDF, Word, or a photo of it'; return; }
     if (f.size > MAX_FILE) { file.value = ''; up.classList.remove('has'); upB.textContent = 'File too big (max 5 MB)'; upI.textContent = 'Try a PDF or a photo of it'; return; }
     up.classList.add('has'); upB.textContent = '✓ ' + f.name; upI.textContent = 'Tap to change';
   });
@@ -471,15 +479,22 @@ fbq('track', 'PageView');
     var pick = function (n) { var c = form.querySelector('input[name="' + n + '"]:checked'); return c ? c.value : ''; };
     var missing = steps.filter(function (s) { return s.classList.contains('q') && !pick(s.dataset.q); });
     if (missing.length) { var mi = steps.indexOf(missing[0]); mark(missing[0], true); show(mi, true); return; }
+    var fBad = [];
+    if (val('notes').length < 10) { mark(form.elements.notes, true); fBad.push(form.elements.notes); } else mark(form.elements.notes, false);
+    if (!(file.files && file.files[0])) { up.setAttribute('aria-invalid', 'true'); fBad.push(file); } else up.removeAttribute('aria-invalid');
+    if (fBad.length) {
+      err.textContent = fBad.length === 2 ? 'Tell us a bit about you and upload your resume.' : fBad[0] === file ? 'Please upload your resume (a photo of it works).' : 'Tell us a bit about you (a sentence or two).';
+      err.hidden = false; try { fBad[0].focus(); } catch (x) {} return;
+    }
     if (val('company')) { location.assign('/careers/thank-you'); return; } // bot trap
 
     var name = val('name'), first = name.split(/\s+/)[0];
     var fields = {
-      'Name': name, 'Phone': val('phone'), 'Email': val('email'), 'City': val('city'),
+      'Name': name, 'Phone': val('phone'), 'Email': val('email'), 'Address': val('address'), 'City': val('city'), 'ZIP': val('zip'),
       '40+ hrs/week': pick('hours'), 'Ladders & roofs': pick('heights'), 'Lift 50+ lbs': pick('lift'),
       "Driver's license": pick('license'), 'Works outdoors': pick('outdoors'), 'On feet all day': pick('feet'),
       'Trade experience': pick('experience'), 'Can start': pick('start'), '18+': pick('adult'),
-      'About them': val('notes') || '(left blank)', 'Page': location.href.split('#')[0].slice(0, 300)
+      'About them': val('notes'), 'Page': location.href.split('#')[0].slice(0, 300)
     };
     ['utm_source', 'utm_campaign', 'utm_content'].forEach(function (k) { if (qs.get(k)) fields[k] = qs.get(k).slice(0, 200); });
     var build = function (withFile) {

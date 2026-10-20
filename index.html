@@ -1590,9 +1590,11 @@ fbq('track', 'PageView');
 
     <form class="hero-form" id="heroForm" aria-label="Quick quote" data-form-source="hero" novalidate>
       <div class="hf-fields">
-        <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name" />
-        <input type="tel" name="phone" placeholder="Phone" required autocomplete="tel" />
-        <input type="text" name="zip" placeholder="Zip" required autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" />
+        <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name" aria-label="First name" class="hf-name" />
+        <input type="tel" name="phone" placeholder="Phone" required autocomplete="tel" inputmode="tel" aria-label="Phone" class="hf-phone" />
+        <input type="email" name="email" placeholder="Email" required autocomplete="email" inputmode="email" aria-label="Email" class="hf-email" />
+        <input type="text" name="address" placeholder="Home address" required autocomplete="street-address" aria-label="Home address" class="hf-addr" />
+        <input type="text" name="zip" placeholder="ZIP" required autocomplete="postal-code" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" aria-label="ZIP code" class="hf-zip" />
         <button type="submit" class="hf-submit" data-magnetic>Get my quote</button>
       </div>
       <p class="hf-fine">24-hour response · No spam · No pressure</p>
