@@ -74,7 +74,7 @@ fbq('track', 'PageView');
 <script>
 // SubmitApplication fires once per real application (the form stores tz_app right before redirecting).
 // A refresh or a direct visit fires nothing, so this URL also works as a URL-based custom conversion.
-// Deliberately NOT 'Lead' — that event is reserved for customer quote requests.
+// Deliberately NOT 'Lead' - that event is reserved for customer quote requests.
 (function () {
   var data = null;
   try { data = JSON.parse(sessionStorage.getItem('tz_app') || 'null'); } catch (e) {}

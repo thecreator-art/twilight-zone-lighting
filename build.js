@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Twilight Zone Permanent Lighting — SEO War Machine Build
+ * Twilight Zone Permanent Lighting-SEO War Machine Build
  * Generates 325 unique static HTML pages from /_data/*.json
  * Output: project root (matches existing Vercel deploy structure).
  */
@@ -11,13 +11,13 @@ const ROOT = __dirname;
 const DATA = p => JSON.parse(fs.readFileSync(path.join(ROOT, '_data', p), 'utf8'));
 
 const shared = DATA('shared.json');
-// data files are { slug: {...}, slug: {...} } maps — flatten to arrays.
+// data files are { slug: {...}, slug: {...} } maps-flatten to arrays.
 const _citiesRaw = DATA('cities.json');
 const _servicesRaw = DATA('services.json');
 const _verticalsRaw = DATA('verticals.json');
 // ---------- GEOGRAPHY ----------
 // The business has exactly ONE location (Clovis, CA). Cities outside the Central Valley
-// home market are served by regional install crews — NOT by satellite offices, and NOT
+// home market are served by regional install crews-NOT by satellite offices, and NOT
 // with same-day response. Copy helpers below enforce that distinction so the site never
 // implies a physical presence or a service level the company cannot deliver.
 const HOME_REGION = 'Central Valley';
@@ -35,7 +35,7 @@ const cities = Object.values(_citiesRaw).map(c => ({
   region: c.region || HOME_REGION,
   // Prefer an explicit numeric driveMinutes. Legacy Central Valley records store a string
   // like "55 minutes from Fresno HQ"; parseInt handles those. Never fall through to a
-  // bogus default for far markets — "2 hours 45 minutes" would parse to 2.
+  // bogus default for far markets - "2 hours 45 minutes" would parse to 2.
   driveMinutes: typeof c.driveMinutes === 'number'
     ? c.driveMinutes
     : (typeof c.drive === 'number' ? c.drive : (parseInt(c.drive, 10) || 25)),
@@ -63,7 +63,7 @@ const cities = Object.values(_citiesRaw).map(c => ({
 
 const isHomeMarket = c => (c.region || HOME_REGION) === HOME_REGION;
 
-// Commercial vertical x city pages are deliberately limited to the top cities — 9 verticals
+// Commercial vertical x city pages are deliberately limited to the top cities-9 verticals
 // x 50 cities would be 450 near-identical pages and a textbook doorway pattern. The coverage
 // map on vertical pages must therefore fall back to the city hub for any city that has no
 // vertical-specific page, or it emits links to URLs that were never generated.
@@ -77,7 +77,7 @@ const regionsInUse = () =>
 const citiesInRegion = r => cities.filter(c => c.region === r);
 
 // Human-readable "how we get to you" sentence. Home market keeps the drive-time +
-// same-day claim (true — everything is inside ~1 hour). Expansion markets get
+// same-day claim (true-everything is inside ~1 hour). Expansion markets get
 // scheduled regional-crew language instead of an invented local branch.
 const dispatchLine = (c, { short = false } = {}) => {
   if (isHomeMarket(c)) {
@@ -87,7 +87,7 @@ const dispatchLine = (c, { short = false } = {}) => {
   }
   return short
     ? `served by our ${c.region} install crew`
-    : `${c.name} is served by our ${c.region} install crew on a scheduled route — the same W-2 installers, the same RGBIC-RD hardware, and the same warranty we run in the Central Valley.`;
+    : `${c.name} is served by our ${c.region} install crew on a scheduled route-the same W-2 installers, the same RGBIC-RD hardware, and the same warranty we run in the Central Valley.`;
 };
 
 // Replaces the old hardcoded "60-mile radius of Fresno" claim everywhere.
@@ -121,12 +121,12 @@ const writePage = (urlPath, html) => {
 };
 
 // ---------- SHARED CHROME ----------
-// Critical CSS — minimum needed for above-the-fold paint (header + hero).
+// Critical CSS-minimum needed for above-the-fold paint (header + hero).
 // Inlined to eliminate render-blocking on first visit. Full styles.css loads async.
 const CRITICAL_CSS = `*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}body{margin:0;background:#050505;color:#fff;font-family:Inter,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}img,video{max-width:100%;display:block}a{color:inherit;text-decoration:none}.container{max-width:1280px;margin:0 auto;padding:0 24px}.header-stack{position:fixed;top:0;left:0;right:0;z-index:100}.ann-bar{background:#050505;color:#fff;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;white-space:nowrap}.ann-track{display:flex;gap:48px;animation:annScroll 40s linear infinite;padding-left:100%;width:max-content}@keyframes annScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}.ann-pulse{display:inline-block;width:6px;height:6px;background:#c084fc;border-radius:999px;margin-right:10px;vertical-align:middle;animation:pulse 1.5s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.nav{background:rgba(5,5,5,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1280px;margin:0 auto;gap:24px}.brand-logo{height:42px;width:auto}.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.75);transition:color .2s}.nav-phone{color:#c084fc !important;font-weight:600}.nav-cta{display:flex;align-items:center;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .25s cubic-bezier(.2,.8,.2,1);text-decoration:none}.btn-primary{background:linear-gradient(135deg,#a855f7,#6366f1);color:#fff;box-shadow:0 4px 16px rgba(168,85,247,.3)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(168,85,247,.4)}.btn-text{background:transparent;color:rgba(255,255,255,.85);padding:12px 16px}.hamburger{display:none;background:transparent;border:0;width:32px;height:32px;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:0}.hamburger span{display:block;height:2px;background:#fff;border-radius:1px;transition:all .25s}.hero{position:relative;min-height:calc(100vh - 132px);display:flex;flex-direction:column;justify-content:center;padding:60px 0;overflow:hidden;background:#000}.hero.hero-sub{min-height:78vh;padding:80px 0 56px}.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}.ken-burns{width:110%;height:110%;object-fit:cover;position:absolute;inset:-5% 0 0 -5%;filter:brightness(.5) saturate(1.1) contrast(1.05);animation:kenBurns 24s ease-in-out infinite alternate;will-change:transform}@keyframes kenBurns{0%{transform:scale(1.05)}100%{transform:scale(1.18) translate(-2%,-3%)}}.hero-vignette{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,transparent 25%,transparent 55%,rgba(0,0,0,.95) 100%),radial-gradient(ellipse at 70% 30%,rgba(168,85,247,.22),transparent 60%);pointer-events:none}.hero-content{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 24px;width:100%}.hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#c084fc;margin-bottom:22px}.hero-title{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,6vw,76px);line-height:1.05;font-weight:400;letter-spacing:-.02em;margin:0 0 22px;color:#fff;display:flex;flex-direction:column;gap:0}.hero-title span{display:block;opacity:0;transform:translateY(20px);animation:heroLineIn .8s cubic-bezier(.2,.8,.2,1) forwards}.hero-title .hero-line-1{animation-delay:.4s}.hero-title .hero-line-2{animation-delay:.6s}.hero-title .hero-line-3{animation-delay:.8s}@keyframes heroLineIn{to{opacity:1;transform:translateY(0)}}.hero-title em{font-style:italic;background:linear-gradient(135deg,#c084fc,#6366f1);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-est{font-size:clamp(17px,1.4vw,21px);line-height:1.55;color:rgba(255,255,255,.82);max-width:720px;margin:0 0 32px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.hero-foot{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);max-width:720px}.hero-foot-item .num{font-family:'Instrument Serif',Georgia,serif;font-size:36px;font-weight:400;color:#c084fc;line-height:1}.hero-foot-item .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px}@media (max-width:980px){.nav-links,.nav-cta .btn{display:none}.hamburger{display:flex}.hero-foot{grid-template-columns:repeat(2,1fr);gap:16px}}`;
 
 // Meta Pixel. Base code from Events Manager with one addition: visitors sending a Global
-// Privacy Control signal go into Meta's Limited Data Use mode — Meta's documented way to
+// Privacy Control signal go into Meta's Limited Data Use mode-Meta's documented way to
 // honor a California opt-out of "sharing". The <noscript> fallback sits at the top of
 // <body> instead of in <head>, where an <img> is invalid and makes the parser close <head>
 // early for no-JS visitors.
@@ -163,7 +163,7 @@ function buildGraph(jsonld, canonical) {
 }
 
 const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg', jsonld = [], speakable = ['h1', '.hero-est', '.section-head h2', '.faq-item summary', '.faq-item div', '.post-section p:first-of-type'], noindex = false, geo = null }) => {
-  // Add Speakable schema for AI/voice — adds explicit "answer here" markers for assistants
+  // Add Speakable schema for AI/voice-adds explicit "answer here" markers for assistants
   if (speakable && speakable.length) {
     jsonld = [...jsonld, {
       '@type': 'WebPage',
@@ -196,15 +196,23 @@ const head = ({ title, desc, canonical, kw = '', ogImg = '/images/03-accent.jpg'
     url: 'https://vaultio.co/',
     description: 'Web design and digital marketing studio'
   }, {
-    '@type': 'Organization',
+    '@type': ['HomeAndConstructionBusiness', 'LocalBusiness', 'Organization'],
     '@id': `${SITE}/#org`,
     name: BRAND,
-    alternateName: ['Twilight Zone Lighting', 'Twilight Zone'],
+    legalName: 'Valley Wash Pros Inc',
+    alternateName: ['Twilight Zone Lighting', 'Twilight Zone Lighting Fresno'],
     url: SITE + '/',
     telephone: TEL,
     email: shared.brand.email,
+    priceRange: '$950 - $15000+',
     foundingDate: shared.brand.founded,
     numberOfEmployees: shared.brand.employees,
+    founder: { '@type': 'Person', name: 'Raphael Samarin', jobTitle: 'Owner & Qualifier (CA CSLB #1160266)' },
+    hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'California Contractors State License Board (CSLB)', identifier: '1160266', recognizedBy: { '@type': 'GovernmentOrganization', name: 'California Contractors State License Board', url: 'https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1160266' } },
+    location: [
+      { '@type': 'Place', name: 'Twilight Zone Permanent Lighting - Clovis Showroom & Dispatch Shop', address: { '@type': 'PostalAddress', streetAddress: '755 N Peach Ave, Ste C16', addressLocality: 'Clovis', addressRegion: 'CA', postalCode: '93611', addressCountry: 'US' } },
+      { '@type': 'Place', name: 'Twilight Zone Permanent Lighting / Valley Wash Pros Inc - Fresno Corporate HQ', address: { '@type': 'PostalAddress', streetAddress: '5645 W San Madele Ave #105', addressLocality: 'Fresno', addressRegion: 'CA', postalCode: '93722', addressCountry: 'US' } }
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: shared.brand.address.street,
@@ -307,17 +315,17 @@ const headerHTML = (cur = '') => `
 <div class="header-stack" id="headerStack">
 <div class="ann-bar" role="banner">
   <div class="ann-track">
-    <span><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
+    <span><i class="ann-pulse"></i> BOOKING SPRING 2026-7 INSTALL SLOTS REMAIN</span>
     <span><i class="ann-pulse"></i> 7-DAY REFUND · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
     <span><i class="ann-pulse"></i> FRESNO · CLOVIS · SACRAMENTO · SAN JOSE · SAN FRANCISCO · OAKLAND · MODESTO · STOCKTON</span>
-    <span aria-hidden="true"><i class="ann-pulse"></i> BOOKING SPRING 2026 — 7 INSTALL SLOTS REMAIN</span>
+    <span aria-hidden="true"><i class="ann-pulse"></i> BOOKING SPRING 2026-7 INSTALL SLOTS REMAIN</span>
     <span aria-hidden="true"><i class="ann-pulse"></i> 7-DAY REFUND · LIFETIME WARRANTY · STARTING AT <strong>$950</strong></span>
     <span aria-hidden="true"><i class="ann-pulse"></i> FRESNO · CLOVIS · SACRAMENTO · SAN JOSE · SAN FRANCISCO · OAKLAND · MODESTO · STOCKTON</span>
   </div>
 </div>
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="/" class="brand" aria-label="${esc(BRAND)} — Home">
+    <a href="/" class="brand" aria-label="${esc(BRAND)} - Home">
       <img class="brand-logo" src="/images/logo-300.png" srcset="/images/logo-300.png 1x, /images/logo-600.png 2x" alt="${esc(BRAND)}" width="153" height="102" fetchpriority="high" />
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -406,24 +414,72 @@ const serviceLD = (name, desc, area, price, canonical = '') => ({
   provider: { '@id': `${SITE}/#org` },
   areaServed: Array.isArray(area) ? area : [area],
   offers: {
-    '@type': 'Offer',
-    price: String(price),
+    '@type': 'AggregateOffer',
+    lowPrice: String(price || 950),
+    highPrice: '15000',
     priceCurrency: 'USD',
+    offerCount: '5',
     url: `${SITE}/quote`,
     availability: 'https://schema.org/InStock',
-    validFrom: '2026-01-01',
-    priceSpecification: { '@type': 'PriceSpecification', price: String(price), priceCurrency: 'USD', valueAddedTaxIncluded: false }
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Per Linear Foot Permanent Outdoor LED Track Installation',
+        priceCurrency: 'USD',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          minPrice: '30.00',
+          maxPrice: '60.00',
+          priceCurrency: 'USD',
+          unitCode: 'FOT',
+          unitText: 'linear foot'
+        }
+      },
+      {
+        '@type': 'Offer',
+        name: 'Starter Single-Facade Permanent LED Package (~30 Linear Ft, 1 Zone)',
+        price: '950',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '950.00', priceCurrency: 'USD', unitText: 'package' }
+      },
+      {
+        '@type': 'Offer',
+        name: 'Standard Single-Story Roofline Package (~80-120 Linear Ft, 3 Zones)',
+        price: '2800',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '2800.00', maxPrice: '5800.00', priceCurrency: 'USD', unitText: 'package' }
+      },
+      {
+        '@type': 'Offer',
+        name: 'Premium Two-Story Full-Perimeter Package (~180-250 Linear Ft, 5+ Zones)',
+        price: '5800',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '5800.00', maxPrice: '9000.00', priceCurrency: 'USD', unitText: 'package' }
+      },
+      {
+        '@type': 'Offer',
+        name: 'Custom Estate & Commercial Roofline Lighting (300-600+ Linear Ft)',
+        price: '7500',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: '7500.00', maxPrice: '15000.00', priceCurrency: 'USD', unitText: 'project' }
+      }
+    ]
   },
   aggregateRating: { '@type': 'AggregateRating', ratingValue: String(shared.brand.rating), reviewCount: String(shared.brand.reviews), bestRating: '5' }
 });
 const localBusinessLD = (city) => ({
-  '@context': 'https://schema.org', '@type': 'HomeAndConstructionBusiness',
+  '@context': 'https://schema.org', '@type': ['HomeAndConstructionBusiness', 'LocalBusiness', 'ElectricalContractor'],
   '@id': `${SITE}/permanent-outdoor-lights-${city.slug}#localbusiness`,
-  name: `${BRAND} — ${city.name}`,
-  description: `Permanent outdoor lighting installer serving ${city.name}, CA. From $950. 5-year warranty.`,
-  telephone: TEL, priceRange: '$950 - $15000+',
+  name: `${BRAND} - ${city.name}, CA`,
+  legalName: 'Valley Wash Pros Inc',
+  description: `Licensed permanent outdoor LED lighting, permanent Christmas lights, and architectural accent lighting installer serving ${city.name}, CA (${(city.zips || []).slice(0, 5).join(', ')}). CA CSLB #1160266. From $950 ($30-$60/linear ft). 5-year warranty.`,
+  telephone: TEL,
+  email: shared.brand.email,
+  priceRange: '$950 - $15000+',
   url: `${SITE}/permanent-outdoor-lights-${city.slug}`,
   image: `${SITE}/images/03-accent.jpg`,
+  sameAs: shared.brand.sameAs || [],
+  founder: { '@type': 'Person', name: 'Raphael Samarin' },
   address: { '@type': 'PostalAddress', streetAddress: shared.brand.address.street, addressLocality: shared.brand.address.city, addressRegion: shared.brand.address.state, postalCode: shared.brand.address.zip, addressCountry: 'US' },
   geo: { '@type': 'GeoCoordinates', latitude: city.lat, longitude: city.lng },
   areaServed: cityAreaServed(city),
@@ -431,6 +487,60 @@ const localBusinessLD = (city) => ({
   aggregateRating: { '@type': 'AggregateRating', ratingValue: String(shared.brand.rating), reviewCount: String(shared.brand.reviews), bestRating: '5' },
   parentOrganization: { '@id': `${SITE}/#org` }
 });
+const pricingBenchmarkTableBlock = ({ cityName = 'Fresno, Clovis & Central California', serviceName = 'Permanent Outdoor LED Lighting', fromPrice = 950 } = {}) => `
+<section class="container cost-section" aria-label="2026 Transparent Pricing and Scope Benchmarks">
+  ${sectionHead({ eyebrow: '2026 Transparent Pricing & Scope Benchmarks', h2: `2026 ${serviceName} Cost & Per-Linear-Foot Price in`, em: `${cityName}`, intro: `Published 2026 installed pricing for genuine Jellyfish RGBIC-RD color-matched aluminum soffit track lighting by our licensed W-2 crew (CA CSLB #1160266, Valley Wash Pros Inc). Every quote includes on-site measurement, 3D HOA rendering, and $0 down 0% APR financing options.` })}
+  <div class="compare-table-wrap">
+    <table class="price-table compare-table">
+      <thead>
+        <tr>
+          <th scope="col">Lighting Package / Service Tier</th>
+          <th scope="col">2026 Installed Price Range</th>
+          <th scope="col">Per-Foot / Monthly Rate</th>
+          <th scope="col">Technical Scope, Hardware &amp; Warranty Included</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Per Linear Foot Permanent LED Roofline Track</strong></td>
+          <td><strong>$30 - $60 / linear ft</strong></td>
+          <td>Custom measured on-site</td>
+          <td>Anodized aluminum track color-matched to white, bronze, brown, or black fascia; individually addressable RGBIC-RD LEDs (4-in pitch, 16M colors, 2700K-5000K warm white, IP67 waterproof, -40°F to 140°F); stainless soffit screws.</td>
+        </tr>
+        <tr>
+          <td><strong>Starter Single-Facade Package (~30 Linear Ft)</strong></td>
+          <td><strong>From $950</strong></td>
+          <td>~$32/mo (0% APR, 12 mos)</td>
+          <td>Front entry &amp; primary gable roofline (~30 ft, 1 zone), weatherproof garage Wi-Fi controller, iOS/Android app setup, 200+ holiday presets, lifetime track warranty, 5-year LED &amp; labor warranty.</td>
+        </tr>
+        <tr>
+          <td><strong>Standard Single-Story Home (~80-120 Linear Ft)</strong></td>
+          <td><strong>$2,800 - $5,800</strong></td>
+          <td>~$89/mo (0% APR, 12 mos)</td>
+          <td>Full front facade plus side returns (~80-120 ft, 3 independent zones), daily 2700K-5000K architectural accent lighting + Christmas, Halloween &amp; Game-Day auto-schedules, Alexa/Google Home/Control4 sync, free HOA 3D render.</td>
+        </tr>
+        <tr>
+          <td><strong>Premium Two-Story Full Perimeter (~180-250 Linear Ft)</strong></td>
+          <td><strong>$5,800 - $9,000</strong></td>
+          <td>~$169/mo (0% APR, 12 mos)</td>
+          <td>First and second story eaves, peaks &amp; dormers (5+ zones), two-story ladder/scaffold rigging, concealed attic wiring drops, music-sync controller, and integrated patio or landscape zone capability.</td>
+        </tr>
+        <tr>
+          <td><strong>Patio, Pool Deck &amp; Landscape Lighting Add-Ons</strong></td>
+          <td><strong>$1,100 - $1,400+</strong></td>
+          <td>Synced to main controller</td>
+          <td>IP67 splash-rated pool deck perimeter track ($1,400+), pergola &amp; outdoor kitchen bistro track ($1,200+), or 12V low-voltage pathway &amp; tree uplighting ($1,100+) controlled in the same app.</td>
+        </tr>
+        <tr>
+          <td><strong>Custom Estate &amp; Commercial Roofline Systems (300-600+ Ft)</strong></td>
+          <td><strong>$7,500 - $15,000+</strong></td>
+          <td>Multi-building / Volume SLA</td>
+          <td>Custom luxury estates, restaurants, bars, hotels, retail storefronts, churches, auto dealerships &amp; HOA communities; multi-controller synchronization, COI documentation, and same-day Central Valley SLA response.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>`;
 // HowTo schema for the universal 5-step install process
 const howToInstallLD = () => ({
   '@context': 'https://schema.org', '@type': 'HowTo',
@@ -450,8 +560,8 @@ const howToInstallLD = () => ({
   ],
   step: [
     { '@type': 'HowToStep', position: 1, name: 'Free quote in 24 hours', text: 'We measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. No phone-tag, no upsells.', url: `${SITE}/quote` },
-    { '@type': 'HowToStep', position: 2, name: 'Design + track color', text: 'Match your existing trim — white, bronze, brown, or black. 3D rendering for HOA submission if you need it. Free.' },
-    { '@type': 'HowToStep', position: 3, name: 'Install in a day', text: 'Single-story homes finish in 6–8 hours. Our W-2 crew, in-house. No subcontractors, ever.' },
+    { '@type': 'HowToStep', position: 2, name: 'Design + track color', text: 'Match your existing trim-white, bronze, brown, or black. 3D rendering for HOA submission if you need it. Free.' },
+    { '@type': 'HowToStep', position: 3, name: 'Install in a day', text: 'Single-story homes finish in 6-8 hours. Our W-2 crew, in-house. No subcontractors, ever.' },
     { '@type': 'HowToStep', position: 4, name: 'Wiring + control box', text: 'Concealed channel-routed wiring. One drop to the attic. Weatherproof box mounted in your garage. Surge protection inline.' },
     { '@type': 'HowToStep', position: 5, name: 'App + walkthrough', text: 'We pair the controller with your Wi-Fi, train you on scenes and schedules, and don\'t leave until you\'ve changed colors from your phone.' }
   ]
@@ -477,7 +587,7 @@ function splitH1(h1, override) {
   const vs = t.match(/^(.+?)\s+vs\s+(.+)$/i);
   if (vs) return [vs[1], `vs ${vs[2]}`, ''];
   // "{Topic} Cost (...)" / "{Topic}: ..." → split on punctuation
-  const colon = t.match(/^(.+?)[:—–-]\s+(.+)$/);
+  const colon = t.match(/^(.+?)[:-]\s+(.+)$/);
   if (colon) return [colon[1], colon[2], ''];
   // Default: first word, rest, blank
   const fs = t.indexOf(' ');
@@ -488,7 +598,7 @@ function splitH1(h1, override) {
 const heroBlock = ({ kicker, h1, h1Lines, lead, ctaPrice, img }) => {
   const [l1, l2, l3] = splitH1(h1, h1Lines);
   const heroImgRaw = (img || '/images/03-accent.jpg').replace(/^images\//, '/images/');
-  // Always prefer the JPG version — sips-encoded AVIF can fail silently in Chrome / Windows
+  // Always prefer the JPG version-sips-encoded AVIF can fail silently in Chrome / Windows
   // without falling back to the <img> child of <picture>. Plain JPG renders everywhere.
   let heroImg = heroImgRaw;
   if (/\.avif$/i.test(heroImgRaw)) {
@@ -572,13 +682,13 @@ const faqBlock = faqs => `
   </div>
 </section>`;
 
-// Full quote form — mirrors homepage's #quote section so every page has the same conversion path.
+// Full quote form-mirrors homepage's #quote section so every page has the same conversion path.
 const ctaBlock = () => `
 <section class="next-steps" id="quote" aria-label="Free quote form">
   <div class="container ns-grid">
     <div class="ns-text">
       <p class="eyebrow">Next steps</p>
-      <h2>Get your <em>free quote.</em></h2>
+      <h2>Request a Free On-Site <em>Permanent Outdoor Lighting Quote</em></h2>
       <ol class="ns-steps">
         <li><span class="ns-num">1</span> Request your free estimate.</li>
         <li><span class="ns-num">2</span> We help you choose the right lighting for your property and budget.</li>
@@ -603,9 +713,9 @@ const ctaBlock = () => `
   </div>
 </section>`;
 
-// Reusable coverage map block — mirrors homepage map section, with hrefs parameterized
+// Reusable coverage map block-mirrors homepage map section, with hrefs parameterized
 // to whatever URL pattern the consuming page wants (e.g. /{servicePrefix}-{city.slug}).
-// Coverage map — the branded Central Valley asset is the "home base" visual (it is a
+// Coverage map-the branded Central Valley asset is the "home base" visual (it is a
 // designed brand asset with hand-placed hotspots), and the Northern California expansion
 // regions sit alongside it as a linked list. Keeps the visual identity consistent while
 // still surfacing all 50 cities for users and crawlers.
@@ -655,7 +765,7 @@ const coverageMapBlock = ({ urlPattern = (slug) => `/permanent-outdoor-lights-${
         <svg class="sa-map-overlay" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           ${hotspots}
         </svg>
-        <figcaption class="sa-map-cap"><strong>Home base</strong> — ${HOME_REGION}. Fresno-area headquarters in Clovis — same-day quotes and service.</figcaption>
+        <figcaption class="sa-map-cap"><strong>Home base</strong> - ${HOME_REGION}. Fresno-area headquarters in Clovis-same-day quotes and service.</figcaption>
       </figure>
       <div class="sa-list">
         ${regionBlock(HOME_REGION, false)}
@@ -677,20 +787,20 @@ const cityRowBlock = (currentSlug) => `
 
 const serviceRowBlock = (currentSlug) => `
 <section class="solutions container">
-  ${sectionHead({ eyebrow: 'More services', h2: 'Other lighting', em: 'we install.', intro: 'Same crew, same warranty, same Jellyfish RGBIC-RD hardware.' })}
+  ${sectionHead({ eyebrow: 'Permanent LED Lighting Services', h2: 'Permanent Christmas, Accent, Security & Patio Lighting', em: 'Services We Install', intro: 'Same W-2 crew, same 5-year warranty, and genuine Jellyfish RGBIC-RD hardware across every installation.' })}
   ${solutionsGrid(services.filter(s => s.slug !== currentSlug).slice(0, 8).map(s => ({
     h: s.h1.split(' Installation')[0].split(' in ')[0],
     p: s.lead.slice(0, 130),
     img: s.image,
     alt: s.imageAlt || s.h1,
     href: `/${s.slug}`,
-    linkLabel: `Explore ${s.h1.split(' Installation')[0].split(' in ')[0].toLowerCase()} — from ${usd(s.fromPrice)}`
+    linkLabel: `Explore ${s.h1.split(' Installation')[0].split(' in ')[0].toLowerCase()} - from ${usd(s.fromPrice)}`
   })))}
 </section>`;
 
 const guaranteeBlock = () => `
 <section class="container guarantees">
-  <h2>What you get, every time</h2>
+  <h2>Permanent Outdoor Lighting Warranty, Licensing &amp; Price Guarantees</h2>
   <div class="guarantee-grid">
     ${shared.guarantees.map(g => `<div class="g-card"><h4>${esc(g.title)}</h4><p>${esc(g.desc)}</p></div>`).join('')}
   </div>
@@ -699,7 +809,7 @@ const guaranteeBlock = () => `
 const techSpecsBlock = () => `
 <section class="container tech-specs">
   <div class="tech-specs-bg" aria-hidden="true"><span></span><span></span><span></span></div>
-  ${sectionHead({ eyebrow: 'The hardware', h2: 'Built for', em: 'fifty thousand hours.' })}
+  ${sectionHead({ eyebrow: 'Hardware Specifications', h2: 'Jellyfish RGBIC-RD Permanent LED Track', em: 'Technical Specifications' })}
   <div class="spec-grid">
     <div class="spec-card" data-spec="led">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -729,7 +839,7 @@ const techSpecsBlock = () => `
 </section>`;
 
 // ============================================================
-// ASSET REGISTRY — real install photos by category
+// ASSET REGISTRY-real install photos by category
 // ============================================================
 // Helper: build an array path list from a count + folder + prefix + extension
 const range = (n, folder, prefix, ext, start = 1) => Array.from({ length: n }, (_, i) => `/images/work/${folder}/${prefix}${start + i}.${ext}`);
@@ -803,20 +913,19 @@ function cityServiceUnique(service, city) {
   const paras = [];
 
   if (variant === 0) {
-    paras.push(`${esc(svcName)} in ${esc(city.name)} usually starts with one of the older streets near ${nb(0)} or ${nb(1)} — homes with deep eaves, mixed trim colors, and HOAs that want to see a 3D rendering before you screw anything into a soffit. We design for that. The aluminum track gets color-matched to your existing trim, the LEDs run RGBIC-RD so individual bulbs can render holiday patterns instead of a flat color wash, and the controller stays inside the garage where ${summerHi || 'Central Valley'}°F summers can't bake it.`);
-    paras.push(`${ucTitle ? esc(ucTitle) + ' is the most-requested use case here. ' + esc(ucDesc) + ' ' : ''}Same crew handles every job from quote to walkthrough. ${dispatchLine(city)} ${zipCount ? `Coverage spans every ${esc(city.name)} ZIP — ${(city.zips || []).slice(0, 5).join(', ')}${zipCount > 5 ? ', and more' : ''}.` : ''} Pricing for a ${esc(city.name)} install starts at ${fromPrice} for the front facade and scales by linear footage.`);
+    paras.push(`${esc(svcName)} in ${esc(city.name)} usually starts with one of the older streets near ${nb(0)} or ${nb(1)} - homes with deep eaves, mixed trim colors, and HOAs that want to see a 3D rendering before you screw anything into a soffit. We design for that. The aluminum track gets color-matched to your existing trim, the LEDs run RGBIC-RD so individual bulbs can render holiday patterns instead of a flat color wash, and the controller stays inside the garage where ${summerHi || 'Central Valley'}°F summers can't bake it.`);
+    paras.push(`${ucTitle ? esc(ucTitle) + ' is the most-requested use case here. ' + esc(ucDesc) + ' ' : ''}Same crew handles every job from quote to walkthrough. ${dispatchLine(city)} ${zipCount ? `Coverage spans every ${esc(city.name)} ZIP-${(city.zips || []).slice(0, 5).join(', ')}${zipCount > 5 ? ', and more' : ''}.` : ''} Pricing for a ${esc(city.name)} install starts at ${fromPrice} for the front facade and scales by linear footage.`);
   } else if (variant === 1) {
     paras.push(`Two things ${esc(city.name)} homes do to permanent lighting that nobody warns you about: ${summerHi ? `summers crest ${summerHi}°F and bake any non-IP67-rated chip` : 'long sun hours degrade consumer-grade chips'}, and ${winterLo ? `tule fog drops nighttime humidity onto fixtures` : 'the dust season pushes particulate into anything with an open seam'}. The Jellyfish RGBIC-RD track we install is rated -40°F to 140°F, sealed IP67, and warrantied 5 years on LEDs and lifetime on the track itself.`);
-    paras.push(`${esc(svcShort)} on a ${esc(city.name)} home is usually a one-day install — the W-2 crew arrives at 8 AM, the wiring drops cleanly through one attic penetration, and you're cycling colors from the app by sunset. ${isHomeMarket(city) ? `We've installed across ${nb(0)}, ${nb(1)}, and ${nb(2)}` : `Coverage runs across ${nb(0)}, ${nb(1)}, and ${nb(2)}`}${popK ? `, with the ${popK} ${esc(city.name)} households roughly evenly split between single-story tract homes and two-story custom builds` : ''}. ${ucTitle ? `Most ${esc(city.name)} owners start with ${esc(ucTitle.toLowerCase())}; ${esc(ucDesc.toLowerCase())}` : ''}`);
+    paras.push(`${esc(svcShort)} on a ${esc(city.name)} home is usually a one-day install-the W-2 crew arrives at 8 AM, the wiring drops cleanly through one attic penetration, and you're cycling colors from the app by sunset. ${isHomeMarket(city) ? `We've installed across ${nb(0)}, ${nb(1)}, and ${nb(2)}` : `Coverage runs across ${nb(0)}, ${nb(1)}, and ${nb(2)}`}${popK ? `, with the ${popK} ${esc(city.name)} households roughly evenly split between single-story tract homes and two-story custom builds` : ''}. ${ucTitle ? `Most ${esc(city.name)} owners start with ${esc(ucTitle.toLowerCase())}; ${esc(ucDesc.toLowerCase())}` : ''}`);
   } else if (variant === 2) {
-    paras.push(`The reason permanent lighting works in ${esc(city.name)} where seasonal Christmas-light services don't is math. A typical ${esc(city.name)} install/teardown service runs $800–$1,800 a year — over a decade that's $8,000–$18,000 versus a ${fromPrice} permanent install once. ${summerHi ? `${summerHi}°F summers also mean you need lighting that doesn't sag or yellow under year-round UV` : 'Year-round UV exposure means consumer string lights yellow and sag within a single season'}, which is why we use commercial-grade aluminum track instead of plastic clip channels.`);
-    paras.push(`${esc(city.name)} ${esc(svcShort.toLowerCase())} installs typically run between $${(service.fromPrice / 1000).toFixed(1)}K (single-story front facade) and $${((service.fromPrice * 6) / 1000).toFixed(1)}K (full perimeter, two-story, multi-zone). HOA submittal packages — spec sheets, 3D renderings, color samples — are included free for any submission you need. ${isHomeMarket(city) ? `${nb(0)}, ${nb(1)}, and ${nb(2)} owners have run the program through their HOAs without amendment.` : `${nb(0)}, ${nb(1)}, and ${nb(2)} all sit under active architectural review, so the submittal package matters as much as the hardware.`} ${ucTitle ? `${esc(ucTitle)} is a common ${esc(city.name)} configuration: ${esc(ucDesc)}` : ''}`);
+    paras.push(`The reason permanent lighting works in ${esc(city.name)} where seasonal Christmas-light services don't is math. A typical ${esc(city.name)} install/teardown service runs $800-$1,800 a year-over a decade that's $8,000-$18,000 versus a ${fromPrice} permanent install once. ${summerHi ? `${summerHi}°F summers also mean you need lighting that doesn't sag or yellow under year-round UV` : 'Year-round UV exposure means consumer string lights yellow and sag within a single season'}, which is why we use commercial-grade aluminum track instead of plastic clip channels.`);
+    paras.push(`${esc(city.name)} ${esc(svcShort.toLowerCase())} installs typically run between $${(service.fromPrice / 1000).toFixed(1)}K (single-story front facade) and $${((service.fromPrice * 6) / 1000).toFixed(1)}K (full perimeter, two-story, multi-zone). HOA submittal packages-spec sheets, 3D renderings, color samples-are included free for any submission you need. ${isHomeMarket(city) ? `${nb(0)}, ${nb(1)}, and ${nb(2)} owners have run the program through their HOAs without amendment.` : `${nb(0)}, ${nb(1)}, and ${nb(2)} all sit under active architectural review, so the submittal package matters as much as the hardware.`} ${ucTitle ? `${esc(ucTitle)} is a common ${esc(city.name)} configuration: ${esc(ucDesc)}` : ''}`);
   } else {
-    paras.push(`Architecturally, ${esc(city.name)} runs the gamut: ${nb(0)} stucco ranchers, ${nb(1)} two-story Mediterranean builds, and the older bungalows around ${nb(2)} with deep porch overhangs. ${esc(svcShort)} reads differently on each — a tract single-story takes ~80 linear feet of track on the front facade, while a custom build with multiple roof planes can need 200+ feet across three to five independent zones.`);
+    paras.push(`Architecturally, ${esc(city.name)} runs the gamut: ${nb(0)} stucco ranchers, ${nb(1)} two-story Mediterranean builds, and the older bungalows around ${nb(2)} with deep porch overhangs. ${esc(svcShort)} reads differently on each-a tract single-story takes ~80 linear feet of track on the front facade, while a custom build with multiple roof planes can need 200+ feet across three to five independent zones.`);
     paras.push(`We design every ${esc(city.name)} job around what the home actually needs, not a flat per-foot price. The free on-site quote includes measurement, ladder-access check, written pricing on the spot, and a 3D render of the lit-up facade if your HOA wants one. Being ${dispatchLine(city, { short: true })} means a tight feedback loop on warranty and service. ${ucTitle ? `${esc(ucTitle)}: ${esc(ucDesc)}` : `Pricing starts at ${fromPrice} for the front facade and scales with the size of the home.`}`);
   }
-  // Two additional paragraphs sourced from per-city fields that are genuinely distinct —
-  // climate.notes is uniquely written for each city, and communities/schools are real local
+  // Two additional paragraphs sourced from per-city fields that are genuinely distinct - // climate.notes is uniquely written for each city, and communities/schools are real local
   // entities. Without these, matrix pages ran ~26% unique body content across 650 URLs,
   // which is the profile Google's Helpful Content system demotes.
   const climateNote = city.climate && city.climate.notes;
@@ -842,7 +951,7 @@ function cityServiceUnique(service, city) {
 // Emit a plain <img> pointing at the JPG version of the image.
 // We previously wrapped in <picture> with an AVIF <source>, but sips-encoded AVIFs
 // trigger silent decode failures on some Chrome / Windows builds where the browser
-// does NOT fall back to the <img> child — it just renders blank. Stripping the AVIF
+// does NOT fall back to the <img> child-it just renders blank. Stripping the AVIF
 // source guarantees consistent rendering everywhere. Bandwidth cost is acceptable
 // because images are properly lazy-loaded and cached.
 function picTag(src, alt = '', attrs = '') {
@@ -869,7 +978,7 @@ const photoForService = (svcSlug, seed = 'a') => pickPhotos(SERVICE_PHOTO_MAP[sv
 const photoForVertical = (vSlug, seed = 'a') => pickPhotos(VERTICAL_PHOTO_MAP[vSlug] || 'commercial', seed, 1)[0];
 
 // ============================================================
-// NEW COMPONENTS — match homepage gravitas
+// NEW COMPONENTS-match homepage gravitas
 // ============================================================
 
 // Real testimonial section: photo on left, big italic quote on right
@@ -898,42 +1007,42 @@ const testimonialBlock = (city, photoOverride) => {
 };
 
 // Vertical-rail process timeline (mirrors homepage)
-const processTimelineBlock = ({ kicker = 'How it works', h2 = 'Five steps,', em = 'one day on site.', intro = 'Free quote, design, install, app setup, walkthrough. Most homes finished by sundown.' } = {}) => `
+const processTimelineBlock = ({ kicker = 'Installation Process', h2 = '5-Step Permanent Outdoor LED Lighting', em = 'Installation Process', intro = 'On-site roofline measurement, trim color matching, single-day W-2 installation, concealed wiring, and smartphone app setup.' } = {}) => `
 <section class="container process-rail-section" aria-label="Install process">
   ${sectionHead({ eyebrow: kicker, h2, em, intro, purple: true })}
   <ol class="process-rail">
     <li class="process-rail-step">
       <div class="step-num">1</div>
       <div class="step-body">
-        <h3>Free quote in 24 hours</h3>
+        <h3>Free On-Site Roofline Measurement &amp; Written Quote in 24 Hours</h3>
         <p>We measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. No phone-tag, no upsells.</p>
       </div>
     </li>
     <li class="process-rail-step">
       <div class="step-num">2</div>
       <div class="step-body">
-        <h3>Design + track color</h3>
-        <p>Match your existing trim — white, bronze, brown, or black. 3D rendering for HOA submission if you need it. Free.</p>
+        <h3>Custom Trim-Matched Aluminum Track Design &amp; Free HOA 3D Rendering</h3>
+        <p>Match your existing trim-white, bronze, brown, or black. 3D rendering for HOA submission if you need it. Free.</p>
       </div>
     </li>
     <li class="process-rail-step">
       <div class="step-num">3</div>
       <div class="step-body">
-        <h3>Install in a day</h3>
-        <p>Single-story homes finish in 6–8 hours. Our W-2 crew, in-house. No subcontractors, ever.</p>
+        <h3>Single-Day In-House W-2 Crew Roofline Installation</h3>
+        <p>Single-story homes finish in 6-8 hours. Our W-2 crew, in-house. No subcontractors, ever.</p>
       </div>
     </li>
     <li class="process-rail-step">
       <div class="step-num">4</div>
       <div class="step-body">
-        <h3>Wiring + control box</h3>
+        <h3>Concealed Channel Wiring, Attic Drop &amp; Garage Control Box Setup</h3>
         <p>Concealed channel-routed wiring. One drop to the attic. Weatherproof box mounted in your garage. Surge protection inline.</p>
       </div>
     </li>
     <li class="process-rail-step">
       <div class="step-num">5</div>
       <div class="step-body">
-        <h3>App + walkthrough</h3>
+        <h3>Wi-Fi Smart Controller Pairing, App Training &amp; Walkthrough</h3>
         <p>We pair the controller with your Wi-Fi, train you on scenes and schedules, and don't leave until you've changed colors from your phone.</p>
       </div>
     </li>
@@ -941,13 +1050,13 @@ const processTimelineBlock = ({ kicker = 'How it works', h2 = 'Five steps,', em 
 </section>`;
 
 // Real install photo grid (6 images, asymmetric, descriptive alt text)
-const installPhotoGrid = ({ category, seed, kicker = 'Real installs', h2 = 'Ours, lit.', em = 'Yours, next.', intro, altContext }) => {
+const installPhotoGrid = ({ category, seed, kicker = 'Verified Installations', h2 = 'Completed Permanent Outdoor Lighting Installations', em = 'in Central & Northern California', intro, altContext }) => {
   const pics = pickPhotos(category || 'residential', seed || 'a', 6);
   // Derive contextual alt text from kicker + photo position
   const ctx = altContext || kicker || 'Permanent outdoor lighting';
   const altFor = (i, type) => {
     const types = ['featured roofline outline', 'eave-mounted track detail', 'two-story facade install', 'soffit channel close-up', 'full-perimeter install at twilight', 'side-yard accent run'];
-    return `${ctx} — ${types[i] || 'permanent outdoor lighting install'} by ${BRAND}`;
+    return `${ctx} - ${types[i] || 'permanent outdoor lighting install'} by ${BRAND}`;
   };
   return `
 <section class="container install-grid-section" aria-label="Install gallery">
@@ -986,7 +1095,7 @@ const reelMomentBlock = ({ video = '/videos/commercial-loop.mp4', kicker, h, em,
 const pullQuote = (text, attribution) => `
 <aside class="pull-quote" role="note">
   <p class="pull-quote-text">${esc(text)}</p>
-  ${attribution ? `<p class="pull-quote-attr">— ${esc(attribution)}</p>` : ''}
+  ${attribution ? `<p class="pull-quote-attr">- ${esc(attribution)}</p>` : ''}
 </aside>`;
 
 // Standalone stat counter row (separate from hero)
@@ -1057,7 +1166,7 @@ function renderServiceCity(service, city) {
     { q: `Do you serve ${city.neighborhoods[0]} and ${city.neighborhoods[1]}?`,
       a: `Yes. We install across all ${city.name} neighborhoods including ${city.neighborhoods.slice(0, 6).join(', ')}, and surrounding ZIPs ${city.zips.join(', ')}.` },
     { q: `Will the lights survive ${city.name} summers?`,
-      a: `Yes. The track is rated IP67 and tested -40°F to 140°F — engineered for ${city.climate.summerHigh}°F+ ${city.name} summers. ${city.climate.notes}` },
+      a: `Yes. The track is rated IP67 and tested -40°F to 140°F-engineered for ${city.climate.summerHigh}°F+ ${city.name} summers. ${city.climate.notes}` },
     { q: `How long is the install in ${city.name}?`,
       a: `Single-story homes finish in 6-8 hours. Two-story typically 1-2 days. ${dispatchLine(city)} The same crew stays on-site through the whole install.` },
     ...service.faqs.slice(0, 4)
@@ -1082,9 +1191,10 @@ function renderServiceCity(service, city) {
       ${sectionHead({ eyebrow: `${city.name} homeowners`, h2: `${svcName} for`, em: `${city.name} homes.`, intro: `${service.intro}` })}
       ${cityServiceUnique(service, city)}
     </section>` +
-    installPhotoGrid({ category: photoCat, seed: slug, kicker: `${svcName}`, h2: 'Real installs,', em: `not stock photos.`, intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
+    pricingBenchmarkTableBlock({ cityName: `${city.name}, CA (${city.zipRange || (city.zips || [])[0] || ''})`, serviceName: svcName, fromPrice: service.fromPrice }) +
+    installPhotoGrid({ category: photoCat, seed: slug, kicker: `${svcName} Portfolio`, h2: `Completed ${svcName} Installations`, em: `in ${city.name}, CA`, intro: `Selected from our ${shared.brand.installs}+ verified Central Valley and Northern California installations.` }) +
     `<section class="solutions container">
-      ${sectionHead({ eyebrow: 'Use cases', h2: `Where ${city.name} homeowners`, em: 'use this most.' })}
+      ${sectionHead({ eyebrow: 'Residential & Commercial Applications', h2: `${svcName} Use Cases for`, em: `${city.name}, CA Properties` })}
       ${solutionsGrid(useCases.map((u, i) => ({
         h: u.title || u,
         p: u.desc || '',
@@ -1094,7 +1204,7 @@ function renderServiceCity(service, city) {
     </section>` +
     testimonialBlock(city, pickPhotos(photoCat, slug + 't', 1)[0]) +
     techSpecsBlock() +
-    processTimelineBlock({ kicker: `${city.name} install process`, h2: 'Quoted, designed, installed —', em: `in a day.` }) +
+    processTimelineBlock({ kicker: `${city.name} Installation Process`, h2: `How ${svcName} Installation Works`, em: `in ${city.name}, CA` }) +
 
     faqBlock(faqs) +
     serviceRowBlock(service.slug) +
@@ -1150,12 +1260,13 @@ function renderServiceHub(service) {
     heroBlock({ kicker: `Service · From ${usd(service.fromPrice)}`, h1, lead: service.lead, ctaPrice: service.fromPrice, img: heroImg }) +
     trustBar() +
     `<section class="container intro-block">
-      ${sectionHead({ eyebrow: 'About this service', h2: `${svcName} —`, em: `what it is, who it's for.`, intro: service.intro })}
+      ${sectionHead({ eyebrow: 'About this service', h2: `${svcName} -`, em: `what it is, who it's for.`, intro: service.intro })}
       ${altPhrases.length ? `<p class="muted">Also searched as: ${altPhrases.map(esc).join(', ')}.</p>` : ''}
     </section>` +
-    installPhotoGrid({ category: photoCat, seed: service.slug, kicker: 'Recent work', h2: `${svcName},`, em: 'as installed.' }) +
+    pricingBenchmarkTableBlock({ cityName: 'Fresno, Clovis & Central California', serviceName: svcName, fromPrice: service.fromPrice }) +
+    installPhotoGrid({ category: photoCat, seed: service.slug, kicker: 'Verified Installations', h2: `Completed ${svcName} Installations`, em: 'Across Central & Northern California' }) +
     `<section class="solutions container">
-      ${sectionHead({ eyebrow: 'Where it lands', h2: 'Common', em: 'use cases.', intro: `${svcName} fits a handful of recurring use cases — here are the ones we install most often.` })}
+      ${sectionHead({ eyebrow: 'Where it lands', h2: 'Common', em: 'use cases.', intro: `${svcName} fits a handful of recurring use cases-here are the ones we install most often.` })}
       ${solutionsGrid(service.useCases.map((u, i) => ({
         h: u.title || u,
         p: u.desc || '',
@@ -1192,13 +1303,13 @@ function renderCityHub(city) {
     { name: city.name, url: canonical }
   ];
   const faqs = [
-    { q: `Do you serve all of ${city.name}?`, a: `Yes — every ZIP in ${city.name} (${city.zips.join(', ')}) and every neighborhood including ${city.neighborhoods.slice(0, 6).join(', ')}.` },
+    { q: `Do you serve all of ${city.name}?`, a: `Yes-every ZIP in ${city.name} (${city.zips.join(', ')}) and every neighborhood including ${city.neighborhoods.slice(0, 6).join(', ')}.` },
     { q: `How much does permanent lighting cost in ${city.name}?`, a: `Starts at $950 for a single-facade Starter install. Most ${city.name} homes land $2,800-$5,800. Two-story estates $5,800-$9,000. Financing from $89/month.` },
     { q: `What's the most popular install style in ${city.name}?`, a: city.popularUseCase || `Full eave-and-soffit outline with warm-white architectural mode for daily use plus 200+ holiday presets.` },
-    { q: `How long does it take you to get to ${city.name}?`, a: `${dispatchLine(city)} Either way it is the same W-2 install crew — no subcontractors.` },
+    { q: `How long does it take you to get to ${city.name}?`, a: `${dispatchLine(city)} Either way it is the same W-2 install crew-no subcontractors.` },
     { q: `Do you handle HOAs in ${city.name}?`, a: `Yes. We've submitted to most ${city.name}-area HOAs and provide spec sheets and 3D renderings at no charge.` }
   ];
-  const jsonld = [breadcrumbs(crumbs, canonical), localBusinessLD(city), faqLD(faqs, canonical), howToInstallLD(), ...allReviews().slice(0, 5)];
+  const jsonld = [breadcrumbs(crumbs, canonical), serviceLD(h1, desc, cityAreaServed(city), 950, canonical), localBusinessLD(city), faqLD(faqs, canonical), howToInstallLD(), ...allReviews().slice(0, 5)];
   const heroImg = pickPhotos('residential', city.slug, 1)[0];
   const html = head({ title, desc, canonical, kw: `permanent outdoor lights ${city.name.toLowerCase()}`, ogImg: heroImg, jsonld, geo: { lat: city.lat, lng: city.lng, placename: `${city.name}, California` } }) +
     headerHTML(canonical) +
@@ -1207,7 +1318,7 @@ function renderCityHub(city) {
     heroBlock({ kicker: `Serving ${city.name}, CA · From $950`, h1, lead: city.intro, ctaPrice: 950, img: heroImg }) +
     trustBar() +
     `<section class="container intro-block">
-      ${sectionHead({ eyebrow: `Why ${city.name}`, h2: `${city.name} homeowners`, em: 'choose us.', intro: city.intro })}
+      ${sectionHead({ eyebrow: `${city.name}, CA (${city.zipRange || (city.zips || [])[0] || ''})`, h2: `Permanent Outdoor LED & Christmas Light Installation in`, em: `${city.name}, CA`, intro: city.intro })}
       <p>Population ${city.population.toLocaleString()}. ${dispatchLine(city)} ${isHomeMarket(city) ? `We've installed across ${city.neighborhoods.slice(0, 5).map(esc).join(', ')}.` : `Coverage spans ${city.neighborhoods.slice(0, 5).map(esc).join(', ')} and the rest of ${esc(city.name)}.`}</p>
       <aside class="nap-block" itemscope itemtype="https://schema.org/HomeAndConstructionBusiness">
         <p>
@@ -1225,9 +1336,10 @@ function renderCityHub(city) {
       </aside>
       <p class="muted">Also searched as: ${city.name} permanent outdoor lights, outdoor lights permanent ${city.name}, permanent out door lights ${city.name}, permanent exterior house lighting ${city.name}, ${city.name} christmas lighting company.</p>
     </section>` +
-    installPhotoGrid({ category: 'residential', seed: city.slug, kicker: `${city.name} work`, h2: `Real ${city.name}`, em: 'installs.', intro: `Selected from our ${shared.brand.installs}+ Central Valley installs.` }) +
+    pricingBenchmarkTableBlock({ cityName: `${city.name}, CA (${city.zipRange || (city.zips || [])[0] || ''})`, serviceName: 'Permanent Outdoor LED Lighting', fromPrice: 950 }) +
+    installPhotoGrid({ category: 'residential', seed: city.slug, kicker: `${city.name} Installations`, h2: `Completed Permanent Roofline Lighting Installs in`, em: `${city.name}, CA`, intro: `Selected from our ${shared.brand.installs}+ verified Central Valley and Northern California installations.` }) +
     `<section class="solutions container">
-      ${sectionHead({ eyebrow: `${city.name} services`, h2: 'Every reason you wanted permanent lights —', em: 'covered.', intro: `Pick the install style that fits your home. Same crew, same warranty, same Jellyfish RGBIC-RD hardware across every service.` })}
+      ${sectionHead({ eyebrow: `${city.name} Lighting Services`, h2: `Permanent Christmas, Accent & Security Lighting Services in`, em: `${city.name}, CA`, intro: `Select the permanent LED lighting configuration for your property. Installed by our W-2 crew with a 5-year warranty and genuine Jellyfish RGBIC-RD hardware.` })}
       ${solutionsGrid(services.slice(0, 9).map(s => ({
         h: s.h1.split(' Installation')[0].split(' in ')[0],
         p: s.lead.slice(0, 130),
@@ -1240,7 +1352,7 @@ function renderCityHub(city) {
     testimonialBlock(city) +
     processTimelineBlock({ kicker: `${city.name} install process`, h2: 'How a', em: `${city.name} install runs.`, intro: `Same five steps everywhere. ${isHomeMarket(city) ? `A ${city.driveMinutes}-minute drive from our Clovis shop means same-day quote turnarounds.` : `Quotes in ${city.name} are booked with our ${city.region} crew on a scheduled route.`}` }) +
     `<section class="container climate-block">
-      ${sectionHead({ eyebrow: 'Climate', h2: `Built for ${city.name}`, em: `weather.`, intro: `Summer highs in ${city.name} regularly hit ${city.climate.summerHigh}°F. ${city.climate.notes} Our IP67-rated track and -40°F to 140°F LED chips are engineered for it. Coverage spans every ${city.name} neighborhood — ${city.neighborhoods.slice(0, 8).join(', ')}, and the rest — across ZIPs ${city.zips.join(', ')}.` })}
+      ${sectionHead({ eyebrow: 'Climate', h2: `Built for ${city.name}`, em: `weather.`, intro: `Summer highs in ${city.name} regularly hit ${city.climate.summerHigh}°F. ${city.climate.notes} Our IP67-rated track and -40°F to 140°F LED chips are engineered for it. Coverage spans every ${city.name} neighborhood-${city.neighborhoods.slice(0, 8).join(', ')}, and the rest-across ZIPs ${city.zips.join(', ')}.` })}
     </section>` +
     techSpecsBlock() +
 
@@ -1265,7 +1377,7 @@ function renderVertical(v) {
   ];
   const faqs = [
     { q: `How much does ${(v.h1.split(' Installation')[0]).toLowerCase()} cost?`, a: `${v.h1.split(' Installation')[0]} starts at ${usd(v.fromPrice)} for typical commercial installations. Multi-property and chain-account pricing available.` },
-    { q: 'Do you handle multi-location accounts?', a: 'Yes — we manage multi-property contracts across the Central Valley with single-invoice billing and dedicated account management.' },
+    { q: 'Do you handle multi-location accounts?', a: 'Yes-we manage multi-property contracts across the Central Valley with single-invoice billing and dedicated account management.' },
     { q: 'How fast is service response?', a: 'Same-day in Fresno County, next business day across the Central Valley. Service contracts include guaranteed SLA.' },
     { q: 'Are the systems insurance-friendly?', a: 'Yes. IP67-rated, UL-listed components, and we provide certificates of insurance on request.' }
   ];
@@ -1285,10 +1397,11 @@ function renderVertical(v) {
     heroBlock({ kicker: `Commercial · From ${usd(v.fromPrice)}`, h1: v.h1, lead: v.lead, ctaPrice: v.fromPrice, img: heroImg }) +
     trustBar() +
     `<section class="container intro-block">
-      ${sectionHead({ eyebrow: 'About this service', h2: `${baseName} —`, em: 'commercial-grade.', intro: v.intro })}
+      ${sectionHead({ eyebrow: 'About this service', h2: `${baseName} -`, em: 'commercial-grade.', intro: v.intro })}
     </section>` +
     reelMomentBlock({ video: '/videos/commercial-loop.mp4', kicker: 'In motion', h: 'Lit business hours.', em: 'Lit after-hours, too.', p: 'One install. Brand colors during open. Mood lighting during service. Music-sync for events. All controlled from a single tablet behind the bar.', poster: heroImg }) +
-    installPhotoGrid({ category: photoCat, seed: v.slug, kicker: `${baseName} portfolio`, h2: 'Real commercial', em: 'installs.', intro: 'Shot at active operating businesses across our portfolio.' }) +
+    pricingBenchmarkTableBlock({ cityName: 'Fresno, Clovis & Central California', serviceName: baseName, fromPrice: v.fromPrice }) +
+    installPhotoGrid({ category: photoCat, seed: v.slug, kicker: `${baseName} Portfolio`, h2: `Completed Commercial ${baseName}`, em: 'Installations', intro: 'Installed at active commercial properties across Central and Northern California.' }) +
     `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Use cases', h2: 'Where this', em: 'earns its install.' })}
       ${solutionsGrid(v.useCases.map((u, i) => ({
@@ -1352,7 +1465,7 @@ function renderVerticalCity(v, city) {
   const faqs = [
     { q: `Do you handle ${baseName.toLowerCase()} for ${city.name} businesses?`, a: `Yes. We install across ${city.name} commercial corridors including ${city.neighborhoods.slice(0, 4).join(', ')}.` },
     { q: 'What are typical timelines?', a: `${city.name} commercial installs typically complete in 2-5 business days depending on building size and electrical complexity.` },
-    { q: isHomeMarket(city) ? 'Same-day service?' : 'How fast can you get on-site?', a: isHomeMarket(city) ? `Yes — drive time from our Clovis shop to ${city.name} is about ${city.driveMinutes} minutes, so service calls land same-day.` : `${city.name} runs on a scheduled route with our ${city.region} crew rather than same-day dispatch. Service visits are typically booked within the week.` }
+    { q: isHomeMarket(city) ? 'Same-day service?' : 'How fast can you get on-site?', a: isHomeMarket(city) ? `Yes-drive time from our Clovis shop to ${city.name} is about ${city.driveMinutes} minutes, so service calls land same-day.` : `${city.name} runs on a scheduled route with our ${city.region} crew rather than same-day dispatch. Service visits are typically booked within the week.` }
   ];
   const jsonld = [
     breadcrumbs(crumbs, canonical),
@@ -1370,9 +1483,10 @@ function renderVerticalCity(v, city) {
     trustBar() +
     `<section class="container intro-block">
       ${sectionHead({ eyebrow: `${city.name} commercial`, h2: `${baseName} for`, em: `${city.name}.`, intro: `${v.intro}` })}
-      <p>In ${esc(city.name)} specifically, coverage spans ${city.neighborhoods.slice(0, 4).map(esc).join(', ')} — ${dispatchLine(city, { short: true })}.</p>
+      <p>In ${esc(city.name)} specifically, coverage spans ${city.neighborhoods.slice(0, 4).map(esc).join(', ')} - ${dispatchLine(city, { short: true })}.</p>
     </section>` +
-    installPhotoGrid({ category: photoCat, seed: slug, kicker: 'Recent work', h2: `${baseName}`, em: 'in the field.' }) +
+    pricingBenchmarkTableBlock({ cityName: `${city.name}, CA`, serviceName: baseName, fromPrice: v.fromPrice }) +
+    installPhotoGrid({ category: photoCat, seed: slug, kicker: 'Commercial Installations', h2: `Completed ${baseName} Projects`, em: `in ${city.name}, CA` }) +
     `<section class="solutions container">
       ${sectionHead({ eyebrow: `${city.name} use cases`, h2: 'Where this', em: `lands in ${city.name}.` })}
       ${solutionsGrid(v.useCases.slice(0, 6).map((u, i) => ({
@@ -1398,7 +1512,7 @@ function renderComparison(c) {
     { name: 'Compare', url: '/compare' },
     { name: c.competitor, url: canonical }
   ];
-  const jsonld = [breadcrumbs(crumbs, canonical), {
+  const jsonld = [breadcrumbs(crumbs, canonical), serviceLD(c.h1, c.metaDesc, 'Central & Northern California', 950, canonical), {
     '@context': 'https://schema.org', '@type': 'Article',
     '@id': `${SITE}${canonical}#article`,
     headline: c.h1, description: c.metaDesc,
@@ -1452,7 +1566,7 @@ function renderCost({ slug, h1, title, desc, kw, lead, sections, faqs }) {
     { name: 'Pricing', url: '/pricing' },
     { name: h1, url: canonical }
   ];
-  const jsonld = [breadcrumbs(crumbs, canonical), faqLD(faqs, canonical)];
+  const jsonld = [breadcrumbs(crumbs, canonical), serviceLD(h1, desc, 'Central & Northern California', 950, canonical), faqLD(faqs, canonical)];
   const heroImg = pickPhotos('residential', slug, 1)[0];
   const fresno = cities.find(c => c.slug === 'fresno');
   const html = head({ title, desc, canonical, kw, ogImg: heroImg, jsonld }) +
@@ -1472,6 +1586,7 @@ function renderCost({ slug, h1, title, desc, kw, lead, sections, faqs }) {
       ${s.body.map(p => `<p>${esc(p)}</p>`).join('')}
       ${s.table ? `<table class="price-table"><thead><tr>${s.table.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${s.table.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}
     </section>`).join('') +
+    pricingBenchmarkTableBlock({ cityName: 'Fresno, Clovis & Central California', serviceName: h1.replace(/\s*\(2026.*\)/, ''), fromPrice: 950 }) +
     testimonialBlock(fresno, pickPhotos('residential', slug + 't', 1)[0]) +
 
     faqBlock(faqs) +
@@ -1493,6 +1608,7 @@ function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, 
     headline: h1, description: desc, author: { '@type': 'Organization', name: BRAND },
     publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-02-01'
   });
+  jsonld.push(serviceLD(h1, desc, 'Central & Northern California', 950, canonical));
   if (extraSchema.length) jsonld.push(...extraSchema);
   const heroImg = img || pickPhotos('residential', slug, 1)[0];
   const fresno = cities.find(c => c.slug === 'fresno');
@@ -1505,6 +1621,7 @@ function renderArticle({ slug, h1, title, desc, kw, kicker, lead, parent, body, 
     heroBlock({ kicker, h1, lead, img: heroImg }) +
     trustBar() +
     body +
+    (!body.includes('<table') ? pricingBenchmarkTableBlock({ cityName: 'Fresno, Clovis & Central California', serviceName: h1, fromPrice: 950 }) : '') +
     (isGuide ? testimonialBlock(fresno) : '') +
     (faqs.length ? faqBlock(faqs) : '') +
     ctaBlock() +
@@ -1549,6 +1666,7 @@ function renderPost(post) {
       isPartOf: { '@id': `${SITE}/#website` }
     }
   ];
+  jsonld.push(serviceLD(post.h1, post.desc, 'Central & Northern California', 950, canonical));
   if (post.faqs && post.faqs.length) jsonld.push(faqLD(post.faqs, canonical));
 
   // Pick 3 related posts (same intent) excluding self
@@ -1589,6 +1707,7 @@ function renderPost(post) {
          return sectionHTML;
        }).join('')}
      </article>` +
+    pricingBenchmarkTableBlock({ cityName: 'Fresno, Clovis & Central California', serviceName: 'Permanent Outdoor LED Lighting', fromPrice: 950 }) +
     testimonialBlock(fresno, pickPhotos(photoCat, post.slug + 't', 1)[0]) +
     (post.faqs && post.faqs.length ? faqBlock(post.faqs) : '') +
     (related.length ? `<section class="container related-posts">
@@ -1633,7 +1752,7 @@ function renderBlogIndex() {
   posts.forEach(p => { (grouped[p.intent] = grouped[p.intent] || []).push(p); });
   const html = head({
     title: `Blog | Permanent Outdoor Lighting Insights | ${BRAND}`,
-    desc: 'Sixty plain-English articles on permanent outdoor lighting — how it works, what it costs, when it pays off, and how to get the install right.',
+    desc: 'Sixty plain-English articles on permanent outdoor lighting-how it works, what it costs, when it pays off, and how to get the install right.',
     canonical, kw: 'permanent outdoor lighting blog', jsonld
   }) +
     headerHTML(canonical) +
@@ -1708,7 +1827,7 @@ guides.forEach(p => pages.push(p));
 const utilityPages = buildUtility();
 utilityPages.forEach(p => pages.push(p));
 
-// 10. Neighborhood pages — top 2 per top-6 cities = 12
+// 10. Neighborhood pages-top 2 per top-6 cities = 12
 const neighborhoodPages = buildNeighborhoods();
 neighborhoodPages.forEach(p => pages.push(p));
 
@@ -1729,10 +1848,10 @@ if (posts.length) {
 function buildCostPages() {
   const out = [];
   const baseFaqs = [
-    { q: 'What is the cheapest option?', a: `Our Starter package starts at ${usd(shared.pricing.starterFrom)} — single facade, ~30 ft, full app control with 16M colors and 200+ patterns, 5-year warranty.` },
-    { q: 'Do you finance?', a: `Yes — 0% APR for 12 months. Standard installs run ~$89/month, Premium ~$169/month. $0 down.` },
+    { q: 'What is the cheapest option?', a: `Our Starter package starts at ${usd(shared.pricing.starterFrom)} - single facade, ~30 ft, full app control with 16M colors and 200+ patterns, 5-year warranty.` },
+    { q: 'Do you finance?', a: `Yes-0% APR for 12 months. Standard installs run ~$89/month, Premium ~$169/month. $0 down.` },
     { q: 'Is the quote firm?', a: 'Yes. Written, fixed price on the spot after a free on-site walk. No upsells, no surprises.' },
-    { q: 'Are there permit costs?', a: 'No permit is required for residential under-eave installation in Fresno County. Commercial varies — we handle filing if needed.' }
+    { q: 'Are there permit costs?', a: 'No permit is required for residential under-eave installation in Fresno County. Commercial varies-we handle filing if needed.' }
   ];
   // Master cost page
   out.push(renderCost({
@@ -1758,7 +1877,7 @@ function buildCostPages() {
     title: `Permanent Outdoor Lighting Cost ${c.name} CA | 2026 Pricing`,
     desc: `Real 2026 prices for permanent outdoor lighting in ${c.name}, CA. Starter from $950. Most ${c.name} homes $2,800-$5,800. Financing from $89/month.`,
     kw: `permanent outdoor lighting cost ${c.name.toLowerCase()}`,
-    lead: `Pricing for ${c.name} homes specifically — based on actual ${c.name} installs we've completed across ${c.neighborhoods.slice(0, 3).join(', ')}.`,
+    lead: `Pricing for ${c.name} homes specifically-based on actual ${c.name} installs we've completed across ${c.neighborhoods.slice(0, 3).join(', ')}.`,
     sections: [
       { h: `${c.name} price ranges (typical homes)`, body: [`Most ${c.name} single-story homes (1,800-2,400 sq ft) land Standard tier: ${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}.`, `Two-story homes in ${c.neighborhoods[0]} and ${c.neighborhoods[1]} typically Premium tier: ${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}.`, `Tract starter homes: ${usd(shared.pricing.starterFrom)}-${usd(shared.pricing.standardFrom)}.`] },
       { h: 'What\'s the same as our master pricing', body: ['Same RGBIC-RD hardware. Same 5-year warranty. Same 7-day refund. Same financing terms (0% APR, 12 months).'] },
@@ -1774,7 +1893,7 @@ function buildCostPages() {
     title: `${s.h1.split(' Installation')[0]} Cost | 2026 Fresno Pricing`,
     desc: `Real 2026 pricing for ${(s.h1.split(' Installation')[0]).toLowerCase()} in Fresno County. From ${usd(s.fromPrice)}. 5-year warranty. Financing available.`,
     kw: `${s.primaryKw} cost`,
-    lead: `Pricing specifically for ${(s.h1.split(' Installation')[0]).toLowerCase()} — based on ${shared.brand.installs}+ installs across the Central Valley.`,
+    lead: `Pricing specifically for ${(s.h1.split(' Installation')[0]).toLowerCase()} - based on ${shared.brand.installs}+ installs across the Central Valley.`,
     sections: [
       { h: 'Price ranges', body: [`Starts at ${usd(s.fromPrice)}. Most installs land ${usd(s.fromPrice)}-${usd(s.fromPrice * 3)}.`] },
       { h: 'What\'s included', body: [s.intro] },
@@ -1784,9 +1903,9 @@ function buildCostPages() {
   })));
   // Cost variants (general)
   const variants = [
-    { slug: 'cost-vs-seasonal', h1: 'Permanent vs Seasonal Christmas Lights: 5-Year Cost', desc: 'Permanent lighting vs annual seasonal Christmas light installation — 5-year cost compared.', lead: 'Seasonal hangs run $850-$1,400 a year in Fresno. Five years of that is the breakeven for permanent.', kw: 'permanent lights vs seasonal cost' },
+    { slug: 'cost-vs-seasonal', h1: 'Permanent vs Seasonal Christmas Lights: 5-Year Cost', desc: 'Permanent lighting vs annual seasonal Christmas light installation-5-year cost compared.', lead: 'Seasonal hangs run $850-$1,400 a year in Fresno. Five years of that is the breakeven for permanent.', kw: 'permanent lights vs seasonal cost' },
     { slug: 'cost-financing', h1: 'Permanent Lighting Financing: $89/Month at 0% APR', desc: '0% APR financing for permanent outdoor lighting. From $32/month Starter, $89/month Standard, $169/month Premium.', lead: '$0 down. 12 months at 0% APR. Soft credit pull. Decision in 60 seconds.', kw: 'permanent lighting financing' },
-    { slug: 'cost-2-story', h1: 'Permanent Lighting Cost for Two-Story Homes', desc: 'Two-story permanent lighting installation pricing. Typically $5,800-$9,000 for full perimeter. Same warranty.', lead: 'Two-story homes run roughly 30-40% more than single-story — the work is in ladder time, not hardware.', kw: 'permanent lights two story cost' },
+    { slug: 'cost-2-story', h1: 'Permanent Lighting Cost for Two-Story Homes', desc: 'Two-story permanent lighting installation pricing. Typically $5,800-$9,000 for full perimeter. Same warranty.', lead: 'Two-story homes run roughly 30-40% more than single-story-the work is in ladder time, not hardware.', kw: 'permanent lights two story cost' },
     { slug: 'cost-per-foot', h1: 'Permanent Outdoor Lighting Cost Per Foot', desc: 'Cost per linear foot for professionally installed permanent outdoor lighting. Typically $30-$60/ft installed.', lead: 'Installed cost runs $30-$60 per linear foot, depending on tier and access. Here\'s the math.', kw: 'permanent outdoor lighting cost per foot' },
     { slug: 'cost-commercial', h1: 'Commercial Permanent Lighting Cost', desc: 'Commercial permanent outdoor lighting pricing for restaurants, hotels, storefronts, HOAs, and more. From $4,500.', lead: 'Commercial pricing scales with linear feet, complexity, and zone count. Most multi-property accounts qualify for volume terms.', kw: 'commercial permanent lighting cost' },
     { slug: 'cost-hoa', h1: 'HOA & Apartment Permanent Lighting Cost', desc: 'Multi-unit permanent lighting cost for HOAs and apartment complexes in the Central Valley.', lead: 'Per-unit pricing drops 20-30% on multi-unit accounts. Single-invoice billing. SLA service contracts.', kw: 'hoa permanent lighting cost' }
@@ -1806,17 +1925,17 @@ function buildGuides() {
   const out = [];
   const guides = [
     { slug: 'guide-permanent-vs-seasonal', h1: 'Permanent Lights vs Seasonal Hangs: The Honest Guide', desc: 'When permanent lighting wins, when seasonal hangs win, and the 5-year math that decides it.', kw: 'permanent vs seasonal christmas lights guide', kicker: 'Buyer guide' },
-    { slug: 'guide-best-permanent-lights', h1: 'Best Permanent Outdoor Lights in 2026', desc: 'Real comparison of the top permanent outdoor lighting brands — Jellyfish, Trimlight, Gemstone, EverLights, Oelo, Govee.', kw: 'best permanent outdoor lights', kicker: 'Buyer guide' },
-    { slug: 'guide-jellyfish-lighting', h1: 'Jellyfish Lighting: What It Is and How It Works', desc: 'Plain-English guide to Jellyfish Lighting — what makes RGBIC-RD different, how the track installs, what the warranty really covers.', kw: 'what is jellyfish lighting', kicker: 'Brand guide' },
-    { slug: 'guide-rgbic-vs-rgb', h1: 'RGBIC vs RGB: The Difference for Outdoor Lights', desc: 'RGBIC vs RGB explained — pixel control, gradient smoothness, pattern variety. Why RGBIC matters for permanent lights.', kw: 'rgbic vs rgb', kicker: 'Tech guide' },
+    { slug: 'guide-best-permanent-lights', h1: 'Best Permanent Outdoor Lights in 2026', desc: 'Real comparison of the top permanent outdoor lighting brands-Jellyfish, Trimlight, Gemstone, EverLights, Oelo, Govee.', kw: 'best permanent outdoor lights', kicker: 'Buyer guide' },
+    { slug: 'guide-jellyfish-lighting', h1: 'Jellyfish Lighting: What It Is and How It Works', desc: 'Plain-English guide to Jellyfish Lighting-what makes RGBIC-RD different, how the track installs, what the warranty really covers.', kw: 'what is jellyfish lighting', kicker: 'Brand guide' },
+    { slug: 'guide-rgbic-vs-rgb', h1: 'RGBIC vs RGB: The Difference for Outdoor Lights', desc: 'RGBIC vs RGB explained-pixel control, gradient smoothness, pattern variety. Why RGBIC matters for permanent lights.', kw: 'rgbic vs rgb', kicker: 'Tech guide' },
     { slug: 'guide-hoa-approval', h1: 'How to Get HOA Approval for Permanent Lighting', desc: 'Step-by-step HOA submission for permanent outdoor lighting in Fresno County. Spec sheets, renderings, and language that wins.', kw: 'hoa permanent lighting approval', kicker: 'Process guide' },
-    { slug: 'guide-installation-process', h1: 'Permanent Lighting Installation: What to Expect', desc: 'Day-of installation walkthrough — site prep, track install, wiring, control box, app setup, walkthrough.', kw: 'permanent lighting installation process', kicker: 'Process guide' },
+    { slug: 'guide-installation-process', h1: 'Permanent Lighting Installation: What to Expect', desc: 'Day-of installation walkthrough-site prep, track install, wiring, control box, app setup, walkthrough.', kw: 'permanent lighting installation process', kicker: 'Process guide' },
     { slug: 'guide-warranty-explained', h1: 'Permanent Lighting Warranty: What\'s Actually Covered', desc: '5-year track warranty, 5-year LED warranty, 5-year workmanship, 7-day refund. Plain-English coverage.', kw: 'permanent lighting warranty', kicker: 'Buyer guide' },
-    { slug: 'guide-app-control', h1: 'Permanent Lighting App: 200+ Patterns Explained', desc: 'Full walkthrough of the app — schedules, scenes, music sync, holiday auto-mode, smart-home integration.', kw: 'permanent lighting app', kicker: 'Owner guide' },
-    { slug: 'guide-smart-home', h1: 'Permanent Lighting + Control4, Elan, Alexa, Google', desc: 'Smart home integration for permanent outdoor lighting — Control4, Nice Elan, Alexa, Google Home setup.', kw: 'permanent lighting smart home', kicker: 'Tech guide' },
-    { slug: 'guide-led-track-types', h1: 'Permanent Lighting Track Types: Which Profile You Want', desc: 'Square channel vs RD profile vs J-channel — track shapes for permanent outdoor lighting compared.', kw: 'permanent lighting track types', kicker: 'Tech guide' },
-    { slug: 'guide-cleaning-care', h1: 'Permanent Lighting Care & Cleaning', desc: 'How to keep permanent outdoor lighting clean and looking new — annual maintenance, tree-sap removal, dust.', kw: 'permanent lighting maintenance', kicker: 'Owner guide' },
-    { slug: 'guide-removal-process', h1: 'Permanent Lighting Removal & Refund Process', desc: 'How our 7-day refund guarantee actually works — what we pull, what we patch, how the refund flows.', kw: 'permanent lighting refund', kicker: 'Process guide' }
+    { slug: 'guide-app-control', h1: 'Permanent Lighting App: 200+ Patterns Explained', desc: 'Full walkthrough of the app-schedules, scenes, music sync, holiday auto-mode, smart-home integration.', kw: 'permanent lighting app', kicker: 'Owner guide' },
+    { slug: 'guide-smart-home', h1: 'Permanent Lighting + Control4, Elan, Alexa, Google', desc: 'Smart home integration for permanent outdoor lighting-Control4, Nice Elan, Alexa, Google Home setup.', kw: 'permanent lighting smart home', kicker: 'Tech guide' },
+    { slug: 'guide-led-track-types', h1: 'Permanent Lighting Track Types: Which Profile You Want', desc: 'Square channel vs RD profile vs J-channel-track shapes for permanent outdoor lighting compared.', kw: 'permanent lighting track types', kicker: 'Tech guide' },
+    { slug: 'guide-cleaning-care', h1: 'Permanent Lighting Care & Cleaning', desc: 'How to keep permanent outdoor lighting clean and looking new-annual maintenance, tree-sap removal, dust.', kw: 'permanent lighting maintenance', kicker: 'Owner guide' },
+    { slug: 'guide-removal-process', h1: 'Permanent Lighting Removal & Refund Process', desc: 'How our 7-day refund guarantee actually works-what we pull, what we patch, how the refund flows.', kw: 'permanent lighting refund', kicker: 'Process guide' }
   ];
   guides.forEach(g => out.push(renderArticle({
     slug: g.slug, h1: g.h1,
@@ -1853,17 +1972,17 @@ function buildUtility() {
     slug: 'services',
     h1: 'All Lighting Services',
     title: `Permanent Outdoor Lighting Services | ${BRAND}`,
-    desc: 'Every permanent outdoor lighting service we offer in Fresno County — Christmas lights, accent lighting, security, patio, pool, pathway, game day, and more.',
+    desc: 'Every permanent outdoor lighting service we offer in Fresno County-Christmas lights, accent lighting, security, patio, pool, pathway, game day, and more.',
     kw: 'permanent outdoor lighting services',
     kicker: 'Services',
     lead: 'Every lighting service we offer, all in one place.',
     body: `<section class="solutions container">
       ${sectionHead({ eyebrow: 'Residential', h2: 'Lighting for', em: 'every reason.', intro: 'One install, every holiday, every architectural mode. App-controlled. 5-year warranty.' })}
-      ${solutionsGrid(services.map((s, i) => { const n = s.h1.split(' Installation')[0].split(' in ')[0]; const cat = SERVICE_PHOTO_MAP[s.slug] || 'residential'; const pool = ASSETS[cat] || ASSETS.residential; const img = pool[i % pool.length]; return { h: n, p: s.lead.slice(0, 130), img, alt: `${n} install by Twilight Zone Permanent Lighting`, href: `/${s.slug}`, linkLabel: `Explore ${n.toLowerCase()} — from ${usd(s.fromPrice)}` }; }))}
+      ${solutionsGrid(services.map((s, i) => { const n = s.h1.split(' Installation')[0].split(' in ')[0]; const cat = SERVICE_PHOTO_MAP[s.slug] || 'residential'; const pool = ASSETS[cat] || ASSETS.residential; const img = pool[i % pool.length]; return { h: n, p: s.lead.slice(0, 130), img, alt: `${n} install by Twilight Zone Permanent Lighting`, href: `/${s.slug}`, linkLabel: `Explore ${n.toLowerCase()} - from ${usd(s.fromPrice)}` }; }))}
     </section>
     <section class="solutions container">
       ${sectionHead({ eyebrow: 'Commercial', h2: 'Built for', em: 'business operators.', intro: 'Multi-property accounts, single-invoice billing, same-day SLA service across the Central Valley.' })}
-      ${solutionsGrid(verticals.map((v, i) => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; const cat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial'; const pool = ASSETS[cat] || ASSETS.commercial; const img = pool[i % pool.length]; return { h: n, p: v.lead.slice(0, 130), img, alt: `${n} commercial install by Twilight Zone`, href: `/${v.slug}`, linkLabel: `Explore ${n.toLowerCase()} commercial install — from ${usd(v.fromPrice)}` }; }))}
+      ${solutionsGrid(verticals.map((v, i) => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; const cat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial'; const pool = ASSETS[cat] || ASSETS.commercial; const img = pool[i % pool.length]; return { h: n, p: v.lead.slice(0, 130), img, alt: `${n} commercial install by Twilight Zone`, href: `/${v.slug}`, linkLabel: `Explore ${n.toLowerCase()} commercial install-from ${usd(v.fromPrice)}` }; }))}
     </section>`
   }));
   // /service-areas hub
@@ -1871,7 +1990,7 @@ function buildUtility() {
     slug: 'service-areas',
     h1: 'Service Areas: Central & Northern California',
     title: `Service Areas | Fresno · Sacramento · Bay Area | ${BRAND}`,
-    desc: `Permanent outdoor lighting installation across ${cities.length} cities in Central and Northern California — the Central Valley, Sacramento Metro, San Francisco Peninsula, South Bay, and East Bay.`,
+    desc: `Permanent outdoor lighting installation across ${cities.length} cities in Central and Northern California-the Central Valley, Sacramento Metro, San Francisco Peninsula, South Bay, and East Bay.`,
     kw: 'permanent outdoor lighting service area california',
     kicker: 'Coverage',
     lead: `Locally installed across ${cities.length} cities, from the Central Valley home base to Sacramento and the Bay Area.`,
@@ -1886,11 +2005,11 @@ function buildUtility() {
       return `<section class="solutions container">
       ${sectionHead({
         eyebrow: home ? 'Home market' : 'Expansion region',
-        h2: r + ' —',
+        h2: r + ' -',
         em: `${list.length} ${list.length === 1 ? 'city' : 'cities'}.`,
         intro: home
           ? `Our home market. Headquarters in Clovis, same-day quotes and service across all ${list.length} cities.`
-          : `Covered by our ${r} install crew on scheduled routes — the same W-2 installers and the same RGBIC-RD hardware we run in the Central Valley.`,
+          : `Covered by our ${r} install crew on scheduled routes-the same W-2 installers and the same RGBIC-RD hardware we run in the Central Valley.`,
       })}
       ${solutionsGrid(list.map((c, i) => ({
         h: `${c.name}, CA`,
@@ -1913,15 +2032,15 @@ function buildUtility() {
     kicker: 'Commercial',
     lead: 'Multi-property accounts. Same-day SLA service. Single-invoice billing.',
     body: `<section class="solutions container">
-      ${sectionHead({ eyebrow: 'Commercial verticals', h2: 'Lighting that', em: 'works your business.', intro: 'Restaurants, hotels, storefronts, HOAs, churches, dealerships, schools, offices, and event venues — same hardware, vertical-specific design.' })}
-      ${solutionsGrid(verticals.map((v, i) => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; const cat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial'; const pool = ASSETS[cat] || ASSETS.commercial; const img = pool[(i + 3) % pool.length]; return { h: n, p: v.lead.slice(0, 140), img, alt: `${n} permanent lighting install`, href: `/${v.slug}`, linkLabel: `${n} commercial install — from ${usd(v.fromPrice)}` }; }))}
+      ${sectionHead({ eyebrow: 'Commercial verticals', h2: 'Lighting that', em: 'works your business.', intro: 'Restaurants, hotels, storefronts, HOAs, churches, dealerships, schools, offices, and event venues-same hardware, vertical-specific design.' })}
+      ${solutionsGrid(verticals.map((v, i) => { const n = v.h1.split(' Installation')[0].split(' in ')[0]; const cat = VERTICAL_PHOTO_MAP[v.slug] || 'commercial'; const pool = ASSETS[cat] || ASSETS.commercial; const img = pool[(i + 3) % pool.length]; return { h: n, p: v.lead.slice(0, 140), img, alt: `${n} permanent lighting install`, href: `/${v.slug}`, linkLabel: `${n} commercial install-from ${usd(v.fromPrice)}` }; }))}
     </section>`
   }));
-  // /llms — visible AI/LLM info page (FAQPage-schema'd for direct AI extraction)
+  // /llms-visible AI/LLM info page (FAQPage-schema'd for direct AI extraction)
   const llmsFaqs = [
     { q: 'How much does permanent outdoor lighting cost in Fresno?', a: `Pricing starts at $${shared.pricing.starterFrom} for a Starter front-accent install. Most single-story Fresno homes range $${shared.pricing.standardFrom.toLocaleString()}-$${shared.pricing.premiumFrom.toLocaleString()}. Two-story homes typically run $${shared.pricing.premiumFrom.toLocaleString()}-$9,000. Estate and commercial installs start at $${shared.pricing.estateFrom.toLocaleString()}. Financing from $${shared.pricing.standardMonthly}/month at ${shared.pricing.financingApr}% APR for ${shared.pricing.financingMonths} months.` },
     { q: 'How long does a permanent outdoor lighting install take?', a: 'Most residential installs complete in a single day (6-8 hours). Two-story homes take 1-2 days. The W-2 in-house crew arrives at 8 AM and finishes by sunset on most single-story builds.' },
-    { q: 'Are permanent outdoor lights visible during the day?', a: 'No. The aluminum track is color-matched to your trim — white, bronze, brown, or black — and tucked under the eave. Invisible from the curb during daylight.' },
+    { q: 'Are permanent outdoor lights visible during the day?', a: 'No. The aluminum track is color-matched to your trim-white, bronze, brown, or black-and tucked under the eave. Invisible from the curb during daylight.' },
     { q: 'What is the warranty on Twilight Zone permanent lighting?', a: 'Lifetime on track. 5 years on LEDs and workmanship. 7-day refund guarantee. If you are not satisfied within 7 days, every fixture is pulled and 100% refunded.' },
     { q: 'Will permanent outdoor lights raise my electric bill?', a: 'Negligibly. Roughly the same draw as a single ceiling fan. Most customers see $3-$8/month added.' },
     { q: 'Can I control the lights from my phone?', a: `Yes. The companion app (iOS and Android) controls 16 million colors, ${shared.tech.patterns}+ patterns, scheduling, zoning, and music sync. Compatible with ${shared.tech.appCompat.join(', ')}.` },
@@ -1942,7 +2061,7 @@ function buildUtility() {
     extraSchema: [{
       '@context': 'https://schema.org', '@type': 'Dataset',
       '@id': `${SITE}/llms#dataset`,
-      name: `${BRAND} — content index for AI engines`,
+      name: `${BRAND} - content index for AI engines`,
       description: 'Structured, citable facts and answers about Twilight Zone Permanent Lighting, published for indexing by ChatGPT, Claude, Perplexity, Google AI Overviews, and other generative search engines.',
       url: `${SITE}/llms`,
       sameAs: [`${SITE}/llms.txt`, `${SITE}/llms-full.txt`],
@@ -1963,10 +2082,10 @@ function buildUtility() {
       <h2>For AI engines indexing this site</h2>
       <p><strong>Twilight Zone Permanent Lighting</strong> publishes structured indices for AI engines:</p>
       <ul>
-        <li><a href="/llms.txt"><code>/llms.txt</code></a> — concise structured index following the <a href="https://llmstxt.org" rel="noopener">llmstxt.org</a> spec</li>
-        <li><a href="/llms-full.txt"><code>/llms-full.txt</code></a> — full content dump (FAQs, services, pricing, warranty, comparisons) flattened for retrieval</li>
-        <li><a href="/sitemap.xml"><code>/sitemap.xml</code></a> — 390 URLs with per-page lastmod and priority</li>
-        <li><a href="/robots.txt"><code>/robots.txt</code></a> — explicit allow rules for GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, CCBot, Applebot-Extended, cohere-ai, Bytespider</li>
+        <li><a href="/llms.txt"><code>/llms.txt</code></a> - concise structured index following the <a href="https://llmstxt.org" rel="noopener">llmstxt.org</a> spec</li>
+        <li><a href="/llms-full.txt"><code>/llms-full.txt</code></a> - full content dump (FAQs, services, pricing, warranty, comparisons) flattened for retrieval</li>
+        <li><a href="/sitemap.xml"><code>/sitemap.xml</code></a> - 390 URLs with per-page lastmod and priority</li>
+        <li><a href="/robots.txt"><code>/robots.txt</code></a> - explicit allow rules for GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, CCBot, Applebot-Extended, cohere-ai, Bytespider</li>
       </ul>
 
       <h2>Citation policy</h2>
@@ -1979,7 +2098,7 @@ function buildUtility() {
         <dt>Email</dt><dd><a href="mailto:${shared.brand.email}">${shared.brand.email}</a></dd>
         <dt>Address</dt><dd>${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}</dd>
         <dt>Status</dt><dd>Bonded, insured, in-house W-2 install crew</dd>
-        <dt>Service area</dt><dd>${regionsInUse().map(r => `<strong>${esc(r)}</strong> — ${citiesInRegion(r).map(c => esc(c.name)).join(', ')}`).join('<br />')}</dd>\n        <dt>Headquarters</dt><dd>Clovis, CA — one location. Regions outside the Central Valley are served by scheduled regional install crews, not satellite offices.</dd>
+        <dt>Service area</dt><dd>${regionsInUse().map(r => `<strong>${esc(r)}</strong> - ${citiesInRegion(r).map(c => esc(c.name)).join(', ')}`).join('<br />')}</dd>\n        <dt>Headquarters</dt><dd>Clovis, CA-one location. Regions outside the Central Valley are served by scheduled regional install crews, not satellite offices.</dd>
         <dt>Founded</dt><dd>${shared.brand.founded}</dd>
         <dt>Rating</dt><dd>${shared.brand.rating}★ on Google · ${shared.brand.reviews} reviews</dd>
         <dt>Installs completed</dt><dd>${shared.brand.installs}+</dd>
@@ -2005,17 +2124,17 @@ function buildUtility() {
 
       <h2>Direct entry points</h2>
       <ul>
-        <li><a href="/pricing">/pricing</a> — full published pricing for all four tiers + financing</li>
-        <li><a href="/quote">/quote</a> — request an on-site estimate (24-hour response)</li>
-        <li><a href="/faq">/faq</a> — every FAQ with full answers</li>
-        <li><a href="/service-areas">/service-areas</a> — coverage map and city list</li>
-        <li><a href="/compare">/compare</a> — side-by-side vs Govee, Trimlight, Oelo, Gemstone, EverLights, seasonal hangs, DIY</li>
-        <li><a href="/process">/process</a> — five-step install process from quote to walkthrough</li>
-        <li><a href="/blog">/blog</a> — 60 plain-English explainer articles</li>
+        <li><a href="/pricing">/pricing</a> - full published pricing for all four tiers + financing</li>
+        <li><a href="/quote">/quote</a> - request an on-site estimate (24-hour response)</li>
+        <li><a href="/faq">/faq</a> - every FAQ with full answers</li>
+        <li><a href="/service-areas">/service-areas</a> - coverage map and city list</li>
+        <li><a href="/compare">/compare</a> - side-by-side vs Govee, Trimlight, Oelo, Gemstone, EverLights, seasonal hangs, DIY</li>
+        <li><a href="/process">/process</a> - five-step install process from quote to walkthrough</li>
+        <li><a href="/blog">/blog</a> - 60 plain-English explainer articles</li>
       </ul>
 
       <h2>Site credits</h2>
-      <p>Site design, build, and digital marketing by <a href="https://vaultio.co" rel="external">Vaultio</a> — a web design and digital marketing studio specializing in home-services SEO.</p>
+      <p>Site design, build, and digital marketing by <a href="https://vaultio.co" rel="external">Vaultio</a> - a web design and digital marketing studio specializing in home-services SEO.</p>
     </section>`
   }));
   // /compare hub
@@ -2023,12 +2142,12 @@ function buildUtility() {
     slug: 'compare',
     h1: 'Permanent Lighting Comparisons',
     title: `Permanent Lighting Comparisons | ${BRAND}`,
-    desc: 'Honest side-by-side comparisons — Jellyfish, Trimlight, Gemstone, EverLights, Oelo, Govee, seasonal hangs, DIY string lights, and more.',
+    desc: 'Honest side-by-side comparisons-Jellyfish, Trimlight, Gemstone, EverLights, Oelo, Govee, seasonal hangs, DIY string lights, and more.',
     kw: 'permanent lighting comparison',
     kicker: 'Compare',
-    lead: 'Twelve honest comparisons. We\'re a Jellyfish dealer — and we\'ll still tell you when something else fits better.',
+    lead: 'Twelve honest comparisons. We\'re a Jellyfish dealer-and we\'ll still tell you when something else fits better.',
     body: `<section class="solutions container">
-      ${sectionHead({ eyebrow: 'Compare', h2: 'Twelve honest', em: 'comparisons.', intro: "We're a Jellyfish dealer — and we'll still tell you when something else fits better." })}
+      ${sectionHead({ eyebrow: 'Compare', h2: 'Twelve honest', em: 'comparisons.', intro: "We're a Jellyfish dealer-and we'll still tell you when something else fits better." })}
       ${solutionsGrid(comparisons.map(c => ({ h: c.competitor, p: c.lead.slice(0, 150), img: '/images/03-accent.jpg', alt: `${c.competitor} comparison`, href: `/${c.slug}`, linkLabel: 'Read comparison' })))}
     </section>`
   }));
@@ -2049,7 +2168,7 @@ function buildUtility() {
       { num: '5-year', lab: 'Warranty' }
     ]) +
     `<section class="container price-tiers">
-      ${sectionHead({ eyebrow: 'Tiers', h2: 'Four published', em: 'price points.', intro: 'No quote-only games. Every install lands in one of these four tiers — final price written on the spot after a free walk.' })}
+      ${sectionHead({ eyebrow: 'Tiers', h2: 'Four published', em: 'price points.', intro: 'No quote-only games. Every install lands in one of these four tiers-final price written on the spot after a free walk.' })}
       <div class="tier-grid">
         <div class="tier"><div class="tier-eyebrow">Single facade</div><h3>Starter</h3><p class="price">${usd(shared.pricing.starterFrom)}</p><p>~30 ft, single zone, full app control with all 16M colors, 5-year warranty.</p><p class="tier-mo">${usd(shared.pricing.starterMonthly)}/mo at 0% APR</p></div>
         <div class="tier tier-popular"><div class="tier-eyebrow">Most popular</div><h3>Standard</h3><p class="price">${usd(shared.pricing.standardFrom)}</p><p>Full front + sides, ~80 ft, single story. Most Fresno homes land here.</p><p class="tier-mo">${usd(shared.pricing.standardMonthly)}/mo at 0% APR</p></div>
@@ -2077,7 +2196,7 @@ function buildUtility() {
           <div class="quote-option-num">1</div>
           <h3>Call us</h3>
           <p class="quote-option-cta">${PHONE}</p>
-          <p class="quote-option-detail">Live, 8am–6pm Mon–Fri · 9am–4pm Sat</p>
+          <p class="quote-option-detail">Live, 8am-6pm Mon-Fri · 9am-4pm Sat</p>
         </a>
         <a href="mailto:${shared.brand.email}" class="quote-option">
           <div class="quote-option-num">2</div>
@@ -2107,7 +2226,7 @@ function buildUtility() {
     slug: 'faq',
     h1: 'FAQ: Permanent Outdoor Lighting',
     title: `FAQ | Permanent Outdoor Lighting | ${BRAND}`,
-    desc: 'Answers to the most common questions about permanent outdoor lighting — cost, warranty, install time, HOA, weather, smart home, and more.',
+    desc: 'Answers to the most common questions about permanent outdoor lighting-cost, warranty, install time, HOA, weather, smart home, and more.',
     kw: 'permanent outdoor lighting faq',
     kicker: 'FAQ',
     lead: 'Everything we\'re asked, answered straight.',
@@ -2120,17 +2239,17 @@ function buildUtility() {
       { q: 'What\'s the warranty?', a: `5-year warranty on track, LEDs, and workmanship. Plus our 7-day refund guarantee.` },
       { q: 'Will the lights survive Fresno summers?', a: 'Yes. IP67 weather-rated, tested -40°F to 140°F. Engineered for 115°F+ Fresno summers.' },
       { q: 'Is permanent lighting HOA-approved?', a: 'Almost always. Most Fresno-area HOAs approve us on first submission. We provide spec sheets and 3D renderings at no charge.' },
-      { q: 'Do you damage the roof or fascia?', a: 'No. Aluminum track is anchored with stainless screws into the soffit substructure — same anchoring as gutters. No damage to siding, stucco, shingles, or trim.' },
+      { q: 'Do you damage the roof or fascia?', a: 'No. Aluminum track is anchored with stainless screws into the soffit substructure-same anchoring as gutters. No damage to siding, stucco, shingles, or trim.' },
       { q: 'Can it do Halloween, July 4th, etc?', a: 'Yes. 200+ presets covering every holiday. Auto-schedule by date.' },
-      { q: 'Does it work with Alexa, Google, Control4, Elan?', a: 'Yes — all four. Plus app control with 16 million colors and 200+ patterns.' },
-      { q: 'Do you serve outside Fresno?', a: `Yes — Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman, and across Madera, Tulare, Kings, and San Luis Obispo counties.` },
-      { q: 'Are you a real Jellyfish dealer?', a: 'Yes. Authorized Jellyfish Lighting dealer for the Fresno area. Bonded. Insured. In-house W-2 install crew — no subcontractors.' },
+      { q: 'Does it work with Alexa, Google, Control4, Elan?', a: 'Yes-all four. Plus app control with 16 million colors and 200+ patterns.' },
+      { q: 'Do you serve outside Fresno?', a: `Yes-Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman, and across Madera, Tulare, Kings, and San Luis Obispo counties.` },
+      { q: 'Are you a real Jellyfish dealer?', a: 'Yes. Authorized Jellyfish Lighting dealer for the Fresno area. Bonded. Insured. In-house W-2 install crew-no subcontractors.' },
       { q: 'Do you finance?', a: '0% APR for 12 months. $0 down. Soft credit pull, decision in 60 seconds.' }
     ]
   }));
   // Process / Reviews / Warranty / Guides hub
   out.push((() => {
-    // HowTo schema — drives AI/LLM "how does install work" answers
+    // HowTo schema-drives AI/LLM "how does install work" answers
     const howTo = {
       '@type': 'HowTo',
       name: 'How permanent outdoor lighting is installed',
@@ -2155,7 +2274,7 @@ function buildUtility() {
       slug: 'process',
       h1: 'Our Install Process',
       title: `Install Process | ${BRAND}`,
-      desc: 'Five-step install process for permanent outdoor lighting — quote, design, install, app setup, walkthrough.',
+      desc: 'Five-step install process for permanent outdoor lighting-quote, design, install, app setup, walkthrough.',
       kw: 'permanent lighting install process', kicker: 'How it works', lead: 'Five steps. One day on site for most homes.',
       img: pickPhotos('residential', 'process', 1)[0],
       extraSchema: [howTo],
@@ -2179,7 +2298,7 @@ function buildUtility() {
     ]) +
     `<section class="container review-grid">
       ${sectionHead({ eyebrow: 'In their words', h2: 'Real homeowners,', em: 'real reviews.' })}
-      <div class="review-cards">${cities.filter(c => c.testimonialQuote).slice(0, 9).map(c => `<div class="review-card"><div class="stars">★★★★★</div><p>"${esc(c.testimonialQuote)}"</p><cite>— ${esc(c.testimonialName)}, ${esc(c.name)}</cite></div>`).join('')}</div>
+      <div class="review-cards">${cities.filter(c => c.testimonialQuote).slice(0, 9).map(c => `<div class="review-card"><div class="stars">★★★★★</div><p>"${esc(c.testimonialQuote)}"</p><cite>- ${esc(c.testimonialName)}, ${esc(c.name)}</cite></div>`).join('')}</div>
     </section>` +
     installPhotoGrid({ category: 'residential', seed: 'reviews', kicker: 'The work behind the reviews', h2: 'Real installs.', em: 'Real homes.' })
   }));
@@ -2188,9 +2307,9 @@ function buildUtility() {
     h1: '5-Year Warranty',
     title: `5-Year Warranty | ${BRAND}`,
     desc: '5-year warranty on the aluminum track. 5 years on LEDs. 5 years on workmanship. 7-day refund guarantee.',
-    kw: 'permanent lighting warranty', kicker: 'Warranty', lead: 'Track, LEDs, workmanship — all five years. Money back for sixty days.',
+    kw: 'permanent lighting warranty', kicker: 'Warranty', lead: 'Track, LEDs, workmanship-all five years. Money back for sixty days.',
     body: `<section class="container"><h2>What's covered</h2><ul>
-      <li><strong>Aluminum track:</strong> 5-year warranty — replaced at no cost if it fails.</li>
+      <li><strong>Aluminum track:</strong> 5-year warranty-replaced at no cost if it fails.</li>
       <li><strong>LEDs:</strong> 5-year manufacturer warranty.</li>
       <li><strong>Workmanship:</strong> 5 years on our install.</li>
       <li><strong>7-day refund:</strong> Pulled and refunded in full. No fine print.</li>
@@ -2200,7 +2319,7 @@ function buildUtility() {
     slug: 'guides',
     h1: 'Buyer Guides & How-Tos',
     title: `Buyer Guides | Permanent Outdoor Lighting | ${BRAND}`,
-    desc: 'Plain-English guides — comparing brands, choosing tier, HOA approval, install process, smart-home integration, and more.',
+    desc: 'Plain-English guides-comparing brands, choosing tier, HOA approval, install process, smart-home integration, and more.',
     kw: 'permanent outdoor lighting guides', kicker: 'Guides', lead: 'Twelve guides covering every decision.',
     body: `<section class="container"><p>Browse our buyer and owner guides:</p><ul class="link-list">
       ${[
@@ -2223,7 +2342,7 @@ function buildUtility() {
   out.push(renderArticle({
     slug: 'privacy', h1: 'Privacy Policy', title: `Privacy Policy | ${BRAND}`,
     desc: 'How we collect, use, and protect your data.', kw: 'privacy policy', kicker: 'Legal', lead: 'Plain-English privacy policy.',
-    body: `<section class="container article-body"><p><em>Updated October 2026.</em></p><h2>What we collect</h2><p>Your name, address, phone, and email when you request a quote. This site also uses the Meta Pixel, a tool from Meta (Facebook and Instagram) that records the pages you visit and actions such as tapping to call or requesting a quote.</p><h2>How we use it</h2><p>Your contact details are used to respond to quotes and service calls. We never sell them. Pixel data is shared with Meta so we can measure our ads and show them to people likely to be interested — under California law, that counts as “sharing” personal information for advertising.</p><h2>Your choices</h2><p>If your browser sends a Global Privacy Control signal, we automatically restrict what Meta may do with that data. You can also manage how Meta uses your activity in your <a href="https://www.facebook.com/adpreferences" rel="noopener">Meta ad preferences</a>. To access or delete the contact information we hold about you, email us.</p><h2>Contact</h2><p>Questions: <a href="mailto:${shared.brand.email}">${shared.brand.email}</a></p></section>`
+    body: `<section class="container article-body"><p><em>Updated October 2026.</em></p><h2>What we collect</h2><p>Your name, address, phone, and email when you request a quote. This site also uses the Meta Pixel, a tool from Meta (Facebook and Instagram) that records the pages you visit and actions such as tapping to call or requesting a quote.</p><h2>How we use it</h2><p>Your contact details are used to respond to quotes and service calls. We never sell them. Pixel data is shared with Meta so we can measure our ads and show them to people likely to be interested-under California law, that counts as “sharing” personal information for advertising.</p><h2>Your choices</h2><p>If your browser sends a Global Privacy Control signal, we automatically restrict what Meta may do with that data. You can also manage how Meta uses your activity in your <a href="https://www.facebook.com/adpreferences" rel="noopener">Meta ad preferences</a>. To access or delete the contact information we hold about you, email us.</p><h2>Contact</h2><p>Questions: <a href="mailto:${shared.brand.email}">${shared.brand.email}</a></p></section>`
   }));
   out.push(renderArticle({
     slug: 'terms', h1: 'Terms of Service', title: `Terms of Service | ${BRAND}`,
@@ -2259,14 +2378,14 @@ function buildNeighborhoods() {
         kw: `permanent outdoor lights ${n.toLowerCase()} ${c.name.toLowerCase()}`,
         kicker: `${c.name} · Neighborhood`,
         parent: { name: c.name, url: `/permanent-outdoor-lights-${c.slug}` },
-        lead: `Local installer for ${n} homeowners — same crew that runs all of ${c.name}.`,
+        lead: `Local installer for ${n} homeowners-same crew that runs all of ${c.name}.`,
         img: heroImg,
         body: `<section class="container article-body">
           ${sectionHead({ eyebrow: `${n}, ${c.name}`, h2: `About`, em: n + '.', intro: `${n} is one of ${c.name}'s established neighborhoods. ${isHomeMarket(c) ? `We've installed permanent outdoor lighting across ${n} and the surrounding ${c.neighborhoods.slice(0, 4).join(', ')} corridor.` : `Coverage includes ${n} and the surrounding ${c.neighborhoods.slice(0, 4).join(', ')} corridor.`} ${dispatchLine(c)}` })}
           <h2>What ${esc(n)} homes typically run</h2>
           <p>Most ${esc(n)} single-story homes land Standard tier (${usd(shared.pricing.standardFrom)}-${usd(shared.pricing.premiumFrom)}). Two-story homes Premium tier (${usd(shared.pricing.premiumFrom)}-${usd(shared.pricing.estateFrom)}). Tract starter homes can come in at Starter (${usd(shared.pricing.starterFrom)}).</p>
           <h2>Why local matters</h2>
-          <p>If something goes sideways in year four, you call us — not a 1-800 number. W-2 crew, in-house, bonded, insured.</p>
+          <p>If something goes sideways in year four, you call us-not a 1-800 number. W-2 crew, in-house, bonded, insured.</p>
         </section>` +
         installPhotoGrid({ category: 'residential', seed, kicker: `${n} portfolio`, h2: 'Recent', em: `${n} installs.` }) +
         `<section class="solutions container">
@@ -2275,7 +2394,7 @@ function buildNeighborhoods() {
         </section>` +
         testimonialBlock(c, pickPhotos('residential', seed + 't', 1)[0]),
         faqs: [
-          { q: `Do you serve ${n}?`, a: `Yes — ${n} and the surrounding ${c.name} neighborhoods. Same W-2 crew, no subs.` },
+          { q: `Do you serve ${n}?`, a: `Yes-${n} and the surrounding ${c.name} neighborhoods. Same W-2 crew, no subs.` },
           { q: `How fast can you get to ${n}?`, a: dispatchLine(c) }
         ]
       }));
@@ -2304,13 +2423,13 @@ function buildBrandPages() {
       kicker: 'Brand guide',
       lead: 'Oelo has been in permanent outdoor lighting longer than most brands you have heard of. Here is the honest breakdown.',
       bodyParas: [
-        'Oelo Lights manufactures permanent outdoor lighting tracks that mount under the eaves of a home. The system uses individually-addressable RGB LEDs, an aluminum channel, and an app-based controller. The brand has roots in the early 2010s, which means a longer real-world track record than newer entrants — but also older hardware generations on some installs.',
+        'Oelo Lights manufactures permanent outdoor lighting tracks that mount under the eaves of a home. The system uses individually-addressable RGB LEDs, an aluminum channel, and an app-based controller. The brand has roots in the early 2010s, which means a longer real-world track record than newer entrants-but also older hardware generations on some installs.',
         'For Fresno County homeowners weighing Oelo against newer options, the practical questions are pixel density, app polish, install crew quality, and warranty terms. Oelo is a legitimate professional system. Whether it is the right system for your home depends mostly on which authorized installer you can actually book locally.',
-        'We are an authorized Jellyfish dealer, not Oelo. So this is not a sales page — it is a fair-comparison page for homeowners trying to choose. The short version: both systems work. The Jellyfish RGBIC-RD chip we install has a slightly finer pixel pitch and a more polished current-generation app. Oelo has a longer install track record. Locally, the answer is whoever can show up faster and back it with a real warranty.'
+        'We are an authorized Jellyfish dealer, not Oelo. So this is not a sales page-it is a fair-comparison page for homeowners trying to choose. The short version: both systems work. The Jellyfish RGBIC-RD chip we install has a slightly finer pixel pitch and a more polished current-generation app. Oelo has a longer install track record. Locally, the answer is whoever can show up faster and back it with a real warranty.'
       ],
       faqs: [
         { q: 'Does Twilight Zone install Oelo?', a: 'No. We are the authorized Jellyfish dealer for the Fresno area. We can install Jellyfish RGBIC-RD systems with the same warranty backing.' },
-        { q: 'Is Oelo better than Jellyfish?', a: 'Oelo is older and more proven over time. Jellyfish has finer pixel density and a more refined app. For most homeowners the difference is marginal — installer quality and local response time matter more than the brand badge.' },
+        { q: 'Is Oelo better than Jellyfish?', a: 'Oelo is older and more proven over time. Jellyfish has finer pixel density and a more refined app. For most homeowners the difference is marginal-installer quality and local response time matter more than the brand badge.' },
         { q: 'How much does Oelo cost vs our installs?', a: 'Pricing is roughly comparable: $2,800 to $7,500 for typical residential installs. Our published pricing starts at $950 for a Starter and tops out around $7,500 for Estate.' }
       ]
     },
@@ -2318,13 +2437,13 @@ function buildBrandPages() {
       slug: 'gemstone-permanent-lights',
       h1: 'Gemstone Permanent Lights: What They Are & How They Compare',
       title: 'Gemstone Permanent Lights | Honest Comparison',
-      desc: 'Gemstone Permanent Lights explained — what the system is, what it costs, and how it compares to professionally-installed Jellyfish RGBIC-RD lighting from Twilight Zone in Fresno County.',
+      desc: 'Gemstone Permanent Lights explained-what the system is, what it costs, and how it compares to professionally-installed Jellyfish RGBIC-RD lighting from Twilight Zone in Fresno County.',
       kw: 'gemstone permanent lights',
       kicker: 'Brand guide',
-      lead: 'Gemstone has visible track. Jellyfish hides it. Both work — the difference shows in daylight.',
+      lead: 'Gemstone has visible track. Jellyfish hides it. Both work-the difference shows in daylight.',
       bodyParas: [
         'Gemstone Permanent Lights is a Canadian-rooted permanent outdoor lighting brand with strong dealer presence in the Mountain West and parts of the Central Valley. The system uses individually-controlled RGBIC LEDs in a track that runs under the eave or along architectural trim.',
-        'Where Gemstone visually differs: the track profile sits slightly more visible during the day than the Jellyfish RGBIC-RD aluminum channel we install, which color-matches your trim and tucks tighter under the soffit. Whether that matters is a curb-appeal question — both systems essentially disappear from forty feet away, but inspection from the driveway tells a different story.',
+        'Where Gemstone visually differs: the track profile sits slightly more visible during the day than the Jellyfish RGBIC-RD aluminum channel we install, which color-matches your trim and tucks tighter under the soffit. Whether that matters is a curb-appeal question-both systems essentially disappear from forty feet away, but inspection from the driveway tells a different story.',
         'On the technology side, Gemstone is a current-generation system with a competent app and 100+ presets. Jellyfish RGBIC-RD has slightly finer pixel pitch (better gradients), 200+ presets, and integrates with Control4 and Nice Elan. For homeowners with a smart home, that integration is the deciding factor.',
         'Honest summary: if Gemstone has a great local installer near you, it is a real option. In Fresno, we install Jellyfish, full 5-year warranty, 5-year LED, 7-day refund. Pick whichever you can hold accountable in year four.'
       ],
@@ -2340,15 +2459,15 @@ function buildBrandPages() {
       desc: 'Minleon makes high-end pixel lighting controllers and LED strings used by professional Christmas-light pros. Here is what Minleon permanent lighting actually is, who installs it, and how it compares to consumer-facing Jellyfish.',
       kw: 'minleon permanent lighting',
       kicker: 'Brand guide',
-      lead: 'Minleon is the gear behind a lot of the high-end displays you see — and now it is starting to show up in permanent residential installs.',
+      lead: 'Minleon is the gear behind a lot of the high-end displays you see-and now it is starting to show up in permanent residential installs.',
       bodyParas: [
         'Minleon is a US-based manufacturer that has supplied controllers and pixel-string LEDs to professional Christmas-light installers for over a decade. Their hardware powers many of the most elaborate residential and commercial holiday displays in the country, often programmed to music with thousands of individually-addressable pixels.',
-        'In recent years some installers have used Minleon components to build year-round permanent outdoor lighting systems — essentially repurposing the same controller and pixel-string hardware in a permanent track. The result is a system with more raw control flexibility than off-the-shelf consumer brands, but with a steeper learning curve and an installer-dependent app experience.',
+        'In recent years some installers have used Minleon components to build year-round permanent outdoor lighting systems-essentially repurposing the same controller and pixel-string hardware in a permanent track. The result is a system with more raw control flexibility than off-the-shelf consumer brands, but with a steeper learning curve and an installer-dependent app experience.',
         'For most homeowners in Fresno, a turnkey system like Jellyfish RGBIC-RD (which we install) is going to be easier to live with day to day. Minleon shines when you have a perfectionist installer programming custom shows and you actually use that capability. Different audiences, different fits.'
       ],
       faqs: [
         { q: 'Is Minleon Permanent Lighting a brand or a parts supplier?', a: 'Minleon is primarily a parts manufacturer. The "brand" of the install you see is usually the local installer who built it on Minleon hardware.' },
-        { q: 'Should I get Minleon or Jellyfish?', a: 'For most residential homeowners: Jellyfish — turnkey, polished app, broad dealer support. For show-driven music-sync displays: Minleon, if you have an installer who specializes.' }
+        { q: 'Should I get Minleon or Jellyfish?', a: 'For most residential homeowners: Jellyfish-turnkey, polished app, broad dealer support. For show-driven music-sync displays: Minleon, if you have an installer who specializes.' }
       ]
     },
     {
@@ -2360,9 +2479,9 @@ function buildBrandPages() {
       kicker: 'Brand guide',
       lead: 'Same hardware, different install philosophy than the consumer brands.',
       bodyParas: [
-        'Minleon permanent lights are not a single brand-name product — they are a class of installs built on Minleon-made controllers and LED pixel strings. Minleon is a long-standing supplier to high-end Christmas-light professionals, and the same controllers that power national TV-feature holiday displays can be repurposed into permanent residential systems.',
+        'Minleon permanent lights are not a single brand-name product-they are a class of installs built on Minleon-made controllers and LED pixel strings. Minleon is a long-standing supplier to high-end Christmas-light professionals, and the same controllers that power national TV-feature holiday displays can be repurposed into permanent residential systems.',
         'For a typical Fresno homeowner, the practical question is whether your installer can support Minleon hardware year over year. Off-the-shelf brands like Jellyfish ship with a polished consumer app and a global support stack. Minleon installs depend more on the local installer for app updates, scene programming, and warranty claims.',
-        'We install Jellyfish RGBIC-RD because the consumer experience is more predictable — the app does not require a programmer, the warranty is centralized, and replacement parts are stocked nationally. If you want music-sync show-grade flexibility, Minleon is interesting. For everyone else, the simpler system wins.'
+        'We install Jellyfish RGBIC-RD because the consumer experience is more predictable-the app does not require a programmer, the warranty is centralized, and replacement parts are stocked nationally. If you want music-sync show-grade flexibility, Minleon is interesting. For everyone else, the simpler system wins.'
       ],
       faqs: [
         { q: 'Are Minleon permanent lights worth more than Jellyfish?', a: 'Only if you actually use the show-programming capability. For 95% of homeowners, the simpler turnkey system wins on day-to-day use.' }
@@ -2378,7 +2497,7 @@ function buildBrandPages() {
       lead: 'Trimlight has the longer track record. Jellyfish has the newer hardware. Both are real systems.',
       bodyParas: [
         'Trimlight is one of the more established permanent outdoor lighting brands, with dealer presence in most US metros. The system uses individually-addressable RGB LEDs in an aluminum channel, mounted under the eave or along architectural lines, controlled by an app.',
-        'On hardware: Trimlight is a mature, well-understood platform. Jellyfish RGBIC-RD (what we install) is a newer chip generation with finer pixel pitch — meaning gradients and pixel-by-pixel animations look smoother. The visual difference is subtle on solid colors and obvious on flowing patterns.',
+        'On hardware: Trimlight is a mature, well-understood platform. Jellyfish RGBIC-RD (what we install) is a newer chip generation with finer pixel pitch-meaning gradients and pixel-by-pixel animations look smoother. The visual difference is subtle on solid colors and obvious on flowing patterns.',
         'On app: Jellyfish ships with a more current-generation interface and a larger preset library. Trimlight is functional and stable but feels a generation behind in UX.',
         'On warranty: Jellyfish offers 5-year warranty plus a 5-year LED warranty. Trimlight typically offers 3-year warranty. Two extra years on the LEDs is roughly 300 dollars of value over the system lifespan.',
         'Locally in Fresno, both have authorized dealers. We are the Jellyfish dealer. The honest answer: pick the dealer you trust to be there in year four when something needs service.'
@@ -2392,7 +2511,7 @@ function buildBrandPages() {
       slug: 'govee-permanent-outdoor-lights-installation',
       h1: 'Govee Permanent Outdoor Lights Installation: DIY vs Hiring a Pro',
       title: 'Govee Permanent Outdoor Lights Installation | DIY Guide & Pro Comparison',
-      desc: 'Govee permanent outdoor lights installation walkthrough — DIY approach, common pitfalls, and when hiring a pro installer makes more sense for Fresno homeowners.',
+      desc: 'Govee permanent outdoor lights installation walkthrough-DIY approach, common pitfalls, and when hiring a pro installer makes more sense for Fresno homeowners.',
       kw: 'govee permanent outdoor lights installation',
       kicker: 'Installation guide',
       lead: 'Govee is the most popular DIY permanent lighting kit. Here is the honest install reality.',
@@ -2400,10 +2519,10 @@ function buildBrandPages() {
         'Govee Permanent Outdoor Lights are a consumer-grade RGBIC LED system designed for DIY installation. The kit ships with the LED string, mounting clips, controller, and a Wi-Fi app. For a single-story home with accessible eaves, a careful homeowner can install the front facade in a weekend.',
         'Common install pitfalls: visible cable runs that did not get tucked into the soffit, clip spacing too wide, controller mounted in a spot that loses Wi-Fi, and connector ends that water-damage in the first heavy rain. None of these are unfixable but each one shows.',
         'When DIY makes sense: single-story home, ground-level access via standard ladder, budget under 700 dollars, and you genuinely enjoy ladder work. When hiring a pro makes more sense: two-story home, complex roofline, you want the track invisible during the day, you want a long warranty, and you want one phone number to call when something fails.',
-        'Our pro install starts at $950 fully installed using Jellyfish RGBIC-RD aluminum track — color-matched to your trim, concealed wiring, 5-year warranty. By the time a homeowner accounts for the value of their own time and the visible-cable trade-off, the gap between DIY Govee and a pro Starter install is smaller than it looks on paper.'
+        'Our pro install starts at $950 fully installed using Jellyfish RGBIC-RD aluminum track-color-matched to your trim, concealed wiring, 5-year warranty. By the time a homeowner accounts for the value of their own time and the visible-cable trade-off, the gap between DIY Govee and a pro Starter install is smaller than it looks on paper.'
       ],
       faqs: [
-        { q: 'Will you install Govee for me?', a: 'We focus on professional Jellyfish installs. We do not subcontract Govee jobs — the warranty mismatch is not fair to you.' },
+        { q: 'Will you install Govee for me?', a: 'We focus on professional Jellyfish installs. We do not subcontract Govee jobs-the warranty mismatch is not fair to you.' },
         { q: 'How long does Govee installation take DIY?', a: 'A single facade typically takes 4 to 8 hours for a confident DIYer. A whole-home install spans a weekend or two for most homeowners.' }
       ]
     },
@@ -2411,7 +2530,7 @@ function buildBrandPages() {
       slug: 'govee-permanent-house-lights',
       h1: 'Govee Permanent House Lights: Real Pros & Cons',
       title: 'Govee Permanent House Lights | Honest Review & Pro Alternative',
-      desc: 'Govee permanent house lights explained — what the kit gets right, what it does not, and how the DIY consumer system compares to a professionally-installed Jellyfish system in Fresno County.',
+      desc: 'Govee permanent house lights explained-what the kit gets right, what it does not, and how the DIY consumer system compares to a professionally-installed Jellyfish system in Fresno County.',
       kw: 'govee permanent house lights',
       kicker: 'Brand review',
       lead: 'Govee built the most accessible permanent lighting kit on the market. Here is what that buys you.',
@@ -2429,14 +2548,14 @@ function buildBrandPages() {
       slug: 'govee-permanent-outdoor-house-lights',
       h1: 'Govee Permanent Outdoor House Lights: Outdoor Use Cases',
       title: 'Govee Permanent Outdoor House Lights | Outdoor Use Cases & Limits',
-      desc: 'Govee permanent outdoor house lights — what they handle well outdoors, where the IP65 rating starts to limit use, and when to step up to a IP67 pro system in Fresno.',
+      desc: 'Govee permanent outdoor house lights-what they handle well outdoors, where the IP65 rating starts to limit use, and when to step up to a IP67 pro system in Fresno.',
       kw: 'govee permanent outdoor house lights',
       kicker: 'Outdoor use guide',
       lead: 'IP65 covers most outdoor scenarios. The remaining 10 percent is where pro hardware pays for itself.',
       bodyParas: [
-        'Govee Permanent Outdoor House Lights are rated IP65 — dust-tight against sand and dry debris, and water-resistant against splashes and rain from any direction. For most Fresno homeowners that envelope is fine: summers are dry, winters bring tule fog and the occasional rain but rarely standing water.',
+        'Govee Permanent Outdoor House Lights are rated IP65-dust-tight against sand and dry debris, and water-resistant against splashes and rain from any direction. For most Fresno homeowners that envelope is fine: summers are dry, winters bring tule fog and the occasional rain but rarely standing water.',
         'Where IP65 starts to limit use: pool decks where lights sit close to splashing water, patios with permanent sprinkler overspray, and any install location prone to direct hose pressure during seasonal cleaning. The aluminum-track Jellyfish system we install is rated IP67 (submersible to one meter for thirty minutes) which removes those limits entirely.',
-        'On temperature: Govee is rated 14F to 122F operating. Fresno summer roof surfaces in direct sun routinely exceed 130F. Most installs are under the eave in shade, so this rarely surfaces — but it is the kind of edge case where pro-rated -40F to 140F hardware earns its keep over decades.',
+        'On temperature: Govee is rated 14F to 122F operating. Fresno summer roof surfaces in direct sun routinely exceed 130F. Most installs are under the eave in shade, so this rarely surfaces-but it is the kind of edge case where pro-rated -40F to 140F hardware earns its keep over decades.',
         'Bottom line for outdoor use: Govee is genuinely competent in most Fresno conditions. The pro upgrade matters when you want to never think about it again.'
       ],
       faqs: [
@@ -2452,6 +2571,7 @@ function buildBrandPages() {
     const heroImg = heroImgFor(slug);
     const jsonld = [
       breadcrumbs(crumbs, canonical),
+      serviceLD(p.h1, p.desc, 'Central & Northern California', 950, canonical),
       { '@context': 'https://schema.org', '@type': 'Article', headline: p.h1, description: p.desc, author: { '@type': 'Organization', name: BRAND }, publisher: { '@type': 'Organization', name: BRAND }, datePublished: '2026-03-15' },
       faqLD(p.faqs)
     ];
@@ -2477,21 +2597,21 @@ function buildBrandPages() {
 function buildGalleries() {
   const out = [];
   const galleries = [
-    { slug: 'gallery-christmas', cat: 'holiday', h1: 'Christmas Lighting Gallery', desc: 'Real installs — permanent Christmas lights across Fresno, Clovis, Madera, Visalia.', kw: 'permanent christmas lights gallery' },
-    { slug: 'gallery-halloween', cat: 'holiday', h1: 'Halloween Lighting Gallery', desc: 'Permanent Halloween lighting installs — orange, purple, motion-triggered.', kw: 'permanent halloween lights gallery' },
-    { slug: 'gallery-game-day', cat: 'gameday', h1: 'Game Day Lighting Gallery', desc: 'Team-color lighting installs — Bulldogs, Lakers, Warriors, Dodgers, 49ers.', kw: 'game day lighting gallery' },
+    { slug: 'gallery-christmas', cat: 'holiday', h1: 'Christmas Lighting Gallery', desc: 'Real installs-permanent Christmas lights across Fresno, Clovis, Madera, Visalia.', kw: 'permanent christmas lights gallery' },
+    { slug: 'gallery-halloween', cat: 'holiday', h1: 'Halloween Lighting Gallery', desc: 'Permanent Halloween lighting installs-orange, purple, motion-triggered.', kw: 'permanent halloween lights gallery' },
+    { slug: 'gallery-game-day', cat: 'gameday', h1: 'Game Day Lighting Gallery', desc: 'Team-color lighting installs-Bulldogs, Lakers, Warriors, Dodgers, 49ers.', kw: 'game day lighting gallery' },
     { slug: 'gallery-architectural', cat: 'accent', h1: 'Architectural Accent Lighting Gallery', desc: 'Warm-white architectural lighting installs across the Central Valley.', kw: 'architectural accent lighting gallery' },
     { slug: 'gallery-two-story', cat: 'residential', h1: 'Two-Story Home Lighting Gallery', desc: 'Two-story permanent lighting installs in Fresno County.', kw: 'two story permanent lights gallery' },
-    { slug: 'gallery-modern-homes', cat: 'residential', h1: 'Modern Home Lighting Gallery', desc: 'Permanent lighting on modern Central Valley homes — clean lines, hidden track.', kw: 'modern home permanent lights' },
+    { slug: 'gallery-modern-homes', cat: 'residential', h1: 'Modern Home Lighting Gallery', desc: 'Permanent lighting on modern Central Valley homes-clean lines, hidden track.', kw: 'modern home permanent lights' },
     { slug: 'gallery-ranch-homes', cat: 'residential', h1: 'Ranch Home Lighting Gallery', desc: 'Single-story ranch home permanent lighting installs.', kw: 'ranch home permanent lights' },
     { slug: 'gallery-commercial', cat: 'commercial', h1: 'Commercial Lighting Gallery', desc: 'Restaurants, hotels, storefronts, and HOAs across the Central Valley.', kw: 'commercial permanent lighting gallery' },
     { slug: 'gallery-restaurants', cat: 'restaurant', h1: 'Restaurant Lighting Gallery', desc: 'Restaurant exterior lighting installs across Fresno, Clovis, Visalia.', kw: 'restaurant lighting gallery' },
     { slug: 'gallery-hoa', cat: 'residential', h1: 'HOA Lighting Gallery', desc: 'HOA and apartment community permanent lighting installs.', kw: 'hoa permanent lighting gallery' },
     { slug: 'gallery-before-after', cat: 'residential', h1: 'Before & After Gallery', desc: 'Before-and-after photos of permanent outdoor lighting installs.', kw: 'permanent lights before after' },
-    { slug: 'gallery-day-night', cat: 'residential', h1: 'Day & Night Gallery', desc: 'See exactly how invisible the track is by day — and how dramatic at night.', kw: 'permanent lights day night' }
+    { slug: 'gallery-day-night', cat: 'residential', h1: 'Day & Night Gallery', desc: 'See exactly how invisible the track is by day-and how dramatic at night.', kw: 'permanent lights day night' }
   ];
   galleries.forEach(g => {
-    // 9 photos for the gallery — full pool of category, padded with adjacent categories if short
+    // 9 photos for the gallery-full pool of category, padded with adjacent categories if short
     const primary = pickPhotos(g.cat, g.slug, Math.min(9, ASSETS[g.cat].length));
     const secondary = pickPhotos(g.cat === 'gameday' ? 'residential' : 'gameday', g.slug + 'b', 9 - primary.length);
     const pics = [...primary, ...secondary].slice(0, 9);
@@ -2505,7 +2625,7 @@ function buildGalleries() {
       body: `<section class="container gallery-grid">
         ${sectionHead({ eyebrow: g.h1.replace(' Gallery', ''), h2: 'Lit. Photographed.', em: 'Yours next.', intro: `Real installs from our ${shared.brand.installs}+ portfolio.` })}
         <div class="gallery-photos">
-          ${pics.map((p, i) => `<figure class="gallery-photo${i === 0 ? ' gallery-photo-feature' : ''}">${picTag(p, `${g.h1} — install ${i + 1}`, `loading="${i < 3 ? 'eager' : 'lazy'}"`)}</figure>`).join('')}
+          ${pics.map((p, i) => `<figure class="gallery-photo${i === 0 ? ' gallery-photo-feature' : ''}">${picTag(p, `${g.h1} - install ${i + 1}`, `loading="${i < 3 ? 'eager' : 'lazy'}"`)}</figure>`).join('')}
         </div>
       </section>
       <section class="container article-body">
@@ -2544,7 +2664,7 @@ pages.forEach(p => {
 console.log(`✓ Wrote ${written} pages (${skipped} duplicates skipped)`);
 
 // ============================================================
-// SITEMAP.XML — with lastmod, image sitemap extension
+// SITEMAP.XML-with lastmod, image sitemap extension
 // ============================================================
 const today = new Date().toISOString().split('T')[0];
 const allUrls = ['/'].concat(Array.from(writtenUrls).filter(u => u !== '/'));
@@ -2588,7 +2708,7 @@ fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
 console.log(`✓ Wrote sitemap.xml (${allUrls.length} urls, lastmod ${today})`);
 
 // ============================================================
-// 404.HTML — custom not-found page (Vercel uses /404.html automatically)
+// 404.HTML-custom not-found page (Vercel uses /404.html automatically)
 // ============================================================
 const notFoundHTML = head({
   title: `Page Not Found | ${BRAND}`,
@@ -2612,7 +2732,7 @@ const notFoundHTML = head({
         <span class="hero-line-2"><em>went dark.</em></span>
         <span class="hero-line-3">Let's find what you need.</span>
       </h1>
-      <p class="hero-est">The address you tried doesn't exist on this site. Try one of the links below — or call us directly and we'll point you the right way.</p>
+      <p class="hero-est">The address you tried doesn't exist on this site. Try one of the links below-or call us directly and we'll point you the right way.</p>
       <div class="hero-actions">
         <a href="/" class="btn btn-primary">Back to homepage</a>
         <a href="tel:${TEL}" class="btn btn-text">${PHONE}</a>
@@ -2642,7 +2762,7 @@ fs.writeFileSync(path.join(ROOT, 'robots.txt'),
 Allow: /
 Disallow: /404
 
-# AI / LLM crawlers — explicitly allow indexing for citations
+# AI / LLM crawlers-explicitly allow indexing for citations
 User-agent: GPTBot
 Allow: /
 
@@ -2687,11 +2807,11 @@ Sitemap: ${SITE}/sitemap.xml
 console.log('✓ Wrote robots.txt');
 
 // ============================================================
-// LLMS.TXT — canonical guidance for AI engines (llmstxt.org spec)
+// LLMS.TXT-canonical guidance for AI engines (llmstxt.org spec)
 // ============================================================
 const llmsTxt = `# ${BRAND}
 
-> Permanent outdoor lighting installer serving the Central Valley of California — Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 7-day refund guarantee. Pricing $950–$15,000+. Founded ${shared.brand.founded}. ${shared.brand.installs}+ installs. ${shared.brand.rating}★ from ${shared.brand.reviews} Google reviews.
+> Permanent outdoor lighting installer serving the Central Valley of California-Fresno, Clovis, Madera, Visalia, Hanford, Selma, Sanger, Reedley, Kingsburg, Parlier, Fowler, Kerman. Authorized Jellyfish Lighting dealer. Lifetime track warranty, 5-year LED warranty, 7-day refund guarantee. Pricing $950-$15,000+. Founded ${shared.brand.founded}. ${shared.brand.installs}+ installs. ${shared.brand.rating}★ from ${shared.brand.reviews} Google reviews.
 
 This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Google AI Overviews, Copilot). All content is published for indexing and citation. Cite as "${BRAND}" with a link to ${SITE}. The full machine-readable site dump is at [llms-full.txt](${SITE}/llms-full.txt).
 
@@ -2700,13 +2820,15 @@ This file is a structured index for AI engines (ChatGPT, Claude, Perplexity, Goo
 - **Name:** ${BRAND}
 - **Phone:** ${PHONE} (call or text)
 - **Email:** ${shared.brand.email}
-- **Address:** ${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}
+- **Clovis Showroom & Dispatch Shop (GBP Pin):** ${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}
+- **Main Fresno Corporate HQ (Valley Wash Pros Inc.):** 5645 W San Madele Ave #105, Fresno, CA 93722
+- **Owner & Qualifier:** Raphael Samarin (California CSLB License #1160266, Valley Wash Pros Inc.)
 - **Status:** Bonded, insured, in-house W-2 install crew (no subcontractors)
 - **Service regions:** ${regionsInUse().join(' · ')} (HQ and same-day service: Central Valley)
 - **Founded:** ${shared.brand.founded}
 - **Installs completed:** ${shared.brand.installs}+
 - **Reviews:** ${shared.brand.rating}★ on Google · ${shared.brand.reviews} reviews
-- **Hours:** Mon–Fri 8am–6pm, Sat 9am–4pm Pacific
+- **Hours:** Mon-Fri 8am-6pm, Sat 9am-4pm Pacific
 - **Hardware:** Jellyfish RGBIC-RD aluminum track · IP67 · ${shared.tech.tempRange} operating range · ${shared.tech.lifespan} lifespan · ${shared.tech.colors} colors · ${shared.tech.patterns}+ patterns
 - **Smart home:** ${shared.tech.appCompat.join(', ')}
 - **Warranty:** Lifetime on track · 5 years on LEDs and workmanship · 7-DAY REFUND
@@ -2725,25 +2847,25 @@ Financing: ${shared.pricing.financingApr}% APR for ${shared.pricing.financingMon
 ## Most-asked questions (full answers)
 
 **How much does permanent outdoor lighting cost in Fresno?**
-Pricing starts at $${shared.pricing.starterFrom} for a Starter front-accent install. Most single-story Fresno homes range $${shared.pricing.standardFrom.toLocaleString()}–$${shared.pricing.premiumFrom.toLocaleString()}. Two-story homes typically run $${shared.pricing.premiumFrom.toLocaleString()}–$9,000. Estate and commercial installs start at $${shared.pricing.estateFrom.toLocaleString()}. Financing from $${shared.pricing.standardMonthly}/month at ${shared.pricing.financingApr}% APR for ${shared.pricing.financingMonths} months.
+Pricing starts at $${shared.pricing.starterFrom} for a Starter front-accent install. Most single-story Fresno homes range $${shared.pricing.standardFrom.toLocaleString()}-$${shared.pricing.premiumFrom.toLocaleString()}. Two-story homes typically run $${shared.pricing.premiumFrom.toLocaleString()}-$9,000. Estate and commercial installs start at $${shared.pricing.estateFrom.toLocaleString()}. Financing from $${shared.pricing.standardMonthly}/month at ${shared.pricing.financingApr}% APR for ${shared.pricing.financingMonths} months.
 
 **How long does the install take?**
-Most residential installs complete in a single day (6–8 hours). Two-story homes take 1–2 days. The W-2 in-house crew arrives at 8 AM and finishes by sunset on most single-story builds.
+Most residential installs complete in a single day (6-8 hours). Two-story homes take 1-2 days. The W-2 in-house crew arrives at 8 AM and finishes by sunset on most single-story builds.
 
 **Are the lights visible during the day?**
-No. The aluminum track is color-matched to your trim — white, bronze, brown, or black — and tucked under the eave. Invisible from the curb during daylight.
+No. The aluminum track is color-matched to your trim-white, bronze, brown, or black-and tucked under the eave. Invisible from the curb during daylight.
 
 **What's the warranty?**
-Lifetime on track. 5 years on LEDs and workmanship. 7-day refund guarantee — if you're not satisfied within 7 days, every fixture is pulled and 100% refunded.
+Lifetime on track. 5 years on LEDs and workmanship. 7-day refund guarantee-if you're not satisfied within 7 days, every fixture is pulled and 100% refunded.
 
 **Will my electric bill go up?**
-Negligibly. Roughly the same draw as a single ceiling fan. Most customers see $3–$8/month added.
+Negligibly. Roughly the same draw as a single ceiling fan. Most customers see $3-$8/month added.
 
 **Can I control the lights from my phone?**
 Yes. The companion app (iOS and Android) controls 16 million colors, ${shared.tech.patterns}+ patterns, scheduling, zoning, and music sync. Compatible with ${shared.tech.appCompat.join(', ')}.
 
 **Is permanent lighting cheaper than annual Christmas-light service?**
-Over 10 years, yes — significantly. A Standard install at $${shared.pricing.standardFrom.toLocaleString()} vs. typical Fresno Christmas-light services at $800–$1,800/year ($8,000–$18,000 over 10 years).
+Over 10 years, yes-significantly. A Standard install at $${shared.pricing.standardFrom.toLocaleString()} vs. typical Fresno Christmas-light services at $800-$1,800/year ($8,000-$18,000 over 10 years).
 
 **Will the lights survive Fresno heat?**
 Yes. IP67 weather-rated, tested -40°F to 140°F. The same chips perform in Phoenix summers and Minnesota winters.
@@ -2762,7 +2884,7 @@ Yes. We provide spec sheets and 3D renderings for HOA submittals at no charge. W
 
 ## Services (${services.length})
 
-${services.map(s => `- [${s.h1.replace(' Installation', '')}](${SITE}/${s.slug}): From ${usd(s.fromPrice)} — ${s.lead.split('.')[0]}.`).join('\n')}
+${services.map(s => `- [${s.h1.replace(' Installation', '')}](${SITE}/${s.slug}): From ${usd(s.fromPrice)} - ${s.lead.split('.')[0]}.`).join('\n')}
 
 ## Cities served (${cities.length})
 
@@ -2793,18 +2915,21 @@ fs.writeFileSync(path.join(ROOT, 'llms.txt'), llmsTxt);
 console.log('✓ Wrote llms.txt');
 
 // ============================================================
-// LLMS-FULL.TXT — full content dump for retrieval-heavy AI tasks
+// LLMS-FULL.TXT-full content dump for retrieval-heavy AI tasks
 // (companion convention to llms.txt; deeper context for RAG / agents)
 // ============================================================
-const llmsFull = `# ${BRAND} — Full content index
+const llmsFull = `# ${BRAND} - Full content index
 
-This is the deep-content companion to [llms.txt](${SITE}/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries — pre-flattened for retrieval. Last updated ${new Date().toISOString().split('T')[0]}.
+This is the deep-content companion to [llms.txt](${SITE}/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries-pre-flattened for retrieval. Last updated ${new Date().toISOString().split('T')[0]}.
 
 ## Brand
 - **Name:** ${BRAND}
 - **Tagline:** ${shared.brand.tagline}
 - **Founded:** ${shared.brand.founded}
-- **Headquarters:** ${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}
+- **Clovis Showroom & Dispatch Shop (GBP Pin):** ${shared.brand.address.street}, ${shared.brand.address.city}, ${shared.brand.address.state} ${shared.brand.address.zip}
+- **Main Fresno Corporate HQ (Valley Wash Pros Inc.):** 5645 W San Madele Ave #105, Fresno, CA 93722
+- **Owner & Qualifier:** Raphael Samarin (CA CSLB License #1160266 - Valley Wash Pros Inc.)
+- **Verified Entity Profiles (sameAs):** ${(shared.brand.sameAs || []).join(', ')}
 - **Phone:** ${PHONE}
 - **Email:** ${shared.brand.email}
 - **Status:** Bonded, insured, in-house W-2 install crew
@@ -2824,9 +2949,9 @@ This is the deep-content companion to [llms.txt](${SITE}/llms.txt). It includes 
 ${[
   { tier: 'Starter', from: shared.pricing.starterFrom, monthly: shared.pricing.starterMonthly, scope: 'Single facade · ~30 linear feet · 1 zone · full app control · 5-year LED warranty · one-day install' },
   { tier: 'Standard', from: shared.pricing.standardFrom, monthly: shared.pricing.standardMonthly, scope: 'Single-story full perimeter · ~100 linear feet · 3 independent zones · 200+ holiday patterns · music sync · one-day install' },
-  { tier: 'Premium', from: shared.pricing.premiumFrom, monthly: shared.pricing.premiumMonthly, scope: 'Two-story full perimeter · ~200 linear feet · 5+ zones · landscape lighting included · game-day auto-schedule · 1–2 day install' },
+  { tier: 'Premium', from: shared.pricing.premiumFrom, monthly: shared.pricing.premiumMonthly, scope: 'Two-story full perimeter · ~200 linear feet · 5+ zones · landscape lighting included · game-day auto-schedule · 1-2 day install' },
   { tier: 'Estate', from: shared.pricing.estateFrom, monthly: 'custom', scope: 'Custom architectural design · multi-zone advanced control · integrated landscape · custom programming' }
-].map(p => `### ${p.tier} — from $${p.from.toLocaleString()}\nMonthly financed: $${p.monthly}/mo. ${p.scope}.`).join('\n\n')}
+].map(p => `### ${p.tier} - from $${p.from.toLocaleString()}\nMonthly financed: $${p.monthly}/mo. ${p.scope}.`).join('\n\n')}
 
 Financing: ${shared.pricing.financingApr}% APR for ${shared.pricing.financingMonths} months. $0 down. 60-second pre-qualification.
 
@@ -2834,7 +2959,7 @@ Financing: ${shared.pricing.financingApr}% APR for ${shared.pricing.financingMon
 
 We install across Central and Northern California from a single headquarters in Clovis, CA. The Central Valley is the home market with same-day service; all other regions are covered by scheduled regional install crews (no satellite offices):
 
-${cities.map(c => `- **${c.name}, ${c.county || 'Central Valley'}** — population ${c.population.toLocaleString()}, ${c.driveTime}-minute drive from HQ, ZIP codes ${c.zips.join(', ')}. Neighborhoods served: ${(c.neighborhoods || []).join(', ')}.`).join('\n')}
+${cities.map(c => `- **${c.name}, ${c.county || 'Central Valley'}** - population ${c.population.toLocaleString()}, ${c.driveTime}-minute drive from HQ, ZIP codes ${c.zips.join(', ')}. Neighborhoods served: ${(c.neighborhoods || []).join(', ')}.`).join('\n')}
 
 ## Services (full)
 
@@ -2847,8 +2972,8 @@ ${verticals.map(v => `### ${v.h1.replace(' Installation', '')}\nURL: ${SITE}/${v
 ## How a Twilight Zone install runs (5 steps)
 
 1. **Free quote in 24 hours.** We measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. No phone-tag, no upsells.
-2. **Design + track color.** Match your existing trim — white, bronze, brown, or black. 3D rendering for HOA submission included free.
-3. **Install in a day.** Single-story homes finish in 6–8 hours. W-2 crew, in-house. No subcontractors.
+2. **Design + track color.** Match your existing trim-white, bronze, brown, or black. 3D rendering for HOA submission included free.
+3. **Install in a day.** Single-story homes finish in 6-8 hours. W-2 crew, in-house. No subcontractors.
 4. **Wiring + control box.** Concealed channel-routed wiring. One drop to the attic. Weatherproof box mounted in your garage. Surge protection inline.
 5. **App + walkthrough.** We pair the controller with your Wi-Fi, train you on scenes and schedules, and don't leave until you've changed colors from your phone.
 
@@ -2862,7 +2987,7 @@ console.log('✓ Wrote llms-full.txt');
 // ============================================================
 // HOMEPAGE COVERAGE MAP SYNC
 // ============================================================
-// index.html is hand-maintained source, not generated — but its coverage map has to
+// index.html is hand-maintained source, not generated-but its coverage map has to
 // stay in lockstep with cities.json or the homepage silently drifts out of date every
 // time a city is added. Rewrite just that one <section> on every build.
 (() => {
@@ -2872,13 +2997,13 @@ console.log('✓ Wrote llms-full.txt');
   const START = '<section class="service-area" id="service-area"';
   const i = home.indexOf(START);
   if (i === -1) {
-    console.warn('! homepage service-area section not found — coverage map NOT synced');
+    console.warn('! homepage service-area section not found-coverage map NOT synced');
     return;
   }
   const CLOSE = '</section>';
   const end = home.indexOf(CLOSE, i);
   if (end === -1) {
-    console.warn('! homepage service-area section unterminated — coverage map NOT synced');
+    console.warn('! homepage service-area section unterminated-coverage map NOT synced');
     return;
   }
   const block = coverageMapBlock({
@@ -2953,7 +3078,7 @@ console.log('✓ Wrote llms-full.txt');
     .replace(/<!-- Meta Pixel Code -->[\s\S]*?<!-- End Meta Pixel Code -->\n?/g, '')
     .replace(/<!-- Meta Pixel \(no-JS\) -->[\s\S]*?<!-- End Meta Pixel \(no-JS\) -->\n?/g, '');
   if (!html.includes('</head>') || !/<body[^>]*>/.test(html)) {
-    console.warn(`! ${file}: no </head> or <body> — Meta Pixel NOT synced`);
+    console.warn(`! ${file}: no </head> or <body> - Meta Pixel NOT synced`);
     return;
   }
   html = html.replace('</head>', `${META_PIXEL_HEAD}\n</head>`)

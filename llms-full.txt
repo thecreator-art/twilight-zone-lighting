@@ -1,12 +1,15 @@
-# Twilight Zone Permanent Lighting — Full content index
+# Twilight Zone Permanent Lighting - Full content index
 
-This is the deep-content companion to [llms.txt](https://twilightzonepermanentlighting.com/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries — pre-flattened for retrieval. Last updated 2026-10-23.
+This is the deep-content companion to [llms.txt](https://twilightzonepermanentlighting.com/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries-pre-flattened for retrieval. Last updated 2026-10-26.
 
 ## Brand
 - **Name:** Twilight Zone Permanent Lighting
 - **Tagline:** Permanent. Invisible by day. Unforgettable by night.
 - **Founded:** 2019
-- **Headquarters:** 755 N Peach Ave, Ste C16, Clovis, CA 93611
+- **Clovis Showroom & Dispatch Shop (GBP Pin):** 755 N Peach Ave, Ste C16, Clovis, CA 93611
+- **Main Fresno Corporate HQ (Valley Wash Pros Inc.):** 5645 W San Madele Ave #105, Fresno, CA 93722
+- **Owner & Qualifier:** Raphael Samarin (CA CSLB License #1160266 - Valley Wash Pros Inc.)
+- **Verified Entity Profiles (sameAs):** https://www.google.com/maps?cid=12072441404558135898, https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6, https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1160266, https://www.buildzoom.com/contractor/valley-wash-pros-inc, https://business.fresnochamber.com/list/member/valley-wash-pros-32340, https://www.linkedin.com/in/raphael-samarin-873477290
 - **Phone:** (559) 203-7700
 - **Email:** hello@twilightzonelighting.com
 - **Status:** Bonded, insured, in-house W-2 install crew
@@ -23,16 +26,16 @@ This is the deep-content companion to [llms.txt](https://twilightzonepermanentli
 
 ## Pricing tiers (full)
 
-### Starter — from $950
+### Starter - from $950
 Monthly financed: $32/mo. Single facade · ~30 linear feet · 1 zone · full app control · 5-year LED warranty · one-day install.
 
-### Standard — from $2,800
+### Standard - from $2,800
 Monthly financed: $89/mo. Single-story full perimeter · ~100 linear feet · 3 independent zones · 200+ holiday patterns · music sync · one-day install.
 
-### Premium — from $5,800
-Monthly financed: $169/mo. Two-story full perimeter · ~200 linear feet · 5+ zones · landscape lighting included · game-day auto-schedule · 1–2 day install.
+### Premium - from $5,800
+Monthly financed: $169/mo. Two-story full perimeter · ~200 linear feet · 5+ zones · landscape lighting included · game-day auto-schedule · 1-2 day install.
 
-### Estate — from $7,500
+### Estate - from $7,500
 Monthly financed: $custom/mo. Custom architectural design · multi-zone advanced control · integrated landscape · custom programming.
 
 Financing: 0% APR for 12 months. $0 down. 60-second pre-qualification.
@@ -41,136 +44,136 @@ Financing: 0% APR for 12 months. $0 down. 60-second pre-qualification.
 
 We install across Central and Northern California from a single headquarters in Clovis, CA. The Central Valley is the home market with same-day service; all other regions are covered by scheduled regional install crews (no satellite offices):
 
-- **Fresno, Fresno County** — population 545,567, 25-minute drive from HQ, ZIP codes 93701, 93702, 93703, 93704, 93705, 93706, 93710, 93711, 93720, 93722, 93726, 93727, 93728, 93730. Neighborhoods served: Woodward Park, Old Fig Garden, Bullard, Tower District, Sunnyside, Fancher Creek, Copper River Ranch, Riverstone, West Park, Sierra Sky Park, Lake Park, Van Ness Extension, Clovis North, Highland, Hoover, Edison, McLane, Roosevelt.
-- **Clovis, Fresno County** — population 124,584, 10-minute drive from HQ, ZIP codes 93611, 93612, 93613, 93619. Neighborhoods served: Clovis North, Loma Vista, Old Town Clovis, Buchanan, Harlan Ranch, Copper Hills, Reagan Educational Center, Garfield.
-- **Madera, Madera County** — population 67,000, 25-minute drive from HQ, ZIP codes 93636, 93637, 93638, 93639. Neighborhoods served: Madera Ranchos, Tesoro Viejo, Sumner Hill, Riverstone Madera, Old Madera Town.
-- **Visalia, Tulare County** — population 142,000, 55-minute drive from HQ, ZIP codes 93277, 93291, 93292. Neighborhoods served: South Visalia, Mountain View, Northwest Visalia, Mooney's Grove, Riverway Sports Park, Downtown Visalia.
-- **Hanford, Kings County** — population 58,000, 50-minute drive from HQ, ZIP codes 93230. Neighborhoods served: Hanford East, Hanford West, North Hanford, Downtown Hanford.
-- **Sanger, Fresno County** — population 25,000, 30-minute drive from HQ, ZIP codes 93657. Neighborhoods served: Sanger Ranch, Reedley View, Old Sanger, Sanger Heights.
-- **Selma, Fresno County** — population 24,000, 20-minute drive from HQ, ZIP codes 93662. Neighborhoods served: West Selma, East Selma, Selma North, Downtown Selma.
-- **Reedley, Fresno County** — population 25,000, 40-minute drive from HQ, ZIP codes 93654. Neighborhoods served: Reedley Heights, Old Reedley, North Reedley.
-- **Kingsburg, Fresno County** — population 12,000, 35-minute drive from HQ, ZIP codes 93631. Neighborhoods served: Kingsburg Heights, Old Town Kingsburg, Sierra View.
-- **Parlier, Fresno County** — population 15,000, 35-minute drive from HQ, ZIP codes 93648. Neighborhoods served: Parlier East, Parlier West, Old Parlier.
-- **Fowler, Fresno County** — population 7,000, 25-minute drive from HQ, ZIP codes 93625. Neighborhoods served: Fowler Heights, Old Fowler.
-- **Kerman, Fresno County** — population 16,000, 25-minute drive from HQ, ZIP codes 93630. Neighborhoods served: Kerman East, Kerman West, Old Kerman.
-- **Sacramento, Sacramento County** — population 524,943, 170-minute drive from HQ, ZIP codes 95814, 95815, 95816, 95817, 95818, 95819, 95820, 95821, 95822, 95823, 95824, 95825, 95826, 95831. Neighborhoods served: Land Park, South Land Park, Curtis Park, East Sacramento, Fabulous Forties, Midtown, Downtown, Boulevard Park, River Park, Sierra Oaks, Pocket-Greenhaven, Tahoe Park, Oak Park, Elmhurst, North Natomas, Natomas Park.
-- **Elk Grove, Sacramento County** — population 176,124, 155-minute drive from HQ, ZIP codes 95624, 95757, 95758, 95759. Neighborhoods served: Laguna West, Laguna Creek, Laguna Ridge, Stonelake, Sheldon, East Franklin, Camden Passage, Madeira, Madeira Ranch, Poppy Ridge, Lakeside, Old Town Elk Grove, Laguna Vista, Tributary Pointe, Franklin Reserve.
-- **Roseville, Placer County** — population 147,773, 190-minute drive from HQ, ZIP codes 95661, 95678, 95747. Neighborhoods served: Old Town Roseville, Vernon Street District, Roseville Heights, Sierra Gardens, Diamond Oaks, Maidu, Woodcreek Oaks, Highland Reserve, Stoneridge, Blue Oaks, Fiddyment Farm, Westpark, Crocker Ranch, Quail Glen, Morgan Creek, Sun City Roseville.
-- **Folsom, Sacramento County** — population 80,454, 185-minute drive from HQ, ZIP codes 95630, 95671, 95763. Neighborhoods served: Historic Folsom, Sutter Street District, Broadstone, American River Canyon, American River Canyon North, Willow Springs, Briggs Ranch, Empire Ranch, Prairie Oaks Ranch, Natoma Station, Lexington Hills, Los Cerros, Folsom Heights, Russell Ranch, Folsom Ranch.
-- **Rocklin, Placer County** — population 71,601, 195-minute drive from HQ, ZIP codes 95677, 95765. Neighborhoods served: Stanford Ranch, Stanford Village, Whitney Oaks, Whitney Ranch, Sunset Whitney, Springfield at Whitney Oaks, Clover Valley, Secret Ravine, Sierra Bluffs, Sierra Meadows, Rockridge, Spring Valley, Old Town Rocklin, Quarry District.
-- **Citrus Heights, Sacramento County** — population 87,583, 180-minute drive from HQ, ZIP codes 95610, 95611, 95621. Neighborhoods served: Birdcage Heights, Arcade Creek, Sunrise Ranch, Park Oaks, Sylvan Old Auburn Road, Northwest Citrus Heights, Rusch Park, Stock Ranch, CHANT, CHASEN, SOAR, Sunrise Oaks, Mariposa, Auburn Oaks.
-- **Rancho Cordova, Sacramento County** — population 79,332, 172-minute drive from HQ, ZIP codes 95655, 95670, 95741, 95742. Neighborhoods served: Anatolia, Sunridge Park, Kavala Ranch, Montelena, Rio del Oro, Villages of Zinfandel, Cresleigh Ranch, Mather, Mather Village, Cordova Meadows, Lincoln Village, Larchmont Riviera, White Rock, South White Rock, Brookside, Countryside.
-- **Davis, Yolo County** — population 66,850, 185-minute drive from HQ, ZIP codes 95616, 95617, 95618. Neighborhoods served: Old North Davis, Old East Davis, Downtown Davis, Central Davis, North Davis, South Davis, West Davis, East Davis, Village Homes, Mace Ranch, Wildhorse, Stonegate, Aggie Village, Lake Alhambra Estates, Evergreen, Covell Park.
-- **El Dorado Hills, El Dorado County** — population 45,982, 195-minute drive from HQ, ZIP codes 95762. Neighborhoods served: Serrano, The Promontory, Blackstone, Governors Village, Ridgeview Village, Stonebriar, Crown Village, Highland View, Park Village, Woodridge, Valley View, Bass Lake Hills, Marble Valley, Lake Forest, Francisco Oaks, El Dorado Hills Town Center.
-- **Stockton, San Joaquin County** — population 320,804, 125-minute drive from HQ, ZIP codes 95202, 95203, 95204, 95205, 95206, 95207, 95209, 95210, 95212, 95215, 95219. Neighborhoods served: Brookside, Spanos Park West, Spanos Park East, Lincoln Village West, Quail Lakes, Venetian Gardens, Morada, Miracle Mile, Victory Park, Magnolia District, Weston Ranch, Country Club, Bear Creek, Louis Park, Kentfield, Seaport District.
-- **Modesto, Stanislaus County** — population 218,464, 95-minute drive from HQ, ZIP codes 95350, 95351, 95352, 95353, 95354, 95355, 95356, 95357, 95358. Neighborhoods served: College Area, La Loma, Graceada Park, Sherwood Forest, Village One, Dry Creek, Sylvan, Del Rio, Downtown Modesto, Airport Neighborhood, Bret Harte, Rosewood, Creekside, Coffee-Briggsmore, Shackelford, Robertson Road.
-- **Merced, Merced County** — population 86,333, 55-minute drive from HQ, ZIP codes 95340, 95341, 95343, 95344, 95348. Neighborhoods served: Bellevue Ranch, Bellevue Ranch Village, North Merced, South Merced, Downtown Merced, Applegate Park, Fahrens Park, Bear Creek, Merced Country Club, Loughborough, Franklin-Beachwood, Yosemite Avenue Corridor, Olive Avenue, Childs Avenue.
-- **Turlock, Stanislaus County** — population 72,740, 75-minute drive from HQ, ZIP codes 95380, 95381, 95382. Neighborhoods served: Northeast Turlock, East Turlock, North Turlock, West Turlock, South Turlock, Downtown Turlock, Country Club Estates, Turlock Golf & Country Club, Monte Vista, Northwest Triangle, Christoffersen Parkway, Geer Road Corridor, Crowell Road, Fulkerth Road.
-- **Manteca, San Joaquin County** — population 83,498, 110-minute drive from HQ, ZIP codes 95336, 95337. Neighborhoods served: Woodbridge, Del Webb at Woodbridge, Union Ranch, Oakwood Shores, Downtown Manteca, Spreckels Park, Woodward Park, Yosemite Avenue Corridor, Airport Way Corridor, Lathrop Road Corridor, Manteca Golf Course, Orchard Valley, Powers Tract, Louise Avenue Corridor.
-- **Lodi, San Joaquin County** — population 66,348, 140-minute drive from HQ, ZIP codes 95240, 95241, 95242, 95258. Neighborhoods served: Lodi Lake, Heritage District, Downtown Lodi, Century Meadows, Legacy Estates, Lakeshore Village, Sunwest, Vinewood, Woodbridge, Wine Country, River Meadows, Windwood, Kettleman Lane Corridor, Ham Lane Corridor.
-- **Ceres, Stanislaus County** — population 49,302, 85-minute drive from HQ, ZIP codes 95307. Neighborhoods served: Whitmore Ranch, Eastgate, Mayfield, Downtown Ceres, River Bluff, Smyrna Park, North Ceres, West Ceres, Central Ceres, Hatch Road Corridor, Mitchell Road Corridor, Service Road Corridor, Don Pedro Road, Faith Home Road.
-- **San Jose, Santa Clara County** — population 969,655, 155-minute drive from HQ, ZIP codes 95110, 95112, 95116, 95118, 95120, 95122, 95124, 95125, 95126, 95128, 95132, 95136. Neighborhoods served: Willow Glen, Rose Garden, Naglee Park, Almaden Valley, Evergreen, Berryessa, Japantown, Downtown San Jose, Alum Rock, Cambrian Park, Blossom Valley, Santa Teresa, Silver Creek, Communications Hill, West San Jose, Alviso, Burbank, Edenvale.
-- **Santa Clara, Santa Clara County** — population 127,647, 160-minute drive from HQ, ZIP codes 95050, 95051, 95052, 95053, 95054, 95055, 95056. Neighborhoods served: Old Quad, Rivermark, Killarney Farms, Forest Park, Bracher, Laurelwood, Ponderosa, Machado, Maywood, Fairway Glen, Northside, Pomeroy West, Westwood Oaks, Agnew, Central Park.
-- **Sunnyvale, Santa Clara County** — population 155,805, 165-minute drive from HQ, ZIP codes 94083, 94085, 94086, 94087, 94088, 94089. Neighborhoods served: Cherry Chase, Ponderosa Park, Ortega Park, Birdland, Heritage District, Raynor Park, Washington Park, Braly Park, Cumberland South, Fair Oaks, Lakewood Village, Serra Park, Sunnyvale West, Encinal, De Anza Park, Las Palmas.
-- **Cupertino, Santa Clara County** — population 60,381, 170-minute drive from HQ, ZIP codes 95014, 95015. Neighborhoods served: Monta Vista, Rancho Rinconada, Garden Gate, Fairgrove, Seven Springs, Oak Valley, Inspiration Heights, Creston-Pharlap, North Blaney, South Blaney, Portal Park, Jollyman, Regnart, Lincoln.
-- **Mountain View, Santa Clara County** — population 82,376, 170-minute drive from HQ, ZIP codes 94035, 94039, 94040, 94041, 94042, 94043. Neighborhoods served: Old Mountain View, Cuesta Park, Monta Loma, Waverly Park, Blossom Valley, Rex Manor, Sylvan Park, Whisman Station, North Whisman, Willowgate, Gemello, Martens-Carmelita, Slater, Wagon Wheel, Jackson Park, Shoreline West, St. Francis Acres.
-- **Palo Alto, Santa Clara County** — population 68,572, 180-minute drive from HQ, ZIP codes 94301, 94302, 94303, 94304, 94305, 94306. Neighborhoods served: Old Palo Alto, Professorville, Crescent Park, Community Center, Downtown North, University South, College Terrace, Barron Park, Green Acres, Midtown, Palo Alto Hills, Southgate, Ventura, Duveneck/St. Francis, Greenmeadow, Fairmeadow, Evergreen Park.
-- **Milpitas, Santa Clara County** — population 80,273, 160-minute drive from HQ, ZIP codes 95035, 95036. Neighborhoods served: Sunnyhills, Parktown, Midtown Milpitas, Summitpointe, Country Club, Cardoza Park, Sandalwood, Hall Memorial Park, Murphy Ranch, Dixon Landing, Great Mall District, Transit Area District, Calaveras Hills, McCarthy Ranch, Berryessa Creek.
-- **Campbell, Santa Clara County** — population 42,726, 160-minute drive from HQ, ZIP codes 95008, 95009, 95011. Neighborhoods served: Downtown Campbell, Orchard City, Pruneyard, San Tomas, Dry Creek, Winchester, East Campbell, West Campbell, Campbell Park, John D. Morgan Park, Hamilton Corridor, Rincon, Sunnyoaks, Pollard, Latimer, Bucknall.
-- **Los Gatos, Santa Clara County** — population 33,529, 165-minute drive from HQ, ZIP codes 95030, 95031, 95032, 95033. Neighborhoods served: Almond Grove, Broadway Historic District, University-Edelen, Downtown Los Gatos, Glenridge, La Rinconada, Belgatos, Blossom Manor, Shannon Valley Ranch, Kennedy Road, Chemeketa Park, Redwood Estates, Aldercroft Heights, Oak Meadow.
-- **Morgan Hill, Santa Clara County** — population 45,952, 140-minute drive from HQ, ZIP codes 95037, 95038. Neighborhoods served: Downtown Morgan Hill, Jackson Oaks, Holiday Lake Estates, Paradise Valley, El Toro, Madrone, Cochrane, Butterfield, Barrett, Nordstrom, Tennant, Monterey Road Corridor, Coyote Valley, Llagas.
-- **San Francisco, San Francisco County** — population 808,988, 195-minute drive from HQ, ZIP codes 94102, 94103, 94105, 94107, 94108, 94109, 94110, 94114, 94115, 94116, 94117, 94118, 94121, 94122. Neighborhoods served: Pacific Heights, Presidio Heights, Sea Cliff, St. Francis Wood, Forest Hill, Noe Valley, Bernal Heights, Cole Valley, Inner Sunset, Outer Sunset, Richmond District, Marina District, Cow Hollow, Russian Hill, Nob Hill, Potrero Hill, Glen Park, West Portal.
-- **San Mateo, San Mateo County** — population 105,661, 180-minute drive from HQ, ZIP codes 94401, 94402, 94403, 94404, 94405, 94406, 94407, 94408, 94409, 94497. Neighborhoods served: San Mateo Park, Baywood, Aragon, Hayward Park, Sugarloaf, Bay Meadows, Hillsdale, Laurelwood, Beresford, Shoreview, Mariner's Island, Fiesta Gardens, Sunnybrae, North Central, Parkside, Downtown San Mateo.
-- **Redwood City, San Mateo County** — population 84,292, 175-minute drive from HQ, ZIP codes 94059, 94061, 94062, 94063, 94064, 94065. Neighborhoods served: Redwood Shores, Emerald Hills, Farm Hill, Woodside Plaza, Mount Carmel, Roosevelt, Centennial, Friendly Acres, Palm Park, Edgewood Park, Stambaugh-Heller, Canyon, Oak Knoll Manor, Eagle Hill, Downtown Redwood City, Redwood Village.
-- **Burlingame, San Mateo County** — population 31,386, 185-minute drive from HQ, ZIP codes 94010, 94011. Neighborhoods served: Burlingame Park, Burlingame Terrace, Burlingables, Easton Addition, Ray Park, Mills Estate, Burlingame Hills, Lyon-Hoag, Victoria Park, Broadway District, Burlingame Avenue District, Bayside, Trousdale, Oak Grove.
-- **Menlo Park, San Mateo County** — population 33,780, 172-minute drive from HQ, ZIP codes 94025, 94026. Neighborhoods served: Allied Arts, Felton Gables, Linfield Oaks, Central Menlo, Sharon Heights, Sharon Park, Stanford Hills, Vintage Oaks, The Willows, Suburban Park, Lorelei Manor, Flood Triangle, Belle Haven, Menlo Oaks, Park Forest.
-- **Oakland, Alameda County** — population 436,504, 185-minute drive from HQ, ZIP codes 94601, 94602, 94603, 94605, 94606, 94607, 94608, 94609, 94610, 94611, 94612, 94618, 94619, 94621. Neighborhoods served: Rockridge, Montclair, Temescal, Piedmont Avenue, Grand Lake, Adams Point, Lakeshore, Glenview, Dimond District, Crocker Highlands, Oakmore, Trestle Glen, Sequoyah Hills, Laurel, Redwood Heights, Jack London Square.
-- **Fremont, Alameda County** — population 230,504, 170-minute drive from HQ, ZIP codes 94536, 94537, 94538, 94539, 94540, 94555. Neighborhoods served: Mission San Jose, Niles, Centerville, Irvington, Warm Springs, Ardenwood, Glenmoor, Sundale, Cameron Hills, Weibel, Vineyards-Avalon, Parkmont, Brookvale, Northgate, Grimmer, Cherry-Guardino.
-- **Pleasanton, Alameda County** — population 79,871, 165-minute drive from HQ, ZIP codes 94566, 94588. Neighborhoods served: Downtown Pleasanton, Ruby Hill, Vintage Hills, Val Vista, Birdland, Foothill Knolls, Kottinger Ranch, Golden Eagle, Grey Eagle Estates, Bridle Creek, Laguna Oaks, Castlewood, Stoneridge, Pleasanton Meadows, Valley Trails, Mission Park.
-- **Livermore, Alameda County** — population 87,955, 155-minute drive from HQ, ZIP codes 94550, 94551. Neighborhoods served: Downtown Livermore, Old North Livermore, Springtown, Sunset East, Sunset West, Portola, Vineyard, Windmill Springs, Rhonewood, Granada, Junction Avenue, Proud Country, Mocho Park, Alden Lane, Crane Ridge, South Livermore Valley.
-- **Dublin, Alameda County** — population 72,589, 168-minute drive from HQ, ZIP codes 94568. Neighborhoods served: Dublin Ranch, Jordan Ranch, Positano, Schaefer Ranch, Wallis Ranch, Tassajara Hills, Boulevard, Silvera Ranch, Fallon Village, Downtown Dublin, West Dublin, Amador Lakes, Heritage Park, Dublin Hills, Sorrento at Dublin Ranch, Emerald Park.
-- **Walnut Creek, Contra Costa County** — population 70,127, 185-minute drive from HQ, ZIP codes 94595, 94596, 94597, 94598. Neighborhoods served: Rossmoor, Northgate, Saranap, Walnut Heights, Downtown Walnut Creek, Parkmead, Lakewood, Woodlands, Larkey, Ygnacio Valley, Shadelands, Tice Valley, Rudgear Estates, Indian Valley, Castle Hill, San Miguel.
-- **San Ramon, Contra Costa County** — population 84,605, 175-minute drive from HQ, ZIP codes 94582, 94583. Neighborhoods served: Dougherty Valley, Windemere, Gale Ranch, Canyon Lakes, Twin Creeks, Bollinger Canyon, Crow Canyon Country Club, Henry Ranch, Norris Canyon Estates, San Ramon Village, Westside San Ramon, Deerwood, Promontory, Bent Creek, The Preserve, Old Ranch.
+- **Fresno, Fresno County** - population 545,567, 25-minute drive from HQ, ZIP codes 93701, 93702, 93703, 93704, 93705, 93706, 93710, 93711, 93720, 93722, 93726, 93727, 93728, 93730. Neighborhoods served: Woodward Park, Old Fig Garden, Bullard, Tower District, Sunnyside, Fancher Creek, Copper River Ranch, Riverstone, West Park, Sierra Sky Park, Lake Park, Van Ness Extension, Clovis North, Highland, Hoover, Edison, McLane, Roosevelt.
+- **Clovis, Fresno County** - population 124,584, 10-minute drive from HQ, ZIP codes 93611, 93612, 93613, 93619. Neighborhoods served: Clovis North, Loma Vista, Old Town Clovis, Buchanan, Harlan Ranch, Copper Hills, Reagan Educational Center, Garfield.
+- **Madera, Madera County** - population 67,000, 25-minute drive from HQ, ZIP codes 93636, 93637, 93638, 93639. Neighborhoods served: Madera Ranchos, Tesoro Viejo, Sumner Hill, Riverstone Madera, Old Madera Town.
+- **Visalia, Tulare County** - population 142,000, 55-minute drive from HQ, ZIP codes 93277, 93291, 93292. Neighborhoods served: South Visalia, Mountain View, Northwest Visalia, Mooney's Grove, Riverway Sports Park, Downtown Visalia.
+- **Hanford, Kings County** - population 58,000, 50-minute drive from HQ, ZIP codes 93230. Neighborhoods served: Hanford East, Hanford West, North Hanford, Downtown Hanford.
+- **Sanger, Fresno County** - population 25,000, 30-minute drive from HQ, ZIP codes 93657. Neighborhoods served: Sanger Ranch, Reedley View, Old Sanger, Sanger Heights.
+- **Selma, Fresno County** - population 24,000, 20-minute drive from HQ, ZIP codes 93662. Neighborhoods served: West Selma, East Selma, Selma North, Downtown Selma.
+- **Reedley, Fresno County** - population 25,000, 40-minute drive from HQ, ZIP codes 93654. Neighborhoods served: Reedley Heights, Old Reedley, North Reedley.
+- **Kingsburg, Fresno County** - population 12,000, 35-minute drive from HQ, ZIP codes 93631. Neighborhoods served: Kingsburg Heights, Old Town Kingsburg, Sierra View.
+- **Parlier, Fresno County** - population 15,000, 35-minute drive from HQ, ZIP codes 93648. Neighborhoods served: Parlier East, Parlier West, Old Parlier.
+- **Fowler, Fresno County** - population 7,000, 25-minute drive from HQ, ZIP codes 93625. Neighborhoods served: Fowler Heights, Old Fowler.
+- **Kerman, Fresno County** - population 16,000, 25-minute drive from HQ, ZIP codes 93630. Neighborhoods served: Kerman East, Kerman West, Old Kerman.
+- **Sacramento, Sacramento County** - population 524,943, 170-minute drive from HQ, ZIP codes 95814, 95815, 95816, 95817, 95818, 95819, 95820, 95821, 95822, 95823, 95824, 95825, 95826, 95831. Neighborhoods served: Land Park, South Land Park, Curtis Park, East Sacramento, Fabulous Forties, Midtown, Downtown, Boulevard Park, River Park, Sierra Oaks, Pocket-Greenhaven, Tahoe Park, Oak Park, Elmhurst, North Natomas, Natomas Park.
+- **Elk Grove, Sacramento County** - population 176,124, 155-minute drive from HQ, ZIP codes 95624, 95757, 95758, 95759. Neighborhoods served: Laguna West, Laguna Creek, Laguna Ridge, Stonelake, Sheldon, East Franklin, Camden Passage, Madeira, Madeira Ranch, Poppy Ridge, Lakeside, Old Town Elk Grove, Laguna Vista, Tributary Pointe, Franklin Reserve.
+- **Roseville, Placer County** - population 147,773, 190-minute drive from HQ, ZIP codes 95661, 95678, 95747. Neighborhoods served: Old Town Roseville, Vernon Street District, Roseville Heights, Sierra Gardens, Diamond Oaks, Maidu, Woodcreek Oaks, Highland Reserve, Stoneridge, Blue Oaks, Fiddyment Farm, Westpark, Crocker Ranch, Quail Glen, Morgan Creek, Sun City Roseville.
+- **Folsom, Sacramento County** - population 80,454, 185-minute drive from HQ, ZIP codes 95630, 95671, 95763. Neighborhoods served: Historic Folsom, Sutter Street District, Broadstone, American River Canyon, American River Canyon North, Willow Springs, Briggs Ranch, Empire Ranch, Prairie Oaks Ranch, Natoma Station, Lexington Hills, Los Cerros, Folsom Heights, Russell Ranch, Folsom Ranch.
+- **Rocklin, Placer County** - population 71,601, 195-minute drive from HQ, ZIP codes 95677, 95765. Neighborhoods served: Stanford Ranch, Stanford Village, Whitney Oaks, Whitney Ranch, Sunset Whitney, Springfield at Whitney Oaks, Clover Valley, Secret Ravine, Sierra Bluffs, Sierra Meadows, Rockridge, Spring Valley, Old Town Rocklin, Quarry District.
+- **Citrus Heights, Sacramento County** - population 87,583, 180-minute drive from HQ, ZIP codes 95610, 95611, 95621. Neighborhoods served: Birdcage Heights, Arcade Creek, Sunrise Ranch, Park Oaks, Sylvan Old Auburn Road, Northwest Citrus Heights, Rusch Park, Stock Ranch, CHANT, CHASEN, SOAR, Sunrise Oaks, Mariposa, Auburn Oaks.
+- **Rancho Cordova, Sacramento County** - population 79,332, 172-minute drive from HQ, ZIP codes 95655, 95670, 95741, 95742. Neighborhoods served: Anatolia, Sunridge Park, Kavala Ranch, Montelena, Rio del Oro, Villages of Zinfandel, Cresleigh Ranch, Mather, Mather Village, Cordova Meadows, Lincoln Village, Larchmont Riviera, White Rock, South White Rock, Brookside, Countryside.
+- **Davis, Yolo County** - population 66,850, 185-minute drive from HQ, ZIP codes 95616, 95617, 95618. Neighborhoods served: Old North Davis, Old East Davis, Downtown Davis, Central Davis, North Davis, South Davis, West Davis, East Davis, Village Homes, Mace Ranch, Wildhorse, Stonegate, Aggie Village, Lake Alhambra Estates, Evergreen, Covell Park.
+- **El Dorado Hills, El Dorado County** - population 45,982, 195-minute drive from HQ, ZIP codes 95762. Neighborhoods served: Serrano, The Promontory, Blackstone, Governors Village, Ridgeview Village, Stonebriar, Crown Village, Highland View, Park Village, Woodridge, Valley View, Bass Lake Hills, Marble Valley, Lake Forest, Francisco Oaks, El Dorado Hills Town Center.
+- **Stockton, San Joaquin County** - population 320,804, 125-minute drive from HQ, ZIP codes 95202, 95203, 95204, 95205, 95206, 95207, 95209, 95210, 95212, 95215, 95219. Neighborhoods served: Brookside, Spanos Park West, Spanos Park East, Lincoln Village West, Quail Lakes, Venetian Gardens, Morada, Miracle Mile, Victory Park, Magnolia District, Weston Ranch, Country Club, Bear Creek, Louis Park, Kentfield, Seaport District.
+- **Modesto, Stanislaus County** - population 218,464, 95-minute drive from HQ, ZIP codes 95350, 95351, 95352, 95353, 95354, 95355, 95356, 95357, 95358. Neighborhoods served: College Area, La Loma, Graceada Park, Sherwood Forest, Village One, Dry Creek, Sylvan, Del Rio, Downtown Modesto, Airport Neighborhood, Bret Harte, Rosewood, Creekside, Coffee-Briggsmore, Shackelford, Robertson Road.
+- **Merced, Merced County** - population 86,333, 55-minute drive from HQ, ZIP codes 95340, 95341, 95343, 95344, 95348. Neighborhoods served: Bellevue Ranch, Bellevue Ranch Village, North Merced, South Merced, Downtown Merced, Applegate Park, Fahrens Park, Bear Creek, Merced Country Club, Loughborough, Franklin-Beachwood, Yosemite Avenue Corridor, Olive Avenue, Childs Avenue.
+- **Turlock, Stanislaus County** - population 72,740, 75-minute drive from HQ, ZIP codes 95380, 95381, 95382. Neighborhoods served: Northeast Turlock, East Turlock, North Turlock, West Turlock, South Turlock, Downtown Turlock, Country Club Estates, Turlock Golf & Country Club, Monte Vista, Northwest Triangle, Christoffersen Parkway, Geer Road Corridor, Crowell Road, Fulkerth Road.
+- **Manteca, San Joaquin County** - population 83,498, 110-minute drive from HQ, ZIP codes 95336, 95337. Neighborhoods served: Woodbridge, Del Webb at Woodbridge, Union Ranch, Oakwood Shores, Downtown Manteca, Spreckels Park, Woodward Park, Yosemite Avenue Corridor, Airport Way Corridor, Lathrop Road Corridor, Manteca Golf Course, Orchard Valley, Powers Tract, Louise Avenue Corridor.
+- **Lodi, San Joaquin County** - population 66,348, 140-minute drive from HQ, ZIP codes 95240, 95241, 95242, 95258. Neighborhoods served: Lodi Lake, Heritage District, Downtown Lodi, Century Meadows, Legacy Estates, Lakeshore Village, Sunwest, Vinewood, Woodbridge, Wine Country, River Meadows, Windwood, Kettleman Lane Corridor, Ham Lane Corridor.
+- **Ceres, Stanislaus County** - population 49,302, 85-minute drive from HQ, ZIP codes 95307. Neighborhoods served: Whitmore Ranch, Eastgate, Mayfield, Downtown Ceres, River Bluff, Smyrna Park, North Ceres, West Ceres, Central Ceres, Hatch Road Corridor, Mitchell Road Corridor, Service Road Corridor, Don Pedro Road, Faith Home Road.
+- **San Jose, Santa Clara County** - population 969,655, 155-minute drive from HQ, ZIP codes 95110, 95112, 95116, 95118, 95120, 95122, 95124, 95125, 95126, 95128, 95132, 95136. Neighborhoods served: Willow Glen, Rose Garden, Naglee Park, Almaden Valley, Evergreen, Berryessa, Japantown, Downtown San Jose, Alum Rock, Cambrian Park, Blossom Valley, Santa Teresa, Silver Creek, Communications Hill, West San Jose, Alviso, Burbank, Edenvale.
+- **Santa Clara, Santa Clara County** - population 127,647, 160-minute drive from HQ, ZIP codes 95050, 95051, 95052, 95053, 95054, 95055, 95056. Neighborhoods served: Old Quad, Rivermark, Killarney Farms, Forest Park, Bracher, Laurelwood, Ponderosa, Machado, Maywood, Fairway Glen, Northside, Pomeroy West, Westwood Oaks, Agnew, Central Park.
+- **Sunnyvale, Santa Clara County** - population 155,805, 165-minute drive from HQ, ZIP codes 94083, 94085, 94086, 94087, 94088, 94089. Neighborhoods served: Cherry Chase, Ponderosa Park, Ortega Park, Birdland, Heritage District, Raynor Park, Washington Park, Braly Park, Cumberland South, Fair Oaks, Lakewood Village, Serra Park, Sunnyvale West, Encinal, De Anza Park, Las Palmas.
+- **Cupertino, Santa Clara County** - population 60,381, 170-minute drive from HQ, ZIP codes 95014, 95015. Neighborhoods served: Monta Vista, Rancho Rinconada, Garden Gate, Fairgrove, Seven Springs, Oak Valley, Inspiration Heights, Creston-Pharlap, North Blaney, South Blaney, Portal Park, Jollyman, Regnart, Lincoln.
+- **Mountain View, Santa Clara County** - population 82,376, 170-minute drive from HQ, ZIP codes 94035, 94039, 94040, 94041, 94042, 94043. Neighborhoods served: Old Mountain View, Cuesta Park, Monta Loma, Waverly Park, Blossom Valley, Rex Manor, Sylvan Park, Whisman Station, North Whisman, Willowgate, Gemello, Martens-Carmelita, Slater, Wagon Wheel, Jackson Park, Shoreline West, St. Francis Acres.
+- **Palo Alto, Santa Clara County** - population 68,572, 180-minute drive from HQ, ZIP codes 94301, 94302, 94303, 94304, 94305, 94306. Neighborhoods served: Old Palo Alto, Professorville, Crescent Park, Community Center, Downtown North, University South, College Terrace, Barron Park, Green Acres, Midtown, Palo Alto Hills, Southgate, Ventura, Duveneck/St. Francis, Greenmeadow, Fairmeadow, Evergreen Park.
+- **Milpitas, Santa Clara County** - population 80,273, 160-minute drive from HQ, ZIP codes 95035, 95036. Neighborhoods served: Sunnyhills, Parktown, Midtown Milpitas, Summitpointe, Country Club, Cardoza Park, Sandalwood, Hall Memorial Park, Murphy Ranch, Dixon Landing, Great Mall District, Transit Area District, Calaveras Hills, McCarthy Ranch, Berryessa Creek.
+- **Campbell, Santa Clara County** - population 42,726, 160-minute drive from HQ, ZIP codes 95008, 95009, 95011. Neighborhoods served: Downtown Campbell, Orchard City, Pruneyard, San Tomas, Dry Creek, Winchester, East Campbell, West Campbell, Campbell Park, John D. Morgan Park, Hamilton Corridor, Rincon, Sunnyoaks, Pollard, Latimer, Bucknall.
+- **Los Gatos, Santa Clara County** - population 33,529, 165-minute drive from HQ, ZIP codes 95030, 95031, 95032, 95033. Neighborhoods served: Almond Grove, Broadway Historic District, University-Edelen, Downtown Los Gatos, Glenridge, La Rinconada, Belgatos, Blossom Manor, Shannon Valley Ranch, Kennedy Road, Chemeketa Park, Redwood Estates, Aldercroft Heights, Oak Meadow.
+- **Morgan Hill, Santa Clara County** - population 45,952, 140-minute drive from HQ, ZIP codes 95037, 95038. Neighborhoods served: Downtown Morgan Hill, Jackson Oaks, Holiday Lake Estates, Paradise Valley, El Toro, Madrone, Cochrane, Butterfield, Barrett, Nordstrom, Tennant, Monterey Road Corridor, Coyote Valley, Llagas.
+- **San Francisco, San Francisco County** - population 808,988, 195-minute drive from HQ, ZIP codes 94102, 94103, 94105, 94107, 94108, 94109, 94110, 94114, 94115, 94116, 94117, 94118, 94121, 94122. Neighborhoods served: Pacific Heights, Presidio Heights, Sea Cliff, St. Francis Wood, Forest Hill, Noe Valley, Bernal Heights, Cole Valley, Inner Sunset, Outer Sunset, Richmond District, Marina District, Cow Hollow, Russian Hill, Nob Hill, Potrero Hill, Glen Park, West Portal.
+- **San Mateo, San Mateo County** - population 105,661, 180-minute drive from HQ, ZIP codes 94401, 94402, 94403, 94404, 94405, 94406, 94407, 94408, 94409, 94497. Neighborhoods served: San Mateo Park, Baywood, Aragon, Hayward Park, Sugarloaf, Bay Meadows, Hillsdale, Laurelwood, Beresford, Shoreview, Mariner's Island, Fiesta Gardens, Sunnybrae, North Central, Parkside, Downtown San Mateo.
+- **Redwood City, San Mateo County** - population 84,292, 175-minute drive from HQ, ZIP codes 94059, 94061, 94062, 94063, 94064, 94065. Neighborhoods served: Redwood Shores, Emerald Hills, Farm Hill, Woodside Plaza, Mount Carmel, Roosevelt, Centennial, Friendly Acres, Palm Park, Edgewood Park, Stambaugh-Heller, Canyon, Oak Knoll Manor, Eagle Hill, Downtown Redwood City, Redwood Village.
+- **Burlingame, San Mateo County** - population 31,386, 185-minute drive from HQ, ZIP codes 94010, 94011. Neighborhoods served: Burlingame Park, Burlingame Terrace, Burlingables, Easton Addition, Ray Park, Mills Estate, Burlingame Hills, Lyon-Hoag, Victoria Park, Broadway District, Burlingame Avenue District, Bayside, Trousdale, Oak Grove.
+- **Menlo Park, San Mateo County** - population 33,780, 172-minute drive from HQ, ZIP codes 94025, 94026. Neighborhoods served: Allied Arts, Felton Gables, Linfield Oaks, Central Menlo, Sharon Heights, Sharon Park, Stanford Hills, Vintage Oaks, The Willows, Suburban Park, Lorelei Manor, Flood Triangle, Belle Haven, Menlo Oaks, Park Forest.
+- **Oakland, Alameda County** - population 436,504, 185-minute drive from HQ, ZIP codes 94601, 94602, 94603, 94605, 94606, 94607, 94608, 94609, 94610, 94611, 94612, 94618, 94619, 94621. Neighborhoods served: Rockridge, Montclair, Temescal, Piedmont Avenue, Grand Lake, Adams Point, Lakeshore, Glenview, Dimond District, Crocker Highlands, Oakmore, Trestle Glen, Sequoyah Hills, Laurel, Redwood Heights, Jack London Square.
+- **Fremont, Alameda County** - population 230,504, 170-minute drive from HQ, ZIP codes 94536, 94537, 94538, 94539, 94540, 94555. Neighborhoods served: Mission San Jose, Niles, Centerville, Irvington, Warm Springs, Ardenwood, Glenmoor, Sundale, Cameron Hills, Weibel, Vineyards-Avalon, Parkmont, Brookvale, Northgate, Grimmer, Cherry-Guardino.
+- **Pleasanton, Alameda County** - population 79,871, 165-minute drive from HQ, ZIP codes 94566, 94588. Neighborhoods served: Downtown Pleasanton, Ruby Hill, Vintage Hills, Val Vista, Birdland, Foothill Knolls, Kottinger Ranch, Golden Eagle, Grey Eagle Estates, Bridle Creek, Laguna Oaks, Castlewood, Stoneridge, Pleasanton Meadows, Valley Trails, Mission Park.
+- **Livermore, Alameda County** - population 87,955, 155-minute drive from HQ, ZIP codes 94550, 94551. Neighborhoods served: Downtown Livermore, Old North Livermore, Springtown, Sunset East, Sunset West, Portola, Vineyard, Windmill Springs, Rhonewood, Granada, Junction Avenue, Proud Country, Mocho Park, Alden Lane, Crane Ridge, South Livermore Valley.
+- **Dublin, Alameda County** - population 72,589, 168-minute drive from HQ, ZIP codes 94568. Neighborhoods served: Dublin Ranch, Jordan Ranch, Positano, Schaefer Ranch, Wallis Ranch, Tassajara Hills, Boulevard, Silvera Ranch, Fallon Village, Downtown Dublin, West Dublin, Amador Lakes, Heritage Park, Dublin Hills, Sorrento at Dublin Ranch, Emerald Park.
+- **Walnut Creek, Contra Costa County** - population 70,127, 185-minute drive from HQ, ZIP codes 94595, 94596, 94597, 94598. Neighborhoods served: Rossmoor, Northgate, Saranap, Walnut Heights, Downtown Walnut Creek, Parkmead, Lakewood, Woodlands, Larkey, Ygnacio Valley, Shadelands, Tice Valley, Rudgear Estates, Indian Valley, Castle Hill, San Miguel.
+- **San Ramon, Contra Costa County** - population 84,605, 175-minute drive from HQ, ZIP codes 94582, 94583. Neighborhoods served: Dougherty Valley, Windemere, Gale Ranch, Canyon Lakes, Twin Creeks, Bollinger Canyon, Crow Canyon Country Club, Henry Ranch, Norris Canyon Estates, San Ramon Village, Westside San Ramon, Deerwood, Promontory, Bent Creek, The Preserve, Old Ranch.
 
 ## Services (full)
 
 ### Permanent Outdoor Lights
 URL: https://twilightzonepermanentlighting.com/permanent-outdoor-lights
 From $950. Primary keyword: "permanent outdoor lights".
-Aluminum-track LED systems mounted under your eaves — 16 million colors, app-controlled, invisible by day. One install. Beautiful for life.
-Permanent outdoor lights are the most significant residential exterior upgrade of the past decade. A continuous aluminum track — color-matched to your trim — houses individually-addressable RGBIC-RD LEDs that produce all 16 million colors and 200+ patterns. Once installed, the system is essentially invisible by day and unforgettable by night.
+Aluminum-track LED systems mounted under your eaves-16 million colors, app-controlled, invisible by day. One install. Beautiful for life.
+Permanent outdoor lights are the most significant residential exterior upgrade of the past decade. A continuous aluminum track-color-matched to your trim-houses individually-addressable RGBIC-RD LEDs that produce all 16 million colors and 200+ patterns. Once installed, the system is essentially invisible by day and unforgettable by night.
 
 ### Permanent Christmas Lights
 URL: https://twilightzonepermanentlighting.com/permanent-christmas-lights
 From $950. Primary keyword: "permanent christmas lights".
 Christmas lights you install once and never put up again. Auto-scheduled red-and-green from November 15 through January 5, plus 200+ other holiday and accent patterns the rest of the year.
-Permanent Christmas lights replace the annual ritual of climbing ladders, untangling string lights, and renting installers every November. Our system is mounted permanently under your eaves and color-matched to your trim — invisible by day, then auto-scheduled to display red-and-green for Christmas, orange-and-purple for Halloween, red-white-and-blue for July 4th, and 200+ other patterns all year.
+Permanent Christmas lights replace the annual ritual of climbing ladders, untangling string lights, and renting installers every November. Our system is mounted permanently under your eaves and color-matched to your trim-invisible by day, then auto-scheduled to display red-and-green for Christmas, orange-and-purple for Halloween, red-white-and-blue for July 4th, and 200+ other patterns all year.
 
 ### Halloween Lights
 URL: https://twilightzonepermanentlighting.com/halloween-lights
 From $950. Primary keyword: "halloween lights".
-Halloween lights so good your house becomes the haunted destination. Orange and purple presets, motion-triggered scares, and fade animations — auto-scheduled October 1 through November 1.
+Halloween lights so good your house becomes the haunted destination. Orange and purple presets, motion-triggered scares, and fade animations-auto-scheduled October 1 through November 1.
 Permanent Halloween lights mean you never have to rush the spooky display. The system auto-flips to orange-and-purple on October 1, runs animations like ghost-fade, lightning-flash, and motion-triggered scares, and auto-flips back to warm-white accent on November 1.
 
 ### Architectural Accent Lighting
 URL: https://twilightzonepermanentlighting.com/accent-lighting
 From $950. Primary keyword: "architectural accent lighting".
 Adjustable warm-white permanent outdoor lights (2700K to 5000K) that highlight your home's best architectural features 365 days a year.
-Architectural accent lighting is the most-requested year-round configuration. Adjustable warm whites — 2700K (candle-warm) to 5000K (clean-white) — highlight roof lines, peaks, columns, and dormers. It's the lighting equivalent of curating your home for night-time.
+Architectural accent lighting is the most-requested year-round configuration. Adjustable warm whites-2700K (candle-warm) to 5000K (clean-white) - highlight roof lines, peaks, columns, and dormers. It's the lighting equivalent of curating your home for night-time.
 
 ### Outdoor Security Lighting
 URL: https://twilightzonepermanentlighting.com/security-lighting
 From $950. Primary keyword: "outdoor lighting motion activated".
-Motion-triggered outdoor floods, scheduled deterrent lighting, and full-property cool-white illumination — all built into your permanent outdoor lighting system.
-Outdoor security lighting from Twilight Zone integrates motion-activated floods, scheduled cool-white deterrent illumination, and instant full-property activation via app or voice command — all in the same fixture system as your accent lighting.
+Motion-triggered outdoor floods, scheduled deterrent lighting, and full-property cool-white illumination-all built into your permanent outdoor lighting system.
+Outdoor security lighting from Twilight Zone integrates motion-activated floods, scheduled cool-white deterrent illumination, and instant full-property activation via app or voice command-all in the same fixture system as your accent lighting.
 
 ### Permanent Patio Lighting
 URL: https://twilightzonepermanentlighting.com/patio-lighting
 From $1,200. Primary keyword: "patio lighting".
 Permanent patio lighting that replaces seasonal bistro string lights with weather-rated, app-controlled, music-syncable installations under pergolas and over outdoor living spaces.
-Patio lighting is the most-requested expansion add-on after the main perimeter install. We mount the same RGBIC-RD track under pergolas, around outdoor kitchens, and along patio cover edges — the same app, the same colors, music-sync ready.
+Patio lighting is the most-requested expansion add-on after the main perimeter install. We mount the same RGBIC-RD track under pergolas, around outdoor kitchens, and along patio cover edges-the same app, the same colors, music-sync ready.
 
 ### Permanent Pool Deck Lighting
 URL: https://twilightzonepermanentlighting.com/pool-deck-lighting
 From $1,400. Primary keyword: "pool deck lighting".
-Permanent pool deck lighting around the perimeter of your pool — water-rated, color-changing, and synchronizable with party mode, music, and pool pump schedules.
-Pool deck lighting is one of the highest-impact upgrades you can make to your backyard. We mount weather-rated track around the deck perimeter — perfect for pool parties, evening swims, and full-property security after dark.
+Permanent pool deck lighting around the perimeter of your pool-water-rated, color-changing, and synchronizable with party mode, music, and pool pump schedules.
+Pool deck lighting is one of the highest-impact upgrades you can make to your backyard. We mount weather-rated track around the deck perimeter-perfect for pool parties, evening swims, and full-property security after dark.
 
 ### Pathway & Landscape Lighting
 URL: https://twilightzonepermanentlighting.com/pathway-landscape-lighting
 From $1,100. Primary keyword: "landscape lighting".
-Permanent landscape lighting along walkways, garden paths, and yard perimeters — weatherproof, app-controlled, and synchronized with the same system as your eave lights.
-Landscape lighting from Twilight Zone uses the same RGBIC-RD platform as eave installs — so your walkway, garden path, tree uplights, and yard perimeter all sync with the same app, same scenes, same auto-schedule.
+Permanent landscape lighting along walkways, garden paths, and yard perimeters-weatherproof, app-controlled, and synchronized with the same system as your eave lights.
+Landscape lighting from Twilight Zone uses the same RGBIC-RD platform as eave installs-so your walkway, garden path, tree uplights, and yard perimeter all sync with the same app, same scenes, same auto-schedule.
 
 ### Game Day Team-Color Lighting
 URL: https://twilightzonepermanentlighting.com/game-day-lighting
 From $950. Primary keyword: "game day lighting".
 Permanent game-day lighting auto-scheduled by team or event time. Fresno State Bulldogs red-and-blue, Lakers purple-and-gold, your school's colors triggered Friday night by game time.
-Game day lighting is one of the most-requested features in Fresno-area installs. The system auto-flips to your team's colors based on the game schedule — Fresno State Bulldogs Friday-night football, Buchanan Bears Saturday, Clovis North Broncos, Lakers, Warriors, 49ers, Dodgers — fully customizable.
+Game day lighting is one of the most-requested features in Fresno-area installs. The system auto-flips to your team's colors based on the game schedule-Fresno State Bulldogs Friday-night football, Buchanan Bears Saturday, Clovis North Broncos, Lakers, Warriors, 49ers, Dodgers-fully customizable.
 
 ### Eave & Soffit Lighting
 URL: https://twilightzonepermanentlighting.com/eave-soffit-lighting
 From $950. Primary keyword: "eave lighting".
-Permanent eave and soffit lighting in color-matched aluminum track — white, bronze, black, or brown. Hidden by day, brilliant at night.
-Eave and soffit lighting is the foundation install — the continuous track mounted under your roofline that defines the entire system. The track itself is the most invisible element of any permanent lighting setup.
+Permanent eave and soffit lighting in color-matched aluminum track-white, bronze, black, or brown. Hidden by day, brilliant at night.
+Eave and soffit lighting is the foundation install-the continuous track mounted under your roofline that defines the entire system. The track itself is the most invisible element of any permanent lighting setup.
 
 ### Custom Architectural Lighting
 URL: https://twilightzonepermanentlighting.com/custom-architectural-lighting
 From $7,500. Primary keyword: "custom architectural lighting".
-Custom architectural lighting for estates and luxury homes — bespoke design with multi-zone advanced control, integrated landscape, and white-glove install team.
-Custom architectural lighting is our highest-tier residential service. We design bespoke installs for custom estates — the kind of lighting that integrates with the architecture, not just attached to it.
+Custom architectural lighting for estates and luxury homes-bespoke design with multi-zone advanced control, integrated landscape, and white-glove install team.
+Custom architectural lighting is our highest-tier residential service. We design bespoke installs for custom estates-the kind of lighting that integrates with the architecture, not just attached to it.
 
 ### Christmas String Lights
 URL: https://twilightzonepermanentlighting.com/string-lights-installation
 From $950. Primary keyword: "christmas string lights".
-Christmas string lights installed permanently — no more annual setup, no more storage, no more ladders. The permanent answer to seasonal string lights.
-Christmas string lights are the most popular holiday tradition — and the most painful annual chore. Permanent installation replaces seasonal string lights with a continuous aluminum track that delivers all the holiday warmth without any of the annual hassle.
+Christmas string lights installed permanently-no more annual setup, no more storage, no more ladders. The permanent answer to seasonal string lights.
+Christmas string lights are the most popular holiday tradition-and the most painful annual chore. Permanent installation replaces seasonal string lights with a continuous aluminum track that delivers all the holiday warmth without any of the annual hassle.
 
 ### Year-Round Permanent Lighting
 URL: https://twilightzonepermanentlighting.com/year-round-lighting
 From $950. Primary keyword: "year round lights".
 Year-round permanent lighting that auto-rotates between Christmas red-and-green, Halloween orange-and-purple, July 4th red-white-and-blue, warm-white accent, and cool-white security. One install. Every season.
-Year-round permanent lighting is the all-seasons configuration. The system runs continuous schedules — Halloween in October, Christmas November-January, Valentine's February, St. Patrick's March, Easter, July 4th, accent the rest. Always on schedule. Never touched.
+Year-round permanent lighting is the all-seasons configuration. The system runs continuous schedules-Halloween in October, Christmas November-January, Valentine's February, St. Patrick's March, Easter, July 4th, accent the rest. Always on schedule. Never touched.
 
 ## Commercial verticals
 
@@ -197,7 +200,7 @@ Permanent lighting for HOAs and apartment complexes that delivers unified, profe
 ### Church & Religious Venue Permanent Lighting
 URL: https://twilightzonepermanentlighting.com/church-religious-lighting
 From $4,200.
-Permanent lighting for churches and religious venues — welcoming entries that convey your community's warmth, plus special-event lighting for holidays, weddings, and worship gatherings.
+Permanent lighting for churches and religious venues-welcoming entries that convey your community's warmth, plus special-event lighting for holidays, weddings, and worship gatherings.
 
 ### Auto Dealership Permanent Lighting
 URL: https://twilightzonepermanentlighting.com/dealership-lighting
@@ -212,21 +215,21 @@ Permanent lighting for schools and universities that delivers school colors year
 ### Office Park & Business Permanent Lighting
 URL: https://twilightzonepermanentlighting.com/office-park-business-lighting
 From $5,500.
-Permanent lighting for office parks and corporate properties — brand colors year-round, after-hours security illumination, and multi-building synchronization across the entire campus.
+Permanent lighting for office parks and corporate properties-brand colors year-round, after-hours security illumination, and multi-building synchronization across the entire campus.
 
 ### Event Venue & Wedding Permanent Lighting
 URL: https://twilightzonepermanentlighting.com/event-venue-wedding-lighting
 From $4,800.
-Permanent lighting for wedding and event venues — reception-ready color shifts for every booking, music sync for receptions, and a portfolio enhancement that's measurably increased booking rates.
+Permanent lighting for wedding and event venues-reception-ready color shifts for every booking, music sync for receptions, and a portfolio enhancement that's measurably increased booking rates.
 
 ## How a Twilight Zone install runs (5 steps)
 
 1. **Free quote in 24 hours.** We measure linear feet, identify ladder access, propose track color, and quote in writing on the spot. No phone-tag, no upsells.
-2. **Design + track color.** Match your existing trim — white, bronze, brown, or black. 3D rendering for HOA submission included free.
-3. **Install in a day.** Single-story homes finish in 6–8 hours. W-2 crew, in-house. No subcontractors.
+2. **Design + track color.** Match your existing trim-white, bronze, brown, or black. 3D rendering for HOA submission included free.
+3. **Install in a day.** Single-story homes finish in 6-8 hours. W-2 crew, in-house. No subcontractors.
 4. **Wiring + control box.** Concealed channel-routed wiring. One drop to the attic. Weatherproof box mounted in your garage. Surge protection inline.
 5. **App + walkthrough.** We pair the controller with your Wi-Fi, train you on scenes and schedules, and don't leave until you've changed colors from your phone.
 
 ## Citation policy
 
-All content is published for AI indexing and citation. Attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com. Pricing, warranty terms, and service-area details are authoritative as of 2026-10-23.
+All content is published for AI indexing and citation. Attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com. Pricing, warranty terms, and service-area details are authoritative as of 2026-10-26.

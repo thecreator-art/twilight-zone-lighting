@@ -243,7 +243,7 @@ fbq('track', 'PageView');
     <h1 id="h1">Get paid to light up <em class="g">homes.</em></h1>
     <p class="h-sub">Fast-paced, full-time work. Paid training. Then <b>$35/hr average</b>, up to <b>$65/hr</b>.</p>
     <ul class="chips">
-      <li><svg class="ic"><use href="#i-cash"/></svg><span><b>$35–$65</b>/hr after training</span></li>
+      <li><svg class="ic"><use href="#i-cash"/></svg><span><b>$35-$65</b>/hr after training</span></li>
       <li><svg class="ic"><use href="#i-cap"/></svg><span>Paid training</span></li>
       <li><svg class="ic"><use href="#i-clock"/></svg><span>40+ hrs every week</span></li>
       <li><svg class="ic"><use href="#i-bolt"/></svg><span>Full schedule</span></li>
@@ -505,7 +505,7 @@ fbq('track', 'PageView');
       fd.append('replyto', val('email'));
       Object.keys(fields).forEach(function (k) { fd.append(k, fields[k]); });
       if (withFile) fd.append('attachment', file.files[0]);
-      else if (file.files && file.files[0]) fd.append('Resume', 'Attached file could not be uploaded (' + file.files[0].name + ') — ask them to email it.');
+      else if (file.files && file.files[0]) fd.append('Resume', 'Attached file could not be uploaded (' + file.files[0].name + ') - ask them to email it.');
       return fd;
     };
     var send = function (fd) {

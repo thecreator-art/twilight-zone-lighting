@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /404
 
-# AI / LLM crawlers — explicitly allow indexing for citations
+# AI / LLM crawlers-explicitly allow indexing for citations
 User-agent: GPTBot
 Allow: /
 

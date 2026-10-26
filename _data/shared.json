@@ -12,7 +12,10 @@
       "state": "CA",
       "zip": "93611"
     },
-    "geo": { "lat": 36.8446518, "lng": -119.7197892 },
+    "geo": {
+      "lat": 36.8446518,
+      "lng": -119.7197892
+    },
     "founded": "2019",
     "employees": 12,
     "installs": 2400,
@@ -20,19 +23,51 @@
     "rating": "5.0",
     "siteUrl": "https://twilightzonepermanentlighting.com",
     "domain": "twilightzonepermanentlighting.com",
-    "sameAs": [],
+    "sameAs": [
+      "https://www.google.com/maps?cid=12072441404558135898",
+      "https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6",
+      "https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1160266",
+      "https://www.buildzoom.com/contractor/valley-wash-pros-inc",
+      "https://business.fresnochamber.com/list/member/valley-wash-pros-32340",
+      "https://www.linkedin.com/in/raphael-samarin-873477290"
+    ],
     "hours": [
-      { "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
-      { "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "16:00" }
+      {
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "dayOfWeek": [
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "16:00"
+      }
     ],
     "authors": [
       {
-        "name": "Rapheal Samarin",
-        "jobTitle": "Owner & Lead Installer",
-        "bio": "Rapheal Samarin is the owner of Twilight Zone Permanent Lighting and leads every install personally. He has installed permanent outdoor lighting on 2,400+ Central Valley homes since founding the company in 2019.",
+        "name": "Raphael Samarin",
+        "jobTitle": "Owner & Lead Installer (CA CSLB #1160266)",
+        "bio": "Raphael Samarin is the owner of Twilight Zone Permanent Lighting and Valley Wash Pros Inc (CA CSLB License #1160266, headquartered at 5645 W San Madele Ave #105, Fresno, CA 93722 with showroom and shop operations at 755 N Peach Ave, Ste C16, Clovis, CA 93611). He leads every installation personally and has completed permanent outdoor LED lighting on 2,400+ Central Valley and Northern California properties since 2019.",
         "url": "https://twilightzonepermanentlighting.com/about"
       }
-    ]
+    ],
+    "corporateAddress": {
+      "street": "5645 W San Madele Ave #105",
+      "city": "Fresno",
+      "state": "CA",
+      "zip": "93722",
+      "note": "Main Fresno Corporate Headquarters (Valley Wash Pros Inc., CA CSLB License #1160266)"
+    },
+    "cslbLicense": "1160266",
+    "legalEntity": "Valley Wash Pros Inc"
   },
   "pricing": {
     "starterFrom": 950,
@@ -46,10 +81,22 @@
     "financingMonths": 12
   },
   "guarantees": [
-    { "title": "7-day refund", "desc": "Pulled and refunded in full. No fine print." },
-    { "title": "5-year warranty", "desc": "Track + LEDs covered five years. Workmanship too." },
-    { "title": "$0 down", "desc": "From $89/month at 0% APR." },
-    { "title": "Locally installed", "desc": "CA Lic. #1160266 (Valley Wash Pros Inc). Bonded. Insured." }
+    {
+      "title": "7-day refund",
+      "desc": "Pulled and refunded in full. No fine print."
+    },
+    {
+      "title": "5-year warranty",
+      "desc": "Track + LEDs covered five years. Workmanship too."
+    },
+    {
+      "title": "$0 down",
+      "desc": "From $89/month at 0% APR."
+    },
+    {
+      "title": "Locally installed",
+      "desc": "CA Lic. #1160266 (Valley Wash Pros Inc). Bonded. Insured."
+    }
   ],
   "tech": {
     "ledType": "RGBIC-RD",
@@ -58,6 +105,11 @@
     "lifespan": "50,000+ hours",
     "weatherRating": "IP67",
     "tempRange": "-40°F to 140°F",
-    "appCompat": ["Alexa", "Google Home", "Control 4", "Nice Elan"]
+    "appCompat": [
+      "Alexa",
+      "Google Home",
+      "Control 4",
+      "Nice Elan"
+    ]
   }
 }
