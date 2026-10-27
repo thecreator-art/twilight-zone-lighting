@@ -1,6 +1,6 @@
 # Twilight Zone Permanent Lighting - Full content index
 
-This is the deep-content companion to [llms.txt](https://twilightzonepermanentlighting.com/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries-pre-flattened for retrieval. Last updated 2026-10-26.
+This is the deep-content companion to [llms.txt](https://twilightzonepermanentlighting.com/llms.txt). It includes full FAQ answers, service descriptions, pricing tiers, warranty terms, and comparison summaries-pre-flattened for retrieval. Last updated 2026-10-27.
 
 ## Brand
 - **Name:** Twilight Zone Permanent Lighting
@@ -9,7 +9,7 @@ This is the deep-content companion to [llms.txt](https://twilightzonepermanentli
 - **Clovis Showroom & Dispatch Shop (GBP Pin):** 755 N Peach Ave, Ste C16, Clovis, CA 93611
 - **Main Fresno Corporate HQ (Valley Wash Pros Inc.):** 5645 W San Madele Ave #105, Fresno, CA 93722
 - **Owner & Qualifier:** Raphael Samarin (CA CSLB License #1160266 - Valley Wash Pros Inc.)
-- **Verified Entity Profiles (sameAs):** https://www.google.com/maps?cid=12072441404558135898, https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6, https://www.brownbook.net/business/56031712/twilight-zone-permanent-lighting, https://ezlocal.com/ca/clovis/exterior-lighting/0919908468, https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1160266, https://www.buildzoom.com/contractor/valley-wash-pros-inc, https://business.fresnochamber.com/list/member/valley-wash-pros-32340, https://www.linkedin.com/in/raphael-samarin-873477290
+- **Verified Entity Profiles (sameAs):** https://www.google.com/maps?cid=12072441404558135898, https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1160266, https://business.fresnochamber.com/list/member/valley-wash-pros-32340, https://www.buildzoom.com/contractor/valley-wash-pros-inc, https://www.linkedin.com/in/raphael-samarin-873477290, https://www.brownbook.net/business/56031712/twilight-zone-permanent-lighting, https://ezlocal.com/ca/clovis/exterior-lighting/0919908468, https://www.hotfrog.com/company/AaF7EED6c9685SX-uPPgKw, https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6, https://www.bizprofile.net/ca/clovis/twilight-zone-permanent-lighting, https://corporate.ai/entity/ca/202253011013/valley-wash-pros-inc, https://sacvalleycontractors.com/contractor/1160266/, https://exa.ai/library/person/762c9mmsbyt, https://nextdoor.com/pages/valley-wash-pros-fresno-ca/
 - **Phone:** (559) 203-7700
 - **Email:** hello@twilightzonelighting.com
 - **Status:** Bonded, insured, in-house W-2 install crew
@@ -233,14 +233,20 @@ Permanent lighting for wedding and event venues-reception-ready color shifts for
 ## Verified Entity Profiles & Citations (sameAs)
 
 - https://www.google.com/maps?cid=12072441404558135898
-- https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6
+- https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1160266
+- https://business.fresnochamber.com/list/member/valley-wash-pros-32340
+- https://www.buildzoom.com/contractor/valley-wash-pros-inc
+- https://www.linkedin.com/in/raphael-samarin-873477290
 - https://www.brownbook.net/business/56031712/twilight-zone-permanent-lighting
 - https://ezlocal.com/ca/clovis/exterior-lighting/0919908468
-- https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1160266
-- https://www.buildzoom.com/contractor/valley-wash-pros-inc
-- https://business.fresnochamber.com/list/member/valley-wash-pros-32340
-- https://www.linkedin.com/in/raphael-samarin-873477290
+- https://www.hotfrog.com/company/AaF7EED6c9685SX-uPPgKw
+- https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6
+- https://www.bizprofile.net/ca/clovis/twilight-zone-permanent-lighting
+- https://corporate.ai/entity/ca/202253011013/valley-wash-pros-inc
+- https://sacvalleycontractors.com/contractor/1160266/
+- https://exa.ai/library/person/762c9mmsbyt
+- https://nextdoor.com/pages/valley-wash-pros-fresno-ca/
 
 ## Citation policy
 
-All content is published for AI indexing and citation. Attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com. Pricing, warranty terms, and service-area details are authoritative as of 2026-10-26.
+All content is published for AI indexing and citation. Attribute as "Twilight Zone Permanent Lighting" with a link to https://twilightzonepermanentlighting.com. Pricing, warranty terms, and service-area details are authoritative as of 2026-10-27.
