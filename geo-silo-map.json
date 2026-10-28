@@ -1,0 +1,112 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "@id": "https://twilightzonepermanentlighting.com/#geo-silo",
+  "name": "Twilight Zone Permanent Lighting — Clovis, CA",
+  "url": "https://twilightzonepermanentlighting.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Clovis",
+    "addressRegion": "CA",
+    "postalCode": "93611",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 36.8252,
+    "longitude": -119.7029
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=36.8252,-119.7029",
+  "potentialAction": [
+    {
+      "@type": "TravelAction",
+      "name": "Drive from Old Town Clovis, Clovis, CA to Twilight Zone Permanent Lighting",
+      "fromLocation": {
+        "@type": "Place",
+        "name": "Old Town Clovis, Clovis, CA"
+      },
+      "toLocation": {
+        "@type": "Place",
+        "name": "Clovis, CA 93611",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 36.8252,
+          "longitude": -119.7029
+        }
+      },
+      "target": "https://www.google.com/maps/dir/?api=1&origin=Old%20Town%20Clovis%2C%20Clovis%2C%20CA&destination=Clovis%2C%20CA%2093611&travelmode=driving"
+    },
+    {
+      "@type": "TravelAction",
+      "name": "Drive from Fresno State, Fresno, CA to Twilight Zone Permanent Lighting",
+      "fromLocation": {
+        "@type": "Place",
+        "name": "Fresno State, Fresno, CA"
+      },
+      "toLocation": {
+        "@type": "Place",
+        "name": "Clovis, CA 93611",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 36.8252,
+          "longitude": -119.7029
+        }
+      },
+      "target": "https://www.google.com/maps/dir/?api=1&origin=Fresno%20State%2C%20Fresno%2C%20CA&destination=Clovis%2C%20CA%2093611&travelmode=driving"
+    },
+    {
+      "@type": "TravelAction",
+      "name": "Drive from Fresno Yosemite International Airport, Fresno, CA to Twilight Zone Permanent Lighting",
+      "fromLocation": {
+        "@type": "Place",
+        "name": "Fresno Yosemite International Airport, Fresno, CA"
+      },
+      "toLocation": {
+        "@type": "Place",
+        "name": "Clovis, CA 93611",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 36.8252,
+          "longitude": -119.7029
+        }
+      },
+      "target": "https://www.google.com/maps/dir/?api=1&origin=Fresno%20Yosemite%20International%20Airport%2C%20Fresno%2C%20CA&destination=Clovis%2C%20CA%2093611&travelmode=driving"
+    },
+    {
+      "@type": "TravelAction",
+      "name": "Drive from River Park Shopping Center, Fresno, CA to Twilight Zone Permanent Lighting",
+      "fromLocation": {
+        "@type": "Place",
+        "name": "River Park Shopping Center, Fresno, CA"
+      },
+      "toLocation": {
+        "@type": "Place",
+        "name": "Clovis, CA 93611",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 36.8252,
+          "longitude": -119.7029
+        }
+      },
+      "target": "https://www.google.com/maps/dir/?api=1&origin=River%20Park%20Shopping%20Center%2C%20Fresno%2C%20CA&destination=Clovis%2C%20CA%2093611&travelmode=driving"
+    },
+    {
+      "@type": "TravelAction",
+      "name": "Drive from Sierra Vista Mall, Clovis, CA to Twilight Zone Permanent Lighting",
+      "fromLocation": {
+        "@type": "Place",
+        "name": "Sierra Vista Mall, Clovis, CA"
+      },
+      "toLocation": {
+        "@type": "Place",
+        "name": "Clovis, CA 93611",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 36.8252,
+          "longitude": -119.7029
+        }
+      },
+      "target": "https://www.google.com/maps/dir/?api=1&origin=Sierra%20Vista%20Mall%2C%20Clovis%2C%20CA&destination=Clovis%2C%20CA%2093611&travelmode=driving"
+    }
+  ]
+}
