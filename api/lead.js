@@ -70,6 +70,17 @@ export default async function handler(req) {
     fbc: (payload.fbc || '').toString().slice(0, 400),
     // same id the browser Pixel sent with its Lead event — use it as event_id in CAPI to de-duplicate
     eventId: (payload.eventId || '').toString().slice(0, 80),
+    lead_source: (payload.lead_source || '').toString().slice(0, 200),
+    first_touch_source: (payload.first_touch_source || '').toString().slice(0, 200),
+    first_touch_campaign: (payload.first_touch_campaign || '').toString().slice(0, 200),
+    landing_page: (payload.landing_page || '').toString().slice(0, 300),
+    site_source: (payload.site_source || '').toString().slice(0, 40),
+    placement: (payload.placement || '').toString().slice(0, 80),
+    gclid: (payload.gclid || '').toString().slice(0, 300),
+    // human-readable summary (Lead source, Campaign, Ad, First touch, Device…) — strings only, capped
+    attribution: (payload.attribution && typeof payload.attribution === 'object')
+      ? Object.fromEntries(Object.entries(payload.attribution).slice(0, 20).map(([k, v]) => [String(k).slice(0, 40), String(v).slice(0, 300)]))
+      : {},
     page: (payload.page || '').toString().slice(0, 200),
     referrer: (payload.referrer || '').toString().slice(0, 200),
     userAgent: req.headers.get('user-agent') || '',

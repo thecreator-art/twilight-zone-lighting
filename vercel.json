@@ -2,6 +2,20 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "twilightzonelighting.com" }],
+      "destination": "https://twilightzonepermanentlighting.com/:path*?utm_source=truck_wrap&utm_medium=offline&utm_campaign=vehicle_wrap",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.twilightzonelighting.com" }],
+      "destination": "https://twilightzonepermanentlighting.com/:path*?utm_source=truck_wrap&utm_medium=offline&utm_campaign=vehicle_wrap",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/videos/:path*",

@@ -289,6 +289,10 @@ const REVIEWS_PROFILE_URL = 'https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6';
         phone: val('phone'), email: val('email'), address: val('address'), timeline: tl.value,
         page: location.href.split('#')[0].slice(0, 300), referrer: d.referrer.slice(0, 300), eventId
       }, attribution());
+      // Stored first/last-touch attribution (tz-attr.js) survives page changes; live URL values win.
+      const A = window.tzAttribution ? window.tzAttribution() : { fields: {}, params: {} };
+      Object.keys(A.params).forEach(k => { if (!lead[k]) lead[k] = A.params[k]; });
+      lead.attribution = A.fields;
 
       go.disabled = true; const label = go.firstElementChild.textContent; go.firstElementChild.textContent = 'Sending…';
       const w3 = fetch('https://api.web3forms.com/submit', {
@@ -297,7 +301,7 @@ const REVIEWS_PROFILE_URL = 'https://maps.app.goo.gl/T2Cp8n6TEHoVX7Fd6';
           access_key: W3_KEY, from_name: 'Vaultio', subject: 'New Lead from ' + first + ' - Twilight Zone',
           'Name': name, 'Phone': lead.phone, 'Email': lead.email, 'Address': lead.address, 'How soon': lead.timeline,
           'Form': 'Meta ads landing page (' + slot + ')'
-        }, lead))
+        }, A.fields, (({ attribution, ...rest }) => rest)(lead)))
       }).then(r => r.json()).then(r => !!(r && r.success)).catch(() => false);
       const api = fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) })
         .then(r => r.ok ? r.json() : null).then(r => !!(r && r.ok && r.queued)).catch(() => false);

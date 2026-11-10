@@ -194,6 +194,7 @@ section.s{padding:64px 0}
 .up[aria-invalid=true]{border-color:#dc2626;background:#fef2f2;color:#b91c1c}
 .af textarea[aria-invalid=true]{border-color:#dc2626}
 </style>
+<!-- TZ Attribution --><script src="/tz-attr.js" defer></script><!-- End TZ Attribution -->
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -505,7 +506,9 @@ fbq('track', 'PageView');
       'Trade experience': pick('experience'), 'Can start': pick('start'), '18+': pick('adult'),
       'About them': val('notes'), 'Page': location.href.split('#')[0].slice(0, 300)
     };
-    ['utm_source', 'utm_campaign', 'utm_content'].forEach(function (k) { if (qs.get(k)) fields[k] = qs.get(k).slice(0, 200); });
+    var A = window.tzAttribution ? window.tzAttribution() : { fields: {}, params: {} };
+    Object.keys(A.fields).forEach(function (k) { fields[k] = A.fields[k]; });
+    Object.keys(A.params).forEach(function (k) { fields[k] = A.params[k]; });
     var build = function (withFile) {
       var fd = new FormData();
       fd.append('access_key', W3_KEY);

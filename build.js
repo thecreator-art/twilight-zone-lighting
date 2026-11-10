@@ -291,6 +291,7 @@ ${kw ? `<meta name="keywords" content="${esc(kw)}" />` : ''}
 <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/styles.css"></noscript>
 ${buildGraph(jsonld, canonical)}
+<!-- TZ Attribution --><script src="/tz-attr.js" defer></script><!-- End TZ Attribution -->
 ${META_PIXEL_HEAD}
 </head>
 <body>
@@ -2342,7 +2343,7 @@ function buildUtility() {
   out.push(renderArticle({
     slug: 'privacy', h1: 'Privacy Policy', title: `Privacy Policy | ${BRAND}`,
     desc: 'How we collect, use, and protect your data.', kw: 'privacy policy', kicker: 'Legal', lead: 'Plain-English privacy policy.',
-    body: `<section class="container article-body"><p><em>Updated October 2026.</em></p><h2>What we collect</h2><p>Your name, address, phone, and email when you request a quote. This site also uses the Meta Pixel, a tool from Meta (Facebook and Instagram) that records the pages you visit and actions such as tapping to call or requesting a quote.</p><h2>How we use it</h2><p>Your contact details are used to respond to quotes and service calls. We never sell them. Pixel data is shared with Meta so we can measure our ads and show them to people likely to be interested-under California law, that counts as “sharing” personal information for advertising.</p><h2>Your choices</h2><p>If your browser sends a Global Privacy Control signal, we automatically restrict what Meta may do with that data. You can also manage how Meta uses your activity in your <a href="https://www.facebook.com/adpreferences" rel="noopener">Meta ad preferences</a>. To access or delete the contact information we hold about you, email us.</p><h2>Contact</h2><p>Questions: <a href="mailto:${shared.brand.email}">${shared.brand.email}</a></p></section>`
+    body: `<section class="container article-body"><p><em>Updated October 2026.</em></p><h2>What we collect</h2><p>Your name, address, phone, and email when you request a quote. This site also uses the Meta Pixel, a tool from Meta (Facebook and Instagram) that records the pages you visit and actions such as tapping to call or requesting a quote. When you send us a form, we also include how you found us — for example the ad, search engine or website that sent you — so we know which advertising works.</p><h2>How we use it</h2><p>Your contact details are used to respond to quotes and service calls. We never sell them. Pixel data is shared with Meta so we can measure our ads and show them to people likely to be interested-under California law, that counts as “sharing” personal information for advertising.</p><h2>Your choices</h2><p>If your browser sends a Global Privacy Control signal, we automatically restrict what Meta may do with that data. You can also manage how Meta uses your activity in your <a href="https://www.facebook.com/adpreferences" rel="noopener">Meta ad preferences</a>. To access or delete the contact information we hold about you, email us.</p><h2>Contact</h2><p>Questions: <a href="mailto:${shared.brand.email}">${shared.brand.email}</a></p></section>`
   }));
   out.push(renderArticle({
     slug: 'terms', h1: 'Terms of Service', title: `Terms of Service | ${BRAND}`,
@@ -3089,7 +3090,8 @@ console.log('✓ Wrote llms-full.txt');
     console.warn(`! ${file}: no </head> or <body> - Meta Pixel NOT synced`);
     return;
   }
-  html = html.replace('</head>', `${META_PIXEL_HEAD}\n</head>`)
+  html = html.replace(/<!-- TZ Attribution -->[\s\S]*?<!-- End TZ Attribution -->\n?/g, '');
+  html = html.replace('</head>', `<!-- TZ Attribution --><script src="/tz-attr.js" defer></script><!-- End TZ Attribution -->\n${META_PIXEL_HEAD}\n</head>`)
              .replace(/<body[^>]*>/, m => `${m}\n${META_PIXEL_NOSCRIPT}`);
   fs.writeFileSync(p, html);
   console.log(`✓ Synced Meta Pixel into ${file}`);

@@ -472,7 +472,9 @@ async function submitLead(form, opts = {}) {
     source,
     page,
     referrer: document.referrer || '',
-    submittedAt: new Date().toISOString()
+    submittedAt: new Date().toISOString(),
+    // Where this lead came from (first/last touch, campaign, ad, device) — see /tz-attr.js
+    ...(window.tzAttribution ? (a => ({ ...a.fields, ...a.params }))(window.tzAttribution()) : {})
   };
 
   let result;
@@ -1007,7 +1009,18 @@ if ('serviceWorker' in navigator) {
     s.src = wrap.dataset.jobberSrc;
     // The snippet reads these two off document.currentScript.
     s.setAttribute('clienthub_id', wrap.dataset.jobberClienthub);
-    s.setAttribute('form_url', wrap.dataset.jobberForm);
+    s.setAttribute('form_url', (function () {
+      // Jobber reads tracking tags only from the current URL; seed the visitor's stored ones
+      // (see /tz-attr.js) so a lead who landed from an ad, then browsed, is still attributed.
+      try {
+        var u = new URL(wrap.dataset.jobberForm), here = new URLSearchParams(location.search);
+        var p = window.tzAttribution ? window.tzAttribution().params : {};
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach(function (k) {
+          if (p[k] && !here.get(k)) u.searchParams.set(k, p[k]); // live URL params are appended by the snippet itself
+        });
+        return u.toString();
+      } catch (e) { return wrap.dataset.jobberForm; }
+    })());
     s.onerror = function () {
       wrap.insertAdjacentHTML('beforeend',
         '<p class="jobber-fallback">The request form could not load. Call ' +
