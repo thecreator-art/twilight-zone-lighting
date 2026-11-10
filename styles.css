@@ -3305,6 +3305,7 @@ em {
     color: rgba(255,255,255,0.55);
     padding: 0 0 4px;
   }
+  /* Cell labels on phones come from each cell's data-label (set by build.js from the column header). */
   .compare-table tbody td.ct-ours {
     grid-area: ours;
     text-align: center;
@@ -3322,26 +3323,6 @@ em {
     padding: 10px 8px;
     font-size: 0.84rem;
     color: var(--text-soft);
-  }
-  .compare-table tbody td.ct-ours::before {
-    content: 'Twilight Zone';
-    display: block;
-    font-size: 0.55rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(192, 132, 252, 0.85);
-    margin-bottom: 4px;
-    font-weight: 700;
-  }
-  .compare-table tbody td:not(.ct-feat):not(.ct-ours)::before {
-    content: 'Annual service';
-    display: block;
-    font-size: 0.55rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
-    margin-bottom: 4px;
-    font-weight: 700;
   }
 }
 .compare-table {

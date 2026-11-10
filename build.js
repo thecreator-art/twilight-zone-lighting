@@ -3097,4 +3097,55 @@ console.log('✓ Wrote llms-full.txt');
   console.log(`✓ Synced Meta Pixel into ${file}`);
 });
 
+
+// Final pass over EVERY page (generated + hand-maintained) for site-wide head tags and mobile tables.
+// These were previously injected straight into the generated HTML, so a rebuild wiped them; they now
+// live here and are regenerated on every build. Idempotent: each block is stripped and re-inserted.
+(() => {
+  const g = shared.brand.geo, a = shared.brand.address;
+  const GEO_BLOCK = [
+    '<!-- vaultio-geo-mobile -->',
+    '<meta name="geo.region" content="US-CA" />',
+    '<meta name="geo.placename" content="' + a.city + ', ' + a.state + ' ' + a.zip + '" />',
+    '<meta name="geo.position" content="' + g.lat + ';' + g.lng + '" />',
+    '<meta name="ICBM" content="' + g.lat + ', ' + g.lng + '" />',
+    '<link rel="alternate" type="application/rss+xml" title="' + BRAND + ' Verified Citations" href="' + SITE + '/citations-feed.xml" />',
+    '<script type="application/ld+json" id="vaultio-geo-image-schema">' + JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'ImageObject', name: BRAND + ' — ' + a.city + ', ' + a.state,
+      contentUrl: SITE + '/apple-touch-icon.png', url: SITE,
+      contentLocation: { '@type': 'Place', name: a.city + ', ' + a.state + ' ' + a.zip,
+        address: { '@type': 'PostalAddress', addressLocality: a.city, addressRegion: a.state, postalCode: a.zip, addressCountry: 'US' },
+        geo: { '@type': 'GeoCoordinates', latitude: g.lat, longitude: g.lng } }
+    }) + '</script>',
+    // Tables become stacked cards on phones; each cell is labelled with its column header (data-label below).
+    '<style id="vaultio-mobile-stacked-tables">@media (max-width: 680px) { table, thead, tbody, th, td, tr { display: block !important; width: 100% !important; box-sizing: border-box !important; } thead tr { position: absolute !important; top: -9999px !important; left: -9999px !important; } tbody tr { margin-bottom: 12px !important; border: 1px solid rgba(128,128,128,0.25) !important; border-radius: 10px !important; padding: 10px 12px !important; } tbody td { border: none !important; border-bottom: 1px solid rgba(128,128,128,0.12) !important; padding: 6px 0 !important; text-align: left !important; white-space: normal !important; word-break: break-word !important; } tbody td:last-child { border-bottom: none !important; } tbody td[data-label]::before { content: attr(data-label) ": "; font-weight: 700 !important; opacity: 0.75 !important; } }</style>',
+    '<!-- /vaultio-geo-mobile -->'
+  ].join('\n');
+  const ATTR_TAG = '<!-- TZ Attribution --><script src="/tz-attr.js" defer></script><!-- End TZ Attribution -->';
+  const plain = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const labelTables = html => html.replace(/<table\b[\s\S]*?<\/table>/g, t => {
+    const head = t.match(/<thead[\s\S]*?<\/thead>/); if (!head) return t;
+    const labels = [...head[0].matchAll(/<th\b[^>]*>([\s\S]*?)<\/th>/g)].map(m => plain(m[1]).replace(/"/g, '&quot;'));
+    return t.replace(/<tbody[\s\S]*?<\/tbody>/, body => body.replace(/<tr\b[^>]*>[\s\S]*?<\/tr>/g, row => {
+      // count every cell (a leading <th scope=row> occupies a column too); label only the <td>s
+      let i = 0;
+      return row.replace(/<(td|th)\b([^>]*)>/g, (m, tag, attrs) => { const l = labels[i++]; if (tag !== 'td' || !l) return m; return '<td data-label="' + l + '"' + attrs.replace(/\s*data-label="[^"]*"/, '') + '>'; });
+    }));
+  });
+  const walk = (d, out = []) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) { if (['.git', '.claude', 'node_modules', '.vercel'].includes(e.name)) continue; walk(p, out); } else if (e.name.endsWith('.html')) out.push(p); } return out; };
+  let n = 0;
+  for (const f of walk(ROOT)) {
+    let html = fs.readFileSync(f, 'utf8');
+    if (!html.includes('</head>')) continue;
+    html = html.replace(/<!-- vaultio-geo-mobile -->[\s\S]*?<!-- \/vaultio-geo-mobile -->\n?/g, '')
+               .replace(/<!-- TZ Attribution -->[\s\S]*?<!-- End TZ Attribution -->\n?/g, '');
+    const at = html.indexOf('<!-- Meta Pixel Code -->') > -1 ? html.indexOf('<!-- Meta Pixel Code -->') : html.indexOf('</head>');
+    // City pages already declare their own city's geo meta; don't add a second, conflicting set.
+    const block = GEO_BLOCK.split('\n').filter(line => { const m = line.match(/^<meta name="([^"]+)"/); return !m || !html.includes('name="' + m[1] + '"'); }).join('\n');
+    html = html.slice(0, at) + block + '\n' + ATTR_TAG + '\n' + html.slice(at);
+    fs.writeFileSync(f, labelTables(html)); n++;
+  }
+  console.log('✓ Head blocks + table labels on ' + n + ' pages');
+})();
+
 console.log(`\nTotal: ${written + 1} pages (including homepage)`);
