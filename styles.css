@@ -2989,6 +2989,16 @@ em {
   background: rgba(168, 85, 247, 0.12);
   border-color: var(--purple-500);
 }
+.pricing-page-link {
+  text-align: center;
+  margin: -8px 0 28px;
+  font-size: 0.98rem;
+}
+.pricing-page-link a {
+  color: var(--purple-300);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 .pricing-foot {
   display: grid;
