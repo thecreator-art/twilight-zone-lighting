@@ -3113,7 +3113,8 @@ console.log('✓ Wrote llms-full.txt');
 // index.html, 404.html and the landing page are hand-maintained, so they never pass through head(). Keep the
 // Pixel in them in lockstep with the generated pages: strip any previous copy, re-insert.
 // lights/index.html is the hand-built Meta-ads landing page.
-['index.html', '404.html', 'lights/index.html', 'lights/thank-you/index.html', 'careers/index.html', 'careers/thank-you/index.html'].forEach(file => {
+['index.html', '404.html', 'lights/index.html', 'lights/thank-you/index.html', 'careers/index.html', 'careers/thank-you/index.html',
+  ...['every-holiday', 'never-hang', 'zero-hassle', 'one-tap', 'drive-home'].map(s => `go/${s}/index.html`)].forEach(file => {
   const p = path.join(ROOT, file);
   if (!fs.existsSync(p)) return;
   let html = fs.readFileSync(p, 'utf8')

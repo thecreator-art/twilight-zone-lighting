@@ -41,7 +41,7 @@
       ]
     },
     {
-      "source": "/(lights|careers)(/.*)?",
+      "source": "/(lights|careers|go)(/.*)?",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex" }
       ]

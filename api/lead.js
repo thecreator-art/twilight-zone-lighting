@@ -59,6 +59,9 @@ export default async function handler(req) {
     zip: (payload.zip || '').toString().trim().slice(0, 16),
     name: (payload.name || '').toString().trim().slice(0, 120),
     timeline: (payload.timeline || '').toString().trim().slice(0, 60),
+    scope: (payload.scope || '').toString().trim().slice(0, 60),
+    stories: (payload.stories || '').toString().trim().slice(0, 40),
+    service_area: (payload.service_area || '').toString().trim().slice(0, 80),
     // ad attribution — lets the CRM side (and a Conversions API step) tie the lead back to the Meta ad
     utm_source: (payload.utm_source || '').toString().slice(0, 200),
     utm_medium: (payload.utm_medium || '').toString().slice(0, 200),
