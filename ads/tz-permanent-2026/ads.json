@@ -1,0 +1,45 @@
+{
+  "client": "Twilight Zone Permanent Lighting",
+  "status": "DRAFT PLAN. Nothing created in Meta yet. Blocked on: Facebook Page, budget cadence, AI disclosure answer.",
+  "ad_account_id": "26493117903718639",
+  "pixel_id": "1453802126623020",
+  "page_id": null,
+  "instagram_user_id": null,
+  "campaign": { "name": "VAULTIO | TZ | Permanent Lighting | Leads | 2026", "objective": "OUTCOME_LEADS", "special_ad_categories": [], "budget_note": "Client said $2,000 per month. About $65 per day; confirm daily amount before build.", "one_ad_set": true },
+  "ad_set": {
+    "name": "VAULTIO | TZ | FRESNO-CLOVIS (Central Valley)",
+    "optimization_goal": "OFFSITE_CONVERSIONS", "promoted_event": "LEAD", "destination_type": "WEBSITE",
+    "zips": ["93611", "93619", "93720", "93730", "93711", "93704", "93710", "93722", "93723", "93727", "93737", "93636"],
+    "age_min": 25, "age_range": [30, 65], "advantage_audience": 1, "geo_fixed": true,
+    "placements": "Facebook and Instagram feeds, stories, reels, search, profile feed. No Audience Network."
+  },
+  "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_term={{adset.name}}&utm_content={{ad.name}}&site_source={{site_source_name}}&placement={{placement}}",
+  "cta": "GET_QUOTE",
+  "description_all_ads": "CA Lic. #1160266 (Valley Wash Pros Inc). Bonded and insured.",
+  "target_cpl": "60 to 120 (permanent lighting has no proven band yet)",
+  "ads": [
+    { "name": "VAULTIO | TZ | FRESNO-CLOVIS | never-hang v1", "media": "statics/never-hang.jpg", "link": "https://twilightzonepermanentlighting.com/go/never-hang",
+      "primary_texts": ["This is the last year you untangle a strand. We put the lights up once and they stay. Fresno and Clovis.", "No ladder in December. No bins in the garage. One install and your roofline is lit for every holiday.", "You hang them, take them down, store them, repeat. Or we install once and you tap your phone."],
+      "headlines": ["Never Hang Christmas Lights Again", "Put the Ladder Away for Good", "Lights Up Once. Done."] },
+    { "name": "VAULTIO | TZ | FRESNO-CLOVIS | every-holiday v1", "media": "statics/every-holiday.jpg", "link": "https://twilightzonepermanentlighting.com/go/every-holiday",
+      "primary_texts": ["Christmas tonight. Red, white and blue in July. Your team's colors on game day. Same lights, one install.", "One set of lights on your roofline covers every holiday on the calendar. Pick the look from your phone.", "Halloween, Christmas, the Fourth, game day. Your house is ready for all of them after one visit from our crew."],
+      "headlines": ["One Install. Every Holiday.", "Every Holiday Is Already on Your Roof", "Christmas to Game Day in One Tap"] },
+    { "name": "VAULTIO | TZ | FRESNO-CLOVIS | zero-hassle v1", "media": "statics/zero-hassle.jpg", "link": "https://twilightzonepermanentlighting.com/go/zero-hassle",
+      "primary_texts": ["Cold fingers, a wobbly ladder and half a strand out. Skip all of it next year and every year after.", "Your weekend back every November. We install the lights once and you never climb for them again.", "The hanging is the part nobody likes. So we made it a one time job, done by our crew in a day."],
+      "headlines": ["$0 Annual Hanging Hassle", "Get Your November Weekends Back", "Never Climb for Lights Again"] },
+    { "name": "VAULTIO | TZ | FRESNO-CLOVIS | one-tap v1", "media": "statics/one-tap.jpg", "link": "https://twilightzonepermanentlighting.com/go/one-tap",
+      "primary_texts": ["Warm white on a Tuesday. Bulldogs red on Saturday. Over 16 million colors and it takes one tap.", "Change your whole roofline from the couch. 16M+ colors, 200+ presets, all in the app.", "Birthday tomorrow? Pink house tonight. Your lights do whatever your phone tells them."],
+      "headlines": ["One Tap. Any Color.", "Your House, Your Colors, Your Phone", "16 Million Colors on Your Roofline"] },
+    { "name": "VAULTIO | TZ | FRESNO-CLOVIS | drive-home video v1", "media": "~/Downloads/8868065255265593078 2.MP4 (9:16, 48s)", "link": "https://twilightzonepermanentlighting.com/go/drive-home",
+      "primary_texts": ["You know the house you slow down for on the way home. Here is how yours becomes that one.", "Every street in Fresno has one home people notice at night. See what it takes to be it.", "Lights that sit hidden under the eave by day and turn heads at night. Installed by our crew in one day."],
+      "headlines": ["Be the House People Notice", "The Home Everyone Slows Down For", "Hidden by Day. Lit Up at Night."] }
+  ],
+  "claims_to_confirm": [
+    "Lifetime warranty: pages say lifetime on the track, 5 years on LEDs and labor (from the site's pricing table). Confirm if it is lifetime on everything.",
+    "7 day satisfaction guarantee = the site's 7 day refund (pulled and refunded in full).",
+    "every-holiday static shows an LA Rams logo. NFL trademark, likely rejection. Needs a swap.",
+    "Statics are AI images: self_ai_disclosure must be answered before creatives are made.",
+    "License is C-61/D38 under Valley Wash Pros Inc; lighting install is usually C-10."
+  ],
+  "lead_routing": "Web3Forms email now. Jobber needs a Zapier or Make webhook URL set as LEAD_WEBHOOK_URL in Vercel (none set today)."
+}
