@@ -477,6 +477,20 @@ async function submitLead(form, opts = {}) {
     ...(window.tzAttribution ? (a => ({ ...a.fields, ...a.params }))(window.tzAttribution()) : {})
   };
 
+  // Same lead straight into Jobber (client + request + note) through /api/lead. Runs alongside the email,
+  // so either one succeeding counts and neither can block the other.
+  const attr = window.tzAttribution ? window.tzAttribution() : { fields: {}, params: {} };
+  const toJobber = fetch('/api/lead', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', accept: 'application/json' },
+    body: JSON.stringify({
+      ...attr.params,
+      source: 'site-' + source, firstName: payload.firstName, lastName: payload.lastName, email: payload.email, phone: payload.phone,
+      address: payload.address, city: payload.city, state: payload.state, zip: payload.zip,
+      page: window.location.href.split('#')[0].slice(0, 300), referrer: payload.referrer.slice(0, 300), attribution: attr.fields
+    })
+  }).then(r => r.json()).then(j => !!(j && j.ok && j.queued)).catch(() => false);
+
   let result;
   try {
     const resp = await fetch('https://api.web3forms.com/submit', {
@@ -489,6 +503,7 @@ async function submitLead(form, opts = {}) {
   } catch (err) {
     result = { ok: false, error: 'network' };
   }
+  if (await toJobber) result.ok = true;
 
   if (result && result.ok) {
     if (btn) {

@@ -119,5 +119,5 @@ export default async function handler(req) {
     return json(200, { ok: true, queued: false, reason: 'not_configured' });
   }
   if (!inJobber && !hooked) return json(502, { ok: false, error: 'forward_failed' });
-  return json(200, { ok: true, queued: true, jobber: inJobber, request: !!(jobber && jobber.requestId) });
+  return json(200, { ok: true, queued: true, jobber: inJobber, request: !!(jobber && jobber.requestId), property: !!(jobber && jobber.propertyId) });
 }

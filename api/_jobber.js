@@ -94,7 +94,7 @@ function noteFor(lead) {
 // Returns { clientId, requestId, steps } and never throws: a Jobber problem must not lose the lead (email still goes out).
 export async function pushLeadToJobber(lead) {
   const steps = [];
-  const out = { clientId: null, requestId: null, steps };
+  const out = { clientId: null, requestId: null, propertyId: null, steps };
   let token;
   try { token = await accessToken(); } catch (e) { steps.push('token: ' + e.message); return out; }
 
@@ -121,11 +121,24 @@ export async function pushLeadToJobber(lead) {
   }
   if (!out.clientId) return out;
 
+  // Service address as a Jobber property, so it shows on the request and can be scheduled against.
+  let propertyId = null;
+  if (lead.address) {
+    try {
+      const d = await gql(token,
+        'mutation($id: EncodedId!, $input: PropertyCreateInput!){ propertyCreate(clientId:$id, input:$input){ properties{ id } userErrors{ message path } } }',
+        { id: out.clientId, input: { properties: [{ address: { street1: lead.address, city: lead.city || undefined, province: lead.state || 'CA', postalCode: lead.zip || undefined, country: 'US' } }] } });
+      const err = userErrors(d.propertyCreate);
+      if (err) steps.push('property: ' + err);
+      else { propertyId = out.propertyId = (d.propertyCreate.properties[0] || {}).id || null; steps.push('property: ok'); }
+    } catch (e) { steps.push('property: ' + e.message); }
+  }
+
   const note = noteFor(lead);
   try {
     const d = await gql(token,
       'mutation($input: RequestCreateInput!){ requestCreate(input:$input){ request{ id } userErrors{ message path } } }',
-      { input: { clientId: out.clientId, title: 'Permanent lighting quote (website)' } });
+      { input: { clientId: out.clientId, title: 'Permanent lighting quote (website)', ...(propertyId ? { propertyId } : {}) } });
     const err = userErrors(d.requestCreate);
     if (err) steps.push('request: ' + err); else { out.requestId = d.requestCreate.request.id; steps.push('request: ok'); }
   } catch (e) { steps.push('request: ' + e.message); }
