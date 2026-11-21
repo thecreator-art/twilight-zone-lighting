@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Got it. One last step | Twilight Zone Permanent Lighting</title>
+<title>Got it. Thank you | Twilight Zone Permanent Lighting</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#050505">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -32,6 +32,12 @@ h1 em{font-style:italic;background:linear-gradient(135deg,#e9d5ff,#c084fc 55%,#8
 .fallback{padding:16px;color:#33333d}
 .foot{padding:22px 16px 32px;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:12px;color:rgba(255,255,255,.55)}
 .foot a{color:inherit}
+.card.next{text-align:left;padding:22px 20px}.card.next .step{margin:0 0 14px}
+.nx{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:n}
+.nx li{display:grid;grid-template-columns:34px 1fr;column-gap:12px;counter-increment:n}
+.nx li::before{content:counter(n);grid-row:span 2;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(192,132,252,.6);font-weight:600}
+.nx b{display:block}.nx span{display:block;font-size:14.5px;opacity:.78}
+.callbtn{display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:20px;border-radius:100px;background:#a855f7;color:#fff;font-weight:700;text-decoration:none}
 </style>
 <!-- vaultio-geo-mobile -->
 <meta name="geo.region" content="US-CA" />
@@ -66,16 +72,14 @@ fbq('track', 'PageView');
   <svg class="ok" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26"/><path d="M17 28.5l7.5 7.5L39.5 20"/></svg>
   <h1>Got it<span id="who"></span>. <em>Thank you.</em></h1>
   <p class="lead">We will reach out within 24 hours.</p>
-  <p class="step">One last step</p>
-  <p class="why">Book your free on site quote</p>
-  <div class="card">
-    <div class="jobber-embed-wrap"
-         data-jobber-css="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css"
-         data-jobber-src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js"
-         data-jobber-form="https://clienthub.getjobber.com/client_hubs/67dba942-3be2-48ca-80e1-48396e492a26/public/work_request/embedded_work_request_form?form_id=2106619">
-      <div id="67dba942-3be2-48ca-80e1-48396e492a26-2106619"></div>
-    </div>
-    <noscript><p class="fallback">Your request is in. We will reach out within 24 hours.</p></noscript>
+  <div class="card next">
+    <p class="step">What happens next</p>
+    <ol class="nx">
+      <li><b>We call or text you</b><span>Within 24 hours, from (559) 203-7700.</span></li>
+      <li><b>Free on site quote</b><span>We measure your roofline and give you an exact price.</span></li>
+      <li><b>One day install</b><span>Our crew puts the lights up once and they stay.</span></li>
+    </ol>
+    <a class="callbtn" href="tel:+15592037700" data-cta="go-ty-call">Call now: (559) 203-7700</a>
   </div>
 </main>
 <footer class="foot">© 2026 Twilight Zone Permanent Lighting · 755 N Peach Ave, Ste C16, Clovis, CA 93611 · CA Lic. #1160266 (Valley Wash Pros Inc) · <a href="/privacy" target="_blank" rel="noopener">Privacy</a></footer>
@@ -90,23 +94,11 @@ fbq('track', 'PageView');
     data.fired = 1;
     try { sessionStorage.setItem('tz_lead', JSON.stringify(data)); } catch (e) {}
   }
-  // Jobber request form: puts the request straight into the client's Jobber. The ad's tags are passed along.
-  function load() {
-    var wrap = document.querySelector('.jobber-embed-wrap'), u = wrap.dataset.jobberForm;
-    try {
-      var url = new URL(u), p = window.tzAttribution ? window.tzAttribution().params : {};
-      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach(function (k) { if (p[k]) url.searchParams.set(k, p[k]); });
-      u = url.toString();
-    } catch (e) {}
-    var css = document.createElement('link'); css.rel = 'stylesheet'; css.media = 'screen'; css.href = wrap.dataset.jobberCss; document.head.appendChild(css);
-    var s = document.createElement('script'); s.src = wrap.dataset.jobberSrc;
-    s.setAttribute('clienthub_id', '67dba942-3be2-48ca-80e1-48396e492a26-2106619'); s.setAttribute('form_url', u);
-    s.onerror = function () { wrap.insertAdjacentHTML('beforeend', '<p class="fallback">Your request is in. We will reach out within 24 hours.</p>'); };
-    document.body.appendChild(s);
-    var started = false;
-    window.addEventListener('blur', function () { setTimeout(function () { var a = document.activeElement; if (!started && a && a.tagName === 'IFRAME') { started = true; if (window.fbq) fbq('trackCustom', 'JobberFormStart'); } }, 0); });
-  }
-  if (document.readyState === 'complete') load(); else window.addEventListener('load', load);
+  // The quiz already put this lead into Jobber (api/lead.js) and emailed it, so there is no second form here.
+  document.addEventListener('click', function (ev) {
+    var t = ev.target.closest && ev.target.closest('a[href^="tel:"]');
+    if (t && window.fbq) fbq('track', 'Contact', { cta: 'go-thank-you' });
+  }, true);
 })();
 </script>
 </body>
