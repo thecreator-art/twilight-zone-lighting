@@ -99,9 +99,9 @@ export async function pushLeadToJobber(lead) {
   try { token = await accessToken(); } catch (e) { steps.push('token: ' + e.message); return out; }
 
   let first = lead.firstName, last = lead.lastName;
-  if (!last && lead.name && lead.name.trim().includes(' ')) {
-    const parts = lead.name.trim().split(/\s+/); first = parts.shift(); last = parts.join(' ');
-  }
+  // Forms with a single name box: split "Jane Doe" into first and last.
+  const whole = (!last && (lead.name || first) || '').trim();
+  if (whole.includes(' ')) { const parts = whole.split(/\s+/); first = parts.shift(); last = parts.join(' '); }
   const base = { firstName: first, lastName: last || '(web lead)' };
   if (lead.email) base.emails = [{ description: 'MAIN', primary: true, address: lead.email }];
   const full = { ...base, phones: [{ description: 'MAIN', primary: true, number: lead.phone }] };
