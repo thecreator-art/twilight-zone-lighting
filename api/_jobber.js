@@ -106,7 +106,7 @@ export async function pushLeadToJobber(lead) {
   if (lead.email) base.emails = [{ description: 'MAIN', primary: true, address: lead.email }];
   const full = { ...base, phones: [{ description: 'MAIN', primary: true, number: lead.phone }] };
   if (lead.address) {
-    full.billingAddress = { street1: lead.address, city: lead.city || undefined, province: lead.state || 'CA', postalCode: lead.zip || undefined, country: 'US' };
+    full.billingAddress = { street1: lead.address, city: lead.city || undefined, province: (lead.city || lead.zip) ? (lead.state || 'CA') : undefined, postalCode: lead.zip || undefined, country: 'US' };
   }
   const CLIENT = 'mutation($input: ClientCreateInput!){ clientCreate(input:$input){ client{ id } userErrors{ message path } } }';
 
@@ -127,7 +127,7 @@ export async function pushLeadToJobber(lead) {
     try {
       const d = await gql(token,
         'mutation($id: EncodedId!, $input: PropertyCreateInput!){ propertyCreate(clientId:$id, input:$input){ properties{ id } userErrors{ message path } } }',
-        { id: out.clientId, input: { properties: [{ address: { street1: lead.address, city: lead.city || undefined, province: lead.state || 'CA', postalCode: lead.zip || undefined, country: 'US' } }] } });
+        { id: out.clientId, input: { properties: [{ address: { street1: lead.address, city: lead.city || undefined, province: (lead.city || lead.zip) ? (lead.state || 'CA') : undefined, postalCode: lead.zip || undefined, country: 'US' } }] } });
       const err = userErrors(d.propertyCreate);
       if (err) steps.push('property: ' + err);
       else { propertyId = out.propertyId = (d.propertyCreate.properties[0] || {}).id || null; steps.push('property: ok'); }
