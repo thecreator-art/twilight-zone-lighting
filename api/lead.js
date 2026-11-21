@@ -1,10 +1,9 @@
 // Vercel serverless function — lead form proxy.
-// Browser POSTs JSON to /api/lead. Function validates, drops bot submissions,
-// and forwards the payload to LEAD_WEBHOOK_URL (set in Vercel env vars — a Zapier/Make webhook that creates
-// the client + request in Jobber and can send the Meta Conversions API Lead event).
-//
-// Required env var: LEAD_WEBHOOK_URL (the GHL webhook URL or any HTTPS endpoint that accepts JSON)
-// Optional env var: LEAD_WEBHOOK_AUTH ("Bearer xxx" if your webhook requires auth)
+// Browser POSTs JSON to /api/lead. Function validates, drops bot submissions, then creates the
+// client + request in Jobber directly (api/_jobber.js; env: JOBBER_CLIENT_ID, JOBBER_CLIENT_SECRET,
+// JOBBER_REFRESH_TOKEN). LEAD_WEBHOOK_URL / LEAD_WEBHOOK_AUTH remain as an optional extra destination.
+
+import { jobberConfigured, pushLeadToJobber } from './_jobber.js';
 
 export const config = { runtime: 'edge' };
 
@@ -91,28 +90,34 @@ export default async function handler(req) {
     submittedAt: new Date().toISOString()
   };
 
+  // 1) Straight into the client's Jobber account (client + request + note). See api/_jobber.js.
+  let jobber = null;
+  if (jobberConfigured()) {
+    jobber = await pushLeadToJobber(out);
+    if (!jobber.requestId) console.error('Jobber push incomplete:', JSON.stringify(jobber.steps));
+  }
+  const inJobber = !!(jobber && jobber.clientId);
+
+  // 2) Optional extra webhook (unused unless LEAD_WEBHOOK_URL is set).
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
-  if (!webhookUrl) {
-    // Not configured yet — accept the lead so the UX still works, but flag it.
-    console.warn('LEAD_WEBHOOK_URL not configured — lead accepted but not forwarded:', out);
-    return json(200, { ok: true, queued: false, reason: 'webhook_not_configured' });
+  let hooked = false;
+  if (webhookUrl) {
+    try {
+      const headers = { 'content-type': 'application/json' };
+      if (process.env.LEAD_WEBHOOK_AUTH) headers.authorization = process.env.LEAD_WEBHOOK_AUTH;
+      const resp = await fetch(webhookUrl, { method: 'POST', headers, body: JSON.stringify(out) });
+      hooked = resp.ok;
+      if (!resp.ok) console.error('Lead webhook returned non-200:', resp.status, await resp.text().catch(() => ''));
+    } catch (err) {
+      console.error('Lead webhook fetch error:', err);
+    }
   }
 
-  try {
-    const headers = { 'content-type': 'application/json' };
-    if (process.env.LEAD_WEBHOOK_AUTH) headers.authorization = process.env.LEAD_WEBHOOK_AUTH;
-    const resp = await fetch(webhookUrl, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(out)
-    });
-    if (!resp.ok) {
-      console.error('Lead webhook returned non-200:', resp.status, await resp.text().catch(() => ''));
-      return json(502, { ok: false, error: 'webhook_failed' });
-    }
-    return json(200, { ok: true, queued: true });
-  } catch (err) {
-    console.error('Lead webhook fetch error:', err);
-    return json(502, { ok: false, error: 'webhook_unreachable' });
+  if (!jobberConfigured() && !webhookUrl) {
+    // Nothing connected yet: accept the lead so the form still works (the email copy is sent by the browser).
+    console.warn('No lead destination configured — lead accepted but not forwarded:', out);
+    return json(200, { ok: true, queued: false, reason: 'not_configured' });
   }
+  if (!inJobber && !hooked) return json(502, { ok: false, error: 'forward_failed' });
+  return json(200, { ok: true, queued: true, jobber: inJobber, request: !!(jobber && jobber.requestId) });
 }
