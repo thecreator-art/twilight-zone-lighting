@@ -2,7 +2,7 @@
 *,*::before,*::after{box-sizing:border-box}[hidden]{display:none!important}
 html{background:#050505;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:#050505;color:#fff;font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:84px}
-img{display:block;max-width:100%}h1,h2,p,ul,ol,figure{margin:0}ul,ol{padding:0;list-style:none}a{color:inherit}
+img{display:block;max-width:100%;height:auto}h1,h2,p,ul,ol,figure{margin:0}ul,ol{padding:0;list-style:none}a{color:inherit}
 em{font-style:italic;background:linear-gradient(135deg,#e9d5ff,#c084fc 55%,#818cf8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.05em}
 .ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 h2{font:400 clamp(32px,8.5vw,48px)/1.05 var(--serif);letter-spacing:-.01em}
@@ -101,3 +101,27 @@ section{padding:52px 16px 0}
   .get .btn{max-width:360px}.final img{height:520px;border-radius:24px}
 }
 @media (prefers-reduced-motion:reduce){.step{animation:none}.bar i,.sticky{transition:none}html{scroll-behavior:auto}}
+/* tablet: keep the form and copy at a readable width, centered */
+@media (min-width:600px) and (max-width:899px){
+  .hero-copy,.card,.chips{max-width:580px;margin-inline:auto}.card{margin-top:14px}.chips{margin-top:12px}
+  .hero-copy{padding-inline:0}
+  main>section:not(.strip):not(.final){max-width:612px;margin-inline:auto}
+  .track picture{flex-basis:46%}.tiles img{height:120px}
+  .final img{height:520px}
+}
+@media (min-width:900px){
+  .day img,.owner img{max-height:440px}
+  .day>div,.owner>p{align-self:center}
+  section{padding-inline:32px}.strip{padding-inline:0}.track{padding-inline:32px}
+  .faq{max-width:760px;margin-inline:auto}
+  .final{margin-inline:32px}.final div{border-radius:0 0 24px 24px;padding-inline:32px}.final .btn{max-width:360px}
+  .foot{padding-top:40px}
+}
+
+/* photo carousel: constant slow scroll, pauses on touch or hover; swipeable when motion is reduced */
+.marquee{overflow:hidden}
+.marquee .track{overflow:visible;width:max-content;padding:0;gap:0;scroll-snap-type:none;animation:slide 60s linear infinite}
+.marquee .track picture{flex:0 0 auto;width:min(72vw,340px);max-width:none;margin-right:10px}
+.marquee:hover .track,.marquee:active .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.marquee .track{animation:none}}

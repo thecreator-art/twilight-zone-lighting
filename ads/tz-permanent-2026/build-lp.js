@@ -102,11 +102,11 @@ const page = (slug, a) => `<!doctype html>
 </header>
 
 <main>
-<section class="strip" aria-label="Real installs">
-  <div class="track">
-    ${[['home-christmas', 'Red and green holiday lights on a customer home'], ['home-two-story', 'White permanent lights on a two story home'], ['crew-truck', 'The Twilight Zone crew installing lights beside the company truck'], ['home-warm', 'Warm white roofline lights at dusk'], ['install-ladder', 'An installer fitting track under an eave'], ['home-dusk', 'Color lights under the eaves of a single story home'], ['crew-install', 'Two installers on ladders at a customer home'], ['home-white', 'White lights along the peaks of a home at dusk']].map(([n, alt]) => pic(n, alt, 'loading="lazy" width="600" height="450"')).join('\n    ')}
-  </div>
-  <p class="cap">Real homes lit by our crew in the Fresno area</p>
+<section class="strip" aria-label="Real installs and our crew">
+  <div class="marquee"><div class="track">
+    ${(() => { const items = [['home-christmas', 'Red and green holiday lights on a customer home'], ['crew-truck', 'The Twilight Zone crew installing lights beside the company truck'], ['home-two-story', 'White permanent lights on a two story home'], ['install-ladder', 'A Twilight Zone installer on a ladder giving a thumbs up'], ['home-warm', 'Warm white roofline lights at dusk'], ['crew-install', 'Two installers on ladders at a customer home'], ['home-dusk', 'Color lights under the eaves of a single story home'], ['installer-eave', 'An installer fitting the light track under an eave'], ['home-white', 'White lights along the peaks of a home at dusk']]; const row = hide => items.map(([n, alt]) => pic(n, hide ? '' : alt, 'loading="lazy" width="600" height="450"' + (hide ? ' aria-hidden="true"' : ''))).join(''); return row(false) + row(true); })()}
+  </div></div>
+  <p class="cap">Real homes and our own crew in the Fresno area</p>
 </section>
 
 <section class="day">
