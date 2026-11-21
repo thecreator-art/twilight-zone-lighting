@@ -65,7 +65,7 @@
     if (val('phone').replace(/\D/g, '').length < 10) bad.push(f.phone);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'))) bad.push(f.email);
     if (bad.length) return fail(bad, 'Please fill in your name, phone and email.');
-    if (val('company')) { location.assign('/lights/thank-you'); return; } // bot trap
+    if (val('company')) { location.assign('/go/thank-you'); return; } // bot trap
 
     var name = val('name'), parts = name.split(/\s+/), first = parts[0];
     var A = W.tzAttribution ? W.tzAttribution() : { fields: {}, params: {} };
@@ -92,7 +92,7 @@
         var handed = false;
         try { sessionStorage.setItem('tz_lead', JSON.stringify({ first: first, eventId: eventId, src: 'meta-go-' + angle, timeline: lead.timeline, fired: 0 })); handed = true; } catch (x) {}
         if (!handed && W.fbq) fbq('track', 'Lead', { content_name: 'meta-go-' + angle }, { eventID: eventId });
-        location.assign('/lights/thank-you');
+        location.assign('/go/thank-you');
       } else {
         go.disabled = false; go.firstElementChild.textContent = label;
         err.textContent = 'Something went wrong sending your request. Please try again in a moment.'; err.hidden = false;
