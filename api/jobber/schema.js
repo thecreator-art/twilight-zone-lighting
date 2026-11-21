@@ -5,7 +5,7 @@ import { jobberConfigured, setupKeyOk, accessToken, gql } from '../_jobber.js';
 
 export const config = { runtime: 'edge' };
 
-const TYPE = 'query($n:String!){ __type(name:$n){ name inputFields{ name type{ kind name ofType{ kind name ofType{ kind name ofType{ name } } } } } } }';
+const TYPE = 'query($n:String!){ __type(name:$n){ name fields{ name type{ kind name ofType{ kind name ofType{ kind name ofType{ name } } } } } inputFields{ name type{ kind name ofType{ kind name ofType{ kind name ofType{ name } } } } } } }';
 const MUTATIONS = '{ __schema{ mutationType{ fields{ name args{ name type{ kind name ofType{ kind name } } } } } } }';
 
 export default async function handler(req) {
@@ -20,10 +20,11 @@ export default async function handler(req) {
     const inputNames = new Set();
     mutations.forEach((m) => m.args.forEach((a) => { let t = a.type; while (t && !t.name) t = t.ofType; if (t && /Input|Attributes/.test(t.name)) inputNames.add(t.name); }));
     ['EmailCreateAttributes', 'PhoneNumberCreateAttributes', 'AddressAttributes'].forEach((n) => inputNames.add(n));
+    (new URL(req.url).searchParams.get('types') || '').split(',').filter((n) => /^\w+$/.test(n)).forEach((n) => inputNames.add(n));
     const types = {};
     for (const n of inputNames) {
       const t = (await gql(token, TYPE, { n })).__type;
-      types[n] = t ? t.inputFields : null;
+      types[n] = t ? (t.inputFields || t.fields) : null;
     }
     return json(200, { connected: true, account, mutations, types });
   } catch (e) {
